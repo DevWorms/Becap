@@ -2,9 +2,8 @@
                                   B E C A P 
    ========================================================================== */
 
-
-header .container {
-  padding-top: 100px;
+.space{
+	padding-top: 100px;	
 }
 
 header .intro-text {
@@ -37,10 +36,18 @@ header .intro-text {
 
 
 @media (min-width: 768px) {
-  header .container {
+  header .space3 {
+    padding-top: 135px;
+    padding-bottom: 0px;
+  } 
+  header .space2 {
+    padding-top: 10px;
+  }	
+  header .space {
     padding-top: 150px;
     padding-bottom: 10px;
   }
+
   header .intro-text .name {
     font-size: 4.75em;
   }
