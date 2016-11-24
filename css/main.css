@@ -1,15 +1,45 @@
 /* ==========================================================================
                                   B E C A P 
    ========================================================================== */
+
+
 header .container {
   padding-top: 100px;
-  
+}
+
+header .intro-text {
+  display: block;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  color: #818080;
+}
+
+.blue{
+	color: #25acd9;
+}
+
+.well-custom{
+	border-radius: 10px;
+	border-width: 0px;
+	background: #efefef;
+	color: #848484;
+}
+
+.well-custom legend{
+	color: #5E5E5E;
 }
 
 @media (min-width: 768px) {
+	header .it-sp {
+	margin-top: 100px;		
+ }
+}
+
+
+@media (min-width: 768px) {
   header .container {
-    padding-top: 170px;
-    padding-bottom: 100px;
+    padding-top: 150px;
+    padding-bottom: 10px;
   }
   header .intro-text .name {
     font-size: 4.75em;
@@ -157,4 +187,11 @@ fieldset[disabled] .btn-primary.active {
 .btn-danger{
   color: white;
   background-color: #e64c3c;
+}
+
+
+/* F O O T E R */
+
+footer{
+	color: #979797;
 }
