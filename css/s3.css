@@ -1,0 +1,38 @@
+.white{
+	color:white;
+}
+
+.m-space{
+	padding-top: 10px;
+}
+
+input{
+   text-align:center;
+}
+
+.centered-form .panel{
+	background: white;
+	/*box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;*/
+	border-width: 0px;
+	border-color: white;
+	padding-bottom: 0px;
+}
+
+.fields{
+	background-color: #efefef;
+	border-width: 0px;
+	font-weight: bold;
+}
+
+h3{
+	color: #838383;
+}
+
+h4{
+	color: #838383;
+}
+
+.button-checkbox{
+	border-width: 0px;
+	background: red;	
+}
