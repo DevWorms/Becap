@@ -1,0 +1,43 @@
+	
+	.caja{
+		margin-top: 50px;
+		margin-left: 45px;
+		background: #efefef;
+		padding: 10px;
+		height: 180px;
+		width: 230px;
+		border-radius: 10px;
+	}
+
+	.space-inside{
+		margin-top: 10px;
+	}
+
+	.yellow{
+		color: #e8ba00;
+		font-size: 30px;
+	}
+	.red{
+		color: #F44141;
+		font-size: 30px;
+	}	
+	
+	.boton {
+		background-color: #FACC2E;
+		padding: 20px;
+		border-bottom: 6px solid #FE9A2E;
+		border-radius: 10px;
+		-webkit-border-radius: 10px;
+		margin-right: 25px;
+		transition: all 200ms linear;
+	}
+
+	.boton:hover {
+		border-bottom: 0 none;
+		background-color: #FE9A2E;
+		border-top: 6px solid #FACC2E;
+	}
+
+	.boton:last-of-type{
+		margin-right: 0;
+	}

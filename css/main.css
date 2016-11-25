@@ -1,6 +1,14 @@
 /* ==========================================================================
                                   B E C A P 
    ========================================================================== */
+body{
+  /* Ocultar barra scroll*/
+ 
+}
+
+h3{
+  color: #727272;
+}
 
 .space{
 	padding-top: 100px;	
@@ -15,6 +23,12 @@ header .intro-text {
 
 .blue{
 	color: #25acd9;
+}
+.white{
+  color: white;
+}
+.dark-gray{
+  color: #545454;
 }
 
 .well-custom{
@@ -62,9 +76,11 @@ header .intro-text {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   border: none;
 }
+
 .navbar-custom a:focus {
   outline: none;
 }
+
 .navbar-custom .navbar-brand {
   color: white;
 }
@@ -75,33 +91,39 @@ header .intro-text {
   color: white;
 }
 .navbar-custom .navbar-nav {
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
+
 .navbar-custom .navbar-nav li a {
   color: white;
 }
+
 .navbar-custom .navbar-nav li a:hover {
   color: white;
   outline: none;
 }
+
 .navbar-custom .navbar-nav li a:focus,
 .navbar-custom .navbar-nav li a:active {
   color: white;
 }
+
 .navbar-custom .navbar-nav li.active a {
-  color: white;
-  background: white;
+  color: #2F476B;
+  background: #25acd9;
+  text-decoration: underline;
 }
+
 .navbar-custom .navbar-nav li.active a:hover,
 .navbar-custom .navbar-nav li.active a:focus,
 .navbar-custom .navbar-nav li.active a:active {
   color: white;
-  background: white;
+  background: #25acd9;
 }
+
 .navbar-custom .navbar-toggle {
   color: white;
-  font-size: 10px;
-  border-color: white;
+  font-size: 15px;
 }
 .navbar-custom .navbar-toggle:hover,
 .navbar-custom .navbar-toggle:focus {
@@ -198,7 +220,6 @@ fieldset[disabled] .btn-primary.active {
 
 
 /* F O O T E R */
-
 footer{
 	color: #979797;
 }

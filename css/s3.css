@@ -1,7 +1,7 @@
-.white{
-	color:white;
-}
 
+.gr{
+	font-size: 16px;
+}
 .m-space{
 	padding-top: 10px;
 }
@@ -22,10 +22,6 @@ input{
 	background-color: #efefef;
 	border-width: 0px;
 	font-weight: bold;
-}
-
-h3{
-	color: #838383;
 }
 
 h4{
