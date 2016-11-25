@@ -13,6 +13,14 @@
 		margin-top: 10px;
 	}
 
+	.space-inside-p{
+		margin-top: 30px;
+	}
+
+	.space-outside{
+		margin-top: 22px;
+	}
+
 	.yellow{
 		color: #e8ba00;
 		font-size: 30px;
@@ -20,8 +28,21 @@
 	.red{
 		color: #F44141;
 		font-size: 30px;
-	}	
+	}
+	.blue-box{
+		color: #25acd9;
+		font-weight: bold;
+		font-size: 15px;
+	}
+	.gray{
+		color: #cacaca;
+	}		
+	.gray-box{
+		color: #cacaca;
+		font-size: 30px;
+	}
 	
+
 	.boton {
 		background-color: #FACC2E;
 		padding: 20px;
