@@ -8,13 +8,24 @@
 		width: 230px;
 		border-radius: 10px;
 	}
+	
 
 	.caja-h{
+		margin-top: 20px;
+		margin-left: 45px;
+		background: #efefef;
+		padding: 25px 50px 25px 25px;
+		height: 90px;
+		width:800px;
+		border-radius: 10px;
+	}
+
+	.caja-h-1{
 		margin-top: 50px;
 		margin-left: 45px;
 		background: #efefef;
-		padding: 10px;
-		height: 100px;
+		padding: 25px 50px 25px 25px;
+		height: 90px;
 		width:800px;
 		border-radius: 10px;
 	}
