@@ -30,6 +30,14 @@
 		border-radius: 10px;
 	}
 
+	.row a:hover{
+		text-decoration: none;
+	} 
+
+	.row a:focus{
+		text-decoration: none;
+	} 
+
 	.space-inside{
 		margin-top: 10px;
 	}
@@ -46,6 +54,10 @@
 		color: #e8ba00;
 		font-size: 30px;
 	}
+	.yellow-modal{
+		color: #e8ba00;
+		font-size: 20px;
+	}
 	.red{
 		color: #F44141;
 		font-size: 30px;
@@ -61,6 +73,13 @@
 	.gray-box{
 		color: #cacaca;
 		font-size: 30px;
+	}
+	.gray-modal{
+		color: #cacaca;
+		font-size: 20px;
+	}
+	.white{
+		color:#F1EFEF;
 	}
 	
 

@@ -223,3 +223,20 @@ fieldset[disabled] .btn-primary.active {
 footer{
 	color: #979797;
 }
+
+/* M O D A L */
+.modal-header {
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #25acd9;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+ }
+
+ .modal-body {
+    background-color: #efefef;
+ }
