@@ -1,22 +1,33 @@
 	
 	.caja{
-		margin-top: 50px;
+		margin-top: 0px;
 		margin-left: 45px;
 		background: #efefef;
 		padding: 10px;
-		height: 180px;
+		height: 190px;
 		width: 230px;
 		border-radius: 10px;
 	}
 
-	.caja-azul{
+	.caja-2{
 		margin-top: 50px;
 		margin-left: 45px;
-		background: #25acd9;
+		background: #efefef;
 		padding: 10px;
-		height: 180px;
+		height: 190px;
 		width: 230px;
 		border-radius: 10px;
+	}
+
+	.margin{
+		margin-left: 45px;
+		margin-top: 20px;
+	}
+
+	
+	.caja-azul{
+		background: #25acd9;
+		color: white;
 	}
 
 	.caja-h{
@@ -52,7 +63,7 @@
 	}
 
 	.space-inside-p{
-		margin-top: 30px;
+		margin-top: 10px;
 	}
 
 	.space-outside{
@@ -90,7 +101,11 @@
 	.white{
 		color:#F1EFEF;
 	}
-	
+	.white-box{
+		color:#F1EFEF;
+		font-weight: bold;
+		font-size: 15px;
+	}
 
 	.boton {
 		background-color: #FACC2E;
