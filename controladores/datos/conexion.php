@@ -10,9 +10,7 @@
                             echo "\nLinea de error: " . $e->getLine();
                             }
             }
-        }
-
-
+  
         public static function get_conexion(){
             
             $conexion = new PDO(
@@ -21,9 +19,9 @@
                                                  USUARIO, 
                                                  CONTRASENA
                                );
-            $conexion->setAttribute(PDO::ATR_ERRMODE, PDO::ERR_EXCEPTION);
-            $conexion->exec("SET CHARACTER SET UTF-8");
-            
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $conexion->exec("SET CHARACTER SET utf8");
+
             return $conexion;
         }
     }                            

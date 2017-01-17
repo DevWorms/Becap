@@ -63,7 +63,7 @@
                     <br>
                     <div class="row">
                          <div class="col-xs-12 col-md-7 col-md-offset-2">
-                               <button class="btn btn-danger btn-block" type="submit"><b>Únete ahora</b></button> 
+                               <button class="btn btn-danger btn-block" type="submit" name="enviar"><b>Únete ahora</b></button> 
                          </div>
                     </div>                  
                   </form>                
