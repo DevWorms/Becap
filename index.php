@@ -28,14 +28,14 @@
                 </div>
 
                 <div id="navbar" class="navbar-collapse collapse">
-                  <form class="navbar-form navbar-right" role="form">
+                  <form class="navbar-form navbar-right" role="form" action="controladores/sesion/iniciar_sesion.php">
                     <div class="form-group">
-                      <input type="text" placeholder="Correo" class="form-control">
+                      <input type="text" placeholder="Correo" class="form-control" name="correo">
                     </div>
                     <div class="form-group">
-                      <input type="password" placeholder="Contraseña" class="form-control">
+                      <input type="password" placeholder="Contraseña" class="form-control" name="password">
                     </div>
-
+                    
                     <button type="submit" class="btn btn-primary">Iniciar Sesión</button>          
                   </form>
                 </div><!--/.navbar-collapse -->
@@ -53,19 +53,19 @@
               <br>
               <div class="col-md-3 col-md-offset-1 well well-custom">
                   <legend align="center"><b>Crea tu cuenta ¡Gratis!</b></legend>
-                  <form action="#" method="post" class="form" role="form">
                   
-                  <label for="">Nombre</label>                    <input class="form-control" name="" placeholder="" type="text" />
-                  <br>
-                  <label for="">Correo</label>                    <input class="form-control" name="" placeholder="" type="text" />
-                  <br>
-                  <label for="">Contraseña (6 caracteres)</label> <input class="form-control" name="" placeholder="" type="text" />
-                  <br>
-                  <div class="row">
-                       <div class="col-xs-12 col-md-7 col-md-offset-2">
-                             <button class="btn btn-danger btn-block" type="submit"><b>Únete ahora</b></button> 
-                       </div>
-                  </div>                  
+                  <form action="controladores/sesion/registrar_usuario.php" method="post" class="form" role="form">
+                    <label for="">Nombre</label>                    <input class="form-control" name="name" placeholder="Solo tu nombre, sin apellidos" type="text" />
+                    <br>
+                    <label for="">Correo</label>                    <input class="form-control" name="correo" placeholder="ejemplo@becap.com" type="text" />
+                    <br>
+                    <label for="">Contraseña (6 caracteres)</label> <input class="form-control" name="password" placeholder="" type="text" />
+                    <br>
+                    <div class="row">
+                         <div class="col-xs-12 col-md-7 col-md-offset-2">
+                               <button class="btn btn-danger btn-block" type="submit"><b>Únete ahora</b></button> 
+                         </div>
+                    </div>                  
                   </form>                
               </div> 
 
