@@ -10,6 +10,7 @@
         <link rel="icon" href="img/b.png">
         <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/animate.css">
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
 
@@ -28,6 +29,7 @@
                 </div>
 
                 <div id="navbar" class="navbar-collapse collapse">
+                  
                   <form class="navbar-form navbar-right" role="form" action="controladores/sesion/iniciar_sesion.php">
                     <div class="form-group">
                       <input type="text" placeholder="Correo" class="form-control" name="correo">
@@ -38,6 +40,7 @@
                     
                     <button type="submit" class="btn btn-primary">Iniciar Sesión</button>          
                   </form>
+                
                 </div><!--/.navbar-collapse -->
             </div>
         </nav>
@@ -51,21 +54,29 @@
                   </div>
               </div>
               <br>
-              <div class="col-md-3 col-md-offset-1 well well-custom">
+              <div class="col-md-3 col-md-offset-1 well well-custom animated tada">
                   <legend align="center"><b>Crea tu cuenta ¡Gratis!</b></legend>
-                  
-                  <form action="controladores/sesion/registrar_usuario.php" method="post" class="form" role="form">
-                    <label for="">Nombre</label>                    <input class="form-control" name="name" placeholder="Solo tu nombre, sin apellidos" type="text" />
+
+                  <form action="controladores/sesion/registrar_usuario.php" 
+                        method="post" class="form" role="form" 
+                        name="formulario1"
+                        onsubmit="return validar();">
+                    
+                    <label for="">Nombre</label>                    
+                    <input class="form-control" name="name" id="name" placeholder="Solo tu nombre, sin apellidos" type="text" />
                     <br>
-                    <label for="">Correo</label>                    <input class="form-control" name="correo" placeholder="ejemplo@becap.com" type="text" />
+                    <label for="">Correo</label>                    
+                    <input class="form-control" name="correo" id="correo" placeholder="ejemplo@becap.com" type="text" />
                     <br>
-                    <label for="">Contraseña (6 caracteres)</label> <input class="form-control" name="password" placeholder="" type="text" />
+                    <label for="">Contraseña (6 caracteres)</label> 
+                    <input class="form-control" name="password" id="password" placeholder="" type="text" />
                     <br>
                     <div class="row">
                          <div class="col-xs-12 col-md-7 col-md-offset-2">
                                <button class="btn btn-danger btn-block" type="submit" name="enviar"><b>Únete ahora</b></button> 
                          </div>
-                    </div>                  
+                    </div>
+
                   </form>                
               </div> 
 
@@ -94,5 +105,6 @@
       <script>window.jQuery || document.write('<script src="vendor/jquery/jquery-1.11.2.min.js"><\/script>')</script>
       <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
       <script src="js/main.js"></script>
+      <script src="js/bootstrap-notify.js"></script>
     </body>
 </html>

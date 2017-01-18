@@ -15,6 +15,24 @@
     </head>
 
     <body>
+
+      <script> 
+              function revisar() { 
+              if(formulario.nombre == "") { alert('Debes poner el nombre') ; return false ; } 
+              if(formulario.pais == "") { alert('Debes poner el país') ; return false ; } 
+              if(formulario.email == "") { alert('Debes poner el email') ; return false ; } 
+              } 
+      </script> 
+
+      <form name="formulario" method="post" action="" onsubmit="return revisar()"> 
+      Nombre:<br> 
+      <input type="text" name="nombre" required><br> 
+      País:<br> 
+      <input type="text" name="pais" required><br> 
+      Email:<br> 
+      <input type="text" name="edad" required><br><br> 
+      <input type="submit" value="Enviar"> 
+      </form> 
        
 
       <script>window.jQuery || document.write('<script src="vendor/jquery/jquery-1.11.2.min.js"><\/script>')</script>
@@ -22,7 +40,7 @@
       <script src="js/main.js"></script>
       <script src="js/bootstrap-notify.js"></script>
       <script>
-        $.notify("Enter: Fade In and DownExit: Fade Out and Up");
+        $.notify('Enter: Fade In and DownExit: Fade Out and Up');
       </script>
     </body>
 </html>

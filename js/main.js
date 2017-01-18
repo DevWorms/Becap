@@ -63,3 +63,24 @@ $(function () {
         init();
     });
 });
+
+
+
+function validar(){
+    var nombre, correo, password;
+    nombre = document.getElementById("name").value;
+    correo = document.getElementById("correo").value;
+    password = document.getElementById("password").value;
+
+    if(nombre === "" || correo === "" || password === ""){
+        
+        $.notify({
+            title: '<strong>Hey!</strong>',
+            message: ' Debes llenar todo los campos.'
+        },{
+            type: 'danger'
+        });
+
+        return false;
+    }
+}
