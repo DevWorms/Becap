@@ -16,8 +16,11 @@
 		$pwd=password_hash($_POST["password"],PASSWORD_DEFAULT);
 
 	        if ($nombre == null || $correo == null || $pwd == null){
+	            
 	            notificacion($msj = "Por favor complete todos los campos");
+	            
 	            header("Location: ../../");
+	        
 	        }else{
 
 				$conexion = Conectar::get_Conexion();	
@@ -27,8 +30,6 @@
 				$resultado=$conexion->prepare($sql);		
 
 				$resultado->execute(array(":name"=>$nombre, ":correo"=>$correo, ":pwd"=>$pwd));
-				
-				
 			
 				header('location: ../../prueba.php');
 
