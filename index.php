@@ -15,6 +15,19 @@
     </head>
 
     <body>
+    <?php
+        //Verifica que exista un sesion y de no ser asi, una cookie
+        session_start();
+        if(isset($_SESSION["nombre"])){
+            header("location:perfil.php");  
+          }
+
+        if(isset($_COOKIE["nombre"])){
+            $_SESSION["nombre"]=$_COOKIE["nombre"];
+            header("location:perfil.php");  
+            }
+    ?>
+
         <!-- Navbar -->
         <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
             <div class="container">
@@ -37,8 +50,12 @@
                     <div class="form-group">
                       <input type="password" placeholder="Contraseña" class="form-control" name="password">
                     </div>
-                    
-                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>          
+
+                    <button type="submit" class="btn btn-primary" name="enviar">Iniciar Sesión</button>          
+                    <br>
+                    <div align="right">
+                        <input type="checkbox" name="checkbox" id="checkbox">&nbsp;&nbsp; Mantener la sesión iniciada
+                    </div>
                   </form>
                 
                 </div><!--/.navbar-collapse -->

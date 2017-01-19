@@ -30,8 +30,12 @@
 				$resultado=$conexion->prepare($sql);		
 
 				$resultado->execute(array(":name"=>$nombre, ":correo"=>$correo, ":pwd"=>$pwd));
+
+				session_start();
+				
+				$_SESSION["nombre"]=$_POST["name"];
 			
-				header('location: ../../prueba.php');
+				header('location: ../../perfil.php');
 
 				$resultado->closeCursor();
 			}

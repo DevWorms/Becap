@@ -15,6 +15,17 @@
     </head>
 
     <body>
+      <?php
+        session_start();    
+        if((!isset($_SESSION["nombre"]))){
+          header("location:index.php");
+          }
+        
+        /*if(isset($_COOKIE["nombre_usuario"])){
+                $_SESSION["sesion"]=$_COOKIE["nombre_usuario"];
+                header("location:usuarios_registrados.php");  
+                }*/
+      ?>
         <!-- Navbar -->
       <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
           <div class="container">
@@ -40,7 +51,9 @@
          <div class="container space3">
            <div class="row">
              <div class="col-xs-12" align="center">
-               <h1><b>¡Bienvenido!</b></h1>
+                 <?php
+                      echo "<h1><b>¡Bienvenido, " . $_SESSION["nombre"] . "!</b></h1>";
+                 ?>
                 <h4 class="m-space">Tenemos más de <span class="blue">2,000</span> becas esperandote, solo necesitamos que nos cuentes más de ti para facilitarte la búsqueda.</h4>
              </div>
            </div>
