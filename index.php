@@ -25,7 +25,7 @@
         if(isset($_COOKIE["nombre"])){
             $_SESSION["nombre"]=$_COOKIE["nombre"];
             header("location:perfil.php");  
-            }
+          }
     ?>
 
         <!-- Navbar -->
@@ -43,19 +43,23 @@
 
                 <div id="navbar" class="navbar-collapse collapse">
                   
-                  <form class="navbar-form navbar-right" role="form" action="controladores/sesion/iniciar_sesion.php">
-                    <div class="form-group">
-                      <input type="text" placeholder="Correo" class="form-control" name="correo">
-                    </div>
-                    <div class="form-group">
-                      <input type="password" placeholder="Contraseña" class="form-control" name="password">
-                    </div>
+                  <form action="controladores/sesion/iniciar_sesion.php"
+                        class="navbar-form navbar-right" 
+                        role="form" method="post" name="formularionav">
+                    
+                      <div class="form-group">
+                        <input type="text" placeholder="Correo" class="form-control" name="correo">
+                      </div>
+                      <div class="form-group">
+                        <input type="password" placeholder="Contraseña" class="form-control" name="password">
+                      </div>
 
-                    <button type="submit" class="btn btn-primary" name="enviar">Iniciar Sesión</button>          
-                    <br>
-                    <div align="right">
-                        <input type="checkbox" name="checkbox" id="checkbox">&nbsp;&nbsp; Mantener la sesión iniciada
-                    </div>
+                      <button type="submit" class="btn btn-primary" name="enviar" id="enviar">Iniciar Sesión</button>          
+                      <br>
+
+                      <div align="right">
+                          <input type="checkbox" name="checkbox" id="checkbox">&nbsp;&nbsp; Mantener la sesión iniciada
+                      </div>
                   </form>
                 
                 </div><!--/.navbar-collapse -->
@@ -79,20 +83,20 @@
                         name="formulario1"
                         onsubmit="return validar();">
                     
-                    <label for="">Nombre</label>                    
-                    <input class="form-control" name="name" id="name" placeholder="Solo tu nombre, sin apellidos" type="text" />
-                    <br>
-                    <label for="">Correo</label>                    
-                    <input class="form-control" name="correo" id="correo" placeholder="ejemplo@becap.com" type="text" />
-                    <br>
-                    <label for="">Contraseña (6 caracteres)</label> 
-                    <input class="form-control" name="password" id="password" placeholder="" type="text" />
-                    <br>
-                    <div class="row">
-                         <div class="col-xs-12 col-md-7 col-md-offset-2">
-                               <button class="btn btn-danger btn-block" type="submit" name="enviar"><b>Únete ahora</b></button> 
-                         </div>
-                    </div>
+                        <label for="">Nombre</label>                    
+                        <input class="form-control" name="name" id="name" placeholder="Solo tu nombre, sin apellidos" type="text" />
+                        <br>
+                        <label for="">Correo</label>                    
+                        <input class="form-control" name="correo" id="correo" placeholder="ejemplo@becap.com" type="text" />
+                        <br>
+                        <label for="">Contraseña (6 caracteres)</label> 
+                        <input class="form-control" name="password" id="password" placeholder="" type="text" />
+                        <br>
+                        <div class="row">
+                             <div class="col-xs-12 col-md-7 col-md-offset-2">
+                                   <button class="btn btn-danger btn-block" type="submit" name="enviar"><b>Únete ahora</b></button> 
+                             </div>
+                        </div>
 
                   </form>                
               </div> 

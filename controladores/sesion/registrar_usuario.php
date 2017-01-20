@@ -1,8 +1,6 @@
 <?php
 	require ("../datos/conexion.php");
 
-	
-	
 	function notificacion($msj){
         echo 
         "<script>

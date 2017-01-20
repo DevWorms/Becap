@@ -16,17 +16,18 @@
 
     <body>
       <?php
+        //Verifica que exista un sesion y de no ser asi, una cookie
         session_start();    
+        if(isset($_COOKIE["nombre"])){
+            $_SESSION["nombre"]=$_COOKIE["nombre"];
+            header("location:perfil.php");  
+          }
+
         if((!isset($_SESSION["nombre"]))){
           header("location:index.php");
           }
-        
-        /*if(isset($_COOKIE["nombre_usuario"])){
-                $_SESSION["sesion"]=$_COOKIE["nombre_usuario"];
-                header("location:usuarios_registrados.php");  
-                }*/
       ?>
-        <!-- Navbar -->
+      <!-- Navbar -->
       <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
           <div class="container">
               <div class="navbar-header">
@@ -42,6 +43,7 @@
               <div id="navbar" class="navbar-collapse collapse">
                 <form class="navbar-form navbar-right" role="form">
                   <label for="" class="white">correo@correo.com</label>
+                  <a href="controladores/sesion/cerrar_sesion.php" class="btn btn-danger">Cerrar sesion</a>
                 </form>
               </div><!--/.navbar-collapse -->
           </div>

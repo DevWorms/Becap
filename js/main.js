@@ -65,6 +65,7 @@ $(function () {
 });
 
 
+// Valida los campos en formulario
 
 function validar(){
     var nombre, correo, password;
@@ -75,8 +76,8 @@ function validar(){
     if(nombre === "" || correo === "" || password === ""){
         
         $.notify({
-            title: '<strong>Hey!</strong>',
-            message: ' Debes llenar todo los campos.'
+            title: '<strong>¡Hey!</strong>',
+            message: ' Para poder crear tu cuenta debes ingresar todos los campos.'
         },{
             type: 'danger'
         });

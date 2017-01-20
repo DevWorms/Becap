@@ -5,7 +5,7 @@ if(isset($_POST["enviar"])){
 	
 	try{
 		$conexion = Conectar::get_Conexion();
-		$sql="SELECT * FROM usuarios WHERE usuario = :correo";
+		$sql="SELECT * FROM becap_db.usuarios WHERE Mail_Usuario = :correo";
 		
 		$resultado=$conexion->prepare($sql);
 		
@@ -21,8 +21,19 @@ if(isset($_POST["enviar"])){
 		$verify=password_verify($_POST["password"],$hash);
 		
 			if($verify){				
-						
-						header("location:../../perfil.php");
+						if(isset($_POST["checkbox"])){
+							
+							setcookie("nombre", $registro['Nombre_Usuario'], time()+86400);				
+							
+							session_start();
+							$_SESSION["nombre"]=$registro['Nombre_Usuario'];
+							header("location:../../perfil.php");
+
+						}else{
+								session_start();
+								$_SESSION["nombre"]=$registro['Nombre_Usuario'];
+								header("location:../../perfil.php");
+							} 	
 				}else{
 						
 						echo '<script type="text/javascript">alert("ERROR - Usuario y Contraseña erroneos");';
