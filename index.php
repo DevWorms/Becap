@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="img/b.png">
         <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/main-index.css">
         <link rel="stylesheet" href="css/animate.css">
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
@@ -22,8 +22,8 @@
             header("location:perfil.php");  
           }
 
-        if(isset($_COOKIE["nombre"])){
-            $_SESSION["nombre"]=$_COOKIE["nombre"];
+        if(isset($_COOKIE["correo"])){
+            $_SESSION["nombre"]=$_COOKIE["correo"];
             header("location:perfil.php");  
           }
     ?>
@@ -38,7 +38,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="#">Becap</a>
+                  <a class="navbar-brand animated bounceInLeft" href="#">Becap</a>
                 </div>
 
                 <div id="navbar" class="navbar-collapse collapse">
@@ -54,11 +54,10 @@
                         <input type="password" placeholder="Contraseña" class="form-control" name="password">
                       </div>
 
-                      <button type="submit" class="btn btn-primary" name="enviar" id="enviar">Iniciar Sesión</button>          
-                      <br>
+                      <button type="submit" class="btn btn-primary" name="enviar" id="enviar">Iniciar Sesión</button>
 
-                      <div align="right">
-                          <input type="checkbox" name="checkbox" id="checkbox">&nbsp;&nbsp; Mantener la sesión iniciada
+                      <div align="right" class="spce">
+                          <input type="checkbox" name="checkbox" id="checkbox" class="checkbox">&nbsp;&nbsp; Mantener la sesión iniciada
                       </div>
                   </form>
                 

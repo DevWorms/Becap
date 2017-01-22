@@ -1,0 +1,252 @@
+/* ==========================================================================
+                                  B E C A P 
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+body{
+  font-family: 'Roboto', sans-serif;
+  /* Ocultar barra scroll
+  overflow:hidden;  */
+}
+
+h3{
+  color: #727272;
+}
+
+.space{
+	padding-top: 100px;	
+}
+
+header .intro-text {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  color: #818080;
+}
+
+.blue{
+	color: #25acd9;
+}
+.white{
+  color: white;
+}
+.dark-gray{
+  color: #545454;
+}
+
+.well-custom{
+	border-radius: 10px;
+	border-width: 0px;
+	background: #efefef;
+	color: #848484;
+}
+
+.well-custom legend{
+	color: #5E5E5E;
+}
+
+@media (min-width: 768px) {
+	header .it-sp {
+	margin-top: 100px;		
+ }
+}
+
+
+@media (min-width: 768px) {
+  header .space3 {
+    padding-top: 135px;
+    padding-bottom: 0px;
+  } 
+  header .space2 {
+    padding-top: 10px;
+  }	
+  header .space {
+    padding-top: 150px;
+    padding-bottom: 10px;
+  }
+
+  header .intro-text .name {
+    font-size: 4.75em;
+  }
+  header .intro-text .skills {
+    font-size: 1.75em;
+  }
+ }
+
+/* N A V  B A R*/
+.navbar-custom {
+  background: #25acd9;
+  font-family: 'Roboto', sans-serif;
+  border: none;
+}
+
+.navbar-custom a:focus {
+  outline: none;
+}
+
+.navbar-custom .navbar-brand {
+  color: white;
+  font-family: 'Raleway', sans-serif;
+}
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus,
+.navbar-custom .navbar-brand:active,
+.navbar-custom .navbar-brand.active {
+  color: white;
+}
+.navbar-custom .navbar-nav {
+  letter-spacing: 1px;
+}
+
+.navbar-custom .navbar-nav li a {
+  color: white;
+}
+
+.navbar-custom .navbar-nav li a:hover {
+  color: white;
+  outline: none;
+}
+
+.navbar-custom .navbar-nav li a:focus,
+.navbar-custom .navbar-nav li a:active {
+  color: white;
+}
+
+.navbar-custom .navbar-nav li.active a {
+  color: #2F476B;
+  background: #25acd9;
+  text-decoration: underline;
+}
+
+.navbar-custom .navbar-nav li.active a:hover,
+.navbar-custom .navbar-nav li.active a:focus,
+.navbar-custom .navbar-nav li.active a:active {
+  color: white;
+  background: #25acd9;
+}
+
+.navbar-custom .navbar-toggle {
+  color: white;
+  font-size: 15px;
+}
+.navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus {
+  background-color: white;
+  color: white;
+  border-color: white;
+}
+@media (min-width: 768px) {
+  .navbar-custom {
+    padding: 25px 0 5px 0;
+    -webkit-transition: padding 0.3s;
+    -moz-transition: padding 0.3s;
+    transition: padding 0.3s;
+  }
+  .navbar-custom .navbar-brand {
+    font-size: 3em;
+    font-weight: 700;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  .navbar-custom.affix {
+    padding: 10px 0;
+  }
+  .navbar-custom.affix .navbar-brand {
+    font-size: 1.5em;
+  }
+}
+
+.spce{
+  margin-top: 15px;
+  color: white;
+}
+
+/* B O T O N E S */
+.btn-outline {
+  color: white;
+  font-size: 20px;
+  border: solid 2px white;
+  background: transparent;
+  transition: all 0.3s ease-in-out;
+  margin-top: 15px;
+}
+.btn-outline:hover,
+.btn-outline:focus,
+.btn-outline:active,
+.btn-outline.active {
+  color: #18BC9C;
+  background: white;
+  border: solid 2px white;
+}
+.btn-primary {
+  color: white;
+  background-color: #33ccff;
+  border-color: #33ccff;
+  font-weight: 700;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: white;
+  background-color: #33ccff;
+  border-color: #33ccff;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  background-image: none;
+}
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+  background-color: #33ccff;
+  border-color: #33ccff;
+}
+.btn-primary .badge {
+  color: #33ccff;
+  background-color: white;
+}
+
+.btn-danger{
+  color: white;
+  background-color: #e64c3c;
+}
+
+
+/* F O O T E R */
+footer{
+	color: #979797;
+}
+
+/* M O D A L */
+.modal-header {
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #25acd9;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+ }
+
+ .modal-body {
+    background-color: #efefef;
+ }

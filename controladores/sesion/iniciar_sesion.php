@@ -23,21 +23,23 @@ if(isset($_POST["enviar"])){
 			if($verify){				
 						if(isset($_POST["checkbox"])){
 							
-							setcookie("nombre", $registro['Nombre_Usuario'], time()+86400);				
+							setcookie("correo", $_POST["correo"], time()+86400);				
 							
 							session_start();
-							$_SESSION["nombre"]=$registro['Nombre_Usuario'];
+								$_SESSION["nombre"]=$registro['Nombre_Usuario'];
+								$_SESSION["correo"]=$registro['Mail_Usuario'];
 							header("location:../../perfil.php");
 
 						}else{
 								session_start();
 								$_SESSION["nombre"]=$registro['Nombre_Usuario'];
+								$_SESSION["correo"]=$registro['Mail_Usuario'];
 								header("location:../../perfil.php");
 							} 	
 				}else{
 						
 						echo '<script type="text/javascript">alert("ERROR - Usuario y Contraseña erroneos");';
-						echo "  window.location.href='index.php'"; 
+						echo "  window.location.href='../../index.php'"; 
 						echo "</script>";
 						
 					}
