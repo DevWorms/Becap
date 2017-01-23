@@ -31,7 +31,8 @@
 
 				session_start();
 				
-				$_SESSION["nombre"]=$_POST["name"];
+				$_SESSION["nombre"]=$nombre;
+				$_SESSION["correo"]=$correo;
 			
 				header('location: ../../perfil.php');
 

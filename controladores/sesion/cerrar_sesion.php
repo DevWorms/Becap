@@ -3,7 +3,8 @@
 	
 	session_destroy();
 	
-	setcookie("nombre_usuario","xx",time()-1);
+	setcookie("nombre","xx",time()-1,'/');
+	setcookie("correo","xx",time()-1,'/');
 
 	header("location:../../index.php");
 ?>

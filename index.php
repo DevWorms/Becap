@@ -22,8 +22,9 @@
             header("location:perfil.php");  
           }
 
-        if(isset($_COOKIE["correo"])){
-            $_SESSION["nombre"]=$_COOKIE["correo"];
+        if(isset($_COOKIE["nombre"])){
+            $_SESSION["nombre"]=$_COOKIE["nombre"];
+            $_SESSION["correo"]=$_COOKIE["correo"];
             header("location:perfil.php");  
           }
     ?>
@@ -89,7 +90,7 @@
                         <input class="form-control" name="correo" id="correo" placeholder="ejemplo@becap.com" type="text" />
                         <br>
                         <label for="">Contraseña (6 caracteres)</label> 
-                        <input class="form-control" name="password" id="password" placeholder="" type="text" />
+                        <input class="form-control" name="password" id="password" placeholder="" type="password" />
                         <br>
                         <div class="row">
                              <div class="col-xs-12 col-md-7 col-md-offset-2">

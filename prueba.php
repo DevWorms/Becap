@@ -15,5 +15,8 @@
     </head>
 
     <body>
+    <?php 
+            echo $_COOKIE["hola"];
+     ?>
     </body>
 </html>

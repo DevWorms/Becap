@@ -22,16 +22,17 @@ if(isset($_POST["enviar"])){
 		
 			if($verify){				
 						if(isset($_POST["checkbox"])){
-							
-							setcookie("correo", $_POST["correo"], time()+86400);				
-							
+							// Agregar '/' para hacer la cookie global en todas las carpetas del proyecto
+							setcookie("nombre", $registro['Nombre_Usuario'], time()+86400, '/');				
+							setcookie("correo", $registro['Mail_Usuario'], time()+86400, '/');				
+
 							session_start();
 								$_SESSION["nombre"]=$registro['Nombre_Usuario'];
 								$_SESSION["correo"]=$registro['Mail_Usuario'];
-							header("location:../../perfil.php");
+								header("location:../../perfil.php");
 
 						}else{
-								session_start();
+							session_start();
 								$_SESSION["nombre"]=$registro['Nombre_Usuario'];
 								$_SESSION["correo"]=$registro['Mail_Usuario'];
 								header("location:../../perfil.php");
