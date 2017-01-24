@@ -87,7 +87,7 @@
                         <input class="form-control" name="name" id="name" placeholder="Solo tu nombre, sin apellidos" type="text" />
                         <br>
                         <label for="">Correo</label>                    
-                        <input class="form-control" name="correo" id="correo" placeholder="ejemplo@becap.com" type="text" />
+                        <input class="form-control" name="correo" id="correo" placeholder="ejemplo@becap.com" type="email" />
                         <br>
                         <label for="">Contraseña (6 caracteres)</label> 
                         <input class="form-control" name="password" id="password" placeholder="" type="password" />

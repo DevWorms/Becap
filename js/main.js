@@ -69,8 +69,8 @@ $(function () {
 
 function validar(){
     var nombre, correo, password;
-    nombre = document.getElementById("name").value;
-    correo = document.getElementById("correo").value;
+    nombre =   document.getElementById("name").value;
+    correo =   document.getElementById("correo").value;
     password = document.getElementById("password").value;
 
     if(nombre === "" || correo === "" || password === ""){
