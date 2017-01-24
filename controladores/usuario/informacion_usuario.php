@@ -35,28 +35,43 @@
 
 			$conexion = Conectar::get_Conexion();	
 
-			$sql="INSERT INTO becap_db.usuarios (Apellidos_Usuario, Fecha_Nacimiento, 
-												 Pais, Ciudad, Estudia, Grado, Escuela, 
-												 Promedio_Actual, Nombre_Prepa, Ciudad_Prepa, 
-												 Promedio_Prepa, Nombre_Secundaria, 
-												 Ciudad_Secundaria, Promedio_Secundaria) 
+			$sql="UPDATE becap_db.usuarios SET  Apellidos_Usuario = :apellido, 
+												Fecha_Nacimiento = :fecha, 
+												 Pais = :pais, 
+												 Ciudad = :ciudad, 
+												 Estudia = :estudias, 
+												 Grado = :gradoActual, 
+												 Escuela = :escuelaActual, 
+												 Promedio_Actual = :promedioActual, 
+												 Nombre_Prepa = :prepa, 
+												 Ciudad_Prepa = :prepaCiudad, 
+												 Promedio_Prepa = :prepaPromedio, 
+												 Nombre_Secundaria = :secu, 
+												 Ciudad_Secundaria = :secuCiudad, 
+												 Promedio_Secundaria = :secuPromedio 
 				
-						VALUES (:apellido,      :fecha,         :pais, 
-								:ciudad,        :estudias,      
-								:gradoActual,   :escuelaActual, :promedioActual, 
-								:prepa,         :prepaCiudad,   :prepaPromedio, 
-								:secu,          :secuCiudad,    :secuPromedio)";
+						WHERE Mail_Usuario = " . $_SESSION["correo"];
 			
 			$resultado=$conexion->prepare($sql);		
 
-			$resultado->execute(array(":apellido"=>$nombre, ":fecha"=>$correo, ":pais"=>$pwd,
-									  ":ciudad"=>$ciudad, ":estudias"=>$estudias, ":gradoActual"=>$gradoActual, ":escuelaActual"=>$escuelaActual,
-									  ":promedioActual"=>$promedioActual, ":prepa"=>$prepa, ":prepaCiudad"=>$prepaCiudad, 
-									  ":prepaPromedio"=>$prepaPromedio, ":secu"=>$secu, ":secuCiudad"=>$secuCiudad, ":secuPromedio"=$secuPromedio));
+			$resultado->execute(array(":apellido"=>$apellido, 
+									  ":fecha"=>$fecha, 
+									  ":pais"=>$pais,
+									  ":ciudad"=>$ciudad, 
+									  ":estudias"=>$estudias, 
+									  ":gradoActual"=>$gradoActual, 
+									  ":escuelaActual"=>$escuelaActual,
+									  ":promedioActual"=>$promedioActual, 
+									  ":prepa"=>$prepa, 
+									  ":prepaCiudad"=>$prepaCiudad, 
+									  ":prepaPromedio"=>$prepaPromedio, 
+									  ":secu"=>$secu, 
+									  ":secuCiudad"=>$secuCiudad, 
+									  ":secuPromedio"=>$secuPromedio));
 
 			session_start();
 			
-			$_SESSION["nombreCompleto"]=$_SESION["nombre"] . $apellido;
+			$_SESSION["nombreCompleto"] = $_SESION["nombre"] . ' ' . $apellido;
 		
 			header('location: ../../prueba.php');
 
