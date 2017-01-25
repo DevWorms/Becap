@@ -1,6 +1,7 @@
 <<?php
 	require ("../datos/conexion.php");
-
+	session_start();
+	
 	function notificacion($msj){
         echo 
         "<script>
@@ -9,6 +10,7 @@
     }		
 
 	if (isset($_POST['enviar'])){
+		$mail=   		 $_SESSION["correo"];
         $apellido= 		 $_POST["apellido"];
 		$fecha= 		 $_POST["fecha"]; 
 		$pais= 			 $_POST["pais"]; 
@@ -35,8 +37,8 @@
 
 			$conexion = Conectar::get_Conexion();	
 
-			$sql="UPDATE becap_db.usuarios SET  Apellidos_Usuario = :apellido, 
-												Fecha_Nacimiento = :fecha, 
+			$sql="UPDATE becap_db.usuarios SET   Apellidos_Usuario = :apellido, 
+												 Fecha_Nacimiento = :fecha, 
 												 Pais = :pais, 
 												 Ciudad = :ciudad, 
 												 Estudia = :estudias, 
@@ -50,7 +52,7 @@
 												 Ciudad_Secundaria = :secuCiudad, 
 												 Promedio_Secundaria = :secuPromedio 
 				
-						WHERE Mail_Usuario = " . $_SESSION["correo"];
+						WHERE Mail_Usuario = :mail";
 			
 			$resultado=$conexion->prepare($sql);		
 
@@ -67,7 +69,8 @@
 									  ":prepaPromedio"=>$prepaPromedio, 
 									  ":secu"=>$secu, 
 									  ":secuCiudad"=>$secuCiudad, 
-									  ":secuPromedio"=>$secuPromedio));
+									  ":secuPromedio"=>$secuPromedio,
+									  ":mail"=>$mail));
 
 			session_start();
 			
