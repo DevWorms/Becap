@@ -17,14 +17,14 @@
     <body>
     <?php
         //Verifica que exista un sesion y de no ser asi, una cookie
+
+        // CAMBIAR redireccionamiento A MisBecas
         session_start();
         if(isset($_SESSION["nombre"])){
             header("location:perfil.php");  
           }
 
         if(isset($_COOKIE["nombre"])){
-            $_SESSION["nombre"]=$_COOKIE["nombre"];
-            $_SESSION["correo"]=$_COOKIE["correo"];
             header("location:perfil.php");  
           }
     ?>

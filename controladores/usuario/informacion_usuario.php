@@ -74,9 +74,9 @@
 
 			session_start();
 			
-			$_SESSION["nombreCompleto"] = $_SESION["nombre"] . ' ' . $apellido;
+			$_SESSION["nombreCompleto"] = $_SESSION["nombre"] . ' ' . $apellido;
 		
-			header('location: ../../prueba.php');
+			header('location: ../../informacion.php');
 
 			$resultado->closeCursor();
 }
