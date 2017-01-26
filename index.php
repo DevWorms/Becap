@@ -21,11 +21,11 @@
         // CAMBIAR redireccionamiento A MisBecas
         session_start();
         if(isset($_SESSION["nombre"])){
-            header("location:perfil.php");  
+            header("location:misbecas.php");  
           }
 
         if(isset($_COOKIE["nombre"])){
-            header("location:perfil.php");  
+            header("location:misbecas.php");  
           }
     ?>
 
