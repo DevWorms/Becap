@@ -21,7 +21,8 @@
     </head>
 
     <body>
-        <!-- Navbar -->
+      <?php require_once("controladores/sesion/comprueba_sesion.php"); ?>
+      <!-- Navbar -->
       <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
           <div class="container">
               <div class="navbar-header">
@@ -31,15 +32,16 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Becap</a>
+                <a class="navbar-brand" href="oportunidades.php">Becap</a>
               </div>
 
               <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" class="gr"><b>Mis Becas</b></a></li>
-                    <li><a href="#" class="gr"><b>Oportunidades</b></a></li>
+                    <li><a href="misbecas.php" class="gr"><b>Mis Becas</b></a></li>
+                    <li><a href="oportunidades.php" class="gr"><b>Oportunidades</b></a></li>
                     <li class="active"><a href="#" class="gr"><b>Configuración</b></a></li>
-                    <li><a href="#">Jaime Rodriguez</a></li>
+                    <li><a href="#"><?php echo $_SESSION["nombreCompleto"]; ?></a></li>
+                    <li><a href="controladores/sesion/cerrar_sesion.php" class="btn btn-info btn-sm">Cerrar sesion</a></li>
                 </ul>
 
               </div><!--/.navbar-collapse -->
@@ -51,7 +53,7 @@
         <div class="container space3">
            <div class="row">
              <div class="col-xs-12 col-md-offset-1" align="left">
-                <h3><b>Jaime Rodriguez</b></h3>
+                <h3><b><?php echo $_SESSION["nombreCompleto"]; ?></b></h3>
              </div>
            </div>
         </div>
@@ -63,7 +65,7 @@
                 <h4>Mi cuenta</h4>
               </div>
               <div class="col-md-7">
-                 <b class="dark-gray">Correo:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jaime.rodriguez@hotmail.com 
+                 <b class="dark-gray">Correo:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_SESSION["correo"]; ?>
                 <br> 
                  <b class="dark-gray">Contraseña:</b> &nbsp;&nbsp;******
                 <br>
@@ -81,7 +83,7 @@
                    si tus calificaciones han cambiado, por favor modifica tu 
                    información para poder darte la información más oportuna. 
                 </p>
-                <button class="btn btn-default m-margin">Cambiar perfil</button>
+                <button class="btn btn-default m-margin"><a href="informacion.php">Cambiar perfil</a></button>
               </div>
             </div>
           <br>  

@@ -15,9 +15,7 @@
     </head>
 
     <body>
-      <?php 
-        require_once("controladores/sesion/comprueba_sesion.php");
-      ?>
+      <?php require_once("controladores/sesion/comprueba_sesion.php"); ?>
         <!-- Navbar -->
       <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
           <div class="container">
@@ -61,7 +59,7 @@
                             <div class="form-group">
                               <span class="button-checkbox">
                                   <button type="button" class="btn" data-color="info">Administración</button>
-                                  <input type="checkbox" class="hidden"/>
+                                  <input type="checkbox" class="hidden" value="Administración"/>
                               </span>
                             </div>
                           </div>
@@ -69,7 +67,7 @@
                             <div class="form-group">
                               <span class="button-checkbox">
                                   <button type="button" class="btn" data-color="info">Abogacía</button>
-                                  <input type="checkbox" class="hidden"/>
+                                  <input type="checkbox" class="hidden" value="Abogacía"/>
                               </span>
                             </div>
                           </div>
@@ -77,7 +75,7 @@
                             <div class="form-group">
                               <span class="button-checkbox">
                                   <button type="button" class="btn" data-color="info">Psicología</button>
-                                  <input type="checkbox" class="hidden"/>
+                                  <input type="checkbox" class="hidden" value="Psicología"/>
                               </span>
                             </div>
                           </div>
@@ -88,7 +86,7 @@
                             <div class="form-group">
                               <span class="button-checkbox">
                                   <button type="button" class="btn" data-color="info">Contabilidad</button>
-                                  <input type="checkbox" class="hidden"/>
+                                  <input type="checkbox" class="hidden" value="Contabilidad"/>
                               </span>
                             </div>
                           </div>
@@ -96,7 +94,7 @@
                             <div class="form-group">
                               <span class="button-checkbox">
                                   <button type="button" class="btn" data-color="info">Economía</button>
-                                  <input type="checkbox" class="hidden"/>
+                                  <input type="checkbox" class="hidden" value="Economía"/>
                               </span>
                             </div>
                           </div>
@@ -104,7 +102,7 @@
                             <div class="form-group">
                               <span class="button-checkbox">
                                   <button type="button" class="btn" data-color="info">Finanzas</button>
-                                  <input type="checkbox" class="hidden"/>
+                                  <input type="checkbox" class="hidden" value="Finanzas"/>
                               </span>
                             </div>
                           </div>

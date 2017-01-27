@@ -16,6 +16,7 @@
     </head>
 
     <body>
+      <?php require_once("controladores/sesion/comprueba_sesion.php"); ?>
         <!-- Navbar -->
       <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
           <div class="container">
@@ -26,15 +27,16 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Becap</a>
+                <a class="navbar-brand" href="oportunidades.php">Becap</a>
               </div>
 
               <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" class="gr"><b>Mis Becas</b></a></li>
+                    <li><a href="misbecas.php" class="gr"><b>Mis Becas</b></a></li>
                     <li class="active"><a href="#" class="gr"><b>Oportunidades</b></a></li>
-                    <li><a href="#" class="gr"><b>Configuración</b></a></li>
-                    <li><a href="#">Jaime Rodriguez</a></li>
+                    <li><a href="configuracion.php" class="gr"><b>Configuración</b></a></li>
+                    <li><a href="#"><?php echo $_SESSION["nombreCompleto"]; ?></a></li>
+                     <li><a href="controladores/sesion/cerrar_sesion.php" class="btn btn-info btn-sm">Cerrar sesion</a></li>
                 </ul>
 
               </div><!--/.navbar-collapse -->

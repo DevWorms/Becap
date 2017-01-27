@@ -26,15 +26,15 @@ if(isset($_POST["enviar"])){
 							setcookie("id", $registro['ID_Usuario'], time()+86400, '/');				
 
 							session_start();
-								$_SESSION["nombre"]=$registro['Nombre_Usuario'];
-								$_SESSION["correo"]=$registro['Mail_Usuario'];
+								$_SESSION["nombre"] = $registro['Nombre_Usuario'];
+								$_SESSION["correo"] = $registro['Mail_Usuario'];
 								header("location:../../perfil.php");
 								//Cambiar a mi becas
 
 						}else{
 							session_start();
-								$_SESSION["nombre"]=$registro['Nombre_Usuario'];
-								$_SESSION["correo"]=$registro['Mail_Usuario'];
+								$_SESSION["nombre"] = $registro['Nombre_Usuario'];
+								$_SESSION["correo"] = $registro['Mail_Usuario'];
 								header("location:../../perfil.php");
 							} 	
 				}else{

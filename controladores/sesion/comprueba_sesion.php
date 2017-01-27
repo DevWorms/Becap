@@ -14,9 +14,9 @@
 		
 		$statement=$resultado->fetch(PDO::FETCH_ASSOC);
 
-		$_SESSION["nombre"]=$statement['Nombre_Usuario'];
-		$_SESSION["nombreCompleto"]=$statement['Nombre_Usuario'] . ' ' . $statement['Apellidos_Usuario'];	
-		$_SESSION["correo"]=$statement['Mail_Usuario'];
+		$_SESSION["nombre"]         = $statement['Nombre_Usuario'];
+		$_SESSION["nombreCompleto"] = $statement['Nombre_Usuario'] . ' ' . $statement['Apellidos_Usuario'];	
+		$_SESSION["correo"]         = $statement['Mail_Usuario'];
 
 		}catch(Exception $e){
 			die("Error " . $e->getMessage());
@@ -24,6 +24,7 @@
     }
 
     if((!isset($_SESSION["nombre"]))){
+      
       header("location:index.php");
       
       }else{
@@ -39,7 +40,7 @@
 			
 			$statement=$resultado->fetch(PDO::FETCH_ASSOC);
 
-			$_SESSION["nombreCompleto"]=$statement['Nombre_Usuario'] . ' ' . $statement['Apellidos_Usuario'];	
+			$_SESSION["nombreCompleto"]  = $statement['Nombre_Usuario'] . ' ' . $statement['Apellidos_Usuario'];
 
 			}catch(Exception $e){
 				die("Error " . $e->getMessage());

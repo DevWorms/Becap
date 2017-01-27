@@ -26,14 +26,14 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Becap</a>
+                <a class="navbar-brand" href="oportunidades.php">Becap</a>
               </div>
 
               <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" class="gr"><b>Mis Becas</b></a></li>
+                    <li><a href="misbecas.php" class="gr"><b>Mis Becas</b></a></li>
                     <li class="active"><a href="#" class="gr"><b>Oportunidades</b></a></li>
-                    <li><a href="#" class="gr"><b>Configuración</b></a></li>
+                    <li><a href="configuracion.php" class="gr"><b>Configuración</b></a></li>
                     <li><a href="#">Jaime Rodriguez</a></li>
                 </ul>
 
