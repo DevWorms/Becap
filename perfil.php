@@ -76,7 +76,8 @@
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="date" name="fecha" class="form-control fields input-sm" placeholder="Fecha de Nacimiento">
+                              <input type="date" name="fecha" class="form-control fields input-sm" placeholder="Fecha de Nacimiento"
+                                     data-toggle="popover" data-content="Fecha de Nacimiento">
                             </div>
                           </div>
                       </div>
@@ -198,5 +199,22 @@
       <script>window.jQuery || document.write('<script src="vendor/jquery/jquery-1.11.2.min.js"><\/script>')</script>
       <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
       <script src="js/main.js"></script>
+      <script src="js/bootstrap-notify.js"></script>
+      <script>
+              $(document).ready(function(){
+                  $('[data-toggle="popover"]').popover();   
+              });
+
+
+              $.notify({
+                message: '¡<strong>Cuenta</strong> creada exitosamente!' 
+              },{
+                type: 'success',
+                placement: {
+                  from: "bottom",
+                  align: "right"
+                },
+              });
+      </script>
     </body>
 </html>
