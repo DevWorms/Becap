@@ -45,7 +45,7 @@ CREATE TABLE `becas` (
   KEY `ID_Escuela_idx` (`ID_Escuela`),
   CONSTRAINT `ID_Escuela` FOREIGN KEY (`ID_Escuela`) REFERENCES `escuelas` (`ID_Escuela`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `ID_Organizacion` FOREIGN KEY (`ID_Organizacion`) REFERENCES `organizaciones` (`ID_Organizacion`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=512 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=330 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,8 +99,8 @@ CREATE TABLE `master_ab` (
   `ID_Beca` int(11) NOT NULL,
   KEY `ID_Usuario_idx` (`ID_Usuario`),
   KEY `ID_Becas_idx` (`ID_Beca`),
-  CONSTRAINT `ID_Usuario` FOREIGN KEY (`ID_Usuario`) REFERENCES `usuarios` (`ID_Usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `ID_Beca` FOREIGN KEY (`ID_Beca`) REFERENCES `becas` (`ID_Beca`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `ID_Beca` FOREIGN KEY (`ID_Beca`) REFERENCES `becas` (`ID_Beca`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `ID_Usuario` FOREIGN KEY (`ID_Usuario`) REFERENCES `usuarios` (`ID_Usuario`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -124,7 +124,7 @@ CREATE TABLE `organizaciones` (
   `ID_Organizacion` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre_Organizacion` varchar(100) NOT NULL,
   PRIMARY KEY (`ID_Organizacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -188,8 +188,9 @@ CREATE TABLE `usuarios` (
   `Nombre_Secundaria` varchar(100) DEFAULT NULL,
   `Ciudad_Secundaria` varchar(50) DEFAULT NULL,
   `Promedio_Secundaria` varchar(5) DEFAULT NULL,
+  `Telefono_contacto` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ID_Usuario`,`Pwd_Usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,6 +199,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (36,'Ricardo','Suarez','ur.suarez@gmail.com','$2y$10$ugymnQFj.TKvIVPNoim3KOB/Gnxjz/5Al6.vmo5cy6bmw.H0EKyDq','1994-01-29','México','México',1,'Octavo','UPIICSA','8.9','CECyT 10','México','9.2','Fundación Cultural de las Americas','México','7',NULL),(37,'Salvador','Perez','salvador@gmail.com','$2y$10$s598VUz4vsMT/ffRvZRpduhqpc6fa4nPaFyyvpGGZhcnYtJnAcyK.','2017-01-17','Mexico','Mexico',1,'Octavo','UPIICSA','8.9','Prepa','México','9.1','Secundaria','México','8.1',NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -210,4 +212,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-14  0:40:04
+-- Dump completed on 2017-01-28 22:56:15
