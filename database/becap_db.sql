@@ -59,6 +59,30 @@ INSERT INTO `becas` VALUES (1,'Distinción al talento académico',1,6,'Profesion
 UNLOCK TABLES;
 
 --
+-- Table structure for table `carreras`
+--
+
+DROP TABLE IF EXISTS `carreras`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `carreras` (
+  `ID_Carrera` int(11) NOT NULL AUTO_INCREMENT,
+  `Nombre_Carrera` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID_Carrera`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `carreras`
+--
+
+LOCK TABLES `carreras` WRITE;
+/*!40000 ALTER TABLE `carreras` DISABLE KEYS */;
+INSERT INTO `carreras` VALUES (1,'Administracion'),(2,'Abogacía'),(3,'Psicología'),(4,'Contabilidad'),(5,'Economía'),(6,'Finanzas'),(7,'Artes y Humanidades'),(8,'Arquitectura'),(9,'Ingeniería'),(10,'Diseño Industrial'),(11,'Enseñanza'),(12,'Medicina');
+/*!40000 ALTER TABLE `carreras` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `escuelas`
 --
 
@@ -163,6 +187,32 @@ INSERT INTO `paises` VALUES ('ES','España\r'),('FR','Francia\r'),('HR','Croacia
 UNLOCK TABLES;
 
 --
+-- Table structure for table `preferencias_usuarios`
+--
+
+DROP TABLE IF EXISTS `preferencias_usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `preferencias_usuarios` (
+  `ID_Usuario` int(11) NOT NULL,
+  `ID_Carrera` int(11) NOT NULL,
+  KEY `ID_Usuario_idx` (`ID_Usuario`),
+  KEY `ID_Carrera_idx` (`ID_Carrera`),
+  CONSTRAINT `ID_Carreras` FOREIGN KEY (`ID_Carrera`) REFERENCES `carreras` (`ID_Carrera`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `ID_Usuarios` FOREIGN KEY (`ID_Usuario`) REFERENCES `usuarios` (`ID_Usuario`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `preferencias_usuarios`
+--
+
+LOCK TABLES `preferencias_usuarios` WRITE;
+/*!40000 ALTER TABLE `preferencias_usuarios` DISABLE KEYS */;
+/*!40000 ALTER TABLE `preferencias_usuarios` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `usuarios`
 --
 
@@ -199,7 +249,6 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (36,'Ricardo','Suarez','ur.suarez@gmail.com','$2y$10$ugymnQFj.TKvIVPNoim3KOB/Gnxjz/5Al6.vmo5cy6bmw.H0EKyDq','1994-01-29','México','México',1,'Octavo','UPIICSA','8.9','CECyT 10','México','9.2','Fundación Cultural de las Americas','México','7',NULL),(37,'Salvador','Perez','salvador@gmail.com','$2y$10$s598VUz4vsMT/ffRvZRpduhqpc6fa4nPaFyyvpGGZhcnYtJnAcyK.','2017-01-17','Mexico','Mexico',1,'Octavo','UPIICSA','8.9','Prepa','México','9.1','Secundaria','México','8.1',NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -212,4 +261,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-28 22:56:15
+-- Dump completed on 2017-01-29 22:43:25
