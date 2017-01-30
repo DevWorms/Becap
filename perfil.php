@@ -60,8 +60,7 @@
                     <!-- INICIO FORMULARIO -->
                     <form action="controladores/usuario/informacion_usuario.php"
                           method="post" class="form" role="form" 
-                          name="formulario_perfil"
-                          onsubmit="return validarInfo();">
+                          name="formulario_perfil">
 
                       <div class="row">
                           <div class="col-xs-4 col-sm-4 col-md-4">

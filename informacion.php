@@ -53,7 +53,11 @@
               <div class="col-xs-12 col-sm-12 col-md-10 col-sm-offset-2 col-md-offset-1" align="center">
                 <div class="panel panel-default">
                   <div class="panel-body">
-                    <form role="form">
+                    
+                    <!-- INICIO FORMULARIO -->
+                    <form action="controladores/usuario/carreras_usuario.php"
+                          method="post" class="form" role="form" 
+                          name="formulario_informacion">
                       <div class="row">
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
@@ -195,6 +199,7 @@
                       </div>
                     
                     </form>
+                    <!-- FIN FORMULARIO -->
                   </div>
                 </div>
               </div>
