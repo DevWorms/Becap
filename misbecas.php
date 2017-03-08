@@ -87,6 +87,10 @@
             <div class="col-md-9">
                 <div class="row">
                     <p class="dark-gray gr margin"><b>Becas Seleccionadas</b></p>
+
+                    <?php echo MostrarFavIntereses($_SESSION["id_usuario"]); ?>
+
+                    
                     <div class="col-md-2 col-md-offset-1 caja caja-azul">
                       <div class="col-xs-9 space-inside" align="left">
                         <a href="" data-toggle="modal" data-target="#tecmon"><span class="white-box">UVM</span></a>

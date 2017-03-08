@@ -245,10 +245,11 @@
     function MostrarFavIntereses($id_usuario) {
         global $pdo;
 
-        $operacion = "SELECT becas.ID_Beca, becas.ID_Escuela, escuelas.Nombre_Escuela, becas.Nombre_Beca, becas.ID_Tipo , becas.Descripcion_Beca, becas.Beca_Sobre FROM becas JOIN escuelas ON becas.ID_Escuela = escuelas.ID_Escuela";
+        $operacion = "SELECT * FROM ( SELECT Becas.*, escuelas.Nombre_Escuela FROM Becas INNER JOIN escuelas ON escuelas.ID_Escuela = Becas.id_escuela) as tabla INNER JOIN beca_favorito ON tabla.ID_Beca = beca_favorito.id_beca WHERE beca_favorito.id_usuario = ? UNION SELECT * FROM ( SELECT Becas.*, escuelas.Nombre_Escuela FROM Becas INNER JOIN escuelas ON escuelas.ID_Escuela = Becas.id_escuela) as tabla INNER JOIN beca_interesa ON tabla.ID_Beca = beca_interesa.id_beca WHERE beca_interesa.id_usuario = ?";
 
         $sentencia = $pdo->prepare($operacion);
-        $sentencia->bindParam(1, $promedio);         
+        $sentencia->bindParam(1, $id_usuario);  
+        $sentencia->bindParam(2, $id_usuario);       
         $sentencia->execute();
         $resultado = $sentencia->fetchAll();
 
