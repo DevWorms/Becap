@@ -75,7 +75,7 @@
                   </div>
               </div>
               <br>
-              <div class="col-md-3 col-md-offset-1 well well-custom animated tada">
+              <div class="col-md-3 col-md-offset-1 well well-custom">
                   <legend align="center"><b>Crea tu cuenta ¡Gratis!</b></legend>
 
                   <form action="controladores/sesion/registrar_usuario.php" 
