@@ -1,3 +1,8 @@
+<?php
+    error_reporting(1);
+    require_once("controladores/sesion/comprueba_sesion.php");
+    include_once 'controladores/funciones/funciones.php';
+?>
 <!doctype html>
 <html class="no-js" lang=""> 
     <head>
@@ -15,7 +20,6 @@
     </head>
 
     <body>
-      <?php require_once("controladores/sesion/comprueba_sesion.php"); ?>
       <!-- Navbar -->
       <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
           <div class="container">
@@ -47,7 +51,7 @@
                  <?php
                       echo "<h1><b>¡Bienvenido, " . $_SESSION["nombre"] . "!</b></h1>";
                  ?>
-                <h4 class="m-space">Tenemos más de <span class="blue">2,000</span> becas esperandote, solo necesitamos que nos cuentes más de ti para facilitarte la búsqueda.</h4>
+                <h4 class="m-space">Tenemos <span class="blue"><?php echo CounterAll($_SESSION["id_usuario"]); ?></span> becas esperandote, solo necesitamos <br> que nos cuentes más de ti para facilitarte la búsqueda.</h4>
              </div>
            </div>
          </div>
@@ -56,7 +60,9 @@
             <div class="row centered-form">
               <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
                 <div class="panel panel-default">
-                  <div class="panel-body">                    
+                  <div class="panel-body"> 
+
+                                     
                     <!-- INICIO FORMULARIO -->
                     <form action="controladores/usuario/informacion_usuario.php"
                           method="post" class="form" role="form" 
@@ -65,7 +71,7 @@
                       <div class="row">
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="nombre" class="form-control fields input-sm" placeholder="Nombre" value="<?php echo $_SESSION['nombre']?>">
+                              <input type="text" name="nombre" class="form-control fields input-sm" placeholder="Nombre" value="<?php echo $_SESSION['nombre']?>" disabled>
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
@@ -94,61 +100,98 @@
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
+                            <!--
                               <input type="text" name="estudias" class="form-control fields input-sm" placeholder="¿Estudias actualmente?">
+                            -->
+                              <select class="form-control fields input-sm" name="estudias">
+                                <option disabled selected>¿Estudias actualmente?</option>
+                                <option value="Si">Si</option>
+                                <option value="No">No</option>
+                              </select>
+                            </div>
+                          </div>
+                      </div>
+
+
+
+                      <div class="row">
+                       <div class="col-xs-12" align="center">
+                          <h4 class="m-space"><b>Describe tu historial académico</b></h4>
+                          <h4 class="m-space">Llena todas las casillas que apliquen para ti, esto mejora <br> la probabilidad de que las escuelas te contacten.</h4>
+                          <br>
+                       </div>
+                      </div>
+
+
+
+                      <div class="row">
+                          <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group" align="center">
+                              <b>Posgrado</b>
+                            </div>
+                          </div>
+                          <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                              <input type="text" name="posgrado" class="form-control fields input-sm" placeholder="Escuela">
+                            </div>
+                          </div>
+                          <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                              <input type="text" name="posgraPromedio" class="form-control fields input-sm" placeholder="Promedio (Acumulado o Final)">
                             </div>
                           </div>
                       </div>
 
                       <div class="row">
                           <div class="col-xs-4 col-sm-4 col-md-4">
-                            <div class="form-group">
-                              <input type="text" name="gradoActual" class="form-control fields input-sm" placeholder="¿Qué grado estudias?">
+                            <div class="form-group" align="center">
+                              <b>Universidad</b>
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="escuelaActual" class="form-control fields input-sm" placeholder="¿En qué escuela?">
+                              <input type="text" name="universidad" class="form-control fields input-sm" placeholder="Escuela">
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="promedioActual" class="form-control fields input-sm" placeholder="¿Qué promedio llevas?">
-                            </div>
-                          </div>
-                      </div>
-
-                      <div class="row">
-                          <div class="col-xs-4 col-sm-4 col-md-4">
-                            <div class="form-group">
-                              <input type="text" name="prepa" class="form-control fields input-sm" placeholder="¿En qué prepa?">
-                            </div>
-                          </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
-                            <div class="form-group">
-                              <input type="text" name="prepaCiudad" class="form-control fields input-sm" placeholder="¿En qué ciudad?">
-                            </div>
-                          </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
-                            <div class="form-group">
-                              <input type="text" name="prepaPromedio" class="form-control fields input-sm" placeholder="¿Qué promedio tuviste?">
+                              <input type="text" name="uniPromedio" class="form-control fields input-sm" placeholder="Promedio (Acumulado o Final)">
                             </div>
                           </div>
                       </div>
 
                       <div class="row">
                           <div class="col-xs-4 col-sm-4 col-md-4">
-                            <div class="form-group">
-                              <input type="text" name="secu" class="form-control fields input-sm" placeholder="¿En qué secundaria?">
+                            <div class="form-group" align="center">
+                              <b>Preparatoria</b>
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="secuCiudad" class="form-control fields input-sm" placeholder="¿En qué ciudad?">
+                              <input type="text" name="preparatoria" class="form-control fields input-sm" placeholder="Escuela">
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="secuPromedio" class="form-control fields input-sm" placeholder="¿Qué promedio tuviste?">
+                              <input type="text" name="prepaPromedio" class="form-control fields input-sm" placeholder="Promedio (Acumulado o Final)">
+                            </div>
+                          </div>
+                      </div>
+
+                      <div class="row">
+                          <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group" align="center">
+                              <b>Secundaria</b>
+                            </div>
+                          </div>
+                          <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                              <input type="text" name="secundaria" class="form-control fields input-sm" placeholder="Escuela">
+                            </div>
+                          </div>
+                          <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                              <input type="text" name="secuPromedio" class="form-control fields input-sm" placeholder="Promedio (Acumulado o Final)">
                             </div>
                           </div>
                       </div>
@@ -173,6 +216,8 @@
                     
                     </form>
                     <!-- FIN FORMULARIO -->
+
+
                   </div>
                 </div>
               </div>

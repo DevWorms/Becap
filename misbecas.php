@@ -1,3 +1,8 @@
+<?php
+    error_reporting(1);
+    require_once("controladores/sesion/comprueba_sesion.php");
+    include_once 'controladores/funciones/funciones.php';
+?>
 <!doctype html>
 <html class="no-js" lang=""> 
     <head>
@@ -16,7 +21,6 @@
     </head>
 
     <body>
-      <?php require_once("controladores/sesion/comprueba_sesion.php"); ?>
       <!-- Navbar -->
       <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
           <div class="container">

@@ -28,6 +28,7 @@ if(isset($_POST["enviar"])){
 							session_start();
 								$_SESSION["nombre"] = $registro['Nombre_Usuario'];
 								$_SESSION["correo"] = $registro['Mail_Usuario'];
+								$_SESSION["id_usuario"] = $registro['ID_Usuario'];
 								header("location:../../perfil.php");
 								//Cambiar a mi becas
 

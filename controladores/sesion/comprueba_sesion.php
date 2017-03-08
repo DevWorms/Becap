@@ -17,6 +17,7 @@
 		$_SESSION["nombre"]         = $statement['Nombre_Usuario'];
 		$_SESSION["nombreCompleto"] = $statement['Nombre_Usuario'] . ' ' . $statement['Apellidos_Usuario'];	
 		$_SESSION["correo"]         = $statement['Mail_Usuario'];
+		$_SESSION["id_usuario"]         = $statement['ID_Usuario'];
 
 		}catch(Exception $e){
 			die("Error " . $e->getMessage());
@@ -41,6 +42,9 @@
 			$statement=$resultado->fetch(PDO::FETCH_ASSOC);
 
 			$_SESSION["nombreCompleto"]  = $statement['Nombre_Usuario'] . ' ' . $statement['Apellidos_Usuario'];
+
+			$_SESSION["id_usuario"]		= $statement['ID_Usuario'];
+
 
 			}catch(Exception $e){
 				die("Error " . $e->getMessage());

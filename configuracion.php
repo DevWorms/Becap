@@ -1,3 +1,8 @@
+<?php
+    error_reporting(1);
+    require_once("controladores/sesion/comprueba_sesion.php");
+    include_once 'controladores/funciones/funciones.php';
+?>
 <!doctype html>
 <html class="no-js" lang=""> 
     <head>
@@ -21,7 +26,6 @@
     </head>
 
     <body>
-      <?php require_once("controladores/sesion/comprueba_sesion.php"); ?>
       <!-- Navbar -->
       <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
           <div class="container">
@@ -69,7 +73,7 @@
                 <br> 
                  <b class="dark-gray">Contraseña:</b> &nbsp;&nbsp;******
                 <br>
-                <button class="btn btn-default m-margin">Cambiar contraseña</button>
+                <button class="btn btn-default m-margin" data-toggle="modal" data-target="#tecmon">Cambiar contraseña</button>
               </div>
             </div>
           <br> 
@@ -88,6 +92,7 @@
             </div>
           <br>  
 
+          <!--
             <div class="row">
               <div class="col-md-3 col-md-offset-1">
                 <h4>Notificaciones</h4>
@@ -116,6 +121,7 @@
                 </div>
               </div>
             </div>
+            -->
           <br>
           
             <div class="row">
@@ -148,4 +154,27 @@
       <script src="js/main.js"></script>
     </body>
 </html>
+
+  <div id="tecmon" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <div class="modal-content">
+          <div class="modal-header">
+            <div align="">
+                <h4 class="modal-title white"><br><b> Modificar contraseña</b></h4>  
+            </div>
+          </div>
+          <div class="modal-body">
+            <p>
+              <br>
+              <span class="lead">Hola DonmU</span>
+              <br>
+              Bla Bla Bla
+            </p>
+          </div>
+          <!-- SIN FOOTER -->
+        </div>
+
+      </div>
+  </div>
 

@@ -83,7 +83,7 @@
                         name="formulario1"
                         onsubmit="return validar();">
                     
-                        <label for="">Nombre</label>                    
+                        <label for="">Nombre(s) sin apellidos</label>                    
                         <input class="form-control" name="name" id="name" placeholder="Solo tu nombre, sin apellidos" type="text" />
                         <br>
                         <label for="">Correo</label>                    

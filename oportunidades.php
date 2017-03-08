@@ -1,3 +1,9 @@
+<?php
+    error_reporting(1);
+    require_once("controladores/sesion/comprueba_sesion.php");
+    include_once 'controladores/funciones/funciones.php';
+?>
+
 <!doctype html>
 <html class="no-js" lang=""> 
     <head>
@@ -16,7 +22,7 @@
     </head>
 
     <body>
-      <?php require_once("controladores/sesion/comprueba_sesion.php"); ?>
+
         <!-- Navbar -->
       <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
           <div class="container">
@@ -47,7 +53,11 @@
         <div class="container space3">
            <div class="row">
              <div class="col-xs-12" align="center">
-                <h3><b>Hemos encontrado <span class="blue">245</span> becas para ti</b></h3>
+                <h3><b>Hemos encontrado <span class="blue">
+                
+                <?php echo Counter($_SESSION["id_usuario"]); ?>
+                  
+                </span> becas para ti</b></h3>
                 <p>Todas estan becas estan a tu alcance, revisalas y marca tus favoritas para tenerlas en "mis becas".</p>
              </div>
            </div>
@@ -72,40 +82,20 @@
                   </button>
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   <button class="btn btn-default btn-sm gray">
-                      <span class="glyphicon glyphicon glyphicon-align-justify gr"></span>
+                    <a href="oportunidades-vista.php">
+                      <span class="glyphicon glyphicon glyphicon-align-justify gr">
+                      </span>
+                    </a>
                   </button>
                 </div>
             </div>
 
             <div class="col-md-9">
                 <div class="row">
+
+                <?php echo MostrarBecas($_SESSION["id_usuario"]); ?>
                     
-                    <div class="col-md-2 col-md-offset-1 caja">
-                      <div class="col-xs-9 space-inside" align="left">
-                        <a href="" data-toggle="modal" data-target="#tecmon"><span class="blue-box">Tec de Monterrey</span></a>
-                        <div class="space-inside-p">
-                            <p><b>Beca Académica</b></p>
-                            <p>50% de Beca sobre colegiatura</p>
-                        </div>
-                      </div>
-                      <div class="col-xs-3" align="right">
-                        <span class="glyphicon glyphicon-star yellow" aria-hidden="true" align="right"></span>
-                      </div>
-                    </div>  
-
-                    <div class="col-md-2 col-md-offset-1 caja">
-                      <div class="col-xs-9 space-inside" align="left">
-                        <a href="" data-toggle="modal" data-target="#tecmon"><span class="blue-box">Tec de Monterrey</span></a>
-                        <div class="space-inside-p">
-                            <p><b>Beca Académica</b></p>
-                            <p>50% de Beca sobre colegiatura</p>
-                        </div>
-                      </div>
-                      <div class="col-xs-3" align="right">
-                        <span class="glyphicon glyphicon-heart red" aria-hidden="true" align="right"></span>
-                      </div>
-                    </div>
-
+                    <!--
                     <div class="col-md-2 col-md-offset-1 caja">
                       <div class="col-xs-9 space-inside" align="left">
                         <a href="" data-toggle="modal" data-target="#tecmon"><span class="blue-box">Tec de Monterrey</span></a>
@@ -118,48 +108,7 @@
                         <span class="glyphicon glyphicon-heart gray-box" aria-hidden="true" align="right"></span>
                       </div>
                     </div>
-
-                </div>
-                <div class="row">
-                    
-                    <div class="col-md-2 col-md-offset-1 caja">
-                      <div class="col-xs-9 space-inside" align="left">
-                        <a href="" data-toggle="modal" data-target="#tecmon"><span class="blue-box">Tec de Monterrey</span></a>
-                        <div class="space-inside-p">
-                            <p><b>Beca Académica</b></p>
-                            <p>50% de Beca sobre colegiatura</p>
-                        </div>
-                      </div>
-                      <div class="col-xs-3" align="right">
-                        <span class="glyphicon glyphicon-heart gray-box" aria-hidden="true" align="right"></span>
-                      </div>
-                    </div>  
-
-                    <div class="col-md-2 col-md-offset-1 caja">
-                      <div class="col-xs-9 space-inside" align="left">
-                        <a href="" data-toggle="modal" data-target="#tecmon"><span class="blue-box">Tec de Monterrey</span></a>
-                        <div class="space-inside-p">
-                            <p><b>Beca Académica</b></p>
-                            <p>50% de Beca sobre colegiatura</p>
-                        </div>
-                      </div>
-                      <div class="col-xs-3" align="right">
-                        <span class="glyphicon glyphicon-heart gray-box" aria-hidden="true" align="right"></span>
-                      </div>
-                    </div>
-
-                    <div class="col-md-2 col-md-offset-1 caja">
-                      <div class="col-xs-9 space-inside" align="left">
-                        <a href="" data-toggle="modal" data-target="#tecmon"><span class="blue-box">Tec de Monterrey</span></a>
-                        <div class="space-inside-p">
-                            <p><b>Beca Académica</b></p>
-                            <p>50% de Beca sobre colegiatura</p>
-                        </div>
-                      </div>
-                      <div class="col-xs-3" align="right">
-                        <span class="glyphicon glyphicon-heart gray-box" aria-hidden="true" align="right"></span>
-                      </div>
-                    </div>
+                    -->
                     
                 </div>
  
@@ -190,53 +139,5 @@
     </body>
 </html>
 
-<div id="tecmon" class="modal fade" role="dialog">
-    <div class="modal-dialog">
 
-      <div class="modal-content">
-        <div class="modal-header">
-          <div align="">
-              <h4 class="modal-title white"><b>Tecnológico de Monterrey</b></h4>  
-          </div>
-          <div align="right">
-              <i class="glyphicon glyphicon-heart gray-box"></i>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <i class="glyphicon glyphicon-star yellow"></i>  
-          </div>
-        </div>
-        <div class="modal-body">
-          <img class="img-responsive" src="img/tecmon.jpg" alt="image">
-          <p align="center">
-          <br>
-            <button class="btn btn-info">Requisitos</button>&nbsp;
-            <button class="btn btn-default">La Institución</button>&nbsp;
-            <button class="btn btn-default">Preguntas</button>&nbsp;
-            <button class="btn btn-danger">¡Me interesa!</button>&nbsp;
-          </p>
-          <p>
-            <br>
-            <span class="lead">50% de Beca sobre colegiatura</span>
-            <br>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis nobis molestiae porro, autem corporis officiis. Consequatur sequi ducimus id odit ipsa possimus ad rem, eius, labore maxime enim dolorem dolore!
-          </p>
-          <div class="checkbox">
-            <label><input type="checkbox" value="">Promedio de: 8.0</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" value="">Acta de Nacimiento</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" value="">Puntuación de: 90 del examen de admisión</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" value="">Puntuación de: 600 del TOEFL</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" value="">Kardex de Preparatoria</label>
-          </div>
-        </div>
-        <!-- SIN FOOTER -->
-      </div>
-
-    </div>
-</div>
+<?php echo Modals(); ?>

@@ -9,22 +9,22 @@
 		$pais        = 	 $_POST["pais"]; 
 		$ciudad      =	 $_POST["ciudad"]; 
 		
-		if ($_POST["estudias"] == "si" || $_POST["estudias"] == "Si" || $_POST["estudias"] == "SI" || $_POST["estudias"] == "sI"){
+		if ($_POST["estudias"] == "Si"){
 		$estudias = 1;	
 		}else{
 			$estudias = 0;	
 		}
 		
-		$gradoActual    = $_POST["gradoActual"];
-		$escuelaActual  = $_POST["escuelaActual"];
-		$promedioActual = $_POST["promedioActual"];
+		$posgra           = $_POST["posgrado"];
+		$posgraPromedio   = $_POST["posgraPromedio"];
+
+		$uni           = $_POST["universidad"];
+		$uniPromedio   = $_POST["uniPromedio"];
 		
-		$prepa          = $_POST["prepa"];
-		$prepaCiudad    = $_POST["prepaCiudad"];
+		$prepa          = $_POST["preparatoria"];
 		$prepaPromedio  = $_POST["prepaPromedio"];
 		
-		$secu           = $_POST["secu"];
-		$secuCiudad     = $_POST["secuCiudad"];
+		$secu           = $_POST["secundaria"];
 		$secuPromedio   = $_POST["secuPromedio"];
 		
 
@@ -35,14 +35,14 @@
 												 Pais              = :pais, 
 												 Ciudad            = :ciudad, 
 												 Estudia           = :estudias, 
-												 Grado             = :gradoActual, 
-												 Escuela           = :escuelaActual, 
-												 Promedio_Actual   = :promedioActual, 
+
+												 Nombre_Posgrado       = :posgrado, 
+												 Promedio_Pos          = :posPromedio,
+												 Nombre_Universidad    = :universidad,	
+												 Promedio_Uni    = :uniPromedio, 
 												 Nombre_Prepa      = :prepa, 
-												 Ciudad_Prepa      = :prepaCiudad, 
-												 Promedio_Prepa    = :prepaPromedio, 
+												 Promedio_Prepa    = :prepaPromedio,
 												 Nombre_Secundaria = :secu, 
-												 Ciudad_Secundaria = :secuCiudad, 
 												 Promedio_Secundaria = :secuPromedio 
 				  WHERE Mail_Usuario = :mail";
 			
@@ -53,14 +53,13 @@
 									  ":pais"          =>$pais,
 									  ":ciudad"        =>$ciudad, 
 									  ":estudias"      =>$estudias, 
-									  ":gradoActual"   =>$gradoActual, 
-									  ":escuelaActual" =>$escuelaActual,
-									  ":promedioActual"=>$promedioActual, 
+									  ":posgrado"   =>$posgra, 
+									  ":posPromedio" =>$posPromedio,
+									  ":universidad"=>$uni,
+									  ":uniPromedio"=>$uniPromedio, 
 									  ":prepa"         =>$prepa, 
-									  ":prepaCiudad"   =>$prepaCiudad, 
 									  ":prepaPromedio" =>$prepaPromedio, 
 									  ":secu"          =>$secu, 
-									  ":secuCiudad"    =>$secuCiudad, 
 									  ":secuPromedio"  =>$secuPromedio,
 									  ":mail"          =>$mail));
 

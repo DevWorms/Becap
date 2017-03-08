@@ -1,3 +1,8 @@
+<?php
+    error_reporting(1);
+    require_once("controladores/sesion/comprueba_sesion.php");
+    include_once 'controladores/funciones/funciones.php';
+?>
 <!doctype html>
 <html class="no-js" lang=""> 
     <head>
@@ -15,7 +20,6 @@
     </head>
 
     <body>
-      <?php require_once("controladores/sesion/comprueba_sesion.php"); ?>
         <!-- Navbar -->
       <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
           <div class="container">
@@ -63,7 +67,7 @@
                             <div class="form-group">
                               <span class="button-checkbox">
                                   <button type="button" class="btn" data-color="info">Administración</button>
-                                  <input type="checkbox" class="hidden" value="Administración"/>
+                                  <input type="checkbox" class="hidden" value="Administración" id="admin" name="admin"/>
                               </span>
                             </div>
                           </div>
@@ -71,7 +75,7 @@
                             <div class="form-group">
                               <span class="button-checkbox">
                                   <button type="button" class="btn" data-color="info">Abogacía</button>
-                                  <input type="checkbox" class="hidden" value="Abogacía"/>
+                                  <input type="checkbox" class="hidden" value="Abogacía" id="aboga" name="aboga"/>
                               </span>
                             </div>
                           </div>
@@ -79,7 +83,7 @@
                             <div class="form-group">
                               <span class="button-checkbox">
                                   <button type="button" class="btn" data-color="info">Psicología</button>
-                                  <input type="checkbox" class="hidden" value="Psicología"/>
+                                  <input type="checkbox" class="hidden" value="Psicología" id="psico" name="psico"/>
                               </span>
                             </div>
                           </div>
@@ -90,7 +94,7 @@
                             <div class="form-group">
                               <span class="button-checkbox">
                                   <button type="button" class="btn" data-color="info">Contabilidad</button>
-                                  <input type="checkbox" class="hidden" value="Contabilidad"/>
+                                  <input type="checkbox" class="hidden" value="Contabilidad" id="conta" name="conta"/>
                               </span>
                             </div>
                           </div>
@@ -98,7 +102,7 @@
                             <div class="form-group">
                               <span class="button-checkbox">
                                   <button type="button" class="btn" data-color="info">Economía</button>
-                                  <input type="checkbox" class="hidden" value="Economía"/>
+                                  <input type="checkbox" class="hidden" value="Economía" id="econo" name="econo"/>
                               </span>
                             </div>
                           </div>
@@ -106,7 +110,7 @@
                             <div class="form-group">
                               <span class="button-checkbox">
                                   <button type="button" class="btn" data-color="info">Finanzas</button>
-                                  <input type="checkbox" class="hidden" value="Finanzas"/>
+                                  <input type="checkbox" class="hidden" value="Finanzas" id="finan" name="finan"/>
                               </span>
                             </div>
                           </div>
@@ -117,7 +121,7 @@
                             <div class="form-group">
                               <span class="button-checkbox">
                                   <button type="button" class="btn" data-color="info">Artes y Humanidades</button>
-                                  <input type="checkbox" class="hidden"/>
+                                  <input type="checkbox" class="hidden" id="arthu" name="arthu"/>
                               </span>
                             </div>
                           </div>
@@ -125,7 +129,7 @@
                             <div class="form-group">
                               <span class="button-checkbox">
                                   <button type="button" class="btn" data-color="info">Arquitectura</button>
-                                  <input type="checkbox" class="hidden"/>
+                                  <input type="checkbox" class="hidden" id="arqui" name="arqui"/>
                               </span>
                             </div>
                           </div>
@@ -133,7 +137,7 @@
                             <div class="form-group">
                               <span class="button-checkbox">
                                   <button type="button" class="btn" data-color="info">Ingeniería</button>
-                                  <input type="checkbox" class="hidden"/>
+                                  <input type="checkbox" class="hidden" id="ingen" name="ingen"/>
                               </span>
                             </div>
                           </div>
@@ -144,7 +148,7 @@
                             <div class="form-group">
                               <span class="button-checkbox">
                                   <button type="button" class="btn" data-color="info">Diseño Industrial</button>
-                                  <input type="checkbox" class="hidden"/>
+                                  <input type="checkbox" class="hidden" id="disin" name="disin"/>
                               </span>
                             </div>
                           </div>
@@ -152,7 +156,7 @@
                             <div class="form-group">
                               <span class="button-checkbox">
                                   <button type="button" class="btn" data-color="info">Enseñanza</button>
-                                  <input type="checkbox" class="hidden"/>
+                                  <input type="checkbox" class="hidden" id="ensen" name="ensen"/>
                               </span>
                             </div>
                           </div>
@@ -160,7 +164,7 @@
                             <div class="form-group">
                               <span class="button-checkbox">
                                   <button type="button" class="btn" data-color="info">Medicina</button>
-                                  <input type="checkbox" class="hidden"/>
+                                  <input type="checkbox" class="hidden" id="medic" name="medic"/>
                               </span>
                             </div>
                           </div>
@@ -175,9 +179,26 @@
                       </div>
                       <div class="row">
                          <div class="col-xs-12 col-md-4 col-md-offset-4">
-                            <input type="text" name="telefono" class="form-control fields input-sm" placeholder="Teléfono">
+                            <input type="text" name="telefono" id="telefono" class="form-control fields input-sm" placeholder="Teléfono" required>
                         </div>
-                      </div>   
+                      </div>
+                      
+                      <br>
+                      
+                      <div class="row">
+                         <div class="col-xs-12" align="center">
+                           <h4><b>¿Que tipo de beca buscas?</h4>
+                         </div>
+                      </div>
+                      <div class="row">
+                         <div class="col-xs-12 col-md-4 col-md-offset-4">
+                            <select class="form-control fields input-sm" name="tipo_beca">
+                                <option value="1">Académica</option>
+                                <option value="2">Crédito</option>
+                                <option value="3">Especie</option>
+                              </select>
+                        </div>
+                      </div> 
                       
                       <br>  
 
