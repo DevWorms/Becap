@@ -159,49 +159,79 @@
                 
                               <div class="modal-content">
                                 <div class="modal-header" style="border-bottom-width: 0px">
-                                  <div align="">
-                                      <h4 class="modal-title white"><b>' . $fila["Nombre_Escuela"] . '</b></h4>
-                                      <h5 class="modal-title white"><b>Campus ' . $fila["Nombre_Campus"] . '</b></h5>  
-                                  </div>
-                                  <div align="right">
-                                      <i class="glyphicon glyphicon-heart gray-box"></i>
-                                      &nbsp;&nbsp;&nbsp;&nbsp;
-                                      <i class="glyphicon glyphicon-star gray-box"></i>  
-                                  </div>
-                                </div>
-                                <div class="modal-body" style="padding: 0 0 0 0">
-                                  <img class="img-responsive" src="img/modal_img/' . $fila["ID_Escuela"] . '.jpg" alt="image">
-                                    
-                                  <p align="center">
-                                  <br>
-                                    <button class="btn btn-info">Requisitos</button>&nbsp;
-                                    <button class="btn btn-default">La Institución</button>&nbsp;
-                                    <button class="btn btn-danger">Me interesa</button>&nbsp;
-                                    <button class="btn btn-default" style="background-color:#e8ba00">Favorito</button>&nbsp;
-                                    <br><br>
-
-                                    <div class="col-md-12" style="text-align:center">
-                                      <span class="lead">' . $fila["Descripcion_Escuela"] . '</span>
+                                  <div class="row">
+                                    <div class="col-xs-8">
+                                      <div align="">
+                                          <h4 class="modal-title white"><b>' . $fila["Nombre_Escuela"] . '</b></h4>
+                                          <h5 class="modal-title white"><b>Campus ' . $fila["Nombre_Campus"] . '</b></h5>  
+                                      </div>
                                     </div>
 
+                                    <div class="col-xs-4">
+                                      <div align="right">
+                                          <i class="glyphicon glyphicon-heart gray-box"></i>
+                                          &nbsp;&nbsp;&nbsp;&nbsp;
+                                          <i class="glyphicon glyphicon-star gray-box"></i>  
+                                      </div>
+                                    </div>
+                                  </div>    
+                                </div
+                                
+                                <div class="modal-body" style="padding: 0 0 0 0">
+                
+                                  <img class="img-responsive" src="img/modal_img/' . $fila["ID_Escuela"] . '.jpg" alt="image">
+                                  
+                                  <div class="row">
+                                    <div class="col-xs-12" align="center">
+                                      <br>
+                                        <div class="col-xs-3">
+                                          <button class="btn btn-info btn-block">Requisitos</button>&nbsp;  
+                                        </div>
+                                        <div class="col-xs-3">
+                                          <button class="btn btn-default btn-block">La Institución</button>&nbsp;  
+                                        </div>
+                                        <div class="col-xs-3">
+                                          <button class="btn btn-danger btn-block">Me interesa</button>&nbsp;  
+                                        </div>
+                                        <div class="col-xs-3">
+                                          <button class="btn btn-default btn-block" style="background-color:#e8ba00">Favorito</button>&nbsp;  
+                                        </div>                  
+                                      <br>
+                                    </div>
+                                  </div>
+
+                                  <br>
+
+                                  <div class="row">
+                                     <div class="col-xs-10 col-xs-offset-1" style="text-align:center">
+                                        <p>' . $fila["Descripcion_Escuela"] . '</p>
+                                      </div>
                                     <br>
-                                  </p>
-                                  <div class="checkbox">
-                                    <label><input type="checkbox" value="">Promedio de: 8.0</label>
                                   </div>
-                                  <div class="checkbox">
-                                    <label><input type="checkbox" value="">Acta de Nacimiento</label>
+
+                                  <div class="row">
+                                    <div class="col-md-10 col-md-offset-1">
+                                      <div class="checkbox">
+                                        <label><input type="checkbox" value="">&nbsp;&nbsp; Promedio de: 8.0</label>
+                                      </div>
+                                      <div class="checkbox">
+                                        <label><input type="checkbox" value="">&nbsp;&nbsp; Acta de Nacimiento</label>
+                                      </div>
+                                      <div class="checkbox">
+                                        <label><input type="checkbox" value="">&nbsp;&nbsp; Puntuación de: 90 del examen de admisión</label>
+                                      </div>
+                                      <div class="checkbox">
+                                        <label><input type="checkbox" value="">&nbsp;&nbsp; Puntuación de: 600 del TOEFL</label>
+                                      </div>
+                                      <div class="checkbox">
+                                        <label><input type="checkbox" value="">&nbsp;&nbsp; Kardex de Preparatoria</label>
+                                      </div>
+                                    </div>  
                                   </div>
-                                  <div class="checkbox">
-                                    <label><input type="checkbox" value="">Puntuación de: 90 del examen de admisión</label>
-                                  </div>
-                                  <div class="checkbox">
-                                    <label><input type="checkbox" value="">Puntuación de: 600 del TOEFL</label>
-                                  </div>
-                                  <div class="checkbox">
-                                    <label><input type="checkbox" value="">Kardex de Preparatoria</label>
-                                  </div>
+
+                                  <br><br>
                                 </div>
+
                                 <!-- SIN FOOTER -->
                               </div>
                 
