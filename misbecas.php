@@ -97,8 +97,8 @@
 
             <div class="col-md-9">
                 <div class="row">
-                    <p class="dark-gray gr margin"><b>Becas Seleccionadas</b></p>
 
+                    <p class="dark-gray gr margin"><b>Becas Seleccionadas</b></p>
                     <?php echo MostrarFavIntereses($_SESSION["id_usuario"]); ?>
 
                 </div>
@@ -129,3 +129,5 @@
       <script src="js/main.js"></script>
     </body>
 </html>
+
+<?php echo ModalsFavIntereses(); ?>

@@ -70,9 +70,7 @@
 
                     <a href="" class="list-group-item">Beca Crédito</a>
 
-                    <a href="" class="list-group-item">Beca Mixta</a>
-                    
-                    <a href="" class="list-group-item">Beca Gobierno</a>
+                    <a href="" class="list-group-item">Beca Especie</a>
                 </div>
                 <div align="center">
                   <button class="btn btn-default btn-sm gray">                   
