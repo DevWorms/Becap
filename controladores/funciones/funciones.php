@@ -245,7 +245,7 @@
     function MostrarFavIntereses($id_usuario) {
         global $pdo;
 
-        $operacion = "SELECT * FROM ( SELECT Becas.*, escuelas.Nombre_Escuela FROM Becas INNER JOIN escuelas ON escuelas.ID_Escuela = Becas.id_escuela) as tabla INNER JOIN beca_favorito ON tabla.ID_Beca = beca_favorito.id_beca WHERE beca_favorito.id_usuario = ? UNION SELECT * FROM ( SELECT Becas.*, escuelas.Nombre_Escuela FROM Becas INNER JOIN escuelas ON escuelas.ID_Escuela = Becas.id_escuela) as tabla INNER JOIN beca_interesa ON tabla.ID_Beca = beca_interesa.id_beca WHERE beca_interesa.id_usuario = ?";
+        $operacion = "SELECT *, '1' AS tipo FROM ( SELECT Becas.*, escuelas.Nombre_Escuela FROM Becas INNER JOIN escuelas ON escuelas.ID_Escuela = Becas.id_escuela) AS tabla INNER JOIN beca_favorito ON tabla.ID_Beca = beca_favorito.id_beca WHERE beca_favorito.id_usuario = ? UNION SELECT *, '2' AS tipo FROM ( SELECT Becas.*, escuelas.Nombre_Escuela FROM Becas INNER JOIN escuelas ON escuelas.ID_Escuela = Becas.id_escuela) AS tabla INNER JOIN beca_interesa ON tabla.ID_Beca = beca_interesa.id_beca WHERE beca_interesa.id_usuario = ?";
 
         $sentencia = $pdo->prepare($operacion);
         $sentencia->bindParam(1, $id_usuario);  
@@ -264,6 +264,12 @@
               if($fila["ID_Tipo"] == 3)
                 $tipo = "Beca Especie";
 
+
+              if($fila["tipo"] == 1)
+                $icono = '<span class="glyphicon glyphicon-heart red" aria-hidden="true" align="right"></span>';
+              else
+                $icono = '<span class="glyphicon glyphicon-star yellow" aria-hidden="true" align="right"></span>';
+
                 echo
                     '        
                     <div class="col-md-2 col-md-offset-1 caja">
@@ -274,11 +280,11 @@
                             <p>Aplica ' . $fila["Beca_Sobre"] . '</p>
                         </div>
                       </div>
-                      <div class="col-xs-3" align="right">
-                        <span class="glyphicon glyphicon-heart gray-box" aria-hidden="true" align="right"></span>
-                      </div>
-                      <br><br><br><br><br>
+                      <div class="col-xs-3" align="right">'
+                        . $icono .
+                      '</div>
                     </div>
+
                     ';
             }
     }
