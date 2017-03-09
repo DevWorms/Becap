@@ -245,7 +245,7 @@
     function MostrarFavIntereses($id_usuario) {
         global $pdo;
 
-        $operacion = "SELECT *, '1' AS tipo FROM ( SELECT Becas.*, escuelas.Nombre_Escuela FROM Becas INNER JOIN escuelas ON escuelas.ID_Escuela = Becas.id_escuela) AS tabla INNER JOIN beca_favorito ON tabla.ID_Beca = beca_favorito.id_beca WHERE beca_favorito.id_usuario = ? UNION SELECT *, '2' AS tipo FROM ( SELECT Becas.*, escuelas.Nombre_Escuela FROM Becas INNER JOIN escuelas ON escuelas.ID_Escuela = Becas.id_escuela) AS tabla INNER JOIN beca_interesa ON tabla.ID_Beca = beca_interesa.id_beca WHERE beca_interesa.id_usuario = ?";
+        $operacion = "SELECT *, '1' AS tipo FROM ( SELECT becas.*, escuelas.Nombre_Escuela FROM becas INNER JOIN escuelas ON escuelas.ID_Escuela = becas.id_escuela) AS tabla INNER JOIN beca_favorito ON tabla.ID_Beca = beca_favorito.id_beca WHERE beca_favorito.id_usuario = ? UNION SELECT *, '2' AS tipo FROM ( SELECT becas.*, escuelas.Nombre_Escuela FROM becas INNER JOIN escuelas ON escuelas.ID_Escuela = becas.id_escuela) AS tabla INNER JOIN beca_interesa ON tabla.ID_Beca = beca_interesa.id_beca WHERE beca_interesa.id_usuario = ?";
 
         $sentencia = $pdo->prepare($operacion);
         $sentencia->bindParam(1, $id_usuario);  
@@ -289,17 +289,92 @@
             }
     }
 
-    function validateProfile($id) {
+    /**
+     * Valida que el usuario tenga al menos una escuela y su promedio correspondiente
+     *
+     * @param $user
+     * @return bool
+     */
+    function validateSchools($user) {
+        if ( (empty($user['Nombre_Universidad']) || $user['Nombre_Universidad'] == "")
+            && (empty($user['Nombre_Posgrado']) || $user['Nombre_Posgrado'] == "")
+            && (empty($user['Nombre_Prepa']) || $user['Nombre_Prepa'] == "")
+            && (empty($user['Nombre_Secundaria']) || $user['Nombre_Secundaria'] == "")
+        ) {
+            return false;
+        } else {
+            if (!empty($user['Nombre_Universidad']) || $user['Nombre_Universidad'] != "") {
+                if (empty($user['Promedio_Uni']) || $user['Promedio_Uni'] == "") {
+                    return false;
+                } else {
+                    return true;
+                }
+            } elseif (!empty($user['Nombre_Posgrado']) || $user['Nombre_Posgrado'] != "") {
+                if (empty($user['Promedio_Pos']) || $user['Promedio_Pos'] == "") {
+                    return false;
+                } else {
+                    return true;
+                }
+            } elseif (!empty($user['Nombre_Prepa']) || $user['Nombre_Prepa'] != "") {
+                if (empty($user['Promedio_Prepa']) || $user['Promedio_Prepa'] == "") {
+                    return false;
+                } else {
+                    return true;
+                }
+            } elseif (!empty($user['Nombre_Secundaria']) || $user['Nombre_Secundaria'] != "") {
+                if (empty($user['Promedio_Secundaria']) || $user['Promedio_Secundaria'] == "") {
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        }
+    }
+
+    /**
+     * Valida que el usuario tenga su perfil completo
+     *
+     * @param $email
+     * @return bool
+     */
+    function validateProfile($email) {
         $conn = ConexionBD::obtenerInstancia()->obtenerBD();
         $query = "SELECT * FROM becap_db.usuarios WHERE Mail_Usuario = :mail";
         $stm = $conn->prepare($query);
-        $stm->bindParam(':mail', $id, PDO::PARAM_STR);
+        $stm->bindParam(':mail', $email, PDO::PARAM_STR);
         $stm->execute();
         $result = $stm->fetchAll()[0];
 
         if (!empty($result['Apellidos_Usuario']) && !empty($result['Fecha_Nacimiento'])
             && !empty($result['Pais']) && !empty($result['Ciudad'])
-            && !empty($result['Estudia']) && !empty($result['Telefono_contacto'])) {
+            && !empty($result['Estudia']) ) {
+            if (validateSchools($result)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Valida que el usuario tenga su información completa
+     *
+     * @param $email
+     * @return bool
+     */
+    function validateInformation($email) {
+        $conn = ConexionBD::obtenerInstancia()->obtenerBD();
+        $query = "SELECT Telefono_contacto, tipo_beca FROM becap_db.usuarios WHERE Mail_Usuario = :mail";
+        $stm = $conn->prepare($query);
+        $stm->bindParam(':mail', $email, PDO::PARAM_STR);
+        $stm->execute();
+        $result = $stm->fetchAll()[0];
+
+        if (!empty($result['Telefono_contacto']) && is_numeric($result['tipo_beca'])) {
             return true;
         } else {
             return false;

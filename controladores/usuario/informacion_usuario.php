@@ -2,16 +2,14 @@
 require dirname(__FILE__) . "/../datos/conexion.php";
 session_start();
 
-function notificacion($msj)
-{
+function notificacion($msj) {
     echo
         "<script>
             alert('" . $msj . "');
         </script>";
 }
 
-function validateSchools($pos, $posc, $uni, $unic, $pre, $prec, $sec, $secc)
-{
+function validateSchools($pos, $posc, $uni, $unic, $pre, $prec, $sec, $secc) {
     if (empty($pos) && empty($uni) && empty($pre) && empty($sec)) {
         $msg = "Ingresa al menos una escuela";
         $status = 0;

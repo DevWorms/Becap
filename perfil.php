@@ -4,7 +4,14 @@
     include_once dirname(__FILE__) . '/controladores/funciones/funciones.php';
 
     if (validateProfile($_SESSION['correo'])) {
-        header("Location: misbecas.php");
+        // Si ya tiene el perfil... valida la información
+        if (validateInformation($_SESSION['correo'])) {
+            // Si ya completo la información lo redirecciona a mis becas
+            header("Location: misbecas.php");
+        } else {
+            // Si no ha completado la información, lo redirecciona a informacion.php
+            header("Location: informacion.php");
+        }
     }
 ?>
 <!doctype html>
@@ -284,31 +291,7 @@
             function validateForm() {
                 event.preventDefault();
                 var valid = 1;
-
-                if (!$('#apellido').val()) {
-                    $.notify("Ingresa tu(s) apellido(s)", "warning");
-                    valid = 0;
-                }
-
-                if (!$('#fecha').val()) {
-                    $.notify("Ingresa tu fecha de nacimiento", "warning");
-                    valid = 0;
-                }
-
-                if (!$('#pais').val()) {
-                    $.notify("Ingresa tu pais de residencia", "warning");
-                    valid = 0;
-                }
-
-                if (!$('#ciudad').val()) {
-                    $.notify("Ingresa tu ciudad de residencia", "warning");
-                    valid = 0;
-                }
-
-                if (!$('#estudias').val()) {
-                    $.notify("Especifica si estudias actualmente", "warning");
-                    valid = 0;
-                }
+                var msg = "";
 
                 var posgrado = $('#posgrado').val();
                 var universidad = $('#universidad').val();
@@ -316,32 +299,67 @@
                 var secundaria = $('#secundaria').val();
 
                 if ( !posgrado && !universidad && !preparatoria && !secundaria ) {
-                    $.notify("Ingresa al menos una escuela y promedio", "warning");
+                    msg = "Ingresa al menos una escuela y promedio";
                     valid = 0;
                 } else {
                     if (posgrado && !$('#posgraPromedio').val()) {
-                        $.notify("Ingresa tu promedio del posgrado", "warning");
+                        msg = "Ingresa tu promedio del posgrado";
                         valid = 0;
                     }
 
                     if (universidad && !$('#uniPromedio').val()) {
-                        $.notify("Ingresa tu promedio de la universidad", "warning");
+                        msg = "Ingresa tu promedio de la universidad";
                         valid = 0;
                     }
 
                     if (preparatoria && !$('#prepaPromedio').val()) {
-                        $.notify("Ingresa tu promedio de la preparatoria", "warning");
+                        msg = "Ingresa tu promedio de la preparatoria";
                         valid = 0;
                     }
 
                     if (secundaria && !$('#secuPromedio').val()) {
-                        $.notify("Ingresa tu promedio de la secundaria", "warning");
+                        msg = "Ingresa tu promedio de la secundaria";
                         valid = 0;
                     }
                 }
 
+                if (!$('#estudias').val()) {
+                    msg = "Especifica si estudias actualmente";
+                    valid = 0;
+                }
+
+                if (!$('#ciudad').val()) {
+                    msg = "Ingresa tu ciudad de residencia";
+                    valid = 0;
+                }
+
+                if (!$('#pais').val()) {
+                    msg = "Ingresa tu pais de residencia";
+                    valid = 0;
+                }
+
+                if (!$('#fecha').val()) {
+                    msg = "Ingresa tu fecha de nacimiento";
+                    valid = 0;
+                }
+
+                if (!$('#apellido').val()) {
+                    msg = "Ingresa tu(s) apellido(s)";
+                    valid = 0;
+                }
+
                 if (valid === 1) {
                     $('form#formulario_perfil').submit();
+                } else {
+                    $.notify({
+                        message: msg
+                    },{
+                        type: 'warning',
+                        placement: {
+                            from: "top",
+                            align: "right"
+                        }
+                    });
                 }
             }
       </script>

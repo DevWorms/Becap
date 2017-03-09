@@ -1,7 +1,18 @@
 <?php
     error_reporting(1);
-    require_once("controladores/sesion/comprueba_sesion.php");
-    include_once 'controladores/funciones/funciones.php';
+    require_once dirname(__FILE__) . "/controladores/sesion/comprueba_sesion.php";
+    include_once dirname(__FILE__) . '/controladores/funciones/funciones.php';
+
+    if (validateProfile($_SESSION['correo'])) {
+        // Si ya tiene el perfil... valida la información
+        if (!validateInformation($_SESSION['correo'])) {
+            // Si no ha completado la información, lo redirecciona a informacion.php
+            header("Location: informacion.php");
+        }
+    } else {
+        // Si no ha completado su perfil, lo redirecciona a perfil.php
+        header("Location: perfil.php");
+    }
 ?>
 <!doctype html>
 <html class="no-js" lang=""> 

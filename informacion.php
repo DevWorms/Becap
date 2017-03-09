@@ -1,7 +1,18 @@
 <?php
     error_reporting(1);
-    require_once("controladores/sesion/comprueba_sesion.php");
-    include_once 'controladores/funciones/funciones.php';
+    require_once dirname(__FILE__) . "/controladores/sesion/comprueba_sesion.php";
+    include_once dirname(__FILE__) . '/controladores/funciones/funciones.php';
+
+    if (validateProfile($_SESSION['correo'])) {
+        // Si ya tiene el perfil... valida la información
+        if (validateInformation($_SESSION['correo'])) {
+            // Si ya completo la información lo redirecciona a mis becas
+            header("Location: misbecas.php");
+        }
+    } else {
+        // Si no ha completado su perfil, lo redirecciona a perfil.php
+        header("Location: perfil.php");
+    }
 ?>
 <!doctype html>
 <html class="no-js" lang=""> 
@@ -61,7 +72,7 @@
                     <!-- INICIO FORMULARIO -->
                     <form action="controladores/usuario/carreras_usuario.php"
                           method="post" class="form" role="form" 
-                          name="formulario_informacion">
+                          name="formulario_informacion" id="formulario_informacion">
                       <div class="row">
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
@@ -192,7 +203,7 @@
                       </div>
                       <div class="row">
                          <div class="col-xs-12 col-md-4 col-md-offset-4">
-                            <select class="form-control fields input-sm" name="tipo_beca">
+                            <select class="form-control fields input-sm" name="tipo_beca" id="tipo_beca">
                                 <option value="1">Académica</option>
                                 <option value="2">Crédito</option>
                                 <option value="3">Especie</option>
@@ -204,7 +215,7 @@
 
                       <div class="row">
                             <div class="col-xs-12 col-md-2 col-md-offset-5">
-                                <button class="btn btn-danger btn-block" type="submit">Continuar</button> 
+                                <button class="btn btn-danger btn-block" type="submit" onclick="validateInformation();">Continuar</button>
                             </div>
                       </div>
 
@@ -243,8 +254,48 @@
           </div>
       </footer>
 
-      <script>window.jQuery || document.write('<script src="vendor/jquery/jquery-1.11.2.min.js"><\/script>')</script>
-      <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-      <script src="js/main.js"></script>
+        <script>window.jQuery || document.write('<script src="vendor/jquery/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="js/bootstrap-notify.js"></script>
+        <script src="js/main.js"></script>
+        <script>
+            function validateInformation() {
+                event.preventDefault();
+                var valid = 1;
+                var msg = "";
+
+                if ( !$('#telefono').val() ) {
+                    valid = 0;
+                    msg = "Ingresa un número telefónico";
+                }
+
+                if ( !$('#tipo_beca').val() ) {
+                    valid = 0;
+                    msg = "Selecciona un tipo de beca";
+                }
+
+                if ( !$('#admin').is(':checked') && !$('#aboga').is(':checked') && !$('#psico').is(':checked')
+                    && !$('#conta').is(':checked') && !$('#econo').is(':checked') && !$('#finan').is(':checked')
+                    && !$('#arthu').is(':checked') && !$('#arqui').is(':checked') && !$('#ingen').is(':checked')
+                    && !$('#disin').is(':checked') && !$('#ensen').is(':checked') && !$('#medic').is(':checked') ) {
+                    valid = 0;
+                    msg = "Selecciona al menos área de interés";
+                }
+
+                if (valid === 1) {
+                    $('form#formulario_informacion').submit();
+                } else {
+                    $.notify({
+                        message: msg
+                    },{
+                        type: 'warning',
+                        placement: {
+                            from: "top",
+                            align: "right"
+                        }
+                    });
+                }
+            }
+        </script>
     </body>
 </html>
