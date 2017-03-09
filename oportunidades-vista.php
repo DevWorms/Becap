@@ -66,11 +66,9 @@
             <div class="col-md-3 space-outside">
               <p class="dark-gray gr"><b>¿Qué tipo de Beca buscas?</b></p>
                 <div class="list-group">
-                    <a href="" class="list-group-item active">Beca Académica</a>
-
-                    <a href="" class="list-group-item">Beca Crédito</a>
-
-                    <a href="" class="list-group-item">Beca Especie</a>
+                    <a href="#" id="menu_1" onclick="filtrar($(this));" class="list-group-item">Beca Académica</a>
+                    <a href="#" id="menu_2" onclick="filtrar($(this));" class="list-group-item">Beca Crédito</a>
+                    <a href="#" id="menu_3" onclick="filtrar($(this));" class="list-group-item">Beca Especie</a>
                 </div>
                 <div align="center">
                   <button class="btn btn-default btn-sm gray">                   
@@ -86,7 +84,7 @@
             </div>
 
             <div class="col-md-9">
-
+                <div id="becas_list">
                 <?php echo MostrarBecasList($_SESSION["id_usuario"]); ?>
 
                 <!--
@@ -129,10 +127,8 @@
                 </div>
 
                 -->
-
+                </div>
             </div>
-
-
           </div>  <!-- row -->
         </div>    <!-- container -->
       </header>
@@ -152,6 +148,7 @@
       </footer>
       <script>window.jQuery || document.write('<script src="vendor/jquery/jquery-1.11.2.min.js"><\/script>')</script>
       <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="js/bootstrap-notify.js"></script>
       <script src="js/main.js"></script>
     </body>
 </html>

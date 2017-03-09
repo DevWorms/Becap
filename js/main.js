@@ -85,3 +85,131 @@ function validar(){
         return false;
     }
 }
+
+function addToFavorite(user_id, beca_id) {
+    event.preventDefault();
+
+    $.ajax({
+        type : 'POST',
+        url  : 'controladores/becas/Beca.php',
+        data : {
+            get: "addFavorite",
+            user_id: user_id,
+            beca_id: beca_id
+        },
+        dataType: "json",
+            success :  function(response) {
+            if (response.estado == 1) {
+                colorStart(beca_id);
+                $('#tecmon' + beca_id).modal().hide();
+                $.notify({
+                    message: response.mensaje
+                },{
+                    type: 'success',
+                    placement: {
+                        from: "top",
+                        align: "right"
+                    }
+                });
+            }
+            else {
+                $('#tecmon' + beca_id).modal().hide();
+                $.notify({
+                    message: response.mensaje
+                },{
+                    type: 'warning',
+                    placement: {
+                        from: "top",
+                        align: "right"
+                    }
+                });
+            }
+        },
+        error : function (response) {
+            console.log(response);
+        }
+    });
+}
+
+function colorHeart(id) {
+    var heart = $('#heart-' + id);
+    heart.removeClass("gray-box");
+    heart.addClass("red");
+
+    heart = $('#heart-m-' + id);
+    heart.removeClass("gray-box");
+    heart.addClass("red");
+}
+
+function colorStart(id) {
+    var start = $('#start-m-' + id);
+    start.removeClass("gray-box");
+    start.addClass("red");
+}
+
+function addToMeInteresa(user_id, beca_id) {
+    event.preventDefault();
+
+    $.ajax({
+        type : 'POST',
+        url  : 'controladores/becas/Beca.php',
+        data : {
+            get: "addInteresa",
+            user_id: user_id,
+            beca_id: beca_id
+        },
+        dataType: "json",
+        success :  function(response) {
+            if (response.estado == 1) {
+                colorHeart(beca_id);
+
+                $('#tecmon' + beca_id).modal().hide();
+                $.notify({
+                    message: response.mensaje
+                },{
+                    type: 'success',
+                    placement: {
+                        from: "top",
+                        align: "right"
+                    }
+                });
+            }
+            else {
+                $('#tecmon' + beca_id).modal().hide();
+                $.notify({
+                    message: response.mensaje
+                },{
+                    type: 'warning',
+                    placement: {
+                        from: "top",
+                        align: "right"
+                    }
+                });
+            }
+        },
+        error : function (response) {
+            console.log(response);
+        }
+    });
+}
+
+function filtrar(obj) {
+    event.preventDefault();
+    $('#menu_1, #menu_2, #menu_3').removeClass('active');
+    $(".beca").css('display','none');
+
+    switch (obj.attr('id')) {
+        case 'menu_1':
+            $('#menu_1').addClass('active');
+            $(".tipo-1").show();
+            break;
+        case 'menu_2':
+            $('#menu_2').addClass('active');
+            $(".tipo-2").show();
+            break;
+        case 'menu_3':
+            $('#menu_3').addClass('active');
+            $(".tipo-3").show();
+            break;
+    }
+}
