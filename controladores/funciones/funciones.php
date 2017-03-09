@@ -8,7 +8,7 @@
         global $pdo;
 
         $promedio = PromedioUsuario($id_usuario);
-
+        
         $operacion = "SELECT becas.ID_Beca, becas.ID_Escuela, escuelas.Nombre_Escuela, becas.Nombre_Beca, becas.ID_Tipo , becas.Descripcion_Beca, becas.Beca_Sobre FROM becas JOIN escuelas ON becas.ID_Escuela = escuelas.ID_Escuela WHERE becas.Promedio_Acceso <= ?";
 
         $sentencia = $pdo->prepare($operacion);
