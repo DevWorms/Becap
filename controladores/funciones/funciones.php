@@ -40,7 +40,6 @@
                       <div class="col-xs-3" align="right">
                         <span class="glyphicon glyphicon-heart gray-box" aria-hidden="true" align="right"></span>
                       </div>
-                      <br><br><br><br><br>
                     </div>
                     ';
             }
@@ -272,17 +271,23 @@
 
                 echo
                     '        
-                    <div class="col-md-2 col-md-offset-1 caja">
+                    <div class="col-md-2 col-md-offset-1 caja" style="margin-bottom: 10px">
+
                       <div class="col-xs-9 space-inside" align="left">
+                        
                         <a href="" data-toggle="modal" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box">' . substr($fila["Nombre_Escuela"],0,30) . '</span></a>
+
                         <div class="space-inside-p">
                             <p><strong>' . $tipo . '</strong></p>
                             <p>Aplica ' . $fila["Beca_Sobre"] . '</p>
                         </div>
+
                       </div>
+                      
                       <div class="col-xs-3" align="right">'
                         . $icono .
                       '</div>
+
                     </div>
 
                     ';
@@ -304,5 +309,108 @@
         } else {
             return false;
         }
+    }
+
+    function ModalsFavIntereses()   {
+        global $pdo;
+
+        $operacion = "SELECT *, '1' AS tipo FROM ( SELECT Becas.*, escuelas.Nombre_Escuela, escuelas.Nombre_Campus, escuelas.Descripcion_Escuela FROM Becas INNER JOIN escuelas ON escuelas.ID_Escuela = Becas.id_escuela) AS tabla INNER JOIN beca_favorito ON tabla.ID_Beca = beca_favorito.id_beca UNION SELECT *, '2' AS tipo FROM ( SELECT Becas.*, escuelas.Nombre_Escuela, escuelas.Nombre_Campus, escuelas.Descripcion_Escuela FROM Becas INNER JOIN escuelas ON escuelas.ID_Escuela = Becas.id_escuela) AS tabla INNER JOIN beca_interesa ON tabla.ID_Beca = beca_interesa.id_beca";
+
+        $sentencia = $pdo->prepare($operacion);
+        $sentencia->execute();
+        $resultado = $sentencia->fetchAll();
+
+        $filas = $sentencia->rowCount();
+          
+            foreach ($resultado as $fila )  {
+
+              $iconoH = '<i class="glyphicon glyphicon-heart gray-box"></i>';
+              $iconoS = '<i class="glyphicon glyphicon-star gray-box"></i>';
+
+              if($fila["tipo"] == 1) 
+                $iconoH = '<i class="glyphicon glyphicon-heart red"></i>';
+              if($fila["tipo"] == 2) 
+                $iconoS = '<i class="glyphicon glyphicon-star yellow"></i>';
+
+                echo 
+                '<div id="tecmon' . $fila["ID_Beca"] . '" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                
+                              <div class="modal-content">
+                                <div class="modal-header" style="border-bottom-width: 0px">
+                                  <div class="row">
+                                    <div class="col-xs-8">
+                                      <div align="">
+                                          <h4 class="modal-title white"><b>' . $fila["Nombre_Escuela"] . '</b></h4>
+                                          <h5 class="modal-title white"><b>Campus ' . $fila["Nombre_Campus"] . '</b></h5>  
+                                      </div>
+                                    </div>
+
+                                    <div class="col-xs-4">
+                                      <div align="right">
+                                          ' . $iconoH .'
+                                          &nbsp;&nbsp;&nbsp;&nbsp;
+                                          ' . $iconoS .' 
+                                      </div>
+                                    </div>
+                                  </div>    
+                                </div
+                                
+                                <div class="modal-body" style="padding: 0 0 0 0">
+                
+                                  <img class="img-responsive" src="img/modal_img/' . $fila["ID_Escuela"] . '.jpg" alt="image">
+                                  
+                                  <div class="row">
+                                    <div class="col-xs-12" align="center">
+                                      <br>
+                                        <div class="col-xs-6">
+                                          <button class="btn btn-info btn-block">Requisitos</button>&nbsp;  
+                                        </div>
+                                        <div class="col-xs-6">
+                                          <button class="btn btn-default btn-block">La Institución</button>&nbsp;  
+                                        </div>                 
+                                      <br>
+                                    </div>
+                                  </div>
+
+                                  <br>
+
+                                  <div class="row">
+                                     <div class="col-xs-10 col-xs-offset-1" style="text-align:center">
+                                        <p>' . $fila["Descripcion_Escuela"] . '</p>
+                                      </div>
+                                    <br>
+                                  </div>
+
+                                  <div class="row">
+                                    <div class="col-md-10 col-md-offset-1">
+                                      <div class="checkbox">
+                                        <label><input type="checkbox" value="">&nbsp;&nbsp; Promedio de: 8.0</label>
+                                      </div>
+                                      <div class="checkbox">
+                                        <label><input type="checkbox" value="">&nbsp;&nbsp; Acta de Nacimiento</label>
+                                      </div>
+                                      <div class="checkbox">
+                                        <label><input type="checkbox" value="">&nbsp;&nbsp; Puntuación de: 90 del examen de admisión</label>
+                                      </div>
+                                      <div class="checkbox">
+                                        <label><input type="checkbox" value="">&nbsp;&nbsp; Puntuación de: 600 del TOEFL</label>
+                                      </div>
+                                      <div class="checkbox">
+                                        <label><input type="checkbox" value="">&nbsp;&nbsp; Kardex de Preparatoria</label>
+                                      </div>
+                                    </div>  
+                                  </div>
+
+                                  <br><br>
+                                </div>
+
+                                <!-- SIN FOOTER -->
+                              </div>
+                
+                            </div>
+                        </div>';
+                    }
+
     }
 ?>
