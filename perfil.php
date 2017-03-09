@@ -1,7 +1,11 @@
 <?php
     error_reporting(1);
-    require_once("controladores/sesion/comprueba_sesion.php");
-    include_once 'controladores/funciones/funciones.php';
+    require_once dirname(__FILE__) . "/controladores/sesion/comprueba_sesion.php";
+    include_once dirname(__FILE__) . '/controladores/funciones/funciones.php';
+
+    if (validateProfile($_SESSION['correo'])) {
+        header("Location: misbecas.php");
+    }
 ?>
 <!doctype html>
 <html class="no-js" lang=""> 
@@ -62,11 +66,11 @@
                 <div class="panel panel-default">
                   <div class="panel-body"> 
 
-                                     
+
                     <!-- INICIO FORMULARIO -->
                     <form action="controladores/usuario/informacion_usuario.php"
-                          method="post" class="form" role="form" 
-                          name="formulario_perfil">
+                          method="post" class="form" role="form"
+                          name="formulario_perfil" id="formulario_perfil">
 
                       <div class="row">
                           <div class="col-xs-4 col-sm-4 col-md-4">
@@ -76,12 +80,12 @@
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="apellido" class="form-control fields input-sm" placeholder="Apellido">
+                              <input type="text" name="apellido" id="apellido" class="form-control fields input-sm" placeholder="Apellido">
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="date" name="fecha" class="form-control fields input-sm" placeholder="Fecha de Nacimiento"
+                              <input type="date" name="fecha" id="fecha" class="form-control fields input-sm" placeholder="Fecha de Nacimiento"
                                      data-toggle="popover" data-content="Fecha de Nacimiento">
                             </div>
                           </div>
@@ -90,12 +94,12 @@
                       <div class="row">
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="pais" class="form-control fields input-sm" placeholder="País donde resides">
+                              <input type="text" name="pais" id="pais" class="form-control fields input-sm" placeholder="País donde resides">
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="ciudad" class="form-control fields input-sm" placeholder="Ciudad donde resides">
+                              <input type="text" name="ciudad" id="ciudad" class="form-control fields input-sm" placeholder="Ciudad donde resides">
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
@@ -103,7 +107,7 @@
                             <!--
                               <input type="text" name="estudias" class="form-control fields input-sm" placeholder="¿Estudias actualmente?">
                             -->
-                              <select class="form-control fields input-sm" name="estudias">
+                              <select class="form-control fields input-sm" name="estudias" id="estudias">
                                 <option disabled selected>¿Estudias actualmente?</option>
                                 <option value="Si">Si</option>
                                 <option value="No">No</option>
@@ -132,12 +136,12 @@
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="posgrado" class="form-control fields input-sm" placeholder="Escuela">
+                              <input type="text" name="posgrado" id="posgrado" class="form-control fields input-sm" placeholder="Escuela">
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="posgraPromedio" class="form-control fields input-sm" placeholder="Promedio (Acumulado o Final)">
+                              <input type="text" name="posgraPromedio" id="posgraPromedio" class="form-control fields input-sm" placeholder="Promedio (Acumulado o Final)">
                             </div>
                           </div>
                       </div>
@@ -150,12 +154,12 @@
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="universidad" class="form-control fields input-sm" placeholder="Escuela">
+                              <input type="text" name="universidad" id="universidad" class="form-control fields input-sm" placeholder="Escuela">
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="uniPromedio" class="form-control fields input-sm" placeholder="Promedio (Acumulado o Final)">
+                              <input type="text" name="uniPromedio" id="uniPromedio" class="form-control fields input-sm" placeholder="Promedio (Acumulado o Final)">
                             </div>
                           </div>
                       </div>
@@ -168,12 +172,12 @@
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="preparatoria" class="form-control fields input-sm" placeholder="Escuela">
+                              <input type="text" name="preparatoria" id="preparatoria" class="form-control fields input-sm" placeholder="Escuela">
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="prepaPromedio" class="form-control fields input-sm" placeholder="Promedio (Acumulado o Final)">
+                              <input type="text" name="prepaPromedio" id="prepaPromedio" class="form-control fields input-sm" placeholder="Promedio (Acumulado o Final)">
                             </div>
                           </div>
                       </div>
@@ -186,12 +190,12 @@
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="secundaria" class="form-control fields input-sm" placeholder="Escuela">
+                              <input type="text" name="secundaria" id="secundaria" class="form-control fields input-sm" placeholder="Escuela">
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="secuPromedio" class="form-control fields input-sm" placeholder="Promedio (Acumulado o Final)">
+                              <input type="text" name="secuPromedio" id="secuPromedio" class="form-control fields input-sm" placeholder="Promedio (Acumulado o Final)">
                             </div>
                           </div>
                       </div>
@@ -199,12 +203,12 @@
                       <br>
                       <div class="row">
                             <div class="col-xs-12 col-md-2 col-md-offset-5">
-                                <button class="btn btn-danger btn-block" type="submit" name="enviar">Continuar</button> 
+                                <button class="btn btn-danger btn-block" type="submit" onclick="validateForm();" name="enviar">Continuar</button>
                             </div>
                       </div>
 
                      <div class="row m-space">
-                          <div class="col-xs-4 col-xs-offset-4 col-md-2 col-md-offset-5"> 
+                          <div class="col-xs-4 col-xs-offset-4 col-md-2 col-md-offset-5">
                             <div class="progress">
                               <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="70"
                               aria-valuemin="0" aria-valuemax="100" style="width:50%">
@@ -213,7 +217,7 @@
                             </div>
                           </div>
                       </div>
-                    
+
                     </form>
                     <!-- FIN FORMULARIO -->
 
@@ -249,7 +253,9 @@
                   $('[data-toggle="popover"]').popover();   
               });
 
-
+              <?php
+                if (isset($_SESSION['first_time'])) {
+              ?>
               $.notify({
                 message: '¡<strong>Cuenta</strong> creada exitosamente!' 
               },{
@@ -257,8 +263,87 @@
                 placement: {
                   from: "bottom",
                   align: "right"
-                },
+                }
               });
+              <?php
+              } else {
+              ?>
+              $.notify({
+                  message: "¡Bienvenido <strong><?php echo $_SESSION['nombre']?></strong>!"
+              },{
+                  type: 'success',
+                  placement: {
+                      from: "bottom",
+                      align: "right"
+                  }
+              });
+              <?php
+              }
+              ?>
+
+            function validateForm() {
+                event.preventDefault();
+                var valid = 1;
+
+                if (!$('#apellido').val()) {
+                    $.notify("Ingresa tu(s) apellido(s)", "warning");
+                    valid = 0;
+                }
+
+                if (!$('#fecha').val()) {
+                    $.notify("Ingresa tu fecha de nacimiento", "warning");
+                    valid = 0;
+                }
+
+                if (!$('#pais').val()) {
+                    $.notify("Ingresa tu pais de residencia", "warning");
+                    valid = 0;
+                }
+
+                if (!$('#ciudad').val()) {
+                    $.notify("Ingresa tu ciudad de residencia", "warning");
+                    valid = 0;
+                }
+
+                if (!$('#estudias').val()) {
+                    $.notify("Especifica si estudias actualmente", "warning");
+                    valid = 0;
+                }
+
+                var posgrado = $('#posgrado').val();
+                var universidad = $('#universidad').val();
+                var preparatoria = $('#preparatoria').val();
+                var secundaria = $('#secundaria').val();
+
+                if ( !posgrado && !universidad && !preparatoria && !secundaria ) {
+                    $.notify("Ingresa al menos una escuela y promedio", "warning");
+                    valid = 0;
+                } else {
+                    if (posgrado && !$('#posgraPromedio').val()) {
+                        $.notify("Ingresa tu promedio del posgrado", "warning");
+                        valid = 0;
+                    }
+
+                    if (universidad && !$('#uniPromedio').val()) {
+                        $.notify("Ingresa tu promedio de la universidad", "warning");
+                        valid = 0;
+                    }
+
+                    if (preparatoria && !$('#prepaPromedio').val()) {
+                        $.notify("Ingresa tu promedio de la preparatoria", "warning");
+                        valid = 0;
+                    }
+
+                    if (secundaria && !$('#secuPromedio').val()) {
+                        $.notify("Ingresa tu promedio de la secundaria", "warning");
+                        valid = 0;
+                    }
+                }
+
+                if (valid === 1) {
+                    $('form#formulario_perfil').submit();
+                }
+            }
       </script>
     </body>
 </html>

@@ -1,15 +1,14 @@
 <?php
-    require_once ("login.php");
+    require_once dirname(__FILE__) . "/login.php";
     
     class Conectar{
         function __construct(){
             try{
                 self::get_conexion();
             } catch (PDOException $e) {
-                die("Error " . $e->getMessage());
-                            echo "\nLinea de error: " . $e->getLine();
-                            }
+                die("Error " . $e->getMessage() . "\nLinea de error: " . $e->getLine());
             }
+        }
   
         public static function get_conexion(){
             

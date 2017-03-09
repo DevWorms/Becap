@@ -1,5 +1,5 @@
 <?php
-  require_once '../Becap/controladores/datos/ConexionBD.php';
+  require_once dirname(__FILE__) . '/../datos/ConexionBD.php';
   $pdo = ConexionBD::obtenerInstancia()->obtenerBD();
   $pdo2 = ConexionBD::obtenerInstancia()->obtenerBD();
 
@@ -287,5 +287,22 @@
 
                     ';
             }
+    }
+
+    function validateProfile($id) {
+        $conn = ConexionBD::obtenerInstancia()->obtenerBD();
+        $query = "SELECT * FROM becap_db.usuarios WHERE Mail_Usuario = :mail";
+        $stm = $conn->prepare($query);
+        $stm->bindParam(':mail', $id, PDO::PARAM_STR);
+        $stm->execute();
+        $result = $stm->fetchAll()[0];
+
+        if (!empty($result['Apellidos_Usuario']) && !empty($result['Fecha_Nacimiento'])
+            && !empty($result['Pais']) && !empty($result['Ciudad'])
+            && !empty($result['Estudia']) && !empty($result['Telefono_contacto'])) {
+            return true;
+        } else {
+            return false;
+        }
     }
 ?>
