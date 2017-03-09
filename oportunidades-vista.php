@@ -1,7 +1,7 @@
 <?php
     error_reporting(1);
-    require_once("controladores/sesion/comprueba_sesion.php");
-    include_once 'controladores/funciones/funciones.php';
+    require_once dirname(__FILE__) . "/controladores/sesion/comprueba_sesion.php";
+    include_once dirname(__FILE__) . '/controladores/funciones/funciones.php';
 ?>
 <!doctype html>
 <html class="no-js" lang=""> 

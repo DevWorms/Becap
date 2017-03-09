@@ -1,7 +1,7 @@
 <?php
     error_reporting(1);
-    require_once("controladores/sesion/comprueba_sesion.php");
-    include_once 'controladores/funciones/funciones.php';
+    require_once dirname(__FILE__) . "/controladores/sesion/comprueba_sesion.php";
+    include_once dirname(__FILE__) . '/controladores/funciones/funciones.php';
 ?>
 <!doctype html>
 <html class="no-js" lang=""> 
@@ -87,7 +87,7 @@
                    si tus calificaciones han cambiado, por favor modifica tu 
                    información para poder darte la información más oportuna. 
                 </p>
-                <button class="btn btn-default m-margin"><a href="informacion.php">Cambiar perfil</a></button>
+                <button class="btn btn-default m-margin"><a href="info_update.php">Cambiar perfil</a></button>
               </div>
             </div>
           <br>  
