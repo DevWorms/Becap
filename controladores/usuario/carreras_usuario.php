@@ -54,7 +54,7 @@
 
             $resultado2->closeCursor();
 
-            header('location: ../../misbecas.php');
+            header('location: ../../oportunidades.php');
         } else {
             notificacion("Selecciona al menos un área de interés");
             header("Location: ../../informacion.php");
