@@ -139,7 +139,22 @@
         $sentencia->execute();
         $resultado = $sentencia->fetch();
 
-        $promedio = $resultado["Promedio_Uni"];
+        $p_pos = $resultado["Promedio_Pos"];
+        $p_uni = $resultado["Promedio_Uni"];
+        $p_pre = $resultado["Promedio_Prepa"];
+        $p_sec = $resultado["Promedio_Secundaria"];
+
+        if($p_pos > 0)
+            $promedio = $p_pos;
+        elseif ($p_uni > 0) 
+            $promedio = $p_uni;
+        elseif ($p_pre > 0) 
+            $promedio = $p_pre;
+        elseif ($p_sec > 0) 
+            $promedio = $p_sec;
+        else
+            $promedio = 0;
+
 
         return $promedio;
     }
