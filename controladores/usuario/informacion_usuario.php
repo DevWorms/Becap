@@ -45,11 +45,10 @@ $fecha = $_POST["fecha"];
 $pais = $_POST["pais"];
 $ciudad = $_POST["ciudad"];
 
-if ($_POST["estudias"] == "Si") {
+if ($_POST["estudias"] == "Si")
     $estudias = 1;
-} else {
-    $estudias = 0;
-}
+elseif ($_POST["estudias"] == "No")
+    $estudias = 2;
 
 if (!empty($apellido) && !empty($fecha) && !empty($pais) && !empty($ciudad) && !empty($estudias)) {
     $posgra = $_POST["posgrado"];
