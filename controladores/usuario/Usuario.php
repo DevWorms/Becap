@@ -104,6 +104,8 @@ class Usuario {
                 $finan, $arthu, $arqui, $ingen, $disin, $ensen, $medic);
             if ($validate === 1) {
                 $sql = "UPDATE becap_db.carreras_usuario SET 
+                        admin=:admin,
+                        aboga=:aboga,
                         psico=:psico, 
                         conta=:conta, 
                         econo=:econo,
@@ -115,6 +117,8 @@ class Usuario {
                         ensen=:ensen, 
                         medic=:medic WHERE id_usuario=:id_usuario";
                 $stm = $this->conn->prepare($sql);
+                $stm->bindParam(":admin", $admin, PDO::PARAM_INT);
+                $stm->bindParam(":aboga", $aboga, PDO::PARAM_INT);
                 $stm->bindParam(":psico", $psico, PDO::PARAM_INT);
                 $stm->bindParam(":conta", $conta, PDO::PARAM_INT);
                 $stm->bindParam(":econo", $econo, PDO::PARAM_INT);

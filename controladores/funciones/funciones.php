@@ -331,6 +331,13 @@
         modalBeca($resultado);
     }
 
+    /**
+     * Muestra el modal con el detalle de una beca, si es la pantalla de oportunidadaes
+     * también muestra los botones de favoritos y me interesa
+     *
+     * @param $becas
+     * @param bool $oportunidades
+     */
     function modalBeca($becas, $oportunidades = false) {
         $b = new Beca();
         foreach ($becas as $beca) {

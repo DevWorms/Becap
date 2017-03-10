@@ -323,6 +323,8 @@ INSERT INTO `beca_interesa` (`id_interesa`, `id_usuario`, `id_beca`) VALUES
 CREATE TABLE `carreras_usuario` (
   `id_registro` int(7) NOT NULL,
   `id_usuario` int(7) NOT NULL,
+  `admin` int(2) DEFAULT NULL,
+  `aboga` int(2) DEFAULT NULL,
   `psico` int(2) DEFAULT NULL,
   `conta` int(2) DEFAULT NULL,
   `econo` int(2) DEFAULT NULL,
@@ -339,8 +341,8 @@ CREATE TABLE `carreras_usuario` (
 -- Dumping data for table `carreras_usuario`
 --
 
-INSERT INTO `carreras_usuario` (`id_registro`, `id_usuario`, `psico`, `conta`, `econo`, `finan`, `arthu`, `arqui`, `ingen`, `disin`, `ensen`, `medic`) VALUES
-(2, 2, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0);
+INSERT INTO `carreras_usuario` (`id_registro`, `id_usuario`, `admin`, `aboga`, `psico`, `conta`, `econo`, `finan`, `arthu`, `arqui`, `ingen`, `disin`, `ensen`, `medic`) VALUES
+(2, 2, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 

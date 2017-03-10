@@ -3,11 +3,10 @@ require dirname(__FILE__) . "/../datos/conexion.php";
 include dirname(__FILE__) . "/Usuario.php";
 session_start();
 
-function notificacion($msj) {
-    echo
-        "<script>
-            alert('" . $msj . "');
-        </script>";
+function notificacion($msj, $location) {
+    echo '<script type="text/javascript">alert("' . $msj . '");';
+    echo "window.location.href='" . $location . "'";
+    echo "</script>";
 }
 
 $mail = $_SESSION["correo"];
@@ -81,12 +80,10 @@ if (!empty($apellido) && !empty($fecha) && !empty($pais) && !empty($ciudad) && !
 
         $resultado->closeCursor();
     } else {
-        notificacion($validate);
-        header("Location: ../../perfil.php");
+        notificacion($validate, "../../perfil.php");
     }
 } else {
-    notificacion("Completa todos los datos");
-    header("Location: ../../perfil.php");
+    notificacion("Completa todos los datos", "../../perfil.php");
 }
 
 

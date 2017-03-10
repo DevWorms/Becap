@@ -3,6 +3,8 @@
  */
 
 $('document').ready(function() {
+    loadProfile();
+
     $("form#formulario_informacion :button").each(function(){
         var input = $(this);
         input.click(function () {
@@ -18,7 +20,10 @@ $('document').ready(function() {
             console.log(btn + ": " + input_val.val());
         });
     });
-    loadProfile();
+
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();
+    });
 });
 
 function loadProfile() {
@@ -45,15 +50,15 @@ function loadProfile() {
             $("#telefono").val(response.Telefono_contacto);
             $("#tipo_beca").val(response.tipo_beca);
 
-            /*
-             if (response.arqui == 1) {
-             $("#admin").prop( "checked", true );
-             }
+            if (response.admin == 1) {
+                $("#admin").prop( "checked", true ).val(1);
+                $("#admin_btn").removeClass("btn-default").addClass("btn-info active");
+            }
 
-             if (response.arqui == 1) {
-             $("#aboga").prop( "checked", true );
-             }
-             */
+            if (response.aboga == 1) {
+                $("#aboga").prop( "checked", true ).val(1);
+                $("#aboga_btn").removeClass("btn-default").addClass("btn-info active");
+            }
 
             if (response.psico == 1) {
                 $("#psico").prop( "checked", true ).val(1);
