@@ -72,51 +72,24 @@
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Administración</button>
-                                  <input type="checkbox" class="hidden" value="Administración" id="admin" name="admin"/>
+                                  <button type="button" class="btn" data-color="info" id="admin_btn">Administración</button>
+                                  <input type="checkbox" class="hidden" value="0" id="admin" name="admin"/>
                               </span>
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Abogacía</button>
-                                  <input type="checkbox" class="hidden" value="Abogacía" id="aboga" name="aboga"/>
+                                  <button type="button" class="btn" data-color="info" id="aboga_btn">Abogacía</button>
+                                  <input type="checkbox" class="hidden" value="0" id="aboga" name="aboga"/>
                               </span>
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Psicología</button>
-                                  <input type="checkbox" class="hidden" value="Psicología" id="psico" name="psico"/>
-                              </span>
-                            </div>
-                          </div>
-                      </div>
-
-                      <div class="row">
-                          <div class="col-xs-4 col-sm-4 col-md-4">
-                            <div class="form-group">
-                              <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Contabilidad</button>
-                                  <input type="checkbox" class="hidden" value="Contabilidad" id="conta" name="conta"/>
-                              </span>
-                            </div>
-                          </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
-                            <div class="form-group">
-                              <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Economía</button>
-                                  <input type="checkbox" class="hidden" value="Economía" id="econo" name="econo"/>
-                              </span>
-                            </div>
-                          </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
-                            <div class="form-group">
-                              <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Finanzas</button>
-                                  <input type="checkbox" class="hidden" value="Finanzas" id="finan" name="finan"/>
+                                  <button type="button" class="btn" data-color="info" id="psico_btn">Psicología</button>
+                                  <input type="checkbox" class="hidden" value="0" id="psico" name="psico"/>
                               </span>
                             </div>
                           </div>
@@ -126,24 +99,24 @@
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Artes y Humanidades</button>
-                                  <input type="checkbox" class="hidden" id="arthu" name="arthu"/>
+                                  <button type="button" class="btn" data-color="info" id="conta_btn">Contabilidad</button>
+                                  <input type="checkbox" class="hidden" value="0" id="conta" name="conta"/>
                               </span>
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Arquitectura</button>
-                                  <input type="checkbox" class="hidden" id="arqui" name="arqui"/>
+                                  <button type="button" class="btn" data-color="info" id="econo_btn">Economía</button>
+                                  <input type="checkbox" class="hidden" value="0" id="econo" name="econo"/>
                               </span>
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Ingeniería</button>
-                                  <input type="checkbox" class="hidden" id="ingen" name="ingen"/>
+                                  <button type="button" class="btn" data-color="info" id="finan_btn">Finanzas</button>
+                                  <input type="checkbox" class="hidden" value="0" id="finan" name="finan"/>
                               </span>
                             </div>
                           </div>
@@ -153,24 +126,51 @@
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Diseño Industrial</button>
-                                  <input type="checkbox" class="hidden" id="disin" name="disin"/>
+                                  <button type="button" class="btn" data-color="info" id="arthu_btn">Artes y Humanidades</button>
+                                  <input type="checkbox" class="hidden" value="0" id="arthu" name="arthu"/>
                               </span>
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Enseñanza</button>
-                                  <input type="checkbox" class="hidden" id="ensen" name="ensen"/>
+                                  <button type="button" class="btn" data-color="info" id="arqui_btn">Arquitectura</button>
+                                  <input type="checkbox" class="hidden" value="0" id="arqui" name="arqui"/>
                               </span>
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Medicina</button>
-                                  <input type="checkbox" class="hidden" id="medic" name="medic"/>
+                                  <button type="button" class="btn" data-color="info" id="ingen_btn">Ingeniería</button>
+                                  <input type="checkbox" class="hidden" value="0" id="ingen" name="ingen"/>
+                              </span>
+                            </div>
+                          </div>
+                      </div>
+
+                      <div class="row">
+                          <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                              <span class="button-checkbox">
+                                  <button type="button" class="btn" data-color="info" id="disin_btn">Diseño Industrial</button>
+                                  <input type="checkbox" class="hidden" value="0" id="disin" name="disin"/>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                              <span class="button-checkbox">
+                                  <button type="button" class="btn" data-color="info" id="ensen_btn">Enseñanza</button>
+                                  <input type="checkbox" class="hidden" value="0" id="ensen" name="ensen"/>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                              <span class="button-checkbox">
+                                  <button type="button" class="btn" data-color="info" id="medic_btn">Medicina</button>
+                                  <input type="checkbox" class="hidden" value="0" id="medic" name="medic"/>
                               </span>
                             </div>
                           </div>
@@ -210,16 +210,12 @@
 
                       <div class="row">
                             <div class="col-xs-12 col-md-2 col-md-offset-5">
-                                <button class="btn btn-success btn-block" type="submit" onclick="validateInformation();">Actualizar</button>
+                                <button class="btn btn-success btn-block" type="submit" onclick="validateIntereses();">Actualizar</button>
                             </div>
                       </div>
                   </form>
 
-
-
                   <hr>
-
-
 
                   <form action="controladores/usuario/informacion_usuario.php"
                           method="post" class="form" role="form"
@@ -232,8 +228,6 @@
                           <br>
                        </div>
                       </div>
-
-
 
                       <div class="row">
                           <div class="col-xs-4 col-sm-4 col-md-4">
@@ -310,7 +304,7 @@
                       <br>
                       <div class="row">
                             <div class="col-xs-12 col-md-2 col-md-offset-5">
-                                <button class="btn btn-success btn-block" type="submit" onclick="validateForm();" name="enviar">Continuar</button>
+                                <button class="btn btn-success btn-block" type="submit" onclick="validateHistorial();" name="enviar">Continuar</button>
                             </div>
                       </div>
 
@@ -344,44 +338,6 @@
         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
         <script src="js/bootstrap-notify.js"></script>
         <script src="js/main.js"></script>
-        <script>
-            function validateInformation() {
-                event.preventDefault();
-                var valid = 1;
-                var msg = "";
-
-                if ( !$('#telefono').val() ) {
-                    valid = 0;
-                    msg = "Ingresa un número telefónico";
-                }
-
-                if ( !$('#tipo_beca').val() ) {
-                    valid = 0;
-                    msg = "Selecciona un tipo de beca";
-                }
-
-                if ( !$('#admin').is(':checked') && !$('#aboga').is(':checked') && !$('#psico').is(':checked')
-                    && !$('#conta').is(':checked') && !$('#econo').is(':checked') && !$('#finan').is(':checked')
-                    && !$('#arthu').is(':checked') && !$('#arqui').is(':checked') && !$('#ingen').is(':checked')
-                    && !$('#disin').is(':checked') && !$('#ensen').is(':checked') && !$('#medic').is(':checked') ) {
-                    valid = 0;
-                    msg = "Selecciona al menos área de interés";
-                }
-
-                if (valid === 1) {
-                    $('form#formulario_informacion').submit();
-                } else {
-                    $.notify({
-                        message: msg
-                    },{
-                        type: 'warning',
-                        placement: {
-                            from: "top",
-                            align: "right"
-                        }
-                    });
-                }
-            }
-        </script>
+        <script src="js/info_update.js"></script>
     </body>
 </html>
