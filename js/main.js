@@ -111,8 +111,7 @@ function addToFavorite(user_id, beca_id) {
                         align: "right"
                     }
                 });
-            }
-            else {
+            } else {
                 $('#tecmon' + beca_id).modal().hide();
                 $.notify({
                     message: response.mensaje
@@ -144,7 +143,7 @@ function colorHeart(id) {
 function colorStart(id) {
     var start = $('#start-m-' + id);
     start.removeClass("gray-box");
-    start.addClass("red");
+    start.addClass("yellow");
 }
 
 function addToMeInteresa(user_id, beca_id) {
@@ -173,8 +172,7 @@ function addToMeInteresa(user_id, beca_id) {
                         align: "right"
                     }
                 });
-            }
-            else {
+            } else {
                 $('#tecmon' + beca_id).modal().hide();
                 $.notify({
                     message: response.mensaje
