@@ -82,11 +82,13 @@
                             
                             <div class="row">
                              
-                              <div class="col-xs-6">
-                                <span class="glyphicon glyphicon-heart ' . $color . '" aria-hidden="true" id="heart-' . $fila["ID_Beca"] . '></span>
-                                <a href="" data-toggle="modal" class="blue-box" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box">' . substr($fila["Nombre_Escuela"],0,30) . '</span></a>  
+                              <div class="col-xs-1">
+                                <span class="glyphicon glyphicon-heart ' . $color . '" aria-hidden="true" id="heart-' . $fila["ID_Beca"] . '"></span> 
                               </div>
                              
+                             <div class="col-xs-5 space-inside">
+                                <a href="" data-toggle="modal" class="blue-box" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box">' . substr($fila["Nombre_Escuela"],0,30) . '</span></a> 
+                             </div>
                              
                               <div class="col-xs-3 space-inside">
                                 <p class="dark-gray"><b>' . $tipo . '</b></p>
