@@ -76,7 +76,7 @@
 
                 echo
                     '    
-                    
+                    <div class="row">
 
                         <div class="col-xs-12 caja-space caja-h-1 beca tipo-' . $fila["ID_Tipo"] . '" style="margin-top:10px">
                             
@@ -102,7 +102,7 @@
 
                         </div>
 
-                    
+                    </div>
                     ';
             }
     }
