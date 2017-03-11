@@ -39,7 +39,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand animated bounceInLeft" href="#">Becap</a>
+                  <a class="navbar-brand" href="#">Becap</a>
                 </div>
 
                 <div id="navbar" class="navbar-collapse collapse">

@@ -76,24 +76,31 @@
 
                 echo
                     '    
-                    <div class="row">
-                        <div class="col-md-12 caja-space caja-h-1 beca tipo-' . $fila["ID_Tipo"] . '" style="margin-top:10px">
+                    
+
+                        <div class="col-xs-12 caja-space caja-h-1 beca tipo-' . $fila["ID_Tipo"] . '" style="margin-top:10px">
+                            
                             <div class="row">
-                              <div class="col-xs-1">
-                                <span class="glyphicon glyphicon-heart ' . $color . '" aria-hidden="true" align="right" id="heart-' . $fila["ID_Beca"] . '></span> 
+                             
+                              <div class="col-xs-6">
+                                <span class="glyphicon glyphicon-heart ' . $color . '" aria-hidden="true" id="heart-' . $fila["ID_Beca"] . '></span>
+                                <a href="" data-toggle="modal" class="blue-box" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box">' . substr($fila["Nombre_Escuela"],0,30) . '</span></a>  
                               </div>
+                             
+                             
                               <div class="col-xs-3 space-inside">
-                                <a href="" data-toggle="modal" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box">' . substr($fila["Nombre_Escuela"],0,30) . '</span></a>  
-                              </div>
-                              <div class="col-xs-4 space-inside">
                                 <p class="dark-gray"><b>' . $tipo . '</b></p>
                               </div>
-                              <div class="col-xs-4 space-inside">
+                             
+                              <div class="col-xs-3 space-inside">
                                 <p class="dark-gray"><b>Aplica ' . $fila["Beca_Sobre"] . '</b></p>
                               </div>
+
                             </div>
+
                         </div>
-                    </div>
+
+                    
                     ';
             }
     }
@@ -391,7 +398,7 @@
                                     <br>
                                 </div>
                             </div>
-                            <br>
+                            
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1">
                                     <div class="tab-content">

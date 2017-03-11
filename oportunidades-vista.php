@@ -71,20 +71,19 @@
                     <a href="#" id="menu_3" onclick="filtrar($(this));" class="list-group-item">Beca Especie</a>
                 </div>
                 <div align="center">
-                  <button class="btn btn-default btn-sm gray">                   
-                    <a href="oportunidades.php">
-                      <span class="glyphicon glyphicon glyphicon-th gr"></span>
-                    </a>
-                  </button>
+                  <a href="oportunidades.php" class="btn btn-default btn-sm gray">
+                    <span class="glyphicon glyphicon glyphicon-th"></span>
+                  </a>
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <button class="btn btn-info btn-sm"> 
+                  <a class="btn btn-info btn-sm"> 
                       <span class="glyphicon glyphicon glyphicon-align-justify gr"></span>
-                  </button>
+                  </a>
                 </div>
             </div>
 
             <div class="col-md-9">
                 <div id="becas_list">
+                <br><br>
                 <?php echo MostrarBecasList($_SESSION["id_usuario"]); ?>
 
                 <!--

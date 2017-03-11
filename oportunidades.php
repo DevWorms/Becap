@@ -73,16 +73,14 @@
                     <a href="#" id="menu_3" onclick="filtrar($(this));" class="list-group-item">Beca Especie</a>
                 </div>
                 <div align="center">
-                  <button class="btn btn-info btn-sm">
+                  <a class="btn btn-info btn-sm">
                       <span class="glyphicon glyphicon glyphicon-th gr"></span>
-                  </button>
+                  </a>
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <button class="btn btn-default btn-sm gray">
-                    <a href="oportunidades-vista.php">
-                      <span class="glyphicon glyphicon glyphicon-align-justify gr">
-                      </span>
-                    </a>
-                  </button>
+                  <a href="oportunidades-vista.php" class="btn btn-default btn-sm gray">
+                    <span class="glyphicon glyphicon glyphicon-align-justify">
+                    </span>
+                  </a>
                 </div>
             </div>
 
