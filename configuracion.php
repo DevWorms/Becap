@@ -73,7 +73,7 @@
                 <br> 
                  <b class="dark-gray">Contraseña:</b> &nbsp;&nbsp;******
                 <br>
-                <button class="btn btn-default m-margin" data-toggle="modal" data-target="#tecmon">Cambiar contraseña</button>
+                <button class="btn btn-default m-margin" data-toggle="modal" data-target="#updatePassModal">Cambiar contraseña</button>
               </div>
             </div>
           <br> 
@@ -129,7 +129,7 @@
                 <h4>Privacidad</h4>
               </div>
               <div class="col-md-7">
-                Ir al aviso de <span> <a href="">Privacidad, Términos y Condiciones</a></span>
+                Ir al aviso de <span> <a href="terminos.php">Privacidad, Términos y Condiciones</a></span>
               </div>
             </div>
           <br>
@@ -152,29 +152,38 @@
       <script>window.jQuery || document.write('<script src="vendor/jquery/jquery-1.11.2.min.js"><\/script>')</script>
       <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
       <script src="js/main.js"></script>
+      <script src="js/bootstrap-notify.js"></script>
+        <script src="js/configuracion.js"></script>
     </body>
 </html>
 
-  <div id="tecmon" class="modal fade" role="dialog">
+  <div id="updatePassModal" class="modal fade " role="dialog">
       <div class="modal-dialog">
-
-        <div class="modal-content">
-          <div class="modal-header">
-            <div align="">
-                <h4 class="modal-title white"><br><b> Modificar contraseña</b></h4>  
-            </div>
-          </div>
-          <div class="modal-body">
-            <p>
-              <br>
-              <span class="lead">Hola DonmU</span>
-              <br>
-              Bla Bla Bla
-            </p>
-          </div>
-          <!-- SIN FOOTER -->
+          <div class="modal-content">
+              <div class="modal-header">
+                <div align="">
+                    <h4 class="modal-title white"><br><b> Modificar contraseña</b></h4>
+                </div>
+              </div>
+              <div class="modal-body" style="background:#ffffff !important;">
+                  <div class="col-lg-3"></div>
+                  <div class="col-lg-6">
+                      <form action="controladores/sesion/iniciar_sesion.php" method="post" name="formularionav">
+                          <div class="form-group">
+                              <input type="password" placeholder="Nueva contraseña" class="form-control" id="pwd" name="pwd" required>
+                          </div>
+                          <div class="form-group">
+                              <input type="password" placeholder="Confirmar contraseña" class="form-control" id="pwd_confirm" name="pwd_confirm" required>
+                          </div>
+                          <div class="form-group">
+                              <button type="submit" class="btn btn-info pull-right" onclick="updatePassword();" name="enviar" id="enviar">Cambiar contraseña</button>
+                          </div>
+                      </form>
+                  </div>
+                  <div class="col-lg-3"></div>
+              </div>
+            <div class="modal-footer"></div>
         </div>
-
       </div>
   </div>
 

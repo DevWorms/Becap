@@ -249,7 +249,7 @@
                   <span>Becap S.A de C.V 2016</span>
               </div>
               <div class="col-xs-6" align="right">
-                <span><a href="">Privacidad, Términos y Condiciones</a></span>
+                <span><a href="terminos.php">Privacidad, Términos y Condiciones</a></span>
               </div>
             </div>
           </div>
