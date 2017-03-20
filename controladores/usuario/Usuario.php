@@ -200,6 +200,26 @@ class Usuario {
             return $msg;
         }
     }
+
+    public function updatePassword($password, $password_confirmation) {
+        if ($password === $password_confirmation) {
+            $password = password_hash($password, PASSWORD_DEFAULT);
+
+            $sql = "UPDATE becap_db.usuarios SET Pwd_Usuario=:pwd WHERE ID_Usuario=:id";
+            $stm = $this->conn->prepare($sql);
+            $stm->bindParam(":pwd", $password, PDO::PARAM_STR);
+            $stm->bindParam(":id", $_SESSION['id_usuario'], PDO::PARAM_INT);
+            $stm->execute();
+
+
+            $res = ['estado' => 1, 'mensaje' => 'Tu contraseña se actualizó correctamente'];
+        } else {
+
+            $res = ['estado' => 0, 'mensaje' => 'Las contraseñas no coinciden'];
+        }
+
+        return json_encode($res);
+    }
 }
 
 if (isset($_POST['get'])) {
@@ -215,6 +235,9 @@ if (isset($_POST['get'])) {
             break;
         case "updateIntereses":
             echo $u->updateIntereses($_POST);
+            break;
+        case "updatePassword":
+            echo $u->updatePassword($_POST['pwd'], $_POST['pwd_confirm']);
             break;
         default:
             header("Location: ../../");
