@@ -189,6 +189,7 @@
 
     function MostrarFavIntereses($id_usuario) {
         global $pdo;
+        $b = new Beca();
 
         $operacion = "SELECT *, '1' AS tipo FROM ( SELECT becas.*, escuelas.Nombre_Escuela FROM becas INNER JOIN escuelas ON escuelas.ID_Escuela = becas.id_escuela) AS tabla INNER JOIN beca_favorito ON tabla.ID_Beca = beca_favorito.id_beca WHERE beca_favorito.id_usuario = ? UNION SELECT *, '2' AS tipo FROM ( SELECT becas.*, escuelas.Nombre_Escuela FROM becas INNER JOIN escuelas ON escuelas.ID_Escuela = becas.id_escuela) AS tabla INNER JOIN beca_interesa ON tabla.ID_Beca = beca_interesa.id_beca WHERE beca_interesa.id_usuario = ?";
 
@@ -212,10 +213,16 @@
                 $tipo = "Beca Especie";
 
 
-              if($fila["tipo"] == 1)
-                $icono = '<span class="glyphicon glyphicon-heart red" aria-hidden="true" align="right"></span>';
-              else
-                $icono = '<span class="glyphicon glyphicon-star yellow" aria-hidden="true" align="right"></span>';
+              $is_fav = $b->isFavorite($_SESSION['id_usuario'], $fila["ID_Beca"]);
+              $me_interesa = $b->isMeInteresa($_SESSION['id_usuario'], $fila["ID_Beca"]);
+
+              if ($is_fav && $me_interesa) {
+                  $icono = '<span class="glyphicon glyphicon-heart red" style="position: absolute; margin-left: -48px;" aria-hidden="true"></span><span class="glyphicon glyphicon-star yellow" style="position: absolute; margin-left: -10px" aria-hidden="true"></span>';
+              } elseif ($is_fav && !$me_interesa) {
+                  $icono = '<span class="glyphicon glyphicon-star yellow" aria-hidden="true" align="right"></span>';
+              } else {
+                  $icono = '<span class="glyphicon glyphicon-heart red" aria-hidden="true" align="right"></span>';
+              }
 
                 echo
                     '        
@@ -257,7 +264,7 @@
         return $temp_array;
     }
 
-/**
+    /**
      * Valida que el usuario tenga al menos una escuela y su promedio correspondiente
      *
      * @param $user
@@ -405,6 +412,7 @@
                         <div class="modal-body" style="padding: 0 0 0 0">
                             <img class="img-responsive" src="img/modal_img/<?php echo $beca["ID_Escuela"]; ?>.jpg" alt="image">
                             <div class="row">
+                                <div class="col-xs-12" align="center" id="msg-<?php echo $beca["ID_Beca"]; ?>"></div>
                                 <div class="col-xs-12" align="center">
                                     <br>
                                     <div class="col-xs-<?php echo ($oportunidades) ? 3 : 6 ;?>">

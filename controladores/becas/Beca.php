@@ -8,6 +8,7 @@
  */
 
 require_once dirname(__FILE__) . '/../datos/ConexionBD.php';
+session_start();
 
 class Beca {
     private $conn;
@@ -22,7 +23,7 @@ class Beca {
                 try {
                     $query = "INSERT INTO beca_favorito (id_usuario, id_beca) VALUES (:user_id, :beca_id)";
                     $stm = $this->conn->prepare($query);
-                    $stm->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+                    $stm->bindParam(":user_id", $_SESSION['id_usuario'], PDO::PARAM_INT);
                     $stm->bindParam(":beca_id", $beca_id, PDO::PARAM_INT);
                     $stm->execute();
 
@@ -63,7 +64,7 @@ class Beca {
                 try {
                     $query = "INSERT INTO beca_interesa (id_usuario, id_beca) VALUES (:user_id, :beca_id)";
                     $stm = $this->conn->prepare($query);
-                    $stm->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+                    $stm->bindParam(":user_id", $_SESSION['id_usuario'], PDO::PARAM_INT);
                     $stm->bindParam(":beca_id", $beca_id, PDO::PARAM_INT);
                     $stm->execute();
 
@@ -104,7 +105,7 @@ class Beca {
                 try {
                     $query = "DELETE FROM beca_interesa WHERE id_usuario=:user_id and id_beca=:beca_id;";
                     $stm = $this->conn->prepare($query);
-                    $stm->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+                    $stm->bindParam(":user_id", $_SESSION['id_usuario'], PDO::PARAM_INT);
                     $stm->bindParam(":beca_id", $beca_id, PDO::PARAM_INT);
                     $stm->execute();
 
@@ -145,7 +146,7 @@ class Beca {
                 try {
                     $query = "DELETE FROM beca_favorito WHERE id_usuario=:user_id and id_beca=:beca_id;";
                     $stm = $this->conn->prepare($query);
-                    $stm->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+                    $stm->bindParam(":user_id", $_SESSION['id_usuario'], PDO::PARAM_INT);
                     $stm->bindParam(":beca_id", $beca_id, PDO::PARAM_INT);
                     $stm->execute();
 
@@ -185,7 +186,7 @@ class Beca {
             try {
                 $query = "SELECT * FROM beca_favorito WHERE id_usuario=:user_id and id_beca=:beca_id";
                 $stm = $this->conn->prepare($query);
-                $stm->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+                $stm->bindParam(":user_id", $_SESSION['id_usuario'], PDO::PARAM_INT);
                 $stm->bindParam(":beca_id", $beca_id, PDO::PARAM_INT);
                 $stm->execute();
                 $resultado = $stm->fetchAll()[0];
@@ -208,7 +209,7 @@ class Beca {
             try {
                 $query = "SELECT * FROM beca_interesa WHERE id_usuario=:user_id and id_beca=:beca_id";
                 $stm = $this->conn->prepare($query);
-                $stm->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+                $stm->bindParam(":user_id", $_SESSION['id_usuario'], PDO::PARAM_INT);
                 $stm->bindParam(":beca_id", $beca_id, PDO::PARAM_INT);
                 $stm->execute();
                 $resultado = $stm->fetchAll()[0];

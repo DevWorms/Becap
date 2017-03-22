@@ -101,27 +101,9 @@ function addToFavorite(user_id, beca_id) {
             success :  function(response) {
             if (response.estado == 1) {
                 colorStart(user_id, beca_id);
-                $('#tecmon' + beca_id).modal().hide();
-                $.notify({
-                    message: response.mensaje
-                },{
-                    type: 'success',
-                    placement: {
-                        from: "top",
-                        align: "right"
-                    }
-                });
+                notificacion(response.mensaje, "success", beca_id);
             } else {
-                $('#tecmon' + beca_id).modal().hide();
-                $.notify({
-                    message: response.mensaje
-                },{
-                    type: 'warning',
-                    placement: {
-                        from: "top",
-                        align: "right"
-                    }
-                });
+                notificacion(response.mensaje, "danger", beca_id);
             }
         },
         error : function (response) {
@@ -145,27 +127,9 @@ function removeFavorite(user_id, beca_id) {
         success :  function(response) {
             if (response.estado == 1) {
                 colorStartGrey(user_id, beca_id);
-                $('#tecmon' + beca_id).modal().hide();
-                $.notify({
-                    message: response.mensaje
-                },{
-                    type: 'success',
-                    placement: {
-                        from: "top",
-                        align: "right"
-                    }
-                });
+                notificacion(response.mensaje, "success", beca_id);
             } else {
-                $('#tecmon' + beca_id).modal().hide();
-                $.notify({
-                    message: response.mensaje
-                },{
-                    type: 'warning',
-                    placement: {
-                        from: "top",
-                        align: "right"
-                    }
-                });
+                notificacion(response.mensaje, "danger", beca_id);
             }
         },
         error : function (response) {
@@ -229,28 +193,9 @@ function addToMeInteresa(user_id, beca_id) {
         success :  function(response) {
             if (response.estado == 1) {
                 colorHeart(user_id, beca_id);
-
-                $('#tecmon' + beca_id).modal().hide();
-                $.notify({
-                    message: response.mensaje
-                },{
-                    type: 'success',
-                    placement: {
-                        from: "top",
-                        align: "right"
-                    }
-                });
+                notificacion(response.mensaje, "success", beca_id);
             } else {
-                $('#tecmon' + beca_id).modal().hide();
-                $.notify({
-                    message: response.mensaje
-                },{
-                    type: 'warning',
-                    placement: {
-                        from: "top",
-                        align: "right"
-                    }
-                });
+                notificacion(response.mensaje, "danger", beca_id);
             }
         },
         error : function (response) {
@@ -274,28 +219,9 @@ function removeFromMeInteresa(user_id, beca_id) {
         success :  function(response) {
             if (response.estado == 1) {
                 colorHeartGrey(user_id, beca_id);
-
-                $('#tecmon' + beca_id).modal().hide();
-                $.notify({
-                    message: response.mensaje
-                },{
-                    type: 'success',
-                    placement: {
-                        from: "top",
-                        align: "right"
-                    }
-                });
+                notificacion(response.mensaje, "success", beca_id);
             } else {
-                $('#tecmon' + beca_id).modal().hide();
-                $.notify({
-                    message: response.mensaje
-                },{
-                    type: 'warning',
-                    placement: {
-                        from: "top",
-                        align: "right"
-                    }
-                });
+                notificacion(response.mensaje, "danger", beca_id);
             }
         },
         error : function (response) {
@@ -323,4 +249,16 @@ function filtrar(obj) {
             $(".tipo-3").show();
             break;
     }
+}
+
+function notificacion(msg, type, id) {
+    var div = $("#msg-" + id);
+    div.html("");
+    div.html('<div class="alert alert-' + type + '"> &nbsp; ' + msg + '</div>');
+
+    setTimeout(
+        function() {
+            div.html("");
+        }, 3000);
+
 }
