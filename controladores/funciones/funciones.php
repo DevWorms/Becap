@@ -11,7 +11,7 @@
 
         $promedio = PromedioUsuario($id_usuario);
         
-        $operacion = "SELECT becas.ID_Beca, becas.ID_Escuela, escuelas.Nombre_Escuela, becas.Nombre_Beca, becas.ID_Tipo , becas.Descripcion_Beca, becas.Beca_Sobre FROM becas JOIN escuelas ON becas.ID_Escuela = escuelas.ID_Escuela WHERE becas.Promedio_Acceso <= ?";
+        $operacion = "SELECT becas.ID_Beca, becas.ID_Escuela, escuelas.Nombre_Escuela, becas.Nombre_Beca, becas.ID_Tipo , becas.Descripcion_Beca, becas.Beca_Sobre, becas.Porcentaje_Beca FROM becas JOIN escuelas ON becas.ID_Escuela = escuelas.ID_Escuela WHERE becas.Promedio_Acceso <= ?";
 
         $sentencia = $pdo->prepare($operacion);
         $sentencia->bindParam(1, $promedio);         
@@ -23,10 +23,14 @@
             foreach ($resultado as $fila )  {
                 $color = ($b->isMeInteresa($_SESSION['id_usuario'], $fila["ID_Beca"])) ? 'red' : 'gray-box';
 
-              if($fila["ID_Tipo"] == 1)
-                $tipo = "Beca Académica";
-              if($fila["ID_Tipo"] == 2)
-                $tipo = "Beca Crédito";
+              if($fila["ID_Tipo"] == 1){
+                              $tipo = "Beca Académica";
+                              $muestra = "Beca";
+                          }
+              if($fila["ID_Tipo"] == 2){
+                              $tipo = "Beca Crédito";
+                              $muestra = "Crédito";
+                          }
               if($fila["ID_Tipo"] == 3)
                 $tipo = "Beca Especie";
 
@@ -37,7 +41,7 @@
                         <a href="" data-toggle="modal" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box">' . substr($fila["Nombre_Escuela"],0,30) . '</span></a>
                         <div class="space-inside-p">
                             <p><strong>' . $tipo . '</strong></p>
-                            <p>Aplica ' . $fila["Beca_Sobre"] . '</p>
+                            <p>' . $fila["Porcentaje_Beca"] . " de " . $muestra . " " . $fila["Beca_Sobre"] . '</p>
                         </div>
                       </div>
                       <div class="col-xs-3" align="right">
@@ -426,6 +430,10 @@
                                                     <label><input type="checkbox">&nbsp;&nbsp; Comprobar ingresos <?php echo $beca['Ingresos_Comprobar']; ?></label>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div id="institucion-<?php echo $beca["ID_Beca"]; ?>" class="tab-pane fade">
+                                            <h3>La institución</h3>
+                                            <p><?php echo $beca["Descripcion_Escuela"]; ?></p>
                                         </div>
                                         <div id="institucion-<?php echo $beca["ID_Beca"]; ?>" class="tab-pane fade">
                                             <h3>La institución</h3>

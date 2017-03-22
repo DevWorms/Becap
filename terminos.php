@@ -42,7 +42,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <?php if (check()) { ?>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" class="gr"><b>Mis Becas</b></a></li>
+                <li><a href="misbecas.php" class="gr"><b>Mis Becas</b></a></li>
                 <li><a href="oportunidades.php" class="gr"><b>Oportunidades</b></a></li>
                 <li><a href="configuracion.php" class="gr"><b>Configuración</b></a></li>
                 <li><a href="#"><?php echo $_SESSION["nombreCompleto"]; ?></a></li>
@@ -205,7 +205,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-6" align="left">
-                <span>Becap S.A de C.V 2016</span>
+                <span>Becap S.A de C.V. 2016</span>
             </div>
             <div class="col-xs-6" align="right">
                 <span><a href="">Privacidad, Términos y Condiciones</a></span>

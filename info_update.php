@@ -325,7 +325,7 @@
           <div class="container">
             <div class="row">
               <div class="col-xs-6" align="left">
-                  <span>Becap S.A de C.V 2016</span>
+                    <span>Becap S.A de C.V. 2016</span>
               </div>
               <div class="col-xs-6" align="right">
                 <span><a href="terminos.php">Privacidad, Términos y Condiciones</a></span>
