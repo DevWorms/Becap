@@ -100,7 +100,7 @@ function addToFavorite(user_id, beca_id) {
         dataType: "json",
             success :  function(response) {
             if (response.estado == 1) {
-                colorStart(beca_id);
+                colorStart(user_id, beca_id);
                 $('#tecmon' + beca_id).modal().hide();
                 $.notify({
                     message: response.mensaje
@@ -130,7 +130,51 @@ function addToFavorite(user_id, beca_id) {
     });
 }
 
-function colorHeart(id) {
+function removeFavorite(user_id, beca_id) {
+    event.preventDefault();
+
+    $.ajax({
+        type : 'POST',
+        url  : 'controladores/becas/Beca.php',
+        data : {
+            get: "removeFavorite",
+            user_id: user_id,
+            beca_id: beca_id
+        },
+        dataType: "json",
+        success :  function(response) {
+            if (response.estado == 1) {
+                colorStartGrey(user_id, beca_id);
+                $('#tecmon' + beca_id).modal().hide();
+                $.notify({
+                    message: response.mensaje
+                },{
+                    type: 'success',
+                    placement: {
+                        from: "top",
+                        align: "right"
+                    }
+                });
+            } else {
+                $('#tecmon' + beca_id).modal().hide();
+                $.notify({
+                    message: response.mensaje
+                },{
+                    type: 'warning',
+                    placement: {
+                        from: "top",
+                        align: "right"
+                    }
+                });
+            }
+        },
+        error : function (response) {
+            console.log(response);
+        }
+    });
+}
+
+function colorHeart(user_id, id) {
     var heart = $('#heart-' + id);
     heart.removeClass("gray-box");
     heart.addClass("red");
@@ -138,12 +182,36 @@ function colorHeart(id) {
     heart = $('#heart-m-' + id);
     heart.removeClass("gray-box");
     heart.addClass("red");
+
+    $("#btn-interesa-" + id).attr("onclick","removeFromMeInteresa(" + user_id + ", " + id + ")");
 }
 
-function colorStart(id) {
+function colorHeartGrey(user_id, id) {
+    var heart = $('#heart-' + id);
+    heart.removeClass("red");
+    heart.addClass("gray-box");
+
+    heart = $('#heart-m-' + id);
+    heart.removeClass("red");
+    heart.addClass("gray-box");
+
+    $("#btn-interesa-" + id).attr("onclick","addToMeInteresa(" + user_id + ", " + id + ")");
+}
+
+function colorStart(user_id, id) {
     var start = $('#start-m-' + id);
     start.removeClass("gray-box");
     start.addClass("yellow");
+
+    $("#btn-favorito-" + id).attr("onclick","removeFavorite(" + user_id + ", " + id + ")");
+}
+
+function colorStartGrey(user_id, id) {
+    var start = $('#start-m-' + id);
+    start.removeClass("yellow");
+    start.addClass("gray-box");
+
+    $("#btn-favorito-" + id).attr("onclick","addToFavorite(" + user_id + ", " + id + ")");
 }
 
 function addToMeInteresa(user_id, beca_id) {
@@ -160,7 +228,52 @@ function addToMeInteresa(user_id, beca_id) {
         dataType: "json",
         success :  function(response) {
             if (response.estado == 1) {
-                colorHeart(beca_id);
+                colorHeart(user_id, beca_id);
+
+                $('#tecmon' + beca_id).modal().hide();
+                $.notify({
+                    message: response.mensaje
+                },{
+                    type: 'success',
+                    placement: {
+                        from: "top",
+                        align: "right"
+                    }
+                });
+            } else {
+                $('#tecmon' + beca_id).modal().hide();
+                $.notify({
+                    message: response.mensaje
+                },{
+                    type: 'warning',
+                    placement: {
+                        from: "top",
+                        align: "right"
+                    }
+                });
+            }
+        },
+        error : function (response) {
+            console.log(response);
+        }
+    });
+}
+
+function removeFromMeInteresa(user_id, beca_id) {
+    event.preventDefault();
+
+    $.ajax({
+        type : 'POST',
+        url  : 'controladores/becas/Beca.php',
+        data : {
+            get: "removeInteresa",
+            user_id: user_id,
+            beca_id: beca_id
+        },
+        dataType: "json",
+        success :  function(response) {
+            if (response.estado == 1) {
+                colorHeartGrey(user_id, beca_id);
 
                 $('#tecmon' + beca_id).modal().hide();
                 $.notify({

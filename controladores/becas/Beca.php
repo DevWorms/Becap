@@ -98,10 +98,92 @@ class Beca {
         return json_encode($res);
     }
 
+    public function removeMeInteresa($user_id, $beca_id) {
+        if (is_numeric($user_id) && is_numeric($beca_id)) {
+            if ($this->isMeInteresa($user_id, $beca_id)) {
+                try {
+                    $query = "DELETE FROM beca_interesa WHERE id_usuario=:user_id and id_beca=:beca_id;";
+                    $stm = $this->conn->prepare($query);
+                    $stm->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+                    $stm->bindParam(":beca_id", $beca_id, PDO::PARAM_INT);
+                    $stm->execute();
+
+                    $res = [
+                        'estado' => 1,
+                        'mensaje' => "La beca se removio correctamente de tu liste \"Me Interesa\""
+                    ];
+                } catch (PDOException $ex) {
+                    $res = [
+                        'estado' => 0,
+                        'mensaje' => "Ocurrio un error al remover: " . $ex->getMessage()
+                    ];
+                } catch (Exception $ex) {
+                    $res = [
+                        'estado' => 0,
+                        'mensaje' => "Ocurrio un error al remover: " . $ex->getMessage()
+                    ];
+                }
+            } else {
+                $res = [
+                    'estado' => 0,
+                    'mensaje' => "La beca se removio correctamente"
+                ];
+            }
+        } else {
+            $res = [
+                'estado' => 0,
+                'mensaje' => "Ingresa un valor valido"
+            ];
+        }
+
+        return json_encode($res);
+    }
+
+    public function removeToFavoritos($user_id, $beca_id) {
+        if (is_numeric($user_id) && is_numeric($beca_id)) {
+            if ($this->isFavorite($user_id, $beca_id)) {
+                try {
+                    $query = "DELETE FROM beca_favorito WHERE id_usuario=:user_id and id_beca=:beca_id;";
+                    $stm = $this->conn->prepare($query);
+                    $stm->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+                    $stm->bindParam(":beca_id", $beca_id, PDO::PARAM_INT);
+                    $stm->execute();
+
+                    $res = [
+                        'estado' => 1,
+                        'mensaje' => "La beca se removio correctamente de tu liste de Favoritos"
+                    ];
+                } catch (PDOException $ex) {
+                    $res = [
+                        'estado' => 0,
+                        'mensaje' => "Ocurrio un error al remover: " . $ex->getMessage()
+                    ];
+                } catch (Exception $ex) {
+                    $res = [
+                        'estado' => 0,
+                        'mensaje' => "Ocurrio un error al remover: " . $ex->getMessage()
+                    ];
+                }
+            } else {
+                $res = [
+                    'estado' => 0,
+                    'mensaje' => "La beca se removio correctamente"
+                ];
+            }
+        } else {
+            $res = [
+                'estado' => 0,
+                'mensaje' => "Ingresa un valor valido"
+            ];
+        }
+
+        return json_encode($res);
+    }
+
     public function isFavorite($user_id, $beca_id) {
         if (is_numeric($user_id) && is_numeric($beca_id)) {
             try {
-                $query = "SELECT * FROM beca_interesa WHERE id_usuario=:user_id and id_beca=:beca_id";
+                $query = "SELECT * FROM beca_favorito WHERE id_usuario=:user_id and id_beca=:beca_id";
                 $stm = $this->conn->prepare($query);
                 $stm->bindParam(":user_id", $user_id, PDO::PARAM_INT);
                 $stm->bindParam(":beca_id", $beca_id, PDO::PARAM_INT);
@@ -124,7 +206,7 @@ class Beca {
     public function isMeInteresa($user_id, $beca_id) {
         if (is_numeric($user_id) && is_numeric($beca_id)) {
             try {
-                $query = "SELECT * FROM beca_favorito WHERE id_usuario=:user_id and id_beca=:beca_id";
+                $query = "SELECT * FROM beca_interesa WHERE id_usuario=:user_id and id_beca=:beca_id";
                 $stm = $this->conn->prepare($query);
                 $stm->bindParam(":user_id", $user_id, PDO::PARAM_INT);
                 $stm->bindParam(":beca_id", $beca_id, PDO::PARAM_INT);
@@ -155,6 +237,12 @@ if (isset($_POST['get'])) {
             break;
         case 'addInteresa':
             echo $b->addToMeInteresa($_POST['user_id'], $_POST['beca_id']);
+            break;
+        case 'removeFavorite':
+            echo $b->removeToFavoritos($_POST['user_id'], $_POST['beca_id']);
+            break;
+        case 'removeInteresa':
+            echo $b->removeMeInteresa($_POST['user_id'], $_POST['beca_id']);
             break;
         default:
             header("Location: ../../");

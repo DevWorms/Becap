@@ -192,9 +192,11 @@
         $sentencia->bindParam(1, $id_usuario);  
         $sentencia->bindParam(2, $id_usuario);       
         $sentencia->execute();
-        $resultado = $sentencia->fetchAll();
+        $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+        $sentencia->rowCount();
 
-        $filas = $sentencia->rowCount();
+        // Remueve los duplicados
+        $resultado = unique_multidim_array($resultado, "ID_Beca");
           
             foreach ($resultado as $fila )  {
 
@@ -236,7 +238,22 @@
             }
     }
 
-    /**
+    function unique_multidim_array($array, $key) {
+        $temp_array = array();
+        $i = 0;
+        $key_array = array();
+
+        foreach($array as $val) {
+            if (!in_array($val[$key], $key_array)) {
+                $key_array[$i] = $val[$key];
+                $temp_array[$i] = $val;
+            }
+            $i++;
+        }
+        return $temp_array;
+    }
+
+/**
      * Valida que el usuario tenga al menos una escuela y su promedio correspondiente
      *
      * @param $user
@@ -350,8 +367,11 @@
     function modalBeca($becas, $oportunidades = false) {
         $b = new Beca();
         foreach ($becas as $beca) {
-            $color = ($b->isMeInteresa($_SESSION['id_usuario'], $beca["ID_Beca"])) ? 'red' : 'gray-box';
-            $colorS = ($b->isFavorite($_SESSION['id_usuario'], $beca["ID_Beca"])) ? 'yellow' : 'gray-box';
+            $meInteresa = $b->isMeInteresa($_SESSION['id_usuario'], $beca["ID_Beca"]);
+            $isFavorite = $b->isFavorite($_SESSION['id_usuario'], $beca["ID_Beca"]);
+
+            $color = ($meInteresa) ? 'red' : 'gray-box';
+            $colorS = ($isFavorite) ? 'yellow' : 'gray-box';
 
             $iconoH = '<i class="glyphicon glyphicon-heart ' . $color . '" id="heart-m-' . $beca['ID_Beca'] . '"></i>';
             $iconoS = '<i class="glyphicon glyphicon-star ' . $colorS . '" id="start-m-' . $beca['ID_Beca'] . '"></i>';
@@ -391,10 +411,22 @@
                                     </div>
                                     <?php if ($oportunidades) { ?>
                                         <div class="col-xs-3">
-                                            <button class="btn btn-danger btn-block" onclick="addToMeInteresa(<?php echo $_SESSION['id_usuario'] . ", " . $beca["ID_Beca"]; ?>);">Me interesa</button>&nbsp;
+                                            <button class="btn btn-danger btn-block" onclick="
+                                                    <?php if ($meInteresa) { ?>
+                                                            removeFromMeInteresa(<?php echo $_SESSION['id_usuario'] . ", " . $beca["ID_Beca"]; ?>);
+                                                    <?php } else {?>
+                                                            addToMeInteresa(<?php echo $_SESSION['id_usuario'] . ", " . $beca["ID_Beca"]; ?>);
+                                                    <?php } ?>
+                                                    " id="btn-interesa-<?php echo $beca["ID_Beca"]; ?>">Me interesa</button>&nbsp;
                                         </div>
                                         <div class="col-xs-3">
-                                            <button class="btn btn-default btn-block" onclick="addToFavorite(<?php echo $_SESSION['id_usuario'] . ", " . $beca["ID_Beca"]; ?>);" style="background-color:#e8ba00">Favorito</button>&nbsp;
+                                            <button class="btn btn-default btn-block" onclick="
+                                                    <?php if ($isFavorite) { ?>
+                                                            removeFavorite(<?php echo $_SESSION['id_usuario'] . ", " . $beca["ID_Beca"]; ?>);
+                                                    <?php } else {?>
+                                                            addToFavorite(<?php echo $_SESSION['id_usuario'] . ", " . $beca["ID_Beca"]; ?>);
+                                                    <?php } ?>
+                                                    " style="background-color:#e8ba00" id="btn-favorito-<?php echo $beca["ID_Beca"]; ?>">Favorito</button>&nbsp;
                                         </div>
                                     <?php } ?>
                                     <br>
