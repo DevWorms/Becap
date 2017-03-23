@@ -60,7 +60,8 @@
            <div class="row">
              <div class="col-xs-12" align="center">
                  <?php
-                      echo "<h1><b>¡Bienvenido, " . $_SESSION["nombre"] . "!</b></h1>";
+                      /* echo "<h1><b>¡Bienvenido, " . $_SESSION["nombre"] . "!</b></h1>"; */
+                      echo "<h1><b>¡ Bienvenido !</b></h1>";
                  ?>
                 <h4 class="m-space">Tenemos <span class="blue"><?php echo CounterAll($_SESSION["id_usuario"]); ?></span> becas esperandote, solo necesitamos <br> que nos cuentes más de ti para facilitarte la búsqueda.</h4>
              </div>

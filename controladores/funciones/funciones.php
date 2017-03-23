@@ -385,8 +385,10 @@
             $colorS = ($isFavorite) ? 'yellow' : 'gray-box';
 
             $iconoH = '<i class="glyphicon glyphicon-heart ' . $color . '" id="heart-m-' . $beca['ID_Beca'] . '"></i>';
+            
+            /*
             $iconoS = '<i class="glyphicon glyphicon-star ' . $colorS . '" id="start-m-' . $beca['ID_Beca'] . '"></i>';
-
+            */
             ?>
             <div id="tecmon<?php echo $beca["ID_Beca"]; ?>" class="modal fade" role="dialog">
                 <div class="modal-dialog">
@@ -421,6 +423,13 @@
                                     <div class="col-xs-<?php echo ($oportunidades) ? 3 : 6 ;?>">
                                         <button class="btn btn-default btn-block" data-toggle="tab" href="#institucion-<?php echo $beca["ID_Beca"]; ?>">La Institución</button>&nbsp;
                                     </div>
+                                    
+                                    <!-- CONTACTO -->
+                                    <div class="col-xs-3">
+                                      <button class="btn btn-default btn-block" data-toggle="" href="" > Contacto </button>
+                                    </div>
+    
+
                                     <?php if ($oportunidades) { ?>
                                         <div class="col-xs-3">
                                             <button class="btn btn-danger btn-block" onclick="
@@ -431,8 +440,11 @@
                                                     <?php } ?>
                                                     " id="btn-interesa-<?php echo $beca["ID_Beca"]; ?>">Me interesa</button>&nbsp;
                                         </div>
+                                        
+                                        <!--
                                         <div class="col-xs-3">
                                             <button class="btn btn-default btn-block" onclick="
+                                                    
                                                     <?php if ($isFavorite) { ?>
                                                             removeFavorite(<?php echo $_SESSION['id_usuario'] . ", " . $beca["ID_Beca"]; ?>);
                                                     <?php } else {?>
@@ -440,6 +452,8 @@
                                                     <?php } ?>
                                                     " style="background-color:#e8ba00" id="btn-favorito-<?php echo $beca["ID_Beca"]; ?>">Favorito</button>&nbsp;
                                         </div>
+                                        -->
+
                                     <?php } ?>
                                     <br>
                                 </div>
