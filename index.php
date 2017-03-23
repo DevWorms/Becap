@@ -83,15 +83,13 @@
                         name="formulario1"
                         onsubmit="return validar();">
                     
-                        <label for="">Nombre(s) sin apellidos</label>                    
-                        <input class="form-control" name="name" id="name" placeholder="Solo tu nombre, sin apellidos" type="text" />
                         <br>
                         <label for="">Correo</label>                    
                         <input class="form-control" name="correo" id="correo" placeholder="ejemplo@becap.com" type="email" />
-                        <br>
+                        <br><br>
                         <label for="">Contraseña (6 caracteres)</label> 
                         <input class="form-control" name="password" id="password" placeholder="" type="password" />
-                        <br>
+                        <br><br>  
                         <div class="row">
                              <div class="col-xs-12 col-md-7 col-md-offset-2">
                                    <button class="btn btn-danger btn-block" type="submit" name="enviar"><b>Únete ahora</b></button> 
