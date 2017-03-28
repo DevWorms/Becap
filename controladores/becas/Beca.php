@@ -189,7 +189,7 @@ class Beca {
                 $stm->bindParam(":user_id", $_SESSION['id_usuario'], PDO::PARAM_INT);
                 $stm->bindParam(":beca_id", $beca_id, PDO::PARAM_INT);
                 $stm->execute();
-                $resultado = $stm->fetchAll()[0];
+                $resultado = $stm->fetchAll();
 
                 if (count($resultado) > 0) {
                     return true;
@@ -212,7 +212,7 @@ class Beca {
                 $stm->bindParam(":user_id", $_SESSION['id_usuario'], PDO::PARAM_INT);
                 $stm->bindParam(":beca_id", $beca_id, PDO::PARAM_INT);
                 $stm->execute();
-                $resultado = $stm->fetchAll()[0];
+                $resultado = $stm->fetchAll();
 
                 if (count($resultado) > 0) {
                     return true;

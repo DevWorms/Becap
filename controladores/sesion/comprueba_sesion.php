@@ -14,8 +14,15 @@ if (isset($_COOKIE["id"])) {
 
         $statement = $resultado->fetch(PDO::FETCH_ASSOC);
 
-        $_SESSION["nombre"] = $statement['Nombre_Usuario'];
-        $_SESSION["nombreCompleto"] = $statement['Nombre_Usuario'] . ' ' . $statement['Apellidos_Usuario'];
+        $_SESSION["nombre"] = "";
+        $_SESSION["nombreCompleto"] = "";
+        if (!empty($statement['Nombre_Usuario'])) {
+            $_SESSION["nombre"] = $statement['Nombre_Usuario'];
+            $_SESSION["nombreCompleto"] = $statement['Nombre_Usuario'];
+        }
+        if (!empty($statement['Apellidos_Usuario'])) {
+            $_SESSION["nombreCompleto"] .= ' ' . $statement['Apellidos_Usuario'];
+        }
         $_SESSION["correo"] = $statement['Mail_Usuario'];
         $_SESSION["id_usuario"] = $statement['ID_Usuario'];
 
@@ -24,7 +31,7 @@ if (isset($_COOKIE["id"])) {
     }
 }
 
-if ((!isset($_SESSION["nombre"]))) {
+if ((!isset($_SESSION["id_usuario"]))) {
     header("location:index.php");
 } else {
     try {
@@ -38,8 +45,8 @@ if ((!isset($_SESSION["nombre"]))) {
 
         $statement = $resultado->fetch(PDO::FETCH_ASSOC);
 
-        $_SESSION["nombreCompleto"] = $statement['Nombre_Usuario'] . ' ' . $statement['Apellidos_Usuario'];
-
+        //$_SESSION["nombreCompleto"] = $statement['Nombre_Usuario'] . ' ' . $statement['Apellidos_Usuario'];
+        $_SESSION["correo"] = $statement['Mail_Usuario'];
         $_SESSION["id_usuario"] = $statement['ID_Usuario'];
 
 

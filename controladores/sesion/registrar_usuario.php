@@ -16,7 +16,11 @@ function validateEmail($email) {
     $stm->execute();
     $result = $stm->fetchAll();
 
-    return (count($result[0]['Mail_Usuario']) == 1) ? false : true;
+    if (count($result) > 0) {
+        return (count($result[0]['Mail_Usuario']) == 1) ? false : true;
+    } else{
+        return true;
+    }
 }
 
 if (isset($_POST['enviar'])) {
@@ -25,29 +29,32 @@ if (isset($_POST['enviar'])) {
 
     if ($correo == null || $pwd == null) {
         notificacion($msj = "Por favor complete todos los campos");
-        //header("Location: ../../");
     } else {
 
         if (validateEmail($correo)) {
-            $conexion = Conectar::get_Conexion();
+            try {
+                $conexion = Conectar::get_Conexion();
 
-            $sql = "INSERT INTO becap_db.usuarios (Mail_Usuario, Pwd_Usuario) VALUES (:correo, :pwd)";
+                $sql = "INSERT INTO becap_db.usuarios (Mail_Usuario, Pwd_Usuario) VALUES (:correo, :pwd)";
 
-            $resultado = $conexion->prepare($sql);
+                $resultado = $conexion->prepare($sql);
+                $resultado->execute(array(":correo" => $correo, ":pwd" => $pwd));
+                $id = $conexion->lastInsertId();
 
-            $resultado->execute(array(":correo" => $correo, ":pwd" => $pwd));
+                session_start();
+                $_SESSION["correo"] = $correo;
+                $_SESSION["first_time"] = true;
+                $_SESSION["id_usuario"] = $id;
+                session_write_close();
 
-            session_start();
+                $resultado->closeCursor();
 
-            $_SESSION["correo"] = $correo;
-            $_SESSION["first_time"] = true;
-
-            //header('location: ../../perfil.php');
-
-            $resultado->closeCursor();
+                header('location: ../../perfil.php');
+            } catch (Exception $ex) {
+                notificacion($ex->getMessage());
+            }
         } else {
             notificacion("El email ya se encuentra registrado");
-            //header("Location: ../../");
         }
     }
 }

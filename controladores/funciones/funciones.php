@@ -446,7 +446,7 @@
                                     <div align="right">
                                         <?php echo $iconoH; ?>
                                         &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <?php echo $iconoS; ?>
+                                        <?php //echo $iconoS; ?>
                                     </div>
                                 </div>
                             </div>
@@ -469,7 +469,7 @@
 
                                         <!-- CONTACTO -->
                                         <div class="col-xs-3">
-                                          <button class="btn btn-warning btn-block" data-toggle="" href="" > Contacto </button>
+                                          <button class="btn btn-warning btn-block" data-toggle="tab" href="#contacto-<?php echo $beca["ID_Beca"]; ?>" > Contacto </button>
                                         </div>
 
                                         <div class="col-xs-3">
@@ -504,6 +504,10 @@
                                 <div class="col-md-10 col-md-offset-1">
                                     <div class="tab-content">
                                         <div id="req-<?php echo $beca["ID_Beca"]; ?>" class="tab-pane fade in active">
+                                            <h3>Descripción</h3>
+                                            <div>
+                                                <?php echo $beca["Descripcion_Beca"]; ?>
+                                            </div>
                                             <h3>Requisitos</h3>
                                             <div>
                                                 <div class="checkbox">
@@ -530,9 +534,31 @@
                                             <h3>La institución</h3>
                                             <p><?php echo $beca["Descripcion_Escuela"]; ?></p>
                                         </div>
-                                        <div id="institucion-<?php echo $beca["ID_Beca"]; ?>" class="tab-pane fade">
-                                            <h3>La institución</h3>
-                                            <p><?php echo $beca["Descripcion_Escuela"]; ?></p>
+                                        <div id="contacto-<?php echo $beca["ID_Beca"]; ?>" class="tab-pane fade">
+                                            <h3>Contacto</h3>
+                                            <div>
+                                                <div>
+                                                    <p>
+                                                        Contacto: <?php echo $beca['Contacto']; ?>
+                                                    </p>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <p>
+                                                        Teléfono: <?php echo $beca['Telefono']; ?>
+                                                    </p>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <p>
+                                                        <?php
+                                                            $link = substr($beca['Link_Beca'], 0, 60);
+                                                            if (strlen($beca['Link_Beca']) > 60) {
+                                                                $link .= "...";
+                                                            }
+                                                        ?>
+                                                        Sitio web: <a target="_blank" href="<?php echo $beca['Link_Beca']; ?>"><?php echo $link; ?></a>
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

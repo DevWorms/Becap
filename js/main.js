@@ -62,6 +62,32 @@ $(function () {
         }
         init();
     });
+
+    /*
+    $("#filtro21").click(function () {
+        if ($("#filtro21").hasClass("active")) {
+            console.log("quitar");
+            $("#filtro21").removeClass("active")
+        } else {
+            $("#filtro21").addClass("btn-info active")
+        }
+    });
+    */
+    $("form#filtros :button").each(function(){
+        var input = $(this);
+        input.click(function () {
+            var btn = input.attr('id');
+            btn = btn.substring(0, btn.length -4);
+            var input_val = $("#" + btn);
+            if (input_val.val() == 1) {
+                input_val.val(0);
+            } else {
+                input_val.val(1);
+            }
+
+            filtrar();
+        });
+    });
 });
 
 
@@ -113,7 +139,7 @@ function addToFavorite(user_id, beca_id) {
 }
 
 function removeFavorite(user_id, beca_id) {
-    event.preventDefault();
+    //event.preventDefault();
 
     $.ajax({
         type : 'POST',
@@ -179,7 +205,7 @@ function colorStartGrey(user_id, id) {
 }
 
 function addToMeInteresa(user_id, beca_id) {
-    event.preventDefault();
+    //event.preventDefault();
 
     $.ajax({
         type : 'POST',
@@ -205,7 +231,7 @@ function addToMeInteresa(user_id, beca_id) {
 }
 
 function removeFromMeInteresa(user_id, beca_id) {
-    event.preventDefault();
+    //event.preventDefault();
 
     $.ajax({
         type : 'POST',
@@ -230,8 +256,8 @@ function removeFromMeInteresa(user_id, beca_id) {
     });
 }
 
+/*
 function filtrar(obj) {
-    event.preventDefault();
     $('#menu_1, #menu_2, #menu_3').removeClass('active');
     $(".beca").css('display','none');
 
@@ -248,6 +274,35 @@ function filtrar(obj) {
             $('#menu_3').addClass('active');
             $(".tipo-3").show();
             break;
+    }
+}
+*/
+
+function filtrar() {
+    $(".beca").css('display', 'none');
+    if (($("#filtro21").val() == 0 && $("#filtro22").val() == 0 && $("#filtro23").val() == 0) ||
+        ($("#filtro21").val() == 1 && $("#filtro22").val() == 1 && $("#filtro23").val() == 1)
+    ) {
+        $(".beca").css('display', 'none');
+
+        $(".tipo-1").show();
+        $(".tipo-2").show();
+        $(".tipo-3").show();
+
+    } else {
+        $(".beca").css('display', 'none');
+
+        if ($("#filtro21").val() == 1) {
+            $(".tipo-1").show();
+        }
+
+        if ($("#filtro22").val() == 1) {
+            $(".tipo-2").show();
+        }
+
+        if ($("#filtro23").val() == 1) {
+            $(".tipo-3").show();
+        }
     }
 }
 
