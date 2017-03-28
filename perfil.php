@@ -83,7 +83,7 @@
                       <div class="row">
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="nombre" class="form-control fields input-sm" placeholder="Nombre" value="<?php echo $_SESSION['nombre']?>" disabled>
+                              <input type="text" name="nombre" class="form-control fields input-sm" placeholder="Nombre">
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
@@ -254,6 +254,7 @@
               </div>
             </div>
           </div>
+              <br><br>
       </footer>
 
       <script>window.jQuery || document.write('<script src="vendor/jquery/jquery-1.11.2.min.js"><\/script>')</script>

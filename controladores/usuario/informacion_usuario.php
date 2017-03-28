@@ -9,6 +9,7 @@ function notificacion($msj, $location) {
     echo "</script>";
 }
 
+$nombre = $_POST["nombre"];
 $mail = $_SESSION["correo"];
 $apellido = $_POST["apellido"];
 $fecha = $_POST["fecha"];
@@ -39,7 +40,8 @@ if (!empty($apellido) && !empty($fecha) && !empty($pais) && !empty($ciudad) && !
     if ($validate === 1) {
         $conexion = Conectar::get_Conexion();
 
-        $sql = "UPDATE becap_db.usuarios SET   Apellidos_Usuario = :apellido, 
+        $sql = "UPDATE becap_db.usuarios SET     Nombre_Usuario = :nombre,
+                                                 Apellidos_Usuario = :apellido, 
 												 Fecha_Nacimiento  = :fecha, 
 												 Pais              = :pais, 
 												 Ciudad            = :ciudad, 
@@ -57,7 +59,8 @@ if (!empty($apellido) && !empty($fecha) && !empty($pais) && !empty($ciudad) && !
 
         $resultado = $conexion->prepare($sql);
 
-        $resultado->execute(array(":apellido" => $apellido,
+        $resultado->execute(array( ":nombre" => $nombre,
+            ":apellido" => $apellido,
             ":fecha" => $fecha,
             ":pais" => $pais,
             ":ciudad" => $ciudad,
@@ -74,7 +77,7 @@ if (!empty($apellido) && !empty($fecha) && !empty($pais) && !empty($ciudad) && !
 
         session_start();
 
-        $_SESSION["nombreCompleto"] = $_SESSION["nombre"] . ' ' . $apellido;
+        $_SESSION["nombreCompleto"] = $nombre . ' ' . $apellido;
 
         header('location: ../../informacion.php');
 

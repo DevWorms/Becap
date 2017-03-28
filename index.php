@@ -47,7 +47,9 @@
                   <form action="controladores/sesion/iniciar_sesion.php"
                         class="navbar-form navbar-right" 
                         role="form" method="post" name="formularionav">
-                    
+                      <div class="form-group" style="color:#ffffff">
+                         ya estás registrado?&nbsp;&nbsp;&nbsp;
+                      </div>
                       <div class="form-group">
                         <input type="text" placeholder="Correo" class="form-control" name="correo">
                       </div>
@@ -55,14 +57,12 @@
                         <input type="password" placeholder="Contraseña" class="form-control" name="password">
                       </div>
 
-                      <button type="submit" class="btn btn-primary" name="enviar" id="enviar">Iniciar Sesión</button>
+                      <button type="submit" class="btn btn-primary" name="enviar" id="enviar">Inicia Sesión</button>
 
-                      <div align="right" class="spce">
-                          <input type="checkbox" name="checkbox" id="checkbox" class="checkbox">&nbsp;&nbsp; Mantener la sesión iniciada
-                      </div>
                   </form>
                 
                 </div><!--/.navbar-collapse -->
+                  <br>
             </div>
         </nav>
 
@@ -71,12 +71,12 @@
             <div class="row">
               <div class="col-md-7" align="left">
                   <div class="intro-text">
-                      <h2 class="intro-text it-sp">Becap te ayuda a encontrar becas <br>según tu perfil académico, <span class="blue">en minutos.</span></h2>  
+                      <h2 class="intro-text it-sp" style="color:#969696">Becap te ayuda a encontrar becas <br>según tu perfil académico, <span class="blue">en minutos.</span></h2>  
                   </div>
               </div>
               <br>
               <div class="col-md-3 col-md-offset-1 well well-custom">
-                  <legend align="center"><b>Crea tu cuenta ¡Gratis!</b></legend>
+                  <legend align="center"><b>Crea tu cuenta gratis</b></legend>
 
                   <form action="controladores/sesion/registrar_usuario.php" 
                         method="post" class="form" role="form" 
@@ -107,8 +107,9 @@
 
 
         <footer>
-            <hr>
             <div class="container">
+              
+            <hr>
               <div class="row">
                 <div class="col-xs-6" align="left">
                     <span>Becap S.A de C.V. 2016</span>
@@ -118,6 +119,7 @@
                 </div>
               </div>
             </div>
+              <br><br>
           
         </footer>
 

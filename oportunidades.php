@@ -53,12 +53,12 @@
         <div class="container space3">
            <div class="row">
              <div class="col-xs-12" align="center">
-                <h3><b>Hemos encontrado <span class="blue">
+                <h3 style="color:#000"><b>Hemos encontrado <span class="blue">
                 
                 <?php echo Counter($_SESSION["id_usuario"]); ?>
                   
                 </span> becas para ti</b></h3>
-                <p>Todas estan becas estan a tu alcance, revisalas y marca tus favoritas para tenerlas en "mis becas".</p>
+                <p style="font-size:15px">Todas estas becas estan a tu alcance, revisalas y marca tus favoritas para tenerlas en "mis becas".</p>
              </div>
            </div>
         </div>
@@ -67,6 +67,32 @@
           <div class="row">
             <div class="col-md-3 space-outside">
               <p class="dark-gray gr"><b>¿Qué tipo de Beca buscas?</b></p>
+
+
+              <div class="list-group">
+                    <div class="form-group">
+                      <span class="button-checkbox">
+                          <button type="button" class="btn" data-color="info">Beca Académica</button>
+                          <input type="checkbox" class="hidden" value="Administración" id="admin" name="admin"/>
+                      </span>
+                    </div>
+                  
+                    <div class="form-group">
+                      <span class="button-checkbox">
+                          <button type="button" class="btn" data-color="info">Beca Crédito</button>
+                          <input type="checkbox" class="hidden" value="Abogacía" id="aboga" name="aboga"/>
+                      </span>
+                    </div>
+                  
+                    <div class="form-group">
+                      <span class="button-checkbox">
+                          <button type="button" class="btn" data-color="info">Beca Especie</button>
+                          <input type="checkbox" class="hidden" value="Psicología" id="psico" name="psico"/>
+                      </span>
+                    </div>
+              </div>
+
+
                 <div class="list-group">
                     <a href="#" id="menu_1" onclick="filtrar($(this));" class="list-group-item">Beca Académica</a>
                     <a href="#" id="menu_2" onclick="filtrar($(this));" class="list-group-item">Beca Crédito</a>
@@ -125,6 +151,7 @@
               </div>
             </div>
           </div>
+              <br><br>
       </footer>
 
       <script>window.jQuery || document.write('<script src="vendor/jquery/jquery-1.11.2.min.js"><\/script>')</script>

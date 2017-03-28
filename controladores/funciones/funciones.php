@@ -25,11 +25,29 @@
 
               if($fila["ID_Tipo"] == 1){
                               $tipo = "Beca Académica";
-                              $muestra = "Beca";
+                              
+                              if($fila["Porcentaje_Beca"]=="NA"){
+                                                              $muestra = "Beca";
+                                                              $porcentaje = "";
+                                                            }
+                              else{
+                                $muestra = " de Beca";
+                                $porcentaje = $fila["Porcentaje_Beca"];
+                              }
+
                           }
               if($fila["ID_Tipo"] == 2){
                               $tipo = "Beca Crédito";
-                              $muestra = "Crédito";
+
+                              if($fila["Porcentaje_Beca"]=="NA"){
+                                                              $muestra = "Crédito";
+                                                              $porcentaje = "";
+                                                            }
+                              else{
+                                $muestra = " de Crédito";
+                                $porcentaje = $fila["Porcentaje_Beca"];
+                              }
+
                           }
               if($fila["ID_Tipo"] == 3)
                 $tipo = "Beca Especie";
@@ -41,7 +59,7 @@
                         <a href="" data-toggle="modal" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box">' . substr($fila["Nombre_Escuela"],0,30) . '</span></a>
                         <div class="space-inside-p">
                             <p><strong>' . $tipo . '</strong></p>
-                            <p>' . $fila["Porcentaje_Beca"] . " de " . $muestra . " " . $fila["Beca_Sobre"] . '</p>
+                            <p>' . $porcentaje . $muestra . " " . $fila["Beca_Sobre"] . '</p>
                         </div>
                       </div>
                       <div class="col-xs-3" align="right">
@@ -58,7 +76,7 @@
 
         $promedio = PromedioUsuario($id_usuario);
 
-        $operacion = "SELECT becas.ID_Beca, becas.ID_Escuela, escuelas.Nombre_Escuela, becas.Nombre_Beca, becas.ID_Tipo , becas.Descripcion_Beca, becas.Beca_Sobre FROM becas JOIN escuelas ON becas.ID_Escuela = escuelas.ID_Escuela WHERE becas.Promedio_Acceso <= ?";
+         $operacion = "SELECT becas.ID_Beca, becas.ID_Escuela, escuelas.Nombre_Escuela, becas.Nombre_Beca, becas.ID_Tipo , becas.Descripcion_Beca, becas.Beca_Sobre, becas.Porcentaje_Beca FROM becas JOIN escuelas ON becas.ID_Escuela = escuelas.ID_Escuela WHERE becas.Promedio_Acceso <= ?";
 
         $sentencia = $pdo->prepare($operacion);
         $sentencia->bindParam(1, $promedio);         
@@ -69,10 +87,32 @@
           
             foreach ($resultado as $fila )  {
 
-              if($fila["ID_Tipo"] == 1)
-                $tipo = "Beca Académica";
-              else if($fila["ID_Tipo"] == 2)
-                $tipo = "Beca Crédito";
+              if($fila["ID_Tipo"] == 1){
+                              $tipo = "Beca Académica";
+                              
+                              if($fila["Porcentaje_Beca"]=="NA"){
+                                                              $muestra = "Beca";
+                                                              $porcentaje = "";
+                                                            }
+                              else{
+                                $muestra = " de Beca";
+                                $porcentaje = $fila["Porcentaje_Beca"];
+                              }
+
+                          }
+              else if($fila["ID_Tipo"] == 2){
+                              $tipo = "Beca Crédito";
+
+                              if($fila["Porcentaje_Beca"]=="NA"){
+                                                              $muestra = "Crédito";
+                                                              $porcentaje = "";
+                                                            }
+                              else{
+                                $muestra = " de Crédito";
+                                $porcentaje = $fila["Porcentaje_Beca"];
+                              }
+
+                          }
               else if($fila["ID_Tipo"] == 3)
                 $tipo = "Beca Especie";
 
@@ -99,7 +139,7 @@
                               </div>
                              
                               <div class="col-xs-3 space-inside">
-                                <p class="dark-gray"><b>Aplica ' . $fila["Beca_Sobre"] . '</b></p>
+                                <p class="dark-gray"><b>' . $porcentaje . $muestra . " " . $fila["Beca_Sobre"] . '</b></p>
                               </div>
 
                             </div>
@@ -424,13 +464,14 @@
                                         <button class="btn btn-default btn-block" data-toggle="tab" href="#institucion-<?php echo $beca["ID_Beca"]; ?>">La Institución</button>&nbsp;
                                     </div>
                                     
-                                    <!-- CONTACTO -->
-                                    <div class="col-xs-3">
-                                      <button class="btn btn-default btn-block" data-toggle="" href="" > Contacto </button>
-                                    </div>
-    
-
+                                    
                                     <?php if ($oportunidades) { ?>
+
+                                        <!-- CONTACTO -->
+                                        <div class="col-xs-3">
+                                          <button class="btn btn-warning btn-block" data-toggle="" href="" > Contacto </button>
+                                        </div>
+
                                         <div class="col-xs-3">
                                             <button class="btn btn-danger btn-block" onclick="
                                                     <?php if ($meInteresa) { ?>
@@ -445,7 +486,7 @@
                                         <div class="col-xs-3">
                                             <button class="btn btn-default btn-block" onclick="
                                                     
-                                                    <?php if ($isFavorite) { ?>
+                                                    <?php if ($isFavorite) { ?> 
                                                             removeFavorite(<?php echo $_SESSION['id_usuario'] . ", " . $beca["ID_Beca"]; ?>);
                                                     <?php } else {?>
                                                             addToFavorite(<?php echo $_SESSION['id_usuario'] . ", " . $beca["ID_Beca"]; ?>);
