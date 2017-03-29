@@ -14,7 +14,7 @@
         <meta name="description" content="La forma más sencilla de encontrar BECAS. Becas académicas según tu perfil">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="img/b.png">
-        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/s3.css">
         <link rel="stylesheet" href="css/s4.css">
@@ -105,7 +105,7 @@
                 </div>
                 -->
                 <div align="center">
-                  <a class="btn btn-info btn-sm">
+                  <a class="btn btn-req btn-sm">
                       <span class="glyphicon glyphicon glyphicon-th gr"></span>
                   </a>
                   &nbsp;&nbsp;&nbsp;&nbsp;

@@ -13,7 +13,7 @@
         <meta name="description" content="La forma más sencilla de encontrar BECAS. Becas académicas según tu perfil">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="img/b.png">
-        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/s3.css">
         <link rel="stylesheet" href="css/s4.css">
@@ -64,33 +64,35 @@
         <div class="container">
           <div class="row">
             <div class="col-md-3 space-outside">
-              <p class="dark-gray gr"><b>¿Qué tipo de Beca buscas?</b></p>
+              <p class="dark-gray gr" align="center"><b>¿Qué tipo de Beca buscas?</b></p>
+                <div class="col-md-12">
+                  <div class="col-md-10 col-md-offset-1">
+                    <form id="filtros">
+                        <div class="list-group">
+                            <div class="form-group">
+                              <span class="button-checkbox">
+                                  <button type="button"  class="btn btn-block" id="filtro21_btn" data-color="info"><b>Beca Académica</b></button>
+                                  <input type="checkbox" class="hidden" value="0" id="filtro21" name="filtro21"/>
+                              </span>
+                            </div>
 
-                <form id="filtros">
-                    <div class="list-group">
-                        <div class="form-group">
-                          <span class="button-checkbox">
-                              <button type="button"  class="btn" id="filtro21_btn" data-color="info">Beca Académica</button>
-                              <input type="checkbox" class="hidden" value="0" id="filtro21" name="filtro21"/>
-                          </span>
+                            <div class="form-group">
+                              <span class="button-checkbox">
+                                  <button type="button" class="btn btn-block" id="filtro22_btn" data-color="info"><b>Beca Crédito</b></button>
+                                  <input type="checkbox" class="hidden" value="0" id="filtro22" name="filtro22"/>
+                              </span>
+                            </div>
+
+                            <div class="form-group">
+                              <span class="button-checkbox">
+                                  <button type="button" class="btn btn-block" id="filtro23_btn" data-color="info"><b>Beca Especie</b></button>
+                                  <input type="checkbox" class="hidden" value="0" id="filtro23" name="filtro23"/>
+                              </span>
+                            </div>
                         </div>
-
-                        <div class="form-group">
-                          <span class="button-checkbox">
-                              <button type="button" class="btn" id="filtro22_btn" data-color="info">Beca Crédito</button>
-                              <input type="checkbox" class="hidden" value="0" id="filtro22" name="filtro22"/>
-                          </span>
-                        </div>
-
-                        <div class="form-group">
-                          <span class="button-checkbox">
-                              <button type="button" class="btn" id="filtro23_btn" data-color="info">Beca Especie</button>
-                              <input type="checkbox" class="hidden" value="0" id="filtro23" name="filtro23"/>
-                          </span>
-                        </div>
-                    </div>
-                </form>
-
+                    </form>
+                  </div>                
+                </div>
                 <!--
                 <div class="list-group">
                     <a href="#" id="menu_1" onclick="filtrar($(this));" class="list-group-item">Beca Académica</a>
@@ -98,15 +100,15 @@
                     <a href="#" id="menu_3" onclick="filtrar($(this));" class="list-group-item">Beca Especie</a>
                 </div>
                 -->
-                <div align="center">
-                  <a href="oportunidades.php" class="btn btn-default btn-sm gray">
-                    <span class="glyphicon glyphicon glyphicon-th"></span>
-                  </a>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  <a class="btn btn-info btn-sm"> 
-                      <span class="glyphicon glyphicon glyphicon-align-justify gr"></span>
-                  </a>
-                </div>
+                  <div align="center">
+                    <a href="oportunidades.php" class="btn btn-default btn-sm gray">
+                      <span class="glyphicon glyphicon glyphicon-th"></span>
+                    </a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-req btn-sm"> 
+                        <span class="glyphicon glyphicon glyphicon-align-justify gr"></span>
+                    </a>
+                  </div>
             </div>
 
             <div class="col-md-9">

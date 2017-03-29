@@ -436,9 +436,9 @@
                         <div class="modal-header" style="border-bottom-width: 0px">
                             <div class="row">
                                 <div class="col-xs-8">
-                                    <div align="">
-                                        <h4 class="modal-title white"><b><?php echo $beca["Nombre_Escuela"]; ?></b></h4>
-                                        <h5 class="modal-title white"><b>Campus <?php echo $beca["Nombre_Campus"]; ?></b></h5>
+                                    <div align="left">
+                                        <h4 class="modal-title blue"><b><?php echo $beca["Nombre_Escuela"]; ?></b></h4>
+                                        <h5 class="modal-title blue"><b>Campus <?php echo $beca["Nombre_Campus"]; ?></b></h5>
                                     </div>
                                 </div>
 
@@ -458,10 +458,10 @@
                                 <div class="col-xs-12" align="center">
                                     <br>
                                     <div class="col-xs-<?php echo ($oportunidades) ? 3 : 6 ;?>">
-                                        <a class="btn btn-info btn-block" data-toggle="tab" href="#req-<?php echo $beca["ID_Beca"]; ?>">Requisitos</a>&nbsp;
+                                        <a class="btn btn-req btn-block" data-toggle="tab" href="#req-<?php echo $beca["ID_Beca"]; ?>"><b>Requisitos</b></a>&nbsp;
                                     </div>
                                     <div class="col-xs-<?php echo ($oportunidades) ? 3 : 6 ;?>">
-                                        <button class="btn btn-default btn-block" data-toggle="tab" href="#institucion-<?php echo $beca["ID_Beca"]; ?>">La Institución</button>&nbsp;
+                                        <button class="btn btn-normal btn-block" data-toggle="tab" href="#institucion-<?php echo $beca["ID_Beca"]; ?>"><b>La Institución</b></button>&nbsp;
                                     </div>
                                     
                                     
@@ -469,7 +469,7 @@
 
                                         <!-- CONTACTO -->
                                         <div class="col-xs-3">
-                                          <button class="btn btn-warning btn-block" data-toggle="tab" href="#contacto-<?php echo $beca["ID_Beca"]; ?>" > Contacto </button>
+                                          <button class="btn btn-normal btn-block" data-toggle="tab" href="#contacto-<?php echo $beca["ID_Beca"]; ?>" ><b>Contacto</b></button>
                                         </div>
 
                                         <div class="col-xs-3">
@@ -479,7 +479,7 @@
                                                     <?php } else {?>
                                                             addToMeInteresa(<?php echo $_SESSION['id_usuario'] . ", " . $beca["ID_Beca"]; ?>);
                                                     <?php } ?>
-                                                    " id="btn-interesa-<?php echo $beca["ID_Beca"]; ?>">Me interesa</button>&nbsp;
+                                                    " id="btn-interesa-<?php echo $beca["ID_Beca"]; ?>"><b>Me interesa!</b></button>&nbsp;
                                         </div>
                                         
                                         <!--

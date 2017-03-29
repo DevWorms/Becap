@@ -26,7 +26,7 @@ header .intro-text {
 }
 
 .blue{
-	color: #25acd9;
+	color: #25acd9; 
 }
 .white{
   color: white;
@@ -233,7 +233,8 @@ footer{
 .modal-header {
     padding:9px 15px;
     border-bottom:1px solid #eee;
-    background-color: #25acd9;
+
+    background-color: #efefef;
     -webkit-border-top-left-radius: 5px;
     -webkit-border-top-right-radius: 5px;
     -moz-border-radius-topleft: 5px;
