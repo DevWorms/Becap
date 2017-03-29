@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/s3.css">
         <link rel="stylesheet" href="css/s4.css">
+
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
 
@@ -66,32 +67,35 @@
         <div class="container">
           <div class="row">
             <div class="col-md-3 space-outside">
-              <p class="dark-gray gr"><b>¿Qué tipo de Beca buscas?</b></p>
+              <p class="dark-gray gr" align="center"><b>¿Qué tipo de Beca buscas?</b></p>
+                <div class="col-md-12">
+                  <div class="col-md-10 col-md-offset-1">
+                    <form id="filtros">
+                      <div class="list-group">
+                            <div class="form-group">
+                              <span class="button-checkbox">
+                                  <button type="button"  class="btn btn-block" id="filtro21_btn" data-color="info"><b>Beca Académica</b></button>
+                                  <input type="checkbox" class="hidden" value="0" id="filtro21" name="filtro21"/>
+                              </span>
+                            </div>
 
-                <form id="filtros">
-                  <div class="list-group">
-                        <div class="form-group">
-                          <span class="button-checkbox">
-                              <button type="button"  class="btn" id="filtro21_btn" data-color="info">Beca Académica</button>
-                              <input type="checkbox" class="hidden" value="0" id="filtro21" name="filtro21"/>
-                          </span>
-                        </div>
+                            <div class="form-group">
+                              <span class="button-checkbox">
+                                  <button type="button" class="btn btn-block" id="filtro22_btn" data-color="info"><b>Beca Crédito</b></button>
+                                  <input type="checkbox" class="hidden" value="0" id="filtro22" name="filtro22"/>
+                              </span>
+                            </div>
 
-                        <div class="form-group">
-                          <span class="button-checkbox">
-                              <button type="button" class="btn" id="filtro22_btn" data-color="info">Beca Crédito</button>
-                              <input type="checkbox" class="hidden" value="0" id="filtro22" name="filtro22"/>
-                          </span>
-                        </div>
-
-                        <div class="form-group">
-                          <span class="button-checkbox">
-                              <button type="button" class="btn" id="filtro23_btn" data-color="info">Beca Especie</button>
-                              <input type="checkbox" class="hidden" value="0" id="filtro23" name="filtro23"/>
-                          </span>
-                        </div>
-                  </div>
-                </form>
+                            <div class="form-group">
+                              <span class="button-checkbox">
+                                  <button type="button" class="btn btn-block" id="filtro23_btn" data-color="info"><b>Beca Especie</b></button>
+                                  <input type="checkbox" class="hidden" value="0" id="filtro23" name="filtro23"/>
+                              </span>
+                            </div>
+                      </div>
+                    </form>
+                  </div>  
+                </div>
 
                 <!--
                 <div class="list-group">
