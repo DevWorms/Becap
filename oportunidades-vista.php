@@ -66,35 +66,38 @@
             <div class="col-md-3 space-outside">
               <p class="dark-gray gr"><b>¿Qué tipo de Beca buscas?</b></p>
 
-              <div class="list-group">
-                    <div class="form-group">
-                      <span class="button-checkbox">
-                          <button type="button" class="btn" data-color="info">Beca Académica</button>
-                          <input type="checkbox" class="hidden" value="Administración" id="admin" name="admin"/>
-                      </span>
-                    </div>
-                  
-                    <div class="form-group">
-                      <span class="button-checkbox">
-                          <button type="button" class="btn" data-color="info">Beca Crédito</button>
-                          <input type="checkbox" class="hidden" value="Abogacía" id="aboga" name="aboga"/>
-                      </span>
-                    </div>
-                  
-                    <div class="form-group">
-                      <span class="button-checkbox">
-                          <button type="button" class="btn" data-color="info">Beca Especie</button>
-                          <input type="checkbox" class="hidden" value="Psicología" id="psico" name="psico"/>
-                      </span>
-                    </div>
-              </div>
+                <form id="filtros">
+                    <div class="list-group">
+                        <div class="form-group">
+                          <span class="button-checkbox">
+                              <button type="button"  class="btn" id="filtro21_btn" data-color="info">Beca Académica</button>
+                              <input type="checkbox" class="hidden" value="0" id="filtro21" name="filtro21"/>
+                          </span>
+                        </div>
 
+                        <div class="form-group">
+                          <span class="button-checkbox">
+                              <button type="button" class="btn" id="filtro22_btn" data-color="info">Beca Crédito</button>
+                              <input type="checkbox" class="hidden" value="0" id="filtro22" name="filtro22"/>
+                          </span>
+                        </div>
 
+                        <div class="form-group">
+                          <span class="button-checkbox">
+                              <button type="button" class="btn" id="filtro23_btn" data-color="info">Beca Especie</button>
+                              <input type="checkbox" class="hidden" value="0" id="filtro23" name="filtro23"/>
+                          </span>
+                        </div>
+                    </div>
+                </form>
+
+                <!--
                 <div class="list-group">
                     <a href="#" id="menu_1" onclick="filtrar($(this));" class="list-group-item">Beca Académica</a>
                     <a href="#" id="menu_2" onclick="filtrar($(this));" class="list-group-item">Beca Crédito</a>
                     <a href="#" id="menu_3" onclick="filtrar($(this));" class="list-group-item">Beca Especie</a>
                 </div>
+                -->
                 <div align="center">
                   <a href="oportunidades.php" class="btn btn-default btn-sm gray">
                     <span class="glyphicon glyphicon glyphicon-th"></span>
