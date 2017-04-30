@@ -24,7 +24,7 @@
         <meta name="description" content="La forma más sencilla de encontrar BECAS. Becas académicas según tu perfil">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="img/b.png">
-        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap-custom.min.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/s2.css">
         <link rel="stylesheet" href="css/animate.css">
@@ -68,12 +68,12 @@
              </div>
            </div>
          </div>
-
+          <br>
          <div class="container space2">
             <div class="row centered-form">
               <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
-                <div class="panel panel-default">
-                  <div class="panel-body"> 
+                
+                  <div class=""> 
 
 
                     <!-- INICIO FORMULARIO -->
@@ -236,7 +236,7 @@
 
 
                   </div>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -244,19 +244,21 @@
       </header>
 
       <footer>
-          <hr>
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-6" align="left">
-                  <span>Becap S.A de C.V. 2016</span>
-              </div>
-              <div class="col-xs-6" align="right">
-                <span><a href="terminos.php">Privacidad, Términos y Condiciones</a></span>
+            <div class="container">
+              
+            <hr>
+              <div class="row">
+                <div class="col-md-7 col-md-offset-1" align="left">
+                    <span>Becap S.A de C.V. 2016</span>
+                </div>
+                <div class="col-md-3" align="right">
+                  <span><a href="terminos.php">Privacidad, Términos y Condiciones</a></span>
+                </div>
               </div>
             </div>
-          </div>
               <br><br>
-      </footer>
+          
+        </footer>
 
       <script>window.jQuery || document.write('<script src="vendor/jquery/jquery-1.11.2.min.js"><\/script>')</script>
       <script src="vendor/bootstrap/js/bootstrap.min.js"></script>

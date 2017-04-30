@@ -51,13 +51,13 @@
                          ya estás registrado?&nbsp;&nbsp;&nbsp;
                       </div>
                       <div class="form-group">
-                        <input type="text" placeholder="Correo" class="form-control" name="correo">
+                        <input type="text" placeholder="Correo" class="form-control input-sm" name="correo">
                       </div>
                       <div class="form-group">
-                        <input type="password" placeholder="Contraseña" class="form-control" name="password">
+                        <input type="password" placeholder="Contraseña" class="form-control input-sm" name="password">
                       </div>
 
-                      <button type="submit" class="btn btn-primary" name="enviar" id="enviar">Inicia Sesión</button>
+                      <button type="submit" class="btn btn-primary btn-sm" name="enviar" id="enviar">Inicia Sesión</button>
 
                   </form>
                 
@@ -69,7 +69,7 @@
         <header>
           <div class="container space">
             <div class="row">
-              <div class="col-md-7  col-md-offset-1" align="left">
+              <div class="col-md-7 col-md-offset-1" align="left">
                   <div class="intro-text">
                       <h2 class="intro-text it-sp" style="color:#969696">Becap te ayuda a encontrar becas <br>según tu perfil académico, <span class="blue">en minutos.</span></h2>  
                   </div>
@@ -85,11 +85,11 @@
                     
                         <br>
                         <label for="">Correo</label>                    
-                        <input class="form-control" name="correo" id="correo" placeholder="ejemplo@becap.com" type="email" />
-                        <br><br>
+                        <input class="form-control input-lg special" name="correo" id="correo" placeholder="" type="email" />
+                        <br>
                         <label for="">Contraseña (6 caracteres)</label> 
-                        <input class="form-control" name="password" id="password" placeholder="" type="password" />
-                        <br><br>  
+                        <input class="form-control input-lg special" name="password" id="password" placeholder="" type="password" />
+                        <br>
                         <div class="row">
                              <div class="col-xs-12 col-md-7 col-md-offset-2">
                                    <button class="btn btn-danger btn-block" type="submit" name="enviar"><b>Únete ahora</b></button> 
@@ -111,10 +111,10 @@
               
             <hr>
               <div class="row">
-                <div class="col-xs-6" align="left">
+                <div class="col-md-7 col-md-offset-1" align="left">
                     <span>Becap S.A de C.V. 2016</span>
                 </div>
-                <div class="col-xs-6" align="right">
+                <div class="col-md-3" align="right">
                   <span><a href="terminos.php">Privacidad, Términos y Condiciones</a></span>
                 </div>
               </div>

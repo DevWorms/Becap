@@ -43,7 +43,6 @@
                     <li class="active"><a href="#" class="gr"><b>Oportunidades</b></a></li>
                     <li><a href="configuracion.php" class="gr"><b>Configuración</b></a></li>
                     <li><a href="#"><?php echo $_SESSION["nombreCompleto"]; ?></a></li>
-                     <li><a href="controladores/sesion/cerrar_sesion.php" class="btn btn-info btn-sm">Cerrar sesion</a></li>
                 </ul>
 
               </div><!--/.navbar-collapse -->

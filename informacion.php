@@ -24,7 +24,7 @@
         <meta name="description" content="La forma más sencilla de encontrar BECAS. Becas académicas según tu perfil">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="img/b.png">
-        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap-custom.min.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/s3.css">
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
@@ -62,12 +62,12 @@
              </div>
            </div>
          </div>
-
+          <br>
          <div class="container space2">
             <div class="row centered-form">
               <div class="col-xs-12 col-sm-12 col-md-10 col-sm-offset-2 col-md-offset-1" align="center">
-                <div class="panel panel-default">
-                  <div class="panel-body">
+                
+                  <div class="">
                     
                     <!-- INICIO FORMULARIO -->
                     <form action="controladores/usuario/carreras_usuario.php"
@@ -185,7 +185,7 @@
                       
                       <div class="row">
                          <div class="col-xs-12" align="center">
-                           <h4><b>¿En qué teléfono quieres que te contacten las escuelas?</h4>
+                           <h4><b>¿En qué teléfono quieres que te contacten las escuelas?</b></h4>
                          </div>
                       </div>
                       <div class="row">
@@ -198,7 +198,7 @@
                       
                       <div class="row">
                          <div class="col-xs-12" align="center">
-                           <h4><b>¿Que tipo de beca buscas?</h4>
+                           <h4><b>¿Qué tipo de beca buscas?</b></h4>
                          </div>
                       </div>
                       <div class="row">
@@ -211,7 +211,7 @@
                         </div>
                       </div> 
                       
-                      <br>  
+                      <br><br>
 
                       <div class="row">
                             <div class="col-xs-12 col-md-2 col-md-offset-5">
@@ -233,27 +233,29 @@
                     </form>
                     <!-- FIN FORMULARIO -->
                   </div>
-                </div>
+                
               </div>
             </div>
           </div>
        
       </header>
 
-      <footer>
-          <hr>
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-6" align="left">
+        <footer>
+            <div class="container">
+              
+            <hr>
+              <div class="row">
+                <div class="col-md-7 col-md-offset-1" align="left">
                     <span>Becap S.A de C.V. 2016</span>
-              </div>
-              <div class="col-xs-6" align="right">
-                <span><a href="terminos.php">Privacidad, Términos y Condiciones</a></span>
+                </div>
+                <div class="col-md-3" align="right">
+                  <span><a href="terminos.php">Privacidad, Términos y Condiciones</a></span>
+                </div>
               </div>
             </div>
-          </div>
               <br><br>
-      </footer>
+          
+        </footer>
 
         <script>window.jQuery || document.write('<script src="vendor/jquery/jquery-1.11.2.min.js"><\/script>')</script>
         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>

@@ -63,7 +63,7 @@ header .intro-text {
   }	
   header .space {
     padding-top: 150px;
-    padding-bottom: 10px;
+    padding-bottom: 80px;
   }
 
   header .intro-text .name {
@@ -149,7 +149,7 @@ header .intro-text {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
-    padding-top: 28.5px;  
+    padding-top: 28px;  
   }
   .navbar-custom.affix {
     padding: 10px 0;
@@ -251,3 +251,10 @@ footer{
  .modal-body {
     background-color: #efefef;
  }
+
+
+/* CUSTOM INPUT */
+
+.special {
+  border: 0px solid #ccc;
+}
