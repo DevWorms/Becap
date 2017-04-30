@@ -69,14 +69,14 @@
         <header>
           <div class="container space">
             <div class="row">
-              <div class="col-md-7" align="left">
+              <div class="col-md-7  col-md-offset-1" align="left">
                   <div class="intro-text">
                       <h2 class="intro-text it-sp" style="color:#969696">Becap te ayuda a encontrar becas <br>según tu perfil académico, <span class="blue">en minutos.</span></h2>  
                   </div>
               </div>
               <br>
-              <div class="col-md-3 col-md-offset-1 well well-custom">
-                  <legend align="center"><b>Crea tu cuenta gratis</b></legend>
+              <div class="col-md-3 well well-custom">
+                  <h3 align="center"><b>Crea tu cuenta gratis</b></h3>
 
                   <form action="controladores/sesion/registrar_usuario.php" 
                         method="post" class="form" role="form" 

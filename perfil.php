@@ -27,6 +27,7 @@
         <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/s2.css">
+        <link rel="stylesheet" href="css/animate.css">
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
 
