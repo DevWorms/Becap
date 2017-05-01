@@ -56,10 +56,10 @@
                     '        
                     <div class="col-md-2 col-md-offset-1 caja beca tipo-' . $fila["ID_Tipo"] . '">
                       <div class="col-xs-9 space-inside" align="left">
-                        <a href="" data-toggle="modal" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box">' . substr($fila["Nombre_Escuela"],0,30) . '</span></a>
-                        <div class="space-inside-p">
+                        <a href="" data-toggle="modal" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box"><b>' . substr($fila["Nombre_Escuela"],0,30) . '</b></span></a>
+                        <div class="space-inside-p"><br>
                             <p><strong>' . $tipo . '</strong></p>
-                            <p>' . $porcentaje . $muestra . " " . $fila["Beca_Sobre"] . '</p>
+                            <p><strong>' . $porcentaje . $muestra . " " . $fila["Beca_Sobre"] . '</strong></p>
                         </div>
                       </div>
                       <div class="col-xs-3" align="right">
@@ -504,42 +504,42 @@
                                 <div class="col-md-10 col-md-offset-1">
                                     <div class="tab-content">
                                         <div id="req-<?php echo $beca["ID_Beca"]; ?>" class="tab-pane fade in active">
-                                            <h3>Descripción</h3>
+                                            <p style="color: #545454; color: #545454;"><b>Descripción</b></p>
                                             <div>
                                                 <?php echo $beca["Descripcion_Beca"]; ?>
                                             </div>
-                                            <h3>Requisitos</h3>
+                                            <p style="margin-top: 30px; color: #545454;"><b>Resumen de Requisitos</b></p>
                                             <div>
                                                 <div class="checkbox">
-                                                    <label><input type="checkbox">&nbsp;&nbsp; ¿Requiere promedio? <?php echo ($beca['Requiere_Promedio'] == 1) ?  " Si " . "Promedio de: " . $beca['Promedio_Acceso']:  "No"; ?></label>
+                                                    <label style="color: #545454;"><input type="checkbox"><b>&nbsp;&nbsp; ¿Requiere promedio? <?php echo ($beca['Requiere_Promedio'] == 1) ?  " Si " . "Promedio de: " . $beca['Promedio_Acceso']:  "No"; ?></b></label>
                                                 </div>
                                                 <div class="checkbox">
-                                                    <label><input type="checkbox">&nbsp;&nbsp; Mantener promedio de: <?php echo $beca['Promedio_Mantener']; ?></label>
+                                                    <label style="color: #545454;"><input type="checkbox"><b>&nbsp;&nbsp; Mantener promedio de: <?php echo $beca['Promedio_Mantener']; ?></b></label>
                                                 </div>
                                                 <div class="checkbox">
-                                                    <label><input type="checkbox">&nbsp;&nbsp; ¿Requiere Estudio socioeconómico? <?php echo ($beca['Estudio_Socioeco'] == 1) ?  "Si" :  "No"; ?></label>
+                                                    <label style="color: #545454;"><input type="checkbox"><b>&nbsp;&nbsp; ¿Requiere Estudio socioeconómico? <?php echo ($beca['Estudio_Socioeco'] == 1) ?  "Si" :  "No"; ?></b></label>
                                                 </div>
                                                 <div class="checkbox">
-                                                    <label><input type="checkbox">&nbsp;&nbsp; ¿Requiere examen de admisión? <?php echo ($beca['Requiere_Examen'] == 1) ?  " Si " . $beca['Examen_Admision'] . " puntaje " . $beca['Puntaje']:  "No"; ?></label>
+                                                    <label style="color: #545454;"><input type="checkbox"><b>&nbsp;&nbsp; ¿Requiere examen de admisión? <?php echo ($beca['Requiere_Examen'] == 1) ?  " Si " . $beca['Examen_Admision'] . " puntaje " . $beca['Puntaje']:  "No"; ?></b></label>
                                                 </div>
                                                 <div class="checkbox">
-                                                    <label><input type="checkbox">&nbsp;&nbsp; ¿Requiere idiomas? <?php echo ($beca['Requiere_Idiomas'] == 1) ?  " Si " . $beca['Examen_Idiomas'] . " puntaje " . $beca['Puntuaje_Idiomas']:  "No"; ?></label>
+                                                    <label style="color: #545454;"><input type="checkbox"><b>&nbsp;&nbsp; ¿Requiere idiomas? <?php echo ($beca['Requiere_Idiomas'] == 1) ?  " Si " . $beca['Examen_Idiomas'] . " puntaje " . $beca['Puntuaje_Idiomas']:  "No"; ?></b></label>
                                                 </div>
                                                 <div class="checkbox">
-                                                    <label><input type="checkbox">&nbsp;&nbsp; Comprobar ingresos <?php echo $beca['Ingresos_Comprobar']; ?></label>
+                                                    <label><input type="checkbox"><b>&nbsp;&nbsp; Comprobar ingresos <?php echo $beca['Ingresos_Comprobar']; ?></b></label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div id="institucion-<?php echo $beca["ID_Beca"]; ?>" class="tab-pane fade">
-                                            <h3>La institución</h3>
+                                            <p style="color: #545454; color: #545454;"><b>La institución</b></p>
                                             <p><?php echo $beca["Descripcion_Escuela"]; ?></p>
                                         </div>
                                         <div id="contacto-<?php echo $beca["ID_Beca"]; ?>" class="tab-pane fade">
-                                            <h3>Contacto</h3>
+                                            <p style="color: #545454; color: #545454;"><b>Contacto</b></p>
                                             <div>
                                                 <div>
                                                     <p>
-                                                        Contacto: <?php echo $beca['Contacto']; ?>
+                                                        Correo electrónico: <?php echo $beca['Contacto']; ?>
                                                     </p>
                                                 </div>
                                                 <div class="checkbox">

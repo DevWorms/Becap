@@ -28,6 +28,24 @@
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/s3.css">
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <style>
+          .app-boton {
+            color: #9F9F9F;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 1.42857143;
+            background: #fff;
+            border-radius: 5px;
+            border: 0px solid #fff;
+            width: 155px;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            user-select: none;
+          }
+        </style>
     </head>
 
     <body>
@@ -52,7 +70,7 @@
               </div><!--/.navbar-collapse -->
           </div>
       </nav>
-
+      <div style="margin-top: 10px;"></div>
       <header>
          <div class="container space3">
            <div class="row">
@@ -62,10 +80,10 @@
              </div>
            </div>
          </div>
-          <br>
+          <br><br>
          <div class="container space2">
             <div class="row centered-form">
-              <div class="col-xs-12 col-sm-12 col-md-10 col-sm-offset-2 col-md-offset-1" align="center">
+              <div class="col-md-8 col-md-offset-2" align="center">
                 
                   <div class="">
                     
@@ -74,26 +92,26 @@
                           method="post" class="form" role="form" 
                           name="formulario_informacion" id="formulario_informacion">
                       <div class="row">
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Administración</button>
-                                  <input type="checkbox" class="hidden" value="Administración" id="admin" name="admin"/>
+                                  <button type="button" class="app-boton btn-block" data-color="info">Administración</button>
+                                  <input type="checkbox" class="hidden" value="Administración" id="admin" name="admin" checked/>
                               </span>
                             </div>
                           </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Abogacía</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info">Abogacía</button>
                                   <input type="checkbox" class="hidden" value="Abogacía" id="aboga" name="aboga"/>
                               </span>
                             </div>
                           </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Psicología</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info">Psicología</button>
                                   <input type="checkbox" class="hidden" value="Psicología" id="psico" name="psico"/>
                               </span>
                             </div>
@@ -101,26 +119,26 @@
                       </div>
 
                       <div class="row">
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Contabilidad</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info">Contabilidad</button>
                                   <input type="checkbox" class="hidden" value="Contabilidad" id="conta" name="conta"/>
                               </span>
                             </div>
                           </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Economía</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info">Economía</button>
                                   <input type="checkbox" class="hidden" value="Economía" id="econo" name="econo"/>
                               </span>
                             </div>
                           </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Finanzas</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info">Finanzas</button>
                                   <input type="checkbox" class="hidden" value="Finanzas" id="finan" name="finan"/>
                               </span>
                             </div>
@@ -128,26 +146,26 @@
                       </div>
 
                       <div class="row">
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Artes y Humanidades</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info">Artes y Humanidades</button>
                                   <input type="checkbox" class="hidden" id="arthu" name="arthu"/>
                               </span>
                             </div>
                           </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Arquitectura</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info">Arquitectura</button>
                                   <input type="checkbox" class="hidden" id="arqui" name="arqui"/>
                               </span>
                             </div>
                           </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Ingeniería</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info">Ingeniería</button>
                                   <input type="checkbox" class="hidden" id="ingen" name="ingen"/>
                               </span>
                             </div>
@@ -155,33 +173,33 @@
                       </div>
 
                       <div class="row">
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Diseño Industrial</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info">Diseño Industrial</button>
                                   <input type="checkbox" class="hidden" id="disin" name="disin"/>
                               </span>
                             </div>
                           </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Enseñanza</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info">Enseñanza</button>
                                   <input type="checkbox" class="hidden" id="ensen" name="ensen"/>
                               </span>
                             </div>
                           </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info">Medicina</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info">Medicina</button>
                                   <input type="checkbox" class="hidden" id="medic" name="medic"/>
                               </span>
                             </div>
                           </div>
                       </div>
                       
-                      <br>
+                      <br><br>
                       
                       <div class="row">
                          <div class="col-xs-12" align="center">

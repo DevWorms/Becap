@@ -18,6 +18,25 @@
         <link rel="stylesheet" href="css/s3.css">
         <link rel="stylesheet" href="css/s4.css">
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <style>
+          .app-boton {
+            color: #706F6F;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 1.42857143;
+            background: #fff;
+            border-radius: 5px;
+            border: 0px solid #fff;
+            width: 155px;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            text-align: center;
+            white-space: nowrap;
+            text-align: left;
+            vertical-align: middle;
+            user-select: none;
+          }
+        </style>
     </head>
 
     <body>
@@ -40,7 +59,7 @@
                     <li class="active"><a href="#" class="gr"><b>Oportunidades</b></a></li>
                     <li><a href="configuracion.php" class="gr"><b>Configuración</b></a></li>
                     <li><a href="#"><?php echo $_SESSION["nombreCompleto"]; ?></a></li>
-                     <li><a href="controladores/sesion/cerrar_sesion.php" class="btn btn-info btn-sm">Cerrar sesion</a></li>
+                    <!-- <li><a href="controladores/sesion/cerrar_sesion.php" class="btn btn-info btn-sm">Cerrar sesion</a></li> -->
                 </ul>
 
               </div><!--/.navbar-collapse -->
@@ -51,12 +70,13 @@
         <div class="container space3">
            <div class="row">
              <div class="col-xs-12" align="center">
-                <h3 style="color:#000"><b>Hemos encontrado <span class="blue">
+                <h2 style="color: #545454;"><b>Hemos encontrado <span class="blue">
                 
                 <?php echo Counter($_SESSION["id_usuario"]); ?>
                   
-                </span> becas para ti</b></h3>
-                <p style="font-size:15px">Todas estas becas estan a tu alcance, revisalas y marca tus favoritas para tenerlas en "mis becas".</p>
+                </span> becas para ti</b></h2>
+                <br>
+                <p style="font-size:15px">Selecciona el tipo de beca que buscas, revisa las oportunidades y marca con un <i class="glyphicon glyphicon-heart" style="color: #E74C3C; opacity: 1.00; font-size: 17px;"></i> tus <span style="color: #E74C3C; font-weight: bold;">favoritas</span> para agruparlas en "mis becas".</p>
              </div>
            </div>
         </div>
@@ -71,21 +91,21 @@
                         <div class="list-group">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button"  class="btn btn-block" id="filtro21_btn" data-color="info"><b>Beca Académica</b></button>
-                                  <input type="checkbox" class="hidden" value="0" id="filtro21" name="filtro21"/>
+                                  <button type="button"  class="app-boton btn btn-block" id="filtro21_btn" data-color="info"><b>Beca Académica</b></button>
+                                  <input type="checkbox" class="hidden" value="0" id="filtro21" name="filtro21" checked/>
                               </span>
                             </div>
 
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn btn-block" id="filtro22_btn" data-color="info"><b>Beca Crédito</b></button>
+                                  <button type="button" class="app-boton btn btn-block" id="filtro22_btn" data-color="info"><b>Beca Crédito</b></button>
                                   <input type="checkbox" class="hidden" value="0" id="filtro22" name="filtro22"/>
                               </span>
                             </div>
 
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn btn-block" id="filtro23_btn" data-color="info"><b>Beca Especie</b></button>
+                                  <button type="button" class="app-boton btn btn-block" id="filtro23_btn" data-color="info"><b>Beca Especie</b></button>
                                   <input type="checkbox" class="hidden" value="0" id="filtro23" name="filtro23"/>
                               </span>
                             </div>
@@ -100,13 +120,13 @@
                     <a href="#" id="menu_3" onclick="filtrar($(this));" class="list-group-item">Beca Especie</a>
                 </div>
                 -->
-                  <div align="center">
-                    <a href="oportunidades.php" class="btn btn-default btn-sm gray">
+                  <div style="margin-left: 59px;">
+                    <a href="oportunidades.php" class="btn btn-sm gray">
                       <span class="glyphicon glyphicon glyphicon-th"></span>
                     </a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <a class="btn btn-req btn-sm"> 
-                        <span class="glyphicon glyphicon glyphicon-align-justify gr"></span>
+                        <span class="glyphicon glyphicon-align-justify gr"></span>
                     </a>
                   </div>
             </div>

@@ -45,7 +45,7 @@
                     <li><a href="oportunidades.php" class="gr"><b>Oportunidades</b></a></li>
                     <li class="active"><a href="#" class="gr"><b>Configuración</b></a></li>
                     <li><a href="#"><?php echo $_SESSION["nombreCompleto"]; ?></a></li>
-                    <li><a href="controladores/sesion/cerrar_sesion.php" class="btn btn-info btn-sm">Cerrar sesion</a></li>
+                    <!-- <li><a href="controladores/sesion/cerrar_sesion.php" class="btn btn-info btn-sm">Cerrar sesion</a></li> -->
                 </ul>
 
               </div><!--/.navbar-collapse -->
@@ -66,23 +66,24 @@
           <br>
             <div class="row">
               <div class="col-md-3 col-md-offset-1">
-                <h4>Mi cuenta</h4>
+                <h4 style="color: #545454;"><b>Mi cuenta</b></h4>
               </div>
-              <div class="col-md-7">
+              <div class="col-md-7" style="margin-top: 10px;">
                  <b class="dark-gray">Correo:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_SESSION["correo"]; ?>
                 <br> 
                  <b class="dark-gray">Contraseña:</b> &nbsp;&nbsp;******
                 <br>
                 <button class="btn btn-default m-margin" data-toggle="modal" data-target="#updatePassModal">Cambiar contraseña</button>
+                <button class="btn btn-default m-margin"><a href="controladores/sesion/cerrar_sesion.php">Cerrar sesion</a></button>
               </div>
             </div>
           <br> 
 
             <div class="row">
               <div class="col-md-3 col-md-offset-1">
-                <h4>Mi perfil</h4> 
+                <h4 style="color: #545454;"><b>Mi perfil</b></h4> 
               </div>
-              <div class="col-md-7">
+              <div class="col-md-7" style="margin-top: 10px;">
                 <p>Recuerda que tu perfil es la base con la que buscamos becas que son para ti,
                    si tus calificaciones han cambiado, por favor modifica tu 
                    información para poder darte la información más oportuna. 
@@ -126,9 +127,9 @@
           
             <div class="row">
               <div class="col-md-3 col-md-offset-1">
-                <h4>Privacidad</h4>
+                <h4 style="color: #545454;"><b>Privacidad</b></h4>
               </div>
-              <div class="col-md-7">
+              <div class="col-md-7" style="margin-top: 10px;">
                 Ir al aviso de <span> <a href="terminos.php">Privacidad, Términos y Condiciones</a></span>
               </div>
             </div>
@@ -136,9 +137,9 @@
 
             <div class="row">
               <div class="col-md-3 col-md-offset-1">
-                <h4>Sobre Becap</h4>
+                <h4 style="color: #545454;"><b>Sobre Becap</b></h4>
               </div>
-              <div class="col-md-7">
+              <div class="col-md-7" style="margin-top: 10px;">
                 Si deseas darnos retroalimentación por favor envianos un correo a retro@becap.mx
               </div>
             </div>

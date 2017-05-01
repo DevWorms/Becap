@@ -2941,7 +2941,7 @@ fieldset[disabled] .btn-success.active {
 .btn-req {
   color: #fff;
   background-color: #25acd9;
-  border-color: #25acd9;
+  border: 0px solid #fff;
 }
 .btn-req:hover,
 .btn-req:focus,
@@ -2951,7 +2951,6 @@ fieldset[disabled] .btn-success.active {
 .open > .dropdown-toggle.btn-req {
   color: #fff;
   background-color: #24A1CB;
-  border-color: #24A1CB;
 }
 .btn-normal {
   color: #fff;
@@ -5541,12 +5540,12 @@ button.close {
   background-color: #fff;
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
-  border: 1px solid #999;
-  border: 1px solid rgba(0, 0, 0, .2);
+  /*border: 1px solid #999;
+  border: 1px solid rgba(0, 0, 0, .2);*/
   border-radius: 6px;
   outline: 0;
-  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
-          box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+  -webkit-box-shadow: 0 5px 15px rgba(0,0,0,0);
+    box-shadow: 0 5px 15px rgba(0,0,0,0);
 }
 .modal-backdrop {
   position: absolute;
@@ -5603,12 +5602,12 @@ button.close {
 }
 @media (min-width: 768px) {
   .modal-dialog {
-    width: 600px;
+    width: 800px;
     margin: 30px auto;
   }
   .modal-content {
-    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
   }
   .modal-sm {
     width: 300px;
