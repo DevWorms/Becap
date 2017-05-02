@@ -74,6 +74,7 @@
                  <b class="dark-gray">Contraseña:</b> &nbsp;&nbsp;******
                 <br>
                 <button class="btn btn-default m-margin" data-toggle="modal" data-target="#updatePassModal">Cambiar contraseña</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
                 <button class="btn btn-default m-margin"><a href="controladores/sesion/cerrar_sesion.php">Cerrar sesion</a></button>
               </div>
             </div>

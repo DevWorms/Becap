@@ -266,13 +266,14 @@
 
                 echo
                     '        
-                    <div class="col-md-2 col-md-offset-1 caja" style="margin-bottom: 10px">
-
+                    <div class="col-md-2 col-md-offset-1 caja" style="margin-bottom: 23.5px">
+                      
                       <div class="col-xs-9 space-inside" align="left">
                         
                         <a href="" data-toggle="modal" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box">' . substr($fila["Nombre_Escuela"],0,30) . '</span></a>
-
+                        
                         <div class="space-inside-p">
+                            <br>
                             <p><strong>' . $tipo . '</strong></p>
                             <p>Aplica ' . $fila["Beca_Sobre"] . '</p>
                         </div>
@@ -282,7 +283,11 @@
                       <div class="col-xs-3" align="right">'
                         . $icono .
                       '</div>
-
+                      
+                      <div class="row">
+                        <div class="col-xs-9"></div>
+                        <div class="col-xs-3"><span style="color: #25acd9; font-weight: bold; font-size: 13px;">80%</span></div>
+                      </div>
                     </div>
 
                     ';

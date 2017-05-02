@@ -1,12 +1,14 @@
 	
 	.caja{
-		margin-top: 0px;
+		font-size: 12px;
+		margin-top: 10px;
 		margin-left: 45px;
 		background: #efefef;
 		padding: 10px;
-		height: 200px;
-		width: 230px;
+		height: 180px;
+    	width: 230px;
 		border-radius: 10px;
+		color: #545454;
 	}
 
 	.caja-2{
@@ -88,7 +90,7 @@
 	.blue-box{
 		color: #25acd9;
 		font-weight: bold;
-		font-size: 15px;
+		font-size: 13px;
 	}
 	.gray{
 		color: #cacaca;
