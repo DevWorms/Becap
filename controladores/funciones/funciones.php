@@ -443,7 +443,7 @@
                                 </div>
 
                                 <div class="col-xs-4">
-                                    <div align="right">
+                                    <div align="right" style="margin-top: 5px;">
                                         <?php echo $iconoH; ?>
                                         &nbsp;&nbsp;&nbsp;&nbsp;
                                         <?php //echo $iconoS; ?>
