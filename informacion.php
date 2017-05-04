@@ -65,7 +65,7 @@
               <div id="navbar" class="navbar-collapse collapse">
                 <form class="navbar-form navbar-right" role="form">
                   <label for="" class="white"> <?php echo $_SESSION["nombreCompleto"]; ?> </label>&nbsp;&nbsp;&nbsp;
-                  <a href="controladores/sesion/cerrar_sesion.php" class="btn btn-info btn-sm">Cerrar sesion</a>
+                  <!-- <a href="controladores/sesion/cerrar_sesion.php" class="btn btn-info btn-sm">Cerrar sesion</a> -->
                 </form>
               </div><!--/.navbar-collapse -->
           </div>

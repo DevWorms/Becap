@@ -50,7 +50,7 @@
                   <?php
                       echo '<label for="" class="white">' . $_SESSION["correo"] . '</label>&nbsp;&nbsp;&nbsp;';
                   ?>
-                  <a href="controladores/sesion/cerrar_sesion.php" class="btn btn-info btn-sm">Cerrar sesion</a>
+                  <!-- <a href="controladores/sesion/cerrar_sesion.php" class="btn btn-info btn-sm">Cerrar sesion</a> -->
                 </form>
               </div><!--/.navbar-collapse -->
           </div>
