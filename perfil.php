@@ -48,7 +48,7 @@
               <div id="navbar" class="navbar-collapse collapse">
                 <form class="navbar-form navbar-right" role="form">
                   <?php
-                      echo '<label for="" class="white">' . $_SESSION["correo"] . '</label>&nbsp;&nbsp;&nbsp;';
+                      echo '<label for="" class="white" style="margin-top: 7px">' . $_SESSION["correo"] . '</label>&nbsp;&nbsp;&nbsp;';
                   ?>
                   <!-- <a href="controladores/sesion/cerrar_sesion.php" class="btn btn-info btn-sm">Cerrar sesion</a> -->
                 </form>
