@@ -431,9 +431,9 @@
 
             $iconoH = '<i class="glyphicon glyphicon-heart ' . $color . '" id="heart-m-' . $beca['ID_Beca'] . '"></i>';
             
-            /*
+            
             $iconoS = '<i class="glyphicon glyphicon-star ' . $colorS . '" id="start-m-' . $beca['ID_Beca'] . '"></i>';
-            */
+            
             ?>
             <div id="tecmon<?php echo $beca["ID_Beca"]; ?>" class="modal fade" role="dialog">
                 <div class="modal-dialog">
@@ -451,7 +451,7 @@
                                     <div align="right" style="margin-top: 5px;">
                                         <?php echo $iconoH; ?>
                                         &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <?php //echo $iconoS; ?>
+                                        <?php echo $iconoS; ?>
                                     </div>
                                 </div>
                             </div>
