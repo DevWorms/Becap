@@ -76,7 +76,7 @@
                   
                 </span> becas para ti</b></h2>
                 <br>
-                <p style="font-size:15px">Selecciona el tipo de beca que buscas, revisa las oportunidades y marca con un <i class="glyphicon glyphicon-heart" style="color: #E74C3C; opacity: 1.00; font-size: 17px;"></i> tus <span style="color: #E74C3C; font-weight: bold;">favoritas</span> para agruparlas en "mis becas".</p>
+                <p style="font-size:15px; color: #545454;">Selecciona el tipo de beca que buscas, revisa las oportunidades y marca con un &nbsp;<i class="glyphicon glyphicon-heart" style="color: #E74C3C; opacity: 1.00; font-size: 19px; vertical-align: middle;"></i> &nbsp;tus <span style="color: #E74C3C; font-weight: bold;">favoritas</span> para agruparlas en "mis becas".</p>
              </div>
            </div>
         </div>

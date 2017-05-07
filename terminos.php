@@ -46,7 +46,7 @@
                 <li><a href="oportunidades.php" class="gr"><b>Oportunidades</b></a></li>
                 <li><a href="configuracion.php" class="gr"><b>Configuración</b></a></li>
                 <li><a href="#"><?php echo $_SESSION["nombreCompleto"]; ?></a></li>
-                <li><a href="controladores/sesion/cerrar_sesion.php" class="btn btn-info btn-sm">Cerrar sesion</a></li>
+                <!-- <li><a href="controladores/sesion/cerrar_sesion.php" class="btn btn-info btn-sm">Cerrar sesion</a></li> -->
             </ul>
             <?php } else { ?>
             <form action="controladores/sesion/iniciar_sesion.php"
@@ -54,21 +54,24 @@
                   role="form" method="post" name="formularionav">
 
                 <div class="form-group">
-                    <input type="text" placeholder="Correo" class="form-control" name="correo">
+                    <input type="text" placeholder="Correo" class="form-control input-sm" name="correo">
                 </div>
                 <div class="form-group">
-                    <input type="password" placeholder="Contraseña" class="form-control" name="password">
+                    <input type="password" placeholder="Contraseña" class="form-control input-sm" name="password">
                 </div>
 
-                <button type="submit" class="btn btn-primary" name="enviar" id="enviar">Iniciar Sesión</button>
+                <button type="submit" class="btn btn-primary btn-sm" name="enviar" id="enviar">Iniciar Sesión</button>
 
-                <div align="right" class="spce">
+                <!-- <div align="right" class="spce">
                     <input type="checkbox" name="checkbox" id="checkbox" class="checkbox">&nbsp;&nbsp; Mantener la
                     sesión iniciada
-                </div>
+                </div> -->
             </form>
+
             <?php } ?>
+
         </div><!--/.navbar-collapse -->
+        <br>
     </div>
 </nav>
 

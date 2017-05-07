@@ -21,6 +21,66 @@
           body{
             overflow-x: hidden;
           }
+          .boton-rojo {
+            color: #FFF;
+            font-weight: bold;
+            background: #E74C3C;
+            opacity: 1.00;
+            border-radius: 5px;
+          }
+          .boton-rojo:hover{
+            color: #FFF;
+            font-weight: bold;
+            background: #C94335;
+            opacity: 1.00;
+            border-radius: 5px;
+          }
+          .boton-rojo:focus{
+            color: #FFF;
+            font-weight: bold;
+          }
+          .boton-gris {
+            color: #959595;
+            border-radius: 5px;
+          }
+          .boton-gris:hover {
+            color: #656565;
+            border-radius: 5px;
+          }
+          .modal-content{
+              -webkit-box-shadow: 0 5px 15px rgba(0,0,0,0);
+              -moz-box-shadow: 0 5px 15px rgba(0,0,0,0);
+              -o-box-shadow: 0 5px 15px rgba(0,0,0,0);
+              box-shadow: 0 5px 15px rgba(0,0,0,0);
+              border: 0px solid rgba(0, 0, 0, .2);
+          }
+          .modal-header{
+            background: #FFFFFF;
+          }
+          .modal-title{
+            line-height: 0.6;
+            color: #FF0000;
+          }
+          .modal-body{
+            border-radius: 5px;
+          }
+          @media (min-width: 768px) {
+            .modal-dialog {
+              width: 300px;
+              margin: 30px auto;
+            }
+          }
+
+          .special {
+              height: 40px;
+              font-weight: bold;
+              color: #A7A7A7;
+              font-size: 15px;
+              line-height: 1.33;
+              border-radius: 6px;
+              border: 0px solid #ccc;
+              text-align: left;
+          }
         </style>
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
@@ -69,27 +129,37 @@
                 <h4 style="color: #545454;"><b>Mi cuenta</b></h4>
               </div>
               <div class="col-md-7" style="margin-top: 10px;">
-                 <b class="dark-gray">Correo:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_SESSION["correo"]; ?>
+                 <b class="dark-gray">Correo:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_SESSION["correo"]; ?>
                 <br> 
-                 <b class="dark-gray">Contraseña:</b> &nbsp;&nbsp;******
+                 <b class="dark-gray">Contraseña:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**********
                 <br>
-                <button class="btn btn-default m-margin" data-toggle="modal" data-target="#updatePassModal">Cambiar contraseña</button>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <button class="btn btn-default m-margin"><a href="controladores/sesion/cerrar_sesion.php">Cerrar sesion</a></button>
+                
+                <div class="row">
+                  <div class="col-md-4">
+                    <button class="btn boton-rojo btn-block m-margin" data-toggle="modal" data-target="#updatePassModal">Cambiar contraseña</button>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <a href="controladores/sesion/cerrar_sesion.php" class="btn boton-gris m-margin"><b>Cerrar sesion</b></a>
+                  </div>
+
+                </div>
               </div>
             </div>
-          <br> 
+          <br> <br>
 
             <div class="row">
               <div class="col-md-3 col-md-offset-1">
                 <h4 style="color: #545454;"><b>Mi perfil</b></h4> 
               </div>
               <div class="col-md-7" style="margin-top: 10px;">
-                <p>Recuerda que tu perfil es la base con la que buscamos becas que son para ti,
-                   si tus calificaciones han cambiado, por favor modifica tu 
-                   información para poder darte la información más oportuna. 
+                <p>Recuerda que tu perfil es la base con la que buscamos las becas que son para tí, si tus calificaciones han cambiado, por favor actualiza tu perfil dando clic a "Actualizar Perfil".
                 </p>
-                <button class="btn btn-default m-margin"><a href="info_update.php">Cambiar perfil</a></button>
+                <div class="row">
+                  <div class="col-md-4">
+                    <a href="info_update.php" class="btn boton-rojo btn-block m-margin">Actualizar perfil</a>
+                  </div>
+                </div>
               </div>
             </div>
           <br>  
@@ -141,7 +211,7 @@
                 <h4 style="color: #545454;"><b>Sobre Becap</b></h4>
               </div>
               <div class="col-md-7" style="margin-top: 10px;">
-                Si deseas darnos retroalimentación por favor envianos un correo a retro@becap.mx
+                Si deseas darnos retroalimentación por favor envianos un correo a retro@becap.mx, con gusto <br>lo atenderemos.
               </div>
             </div>
           <br>
@@ -159,32 +229,35 @@
     </body>
 </html>
 
-  <div id="updatePassModal" class="modal fade " role="dialog">
+  <div id="updatePassModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
           <div class="modal-content">
-              <div class="modal-header">
-                <div align="">
-                    <h4 class="modal-title white"><br><b> Modificar contraseña</b></h4>
-                </div>
-              </div>
-              <div class="modal-body" style="background:#ffffff !important;">
-                  <div class="col-lg-3"></div>
-                  <div class="col-lg-6">
-                      <form action="controladores/sesion/iniciar_sesion.php" method="post" name="formularionav">
+              
+              <div class="modal-body" style="background:#EFEFEF !important;" align="center">
+                    <div style="margin-top: 10px;"></div>
+                    <p style="font-weight: bold; font-size: 20px; color: #545454;">Cambio de Contraseña</p>
+                    <div style="margin-top: 20px;"></div>
+
+                    <p style="font-weight: bold; font-size: 14px; color: #A7A7A7; text-align: left;">Introduce dos veces tu contraseña nueva para confirmar, los campos debajo deben coincidir para poder continuar.</p>
+                      <form action="controladores/sesion/iniciar_sesion.php" method="post" name="formularionav" style="margin-top: 25px;">
+                          
                           <div class="form-group">
-                              <input type="password" placeholder="Nueva contraseña" class="form-control" id="pwd" name="pwd" required>
+                              <input type="password" placeholder="Nueva contraseña" class="form-control special" id="pwd" name="pwd" required>
                           </div>
+                          
+                          <div style="margin-top: 25px;"></div>
                           <div class="form-group">
-                              <input type="password" placeholder="Confirmar contraseña" class="form-control" id="pwd_confirm" name="pwd_confirm" required>
+                              <input type="password" placeholder="Confirmar contraseña" class="form-control special" id="pwd_confirm" name="pwd_confirm" required>
                           </div>
-                          <div class="form-group">
-                              <button type="submit" class="btn btn-info pull-right" onclick="updatePassword();" name="enviar" id="enviar">Cambiar contraseña</button>
+                          
+                          <div style="margin-top: 25px;"></div>
+                          <div class="form-group" align="center">
+                              <button type="submit" class="btn btn-block boton-rojo" onclick="updatePassword();" name="enviar" id="enviar" style="padding: 9px 12px; font-size: 15px;">Cambiar contraseña</button>
                           </div>
                       </form>
-                  </div>
-                  <div class="col-lg-3"></div>
+                  
               </div>
-            <div class="modal-footer"></div>
+            
         </div>
       </div>
   </div>
