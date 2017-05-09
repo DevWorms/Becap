@@ -113,7 +113,7 @@
                     <li><a href="misbecas.php" class="gr"><b>Mis Becas</b></a></li>
                     <li><a href="oportunidades.php" class="gr"><b>Oportunidades</b></a></li>
                     <li><a href="#" class="gr"><b><span class="underline"><span>Configuración</span></span></b></a></li>
-                    <li><a href="#"><?php echo $_SESSION["nombreCompleto"]; ?></a></li>
+                    <li><a><?php echo $_SESSION["nombreCompleto"]; ?></a></li>
                     <!-- <li><a href="controladores/sesion/cerrar_sesion.php" class="btn btn-info btn-sm">Cerrar sesion</a></li> -->
                 </ul>
 
@@ -126,7 +126,7 @@
         <div class="container space3">
            <div class="row">
              <div class="col-xs-12 col-md-offset-1" align="left">
-                <b style="font-size: 18px; color: #545454;"><?php echo $_SESSION["nombreCompleto"]; ?></b>
+                <b style="font-size: 20px; color: #545454;"><?php echo $_SESSION["nombreCompleto"]; ?></b>
              </div>
            </div>
         </div>

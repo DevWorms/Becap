@@ -60,7 +60,7 @@
                     <li><a href="misbecas.php" class="gr"><b>Mis Becas</b></a></li>
                     <li><a href="#" class="gr"><b><span class="underline"><span>Oportunidades</span></span></b></a></li>
                     <li><a href="configuracion.php" class="gr"><b>Configuración</b></a></li>
-                    <li><a href="#"><?php echo $_SESSION["nombreCompleto"]; ?></a></li>
+                    <li><a><?php echo $_SESSION["nombreCompleto"]; ?></a></li>
                 </ul>
 
               </div><!--/.navbar-collapse -->
