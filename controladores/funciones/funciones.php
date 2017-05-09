@@ -135,11 +135,11 @@
                              </div>
                              
                               <div class="col-xs-3 space-inside">
-                                <p class="dark-gray"><b>' . $tipo . '</b></p>
+                                <p class="dark-gray" style="font-size: 12.5px;"><b>' . $tipo . '</b></p>
                               </div>
                              
                               <div class="col-xs-3 space-inside">
-                                <p class="dark-gray"><b>' . $porcentaje . $muestra . " " . $fila["Beca_Sobre"] . '</b></p>
+                                <p class="dark-gray" style="font-size: 12.5px;"><b>' . $porcentaje . $muestra . " " . $fila["Beca_Sobre"] . '</b></p>
                               </div>
 
                             </div>
@@ -429,10 +429,10 @@
             $color = ($meInteresa) ? 'red' : 'gray-box';
             $colorS = ($isFavorite) ? 'yellow' : 'gray-box';
 
-            $iconoH = '<i class="glyphicon glyphicon-heart ' . $color . '" id="heart-m-' . $beca['ID_Beca'] . '"></i>';
+            $iconoH = '<a href=""><i class="glyphicon glyphicon-heart ' . $color . '" id="heart-m-' . $beca['ID_Beca'] . '"></i></a>';
             
             
-            $iconoS = '<i class="glyphicon glyphicon-star ' . $colorS . '" id="start-m-' . $beca['ID_Beca'] . '"></i>';
+            $iconoS = '<a href=""><i class="glyphicon glyphicon-star ' . $colorS . '" id="start-m-' . $beca['ID_Beca'] . '"></i></a>';
             
             ?>
             <div id="tecmon<?php echo $beca["ID_Beca"]; ?>" class="modal fade" role="dialog">

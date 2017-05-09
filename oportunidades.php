@@ -76,8 +76,9 @@
                 <?php echo Counter($_SESSION["id_usuario"]); ?>
                   
                 </span> becas para ti</b></h2>
-                <br>
-                <p style="font-size:15px; color: #545454;">Selecciona el tipo de beca que buscas, revisa las oportunidades y marca con un &nbsp;<i class="glyphicon glyphicon-heart" style="color: #E74C3C; opacity: 1.00; font-size: 19px; vertical-align: middle;"></i> &nbsp;tus <span style="color: #E74C3C; font-weight: bold;">favoritas</span> para agruparlas en "mis becas".</p>
+                <!-- <br> -->
+                <p style="color: #545454;">Todas estan becas estan a tu alcance, revisalas y marca tus favoritas para tenerlas en "mis becas".</p>
+                <!-- <p style="font-size:15px; color: #545454;">Selecciona el tipo de beca que buscas, revisa las oportunidades y marca con un &nbsp;<i class="glyphicon glyphicon-heart" style="color: #E74C3C; opacity: 1.00; font-size: 19px; vertical-align: middle;"></i> &nbsp;tus <span style="color: #E74C3C; font-weight: bold;">favoritas</span> para agruparlas en "mis becas".</p> -->
              </div>
            </div>
         </div>

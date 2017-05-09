@@ -27,6 +27,7 @@
             background: #E74C3C;
             opacity: 1.00;
             border-radius: 5px;
+            font-size: 14px;
           }
           .boton-rojo:hover{
             color: #FFF;
@@ -81,6 +82,14 @@
               border: 0px solid #ccc;
               text-align: left;
           }
+          
+          h4 {
+            font-size: 14px;
+          }
+
+          label {
+            font-size: 12px;
+          }
         </style>
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
@@ -113,11 +122,11 @@
       </nav>
 
       <header>
-       
+        <br>
         <div class="container space3">
            <div class="row">
              <div class="col-xs-12 col-md-offset-1" align="left">
-                <h3><b><?php echo $_SESSION["nombreCompleto"]; ?></b></h3>
+                <b style="font-size: 18px; color: #545454;"><?php echo $_SESSION["nombreCompleto"]; ?></b>
              </div>
            </div>
         </div>
@@ -129,9 +138,9 @@
                 <h4 style="color: #545454;"><b>Mi cuenta</b></h4>
               </div>
               <div class="col-md-7" style="margin-top: 10px;">
-                 <b class="dark-gray">Correo:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_SESSION["correo"]; ?>
+                 <b class="dark-gray" style="font-size: 12px">Correo:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_SESSION["correo"]; ?>
                 <br> 
-                 <b class="dark-gray">Contraseña:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**********
+                 <b class="dark-gray" style="font-size: 12px">Contraseña:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**********
                 <br>
                 
                 <div class="row">
@@ -152,7 +161,7 @@
               <div class="col-md-3 col-md-offset-1">
                 <h4 style="color: #545454;"><b>Mi perfil</b></h4> 
               </div>
-              <div class="col-md-7" style="margin-top: 10px;">
+              <div class="col-md-7" style="margin-top: 10px; font-size: 12px;">
                 <p>Recuerda que tu perfil es la base con la que buscamos las becas que son para tí, si tus calificaciones han cambiado, por favor actualiza tu perfil dando clic a "Actualizar Perfil".
                 </p>
                 <div class="row">
@@ -195,12 +204,38 @@
             </div>
             -->
           <br>
+
+            <div class="row">
+              <div class="col-md-3 col-md-offset-1">
+                <h4 style="color: #545454;"><b>Notificaciones</b></h4>
+              </div>
+              <div class="col-md-7">
+                <div class="list-group">
+                    <label class="radio">
+                          <input value="" type="checkbox">&nbsp;&nbsp;&nbsp;Deseo recibir notificaciones sobre becas con las que cumplo el promedio.
+                    </label>
+                    
+                    <label class="radio">
+                          <input value="" type="checkbox">&nbsp;&nbsp;&nbsp;Deseo recibir actualizaciones si los requisitos de "Mis becas" cambian.
+                    </label>
+
+                    <label class="radio">
+                          <input value="" type="checkbox">&nbsp;&nbsp;&nbsp;Deseo recibir un correo de resumen semanal con nuevas becas y cambios.
+                    </label>
+
+                    <label class="radio">
+                          <input value="" type="checkbox">&nbsp;&nbsp;&nbsp;Deseo recibir información valiosa y/o promocional de los Partners de Becap.
+                    </label>
+                </div>
+              </div>
+            </div>
+          
           
             <div class="row">
               <div class="col-md-3 col-md-offset-1">
                 <h4 style="color: #545454;"><b>Privacidad</b></h4>
               </div>
-              <div class="col-md-7" style="margin-top: 10px;">
+              <div class="col-md-7" style="margin-top: 10px; font-size: 12px;">
                 Ir al aviso de <span> <a href="terminos.php">Privacidad, Términos y Condiciones</a></span>
               </div>
             </div>
@@ -210,12 +245,12 @@
               <div class="col-md-3 col-md-offset-1">
                 <h4 style="color: #545454;"><b>Sobre Becap</b></h4>
               </div>
-              <div class="col-md-7" style="margin-top: 10px;">
+              <div class="col-md-7" style="margin-top: 10px; font-size: 12px;">
                 Si deseas darnos retroalimentación por favor envianos un correo a retro@becap.mx, con gusto <br>lo atenderemos.
               </div>
             </div>
-          <br>
-
+          <br><br>
+          
       
       </header>
 
