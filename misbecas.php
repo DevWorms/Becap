@@ -72,34 +72,37 @@
 
             <div class="col-md-3 space-outside">
               <p class="dark-gray gr"><b>Requisitos Agrupados</b></p>
+              
+              <div class="list-group" style="font-size: 12px; margin-top: 15px;">
+                  
+                  <label class="radio">
+                        <input value="" type="checkbox">&nbsp;&nbsp;&nbsp;Promedio de: 80 (7/7)
+                  </label>
+                  
+                  <label class="radio">
+                        <input value="" type="checkbox">&nbsp;&nbsp;&nbsp;Acta de Nacimiento (3/7)
+                  </label>
 
-                <div class="list-group" style="font-size: 12px;">
-                    <label class="radio">
-                          <input value="" type="checkbox">&nbsp;&nbsp;&nbsp;Promedio de: 80 (7/7)
-                    </label>
-                    
-                    <label class="radio">
-                          <input value="" type="checkbox">&nbsp;&nbsp;&nbsp;Acta de Nacimiento (3/7)
-                    </label>
+                  <label class="radio">
+                        <input value="" type="checkbox">&nbsp;&nbsp;&nbsp;Examen de admisión (3/7)
+                  </label>
 
-                    <label class="radio">
-                          <input value="" type="checkbox">&nbsp;&nbsp;&nbsp;Examen de admisión (3/7)
-                    </label>
+                  <label class="radio">
+                        <input value="" type="checkbox">&nbsp;&nbsp;&nbsp;TOEFL: 600 (3/7)
+                  </label>
+                  
+                  <label class="radio">
+                        <input value="" type="checkbox">&nbsp;&nbsp;&nbsp;Kardex de preparatoria (2/7)
+                  </label>
+              </div>
 
-                    <label class="radio">
-                          <input value="" type="checkbox">&nbsp;&nbsp;&nbsp;TOEFL: 600 (3/7)
-                    </label>
-                    
-                    <label class="radio">
-                          <input value="" type="checkbox">&nbsp;&nbsp;&nbsp;Kardex de preparatoria (2/7)
-                    </label>
-                </div>
             </div>
             
             <div class="col-md-9">
                 <div class="row">
 
                     <p class="dark-gray gr margin"><b>Becas Seleccionadas</b></p>
+                    <div style="margin-top: 15px;"></div>
                     <?php echo MostrarFavIntereses($_SESSION["id_usuario"]); ?>
 
                 </div>
