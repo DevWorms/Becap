@@ -47,7 +47,7 @@
 
               <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="#" class="gr"><b>Mis Becas</b></a></li>
+                    <li><a href="#" class="gr"><b><span class="underline"><span>Mis Becas</span></span></b></a></li>
                     <li><a href="oportunidades.php" class="gr"><b>Oportunidades</b></a></li>
                     <li><a href="configuracion.php" class="gr"><b>Configuración</b></a></li>
                     <li><a href="#"><?php echo $_SESSION["nombreCompleto"]; ?></a></li>
