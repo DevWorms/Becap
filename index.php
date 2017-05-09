@@ -91,7 +91,7 @@
                         <input class="form-control input-lg special" name="password" id="password" placeholder="" type="password" />
                         <br>
                         <div class="row">
-                             <div class="col-xs-12 col-md-7 col-md-offset-2">
+                             <div class="col-xs-12 col-md-8 col-md-offset-2">
                                    <button class="btn btn-danger btn-block" type="submit" name="enviar"><b>Únete ahora</b></button> 
                              </div>
                         </div>
