@@ -17,6 +17,24 @@
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/s3.css">
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <style>
+          .app-boton {
+            color: #9F9F9F;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 1.42857143;
+            background: #fff;
+            border-radius: 5px;
+            border: 0px solid #fff;
+            width: 155px;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            user-select: none;
+          }
+        </style>
     </head>
 
     <body>
@@ -39,56 +57,55 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="misbecas.php" class="gr"><b>Mis Becas</b></a></li>
                     <li><a href="oportunidades.php" class="gr"><b>Oportunidades</b></a></li>
-                    <li><a href="configuracion.php" class="gr"><b>Configuración</b></a></li>
+                    <li><a href="configuracion.php" class="gr"><b><span class="underline"><span>Configuración</span></span></b></a></li>
                     <li><a href="#"><?php echo $_SESSION["nombreCompleto"]; ?></a></li>
-                    <li><a href="controladores/sesion/cerrar_sesion.php" class="btn btn-info btn-sm">Cerrar sesion</a></li>
+                    <!-- <li><a href="controladores/sesion/cerrar_sesion.php" class="btn btn-info btn-sm">Cerrar sesion</a></li> -->
                 </ul>
 
               </div><!--/.navbar-collapse -->
           </div>
       </nav>
-
+      <div style="margin-top: 10px;"></div>
       <header>
          <div class="container space3">
            <div class="row">
              <div class="col-xs-12" align="center">
-               <h3><b>Actualiza tus interéses</b></h3>
-                <p>Selecciona todas las áreas que te interesen</p>
+               <h3 style="color: #545454;"><b>Actualiza tus interéses</b></h3>
+                <p style="color: #545454;">Selecciona todas las áreas que te interesen</p>
              </div>
            </div>
          </div>
 
          <div class="container space2">
             <div class="row centered-form">
-              <div class="col-xs-12 col-sm-12 col-md-10 col-sm-offset-2 col-md-offset-1" align="center">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    
+              <div class="col-md-8 col-md-offset-2"" align="center">
+                <div class="">
+                    <br><br>                      
                     <!-- INICIO FORMULARIO -->
                     <form action="controladores/usuario/carreras_usuario.php"
                           method="post" class="form" role="form" 
                           name="formulario_informacion" id="formulario_informacion">
                       <div class="row">
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info" id="admin_btn">Administración</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info" id="admin_btn">Administración</button>
                                   <input type="checkbox" class="hidden" value="0" id="admin" name="admin"/>
                               </span>
                             </div>
                           </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info" id="aboga_btn">Abogacía</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info" id="aboga_btn">Abogacía</button>
                                   <input type="checkbox" class="hidden" value="0" id="aboga" name="aboga"/>
                               </span>
                             </div>
                           </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info" id="psico_btn">Psicología</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info" id="psico_btn">Psicología</button>
                                   <input type="checkbox" class="hidden" value="0" id="psico" name="psico"/>
                               </span>
                             </div>
@@ -96,26 +113,26 @@
                       </div>
 
                       <div class="row">
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info" id="conta_btn">Contabilidad</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info" id="conta_btn">Contabilidad</button>
                                   <input type="checkbox" class="hidden" value="0" id="conta" name="conta"/>
                               </span>
                             </div>
                           </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info" id="econo_btn">Economía</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info" id="econo_btn">Economía</button>
                                   <input type="checkbox" class="hidden" value="0" id="econo" name="econo"/>
                               </span>
                             </div>
                           </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info" id="finan_btn">Finanzas</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info" id="finan_btn">Finanzas</button>
                                   <input type="checkbox" class="hidden" value="0" id="finan" name="finan"/>
                               </span>
                             </div>
@@ -123,26 +140,26 @@
                       </div>
 
                       <div class="row">
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info" id="arthu_btn">Artes y Humanidades</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info" id="arthu_btn">Artes y Humanidades</button>
                                   <input type="checkbox" class="hidden" value="0" id="arthu" name="arthu"/>
                               </span>
                             </div>
                           </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info" id="arqui_btn">Arquitectura</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info" id="arqui_btn">Arquitectura</button>
                                   <input type="checkbox" class="hidden" value="0" id="arqui" name="arqui"/>
                               </span>
                             </div>
                           </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info" id="ingen_btn">Ingeniería</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info" id="ingen_btn">Ingeniería</button>
                                   <input type="checkbox" class="hidden" value="0" id="ingen" name="ingen"/>
                               </span>
                             </div>
@@ -150,37 +167,37 @@
                       </div>
 
                       <div class="row">
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info" id="disin_btn">Diseño Industrial</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info" id="disin_btn">Diseño Industrial</button>
                                   <input type="checkbox" class="hidden" value="0" id="disin" name="disin"/>
                               </span>
                             </div>
                           </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info" id="ensen_btn">Enseñanza</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info" id="ensen_btn">Enseñanza</button>
                                   <input type="checkbox" class="hidden" value="0" id="ensen" name="ensen"/>
                               </span>
                             </div>
                           </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
+                          <div class="col-md-4">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="btn" data-color="info" id="medic_btn">Medicina</button>
+                                  <button type="button" class="app-boton btn-block" data-color="info" id="medic_btn">Medicina</button>
                                   <input type="checkbox" class="hidden" value="0" id="medic" name="medic"/>
                               </span>
                             </div>
                           </div>
                       </div>
                       
-                      <br>
+                      <br><br>
                       
                       <div class="row">
                          <div class="col-xs-12" align="center">
-                           <h4><b>Actualiza tu número de celular</h4>
+                           <h4 style="color: #545454;"><b>Actualiza tu número de celular</h4>
                          </div>
                       </div>
                       <div class="row">
@@ -193,7 +210,7 @@
                       
                       <div class="row">
                          <div class="col-xs-12" align="center">
-                           <h4><b>¿Que tipo de beca buscas?</h4>
+                           <h4 style="color: #545454;"><b>¿Que tipo de beca buscas?</h4>
                          </div>
                       </div>
                       <div class="row">
@@ -223,8 +240,8 @@
 
                       <div class="row">
                        <div class="col-xs-12" align="center">
-                          <h4 class="m-space"><h3><b>Actualiza tu historial académico</b></h3></h4>
-                          <h4 class="m-space">Llena todas las casillas que apliquen para ti, esto mejora <br> la probabilidad de que las escuelas te contacten.</h4>
+                          <h4 class="m-space" style="color: #545454;"><h3><b>Actualiza tu historial académico</b></h3></h4>
+                          <h4 class="m-space" style="color: #545454;">Llena todas las casillas que apliquen para ti, esto mejora <br> la probabilidad de que las escuelas te contacten.</h4>
                           <br>
                        </div>
                       </div>
@@ -312,7 +329,7 @@
 
 
                     <!-- FIN FORMULARIO -->
-                  </div>
+                  
                 </div>
               </div>
             </div>
