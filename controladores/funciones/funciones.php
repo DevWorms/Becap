@@ -270,7 +270,7 @@
                       
                           <div class="col-xs-9 space-inside" align="left">
                             
-                            <div class="row" style="margin-left: 0px; margin-right: 0px;"> 
+                            <div class="row" style="margin-left: 0px; margin-right: 0px; padding-bottom: 15px;"> 
                               <a href="" data-toggle="modal" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box">' . substr($fila["Nombre_Escuela"],0,30) . '</span></a>
                             </div>
 
