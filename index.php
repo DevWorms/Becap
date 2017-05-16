@@ -58,9 +58,8 @@
                       </div>
 
                       <button type="submit" class="btn btn-primary btn-sm" name="enviar" id="enviar">Inicia Sesión</button>
-
+                      <a href="#" onclick="event.preventDefault(); showReset();" style="color:#ffffff; position: absolute; margin-left: -241px; margin-top: 32px;">Recuperar contraseña</a>-
                   </form>
-                
                 </div><!--/.navbar-collapse -->
                   <br>
             </div>
@@ -123,9 +122,37 @@
           
         </footer>
 
+        <div class="modal fade" id="resetPassword" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4>Recuperar contraseña</h4>
+              </div>
+              <div class="modal-body">
+                <form role="form">
+                  <div class="form-group">
+                    <label for="username"><span class="glyphicon glyphicon-user"></span> Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter email">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       <script>window.jQuery || document.write('<script src="vendor/jquery/jquery-1.11.2.min.js"><\/script>')</script>
       <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
       <script src="js/main.js"></script>
       <script src="js/bootstrap-notify.js"></script>
+      <script type="text/javascript">
+        function showReset() {
+          $("#resetPassword").modal("show");
+        }
+      </script>
     </body>
 </html>
