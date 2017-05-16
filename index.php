@@ -133,13 +133,14 @@
               <div class="modal-body">
                 <form role="form">
                   <div class="form-group">
-                    <label for="username"><span class="glyphicon glyphicon-user"></span> Username</label>
-                    <input type="text" class="form-control" id="username" placeholder="Enter email">
+                    <label for="username_reset"><span class="glyphicon glyphicon-user"></span> Ingresa tu email</label>
+                    <input type="text" class="form-control" id="username_reset" placeholder="mail@example.com">
                   </div>
+                  <div id="msg"></div>
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                <button type="submit" class="btn btn-default btn-default pull-right" id="sendPassword" data-dismiss="modal">Enviar contraseña</button>
               </div>
             </div>
           </div>
@@ -153,6 +154,35 @@
         function showReset() {
           $("#resetPassword").modal("show");
         }
+
+        $( document ).ready(function() {
+          $("#sendPassword").click(function() {
+            event.preventDefault();
+            $.ajax({
+              type : 'POST',
+              url  : 'controladores/becas/Beca.php',
+              data : {
+                  get: "resetPassword",
+                  email: $("#username_reset").val()
+              },
+              dataType: "json",
+              success :  function(response) {
+                if (response.estado == 1) {
+                  $("#msg").html(
+                    '<div class="alert alert-success"> &nbsp; ' + response.mensaje + '</div>'
+                    );
+                } else {
+                  $("#msg").html(
+                    '<div class="alert alert-danger"> &nbsp; ' + response.mensaje + '</div>'
+                    );
+                }
+              },
+              error : function (response) {
+                  console.log(response);
+              }
+          });
+        });
+      });
       </script>
     </body>
 </html>

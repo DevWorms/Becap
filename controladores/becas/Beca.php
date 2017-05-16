@@ -226,6 +226,56 @@ class Beca {
             return false;
         }
     }
+
+    private function GeraHash($qtd){ 
+        //Under the string $Caracteres you write all the characters you want to be used to randomly generate the code. 
+        $Caracteres = 'ABCDEFGHIJKLMOPQRSTUVXWYZ0123456789'; 
+        $QuantidadeCaracteres = strlen($Caracteres); 
+        $QuantidadeCaracteres--; 
+
+        $Hash=NULL; 
+            for($x=1;$x<=$qtd;$x++){ 
+                $Posicao = rand(0,$QuantidadeCaracteres); 
+                $Hash .= substr($Caracteres,$Posicao,1); 
+            } 
+
+        return $Hash; 
+    } 
+
+    public function resetPassword($email) {
+        $res = ['estado' => 0,
+                'mensaje' => "La beca se removio correctamente de tu liste de Favoritos"
+                ];
+        try {
+            $query = "SELECT Mail_Usuario WHERE Mail_Usuario=:email;";
+            $stm = $this->conn->prepare($query);
+            $stm->bindParam(":email", $email, PDO::PARAM_STR);
+            $stm->execute();
+            $resultado = $stm->fetchAll();
+
+            $password = $this->GeraHash(rand(6, 10));
+            $msg = "Recientemente has solicitado una recuperar tu contraseña de Becap, <br> Tu nueva contraseña es: <strong>" . $password . "</strong>";
+
+            if (count($resultado) > 0) {
+                $password = password_hash($password, PASSWORD_DEFAULT);
+
+                $query = "UPDATE becap_db.usuarios SET Pwd_Usuario=:pwd WHERE Mail_Usuario=:email;";
+                $stm2 = $this->conn->prepare($query);
+                $stm2->bindParam(":email", $email, PDO::PARAM_STR);
+                $stm2->bindParam(":pwd", $password, PDO::PARAM_STR);
+                $stm2->execute();
+
+                $res["estado"] = 1;
+                $res["mensaje"] = "Tu contraseña se enviò a tu correo";
+            } else {
+                $res["mensaje"] = "No se encontrò el email";
+            }
+        } catch (Exception $ex) {
+            $res["mensaje"] = $ex->getMessage() . " " . $ex->getLine();
+        }
+
+        return json_encode($res);
+    }
 }
 
 if (isset($_POST['get'])) {
@@ -244,6 +294,9 @@ if (isset($_POST['get'])) {
             break;
         case 'removeInteresa':
             echo $b->removeMeInteresa($_POST['user_id'], $_POST['beca_id']);
+            break;
+        case 'resetPassword':
+            echo $b->resetPassword($_POST["email"]);
             break;
         default:
             header("Location: ../../");
