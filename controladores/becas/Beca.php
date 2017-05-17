@@ -247,7 +247,7 @@ class Beca {
                 'mensaje' => "La beca se removio correctamente de tu liste de Favoritos"
                 ];
         try {
-            $query = "SELECT Mail_Usuario WHERE Mail_Usuario=:email;";
+            $query = "SELECT Mail_Usuario FROM usuarios WHERE Mail_Usuario=:email;";
             $stm = $this->conn->prepare($query);
             $stm->bindParam(":email", $email, PDO::PARAM_STR);
             $stm->execute();
@@ -264,6 +264,14 @@ class Beca {
                 $stm2->bindParam(":email", $email, PDO::PARAM_STR);
                 $stm2->bindParam(":pwd", $password, PDO::PARAM_STR);
                 $stm2->execute();
+
+                $headers = "From: " . $resultado[0][0] . "\r\n";
+                $headers .= "Reply-To: ". $resultado[0][0] . "\r\n";
+                $headers .= "CC: no-reply@example.com\r\n";
+                $headers .= "MIME-Version: 1.0\r\n";
+                $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+
+                mail($resultado[0][0], "Cambio de contraseñe en Becap", $msg, $headers);
 
                 $res["estado"] = 1;
                 $res["mensaje"] = "Tu contraseña se enviò a tu correo";
