@@ -57,13 +57,13 @@
                     <div class="col-md-2 col-md-offset-1 caja beca tipo-' . $fila["ID_Tipo"] . '">
                       <div class="col-xs-9 space-inside" align="left">
                         <a href="" data-toggle="modal" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box"><b>' . substr($fila["Nombre_Escuela"],0,30) . '</b></span></a>
-                        <div class="space-inside-p"><br>
+                        <div style="margin-top: 18px;"><br>
                             <p><strong>' . $fila["Nombre_Beca"] . '</strong></p>
                             <p><strong>' . $porcentaje . $muestra . " " . $fila["Beca_Sobre"] . '</strong></p>
                         </div>
                       </div>
                       <div class="col-xs-3" align="right">
-                        <span class="glyphicon glyphicon-heart ' . $color . '" aria-hidden="true" align="right" id="heart-' . $fila["ID_Beca"] . '"></span>
+                        <a href=""><i class="glyphicon glyphicon-heart ' . $color . '" aria-hidden="true" align="right" id="heart-' . $fila["ID_Beca"] . '"></i></a>
                       </div>
                     </div>
                     ';
@@ -127,7 +127,7 @@
                             <div class="row">
                              
                               <div class="col-xs-1">
-                                <span class="glyphicon glyphicon-heart ' . $color . '" aria-hidden="true" id="heart-' . $fila["ID_Beca"] . '"></span> 
+                                <a href=""><i class="glyphicon glyphicon-heart ' . $color . '" aria-hidden="true" id="heart-' . $fila["ID_Beca"] . '"></i></a> 
                               </div>
                              
                              <div class="col-xs-5 space-inside">
@@ -259,9 +259,9 @@
               if ($is_fav && $me_interesa) {
                   $icono = '<span class="glyphicon glyphicon-heart red" style="position: absolute; margin-left: -48px;" aria-hidden="true"></span><span class="glyphicon glyphicon-star yellow" style="position: absolute; margin-left: -10px" aria-hidden="true"></span>';
               } elseif ($is_fav && !$me_interesa) {
-                  $icono = '<span class="glyphicon glyphicon-star yellow" aria-hidden="true" align="right"></span>';
+                  $icono = '<a href=""><i class="glyphicon glyphicon-star yellow" aria-hidden="true" align="right"></i></a>';
               } else {
-                  $icono = '<span class="glyphicon glyphicon-heart red" aria-hidden="true" align="right"></span>';
+                  $icono = '<a href=""><i class="glyphicon glyphicon-heart red" aria-hidden="true" align="right"></i></a>';
               }
 
                 echo
