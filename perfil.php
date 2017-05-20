@@ -7,7 +7,7 @@
         // Si ya tiene el perfil... valida la información
         if (validateInformation($_SESSION['correo'])) {
             // Si ya completo la información lo redirecciona a mis becas
-            header("Location: misbecas.php");
+            header("Location: oportunidades.php");
         } else {
             // Si no ha completado la información, lo redirecciona a informacion.php
             header("Location: informacion.php");

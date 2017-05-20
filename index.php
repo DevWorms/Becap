@@ -136,7 +136,10 @@
                     <label for="username_reset"><span class="glyphicon glyphicon-user"></span> Ingresa tu email</label>
                     <input type="text" class="form-control" id="username_reset" placeholder="mail@example.com">
                   </div>
-                  <div id="msg"></div>
+                  <div id="msg">
+                      Un correo se enviará con una contraseña alternativa; no olvides cambiarla una vez que hayas accedido al sistema.
+
+                  </div>
                 </form>
               </div>
               <div class="modal-footer">
