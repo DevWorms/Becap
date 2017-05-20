@@ -57,7 +57,7 @@
                     <div class="col-md-2 col-md-offset-1 caja beca tipo-' . $fila["ID_Tipo"] . '">
                       <div class="col-xs-9 space-inside" align="left">
                         <a href="" data-toggle="modal" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box"><b>' . substr($fila["Nombre_Escuela"],0,30) . '</b></span></a>
-                        <div class="space-inside-p"><br>
+                        <div style="margin-top: 18px;"><br>
                             <p><strong>' . $fila["Nombre_Beca"] . '</strong></p>
                             <p><strong>' . $porcentaje . $muestra . " " . $fila["Beca_Sobre"] . '</strong></p>
                         </div>

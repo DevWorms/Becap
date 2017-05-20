@@ -12,6 +12,61 @@
         <link rel="stylesheet" href="css/main-index.css">
         <link rel="stylesheet" href="css/animate.css">
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <style>
+          .boton-rojo {
+            color: #FFF;
+            font-weight: bold;
+            background: #E74C3C;
+            opacity: 1.00;
+            border-radius: 5px;
+            font-size: 14px;
+          }
+          .boton-rojo:hover{
+            color: #FFF;
+            font-weight: bold;
+            background: #C94335;
+            opacity: 1.00;
+            border-radius: 5px;
+          }
+          .boton-rojo:focus{
+            color: #FFF;
+            font-weight: bold;
+          }
+          .modal-content{
+              -webkit-box-shadow: 0 5px 15px rgba(0,0,0,0);
+              -moz-box-shadow: 0 5px 15px rgba(0,0,0,0);
+              -o-box-shadow: 0 5px 15px rgba(0,0,0,0);
+              box-shadow: 0 5px 15px rgba(0,0,0,0);
+              border: 0px solid rgba(0, 0, 0, .2);
+          }
+          .modal-title{
+            line-height: 0.6;
+            color: #FF0000;
+          }
+          .modal-body{
+            border-radius: 0px 0px 5px 5px;
+          }
+          .modal-footer{
+            background: #efefef;
+            border: 0px solid rgba(0, 0, 0, .2);
+          }
+          @media (min-width: 768px) {
+            .modal-dialog {
+              width: 400px;
+              margin: 30px auto;
+            }
+          }
+          .special {
+              height: 40px;
+              font-weight: bold;
+              color: #A7A7A7;
+              font-size: 15px;
+              line-height: 1.33;
+              border-radius: 6px;
+              border: 0px solid #ccc;
+              text-align: left;
+          }
+        </style>
     </head>
 
     <body>
@@ -58,7 +113,7 @@
                       </div>
 
                       <button type="submit" class="btn btn-primary btn-sm" name="enviar" id="enviar">Inicia Sesión</button>
-                      <a href="#" onclick="event.preventDefault(); showReset();" style="color:#ffffff; position: absolute; margin-left: -241px; margin-top: 32px;">Recuperar contraseña</a>
+                      <a href="#" onclick="event.preventDefault(); showReset();" style="color:#ffffff;">Recuperar contraseña</a>
                   </form>
                 </div><!--/.navbar-collapse -->
                   <br>
@@ -128,22 +183,24 @@
             <!-- Modal content-->
             <div class="modal-content">
               <div class="modal-header">
-                <h4>Recuperar contraseña</h4>
+                <h4 style="color: #FFF">Recuperar contraseña</h4>
               </div>
               <div class="modal-body">
                 <form role="form">
                   <div class="form-group">
-                    <label for="username_reset"><span class="glyphicon glyphicon-user"></span> Ingresa tu email</label>
-                    <input type="text" class="form-control" id="username_reset" placeholder="mail@example.com">
+                    <label for="username_reset" style="font-weight: bold; font-size: 15px; color: #727272; text-align: left; padding-bottom: 10px;"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;Ingresa tu email</label>
+                    <input type="text" class="form-control special" id="username_reset" placeholder="mail@example.com">
                   </div>
-                  <div id="msg">
+                  <div id="msg" style="font-weight: bold; font-size: 14px; color: #A7A7A7; text-align: left; padding-top: 10px;">
                       Un correo se enviará con una contraseña alternativa; no olvides cambiarla una vez que hayas accedido al sistema.
 
                   </div>
+
+                  <div style="margin-top: 25px;"></div>
+                  <div class="form-group" align="center">
+                    <button type="submit" class="btn btn-default boton-rojo" id="sendPassword" data-dismiss="modal">Enviar contraseña</button>
+                  </div>
                 </form>
-              </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-default btn-default pull-right" id="sendPassword" data-dismiss="modal">Enviar contraseña</button>
               </div>
             </div>
           </div>
