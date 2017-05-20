@@ -527,7 +527,7 @@
                                             <p style="margin-top: 30px; color: #545454;"><b>Resumen de Requisitos</b></p>
                                             <div>
                                                 <div class="checkbox">
-                                                    <label style="color: #545454;"><input type="checkbox" $checked><b>&nbsp;&nbsp; ¿Requiere promedio? <?php echo ($beca['Requiere_Promedio'] == 1) ?  " Si " . "Promedio de: " . $beca['Promedio_Acceso']:  "No"; ?></b></label>
+                                                    <label style="color: #545454;"><input type="checkbox"><b>&nbsp;&nbsp; ¿Requiere promedio? <?php echo ($beca['Requiere_Promedio'] == 1) ?  " Si " . "Promedio de: " . $beca['Promedio_Acceso']:  "No"; ?></b></label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label style="color: #545454;"><input type="checkbox"><b>&nbsp;&nbsp; Mantener promedio de: <?php echo $beca['Promedio_Mantener']; ?></b></label>
