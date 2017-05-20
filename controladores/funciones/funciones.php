@@ -58,7 +58,7 @@
                       <div class="col-xs-9 space-inside" align="left">
                         <a href="" data-toggle="modal" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box"><b>' . substr($fila["Nombre_Escuela"],0,30) . '</b></span></a>
                         <div class="space-inside-p"><br>
-                            <p><strong>' . $tipo . '</strong></p>
+                            <p><strong>' . $fila["Nombre_Beca"] . '</strong></p>
                             <p><strong>' . $porcentaje . $muestra . " " . $fila["Beca_Sobre"] . '</strong></p>
                         </div>
                       </div>
@@ -135,7 +135,7 @@
                              </div>
                              
                               <div class="col-xs-3 space-inside">
-                                <p class="dark-gray" style="font-size: 12.5px;"><b>' . $tipo . '</b></p>
+                                <p class="dark-gray" style="font-size: 12.5px;"><b>' . $fila["Nombre_Beca"] . '</b></p>
                               </div>
                              
                               <div class="col-xs-3 space-inside">
@@ -516,7 +516,11 @@
                                 <div class="col-md-10 col-md-offset-1">
                                     <div class="tab-content">
                                         <div id="req-<?php echo $beca["ID_Beca"]; ?>" class="tab-pane fade in active">
-                                            <p style="color: #545454; color: #545454;"><b>Descripción</b></p>
+                                            <p style="color: #545454; color: #545454;">
+                                              
+                                              <?php echo $beca["Nom_Descriptivo"]; ?>
+
+                                            </p>
                                             <div>
                                                 <?php echo $beca["Descripcion_Beca"]; ?>
                                             </div>
