@@ -63,7 +63,7 @@
                         </div>
                       </div>
                       <div class="col-xs-3" align="right">
-                        <span class="glyphicon glyphicon-heart ' . $color . '" aria-hidden="true" align="right" id="heart-' . $fila["ID_Beca"] . '"></span>
+                        <a href=""><i class="glyphicon glyphicon-heart ' . $color . '" aria-hidden="true" align="right" id="heart-' . $fila["ID_Beca"] . '"></i></a>
                       </div>
                     </div>
                     ';
@@ -127,7 +127,7 @@
                             <div class="row">
                              
                               <div class="col-xs-1">
-                                <span class="glyphicon glyphicon-heart ' . $color . '" aria-hidden="true" id="heart-' . $fila["ID_Beca"] . '"></span> 
+                                <a href=""><i class="glyphicon glyphicon-heart ' . $color . '" aria-hidden="true" id="heart-' . $fila["ID_Beca"] . '"></i></a> 
                               </div>
                              
                              <div class="col-xs-5 space-inside">
@@ -259,9 +259,9 @@
               if ($is_fav && $me_interesa) {
                   $icono = '<span class="glyphicon glyphicon-heart red" style="position: absolute; margin-left: -48px;" aria-hidden="true"></span><span class="glyphicon glyphicon-star yellow" style="position: absolute; margin-left: -10px" aria-hidden="true"></span>';
               } elseif ($is_fav && !$me_interesa) {
-                  $icono = '<span class="glyphicon glyphicon-star yellow" aria-hidden="true" align="right"></span>';
+                  $icono = '<a href=""><i class="glyphicon glyphicon-star yellow" aria-hidden="true" align="right"></i></a>';
               } else {
-                  $icono = '<span class="glyphicon glyphicon-heart red" aria-hidden="true" align="right"></span>';
+                  $icono = '<a href=""><i class="glyphicon glyphicon-heart red" aria-hidden="true" align="right"></i></a>';
               }
 
                 echo
