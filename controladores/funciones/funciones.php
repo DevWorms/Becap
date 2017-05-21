@@ -142,7 +142,7 @@ function MostrarBecasList($id_usuario)
                              </div>
                              
                               <div class="col-xs-3 space-inside">
-                                <p class="dark-gray" style="font-size: 12.5px;"><b>' . $tipo . '</b></p>
+                                <p class="dark-gray" style="font-size: 12.5px;"><b>' . $fila["Nombre_Beca"] . '</b></p>
                               </div>
                              
                               <div class="col-xs-3 space-inside">

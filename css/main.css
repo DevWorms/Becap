@@ -251,3 +251,29 @@ footer{
       padding-bottom: 2px;
       border-bottom: white 1px solid;
   }
+
+/* ---------------------------------- */
+
+.modal-arrow {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 15%;
+  bottom: auto;
+  left: 7px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 25px 35px 25px 0;
+  border-color: transparent #ffffff transparent transparent;
+}
+
+#left {
+  width: inherit;
+  z-index: 1;
+  left: 17px;
+}
+
+.modal-arrow {
+  margin-top: 10%;
+}
