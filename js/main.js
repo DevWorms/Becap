@@ -256,28 +256,6 @@ function removeFromMeInteresa(user_id, beca_id) {
     });
 }
 
-/*
-function filtrar(obj) {
-    $('#menu_1, #menu_2, #menu_3').removeClass('active');
-    $(".beca").css('display','none');
-
-    switch (obj.attr('id')) {
-        case 'menu_1':
-            $('#menu_1').addClass('active');
-            $(".tipo-1").show();
-            break;
-        case 'menu_2':
-            $('#menu_2').addClass('active');
-            $(".tipo-2").show();
-            break;
-        case 'menu_3':
-            $('#menu_3').addClass('active');
-            $(".tipo-3").show();
-            break;
-    }
-}
-*/
-
 function filtrar() {
     $(".beca").css('display', 'none');
     if (($("#filtro21").val() == 0 && $("#filtro22").val() == 0 && $("#filtro23").val() == 0) ||
@@ -304,6 +282,10 @@ function filtrar() {
             $(".tipo-3").show();
         }
     }
+}
+
+function miBeca(beca_id) {
+    console.log("test " + beca_id);
 }
 
 function notificacion(msg, type, id) {

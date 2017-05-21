@@ -21,6 +21,23 @@ class Beca {
         if (is_numeric($user_id) && is_numeric($beca_id)) {
             if (!$this->isFavorite($user_id, $beca_id)) {
                 try {
+                    $query = "SELECT id_beca FROM beca_favorito WHERE id_usuario=:user_id;";
+                    $stm2 = $this->conn->prepare($query);
+                    $stm2->bindParam(":user_id", $_SESSION['id_usuario'], PDO::PARAM_INT);
+                    $stm2->execute();
+                    $becas = $stm2->fetchAll();
+
+                    if (count($becas) > 0) {
+                        foreach ($becas as $beca) {
+                            $this->addToMeInteresa($_SESSION['id_usuario'], $beca[0]);
+                        }
+                    }
+
+                    $query = "DELETE FROM beca_favorito WHERE id_usuario=:user_id;";
+                    $stm3 = $this->conn->prepare($query);
+                    $stm3->bindParam(":user_id", $_SESSION['id_usuario'], PDO::PARAM_INT);
+                    $stm3->execute();
+
                     $query = "INSERT INTO beca_favorito (id_usuario, id_beca) VALUES (:user_id, :beca_id)";
                     $stm = $this->conn->prepare($query);
                     $stm->bindParam(":user_id", $_SESSION['id_usuario'], PDO::PARAM_INT);
@@ -240,7 +257,7 @@ class Beca {
             } 
 
         return $Hash; 
-    } 
+    }
 
     public function resetPassword($email) {
         $res = ['estado' => 0,
@@ -283,6 +300,11 @@ class Beca {
         }
 
         return json_encode($res);
+    }
+
+
+    public function isLikeOrFavorite() {
+
     }
 }
 
