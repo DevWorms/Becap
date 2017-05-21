@@ -19,6 +19,26 @@ function MostrarBecas($id_usuario) {
     $resultado = $sentencia->fetchAll();
 
     foreach ($resultado as $fila) {
+        if ($fila["ID_Tipo"] == 1) {
+            if ($fila["Porcentaje_Beca"] == "NA") {
+                $muestra = "Beca";
+                $porcentaje = "";
+            } else {
+                $muestra = " de Beca";
+                $porcentaje = $fila["Porcentaje_Beca"];
+            }
+
+        } else if ($fila["ID_Tipo"] == 2) {
+
+            if ($fila["Porcentaje_Beca"] == "NA") {
+                $muestra = "Crédito";
+                $porcentaje = "";
+            } else {
+                $muestra = " de Crédito";
+                $porcentaje = $fila["Porcentaje_Beca"];
+            }
+        }
+
         $is_fav = $b->isFavorite($_SESSION['id_usuario'], $fila["ID_Beca"]);
         $is_meInteresa = $b->isMeInteresa($_SESSION['id_usuario'], $fila["ID_Beca"]);
 
@@ -30,46 +50,19 @@ function MostrarBecas($id_usuario) {
             $icono = '<span style="cursor: pointer;" class="glyphicon glyphicon-heart gray-box" onclick="miBeca(' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
         }
 
-        if ($fila["ID_Tipo"] == 1) {
-            $tipo = "Beca Académica";
-
-            if ($fila["Porcentaje_Beca"] == "NA") {
-                $muestra = "Beca";
-                $porcentaje = "";
-            } else {
-                $muestra = " de Beca";
-                $porcentaje = $fila["Porcentaje_Beca"];
-            }
-
-        }
-        if ($fila["ID_Tipo"] == 2) {
-            $tipo = "Beca Crédito";
-
-            if ($fila["Porcentaje_Beca"] == "NA") {
-                $muestra = "Crédito";
-                $porcentaje = "";
-            } else {
-                $muestra = " de Crédito";
-                $porcentaje = $fila["Porcentaje_Beca"];
-            }
-
-        }
-        if ($fila["ID_Tipo"] == 3)
-            $tipo = "Beca Especie";
-
         echo '
-            <div class="col-md-2 col-md-offset-1 caja beca tipo-' . $fila["ID_Tipo"] . '">
-                 <div class="col-xs-9 space-inside" align="left">
-                    <a href="" data-toggle="modal" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box"><b>' . substr($fila["Nombre_Escuela"], 0, 30) . '</b></span></a>
-                        <div class="space-inside-p"><br>
-                            <p><strong>' . $tipo . '</strong></p>
-                            <p><strong>' . $porcentaje . $muestra . " " . $fila["Beca_Sobre"] . '</strong></p>
-                        </div>
-                 </div>
-                 <div class="col-xs-3" align="right">
-                    ' . $icono . '
+        <div class="col-md-2 col-md-offset-1 caja beca tipo-' . $fila["ID_Tipo"] . '">
+            <div class="col-xs-9 space-inside" align="left">
+                <a href="#" data-toggle="modal" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box"><b>' . substr($fila["Nombre_Escuela"], 0, 30) . '</b></span></a>
+                <div style="margin-top: 18px;"><br>
+                    <p><strong>' . $fila["Nombre_Beca"] . '</strong></p>
+                    <p><strong>' . $porcentaje . $muestra . " " . $fila["Beca_Sobre"] . '</strong></p>
                 </div>
-            </div>';
+            </div>
+            <div class="col-xs-3" align="right">
+                  ' . $icono . '
+            </div>
+        </div>';
     }
 }
 
@@ -90,8 +83,6 @@ function MostrarBecasList($id_usuario)
     foreach ($resultado as $fila) {
 
         if ($fila["ID_Tipo"] == 1) {
-            $tipo = "Beca Académica";
-
             if ($fila["Porcentaje_Beca"] == "NA") {
                 $muestra = "Beca";
                 $porcentaje = "";
@@ -101,7 +92,6 @@ function MostrarBecasList($id_usuario)
             }
 
         } else if ($fila["ID_Tipo"] == 2) {
-            $tipo = "Beca Crédito";
 
             if ($fila["Porcentaje_Beca"] == "NA") {
                 $muestra = "Crédito";
@@ -110,9 +100,7 @@ function MostrarBecasList($id_usuario)
                 $muestra = " de Crédito";
                 $porcentaje = $fila["Porcentaje_Beca"];
             }
-
-        } else if ($fila["ID_Tipo"] == 3)
-            $tipo = "Beca Especie";
+        }
 
         $is_fav = $b->isFavorite($_SESSION['id_usuario'], $fila["ID_Beca"]);
         $is_meInteresa = $b->isMeInteresa($_SESSION['id_usuario'], $fila["ID_Beca"]);
@@ -280,7 +268,7 @@ function MostrarFavIntereses($id_usuario)
 
                             <div class="row space-inside-p" style="margin-left: 0px; margin-right: 0px;">
                                 <br>
-                                <p><strong>' . $tipo . '</strong></p>
+                                <p><strong>' . $fila["Nombre_Beca"] . '</strong></p>
                                 <p>Aplica ' . $fila["Beca_Sobre"] . '</p>
                             </div>
 
@@ -545,8 +533,8 @@ function modalBeca($becas, $oportunidades = false)
                             <div class="col-md-10 col-md-offset-1">
                                 <div class="tab-content">
                                     <div id="req-<?php echo $beca["ID_Beca"]; ?>" class="tab-pane fade in active">
-                                        <p style="color: #545454;"><b>Descripción</b></p>
-                                        <div>
+                                        <p style="color: #545454;"><b><?php echo $beca["Nom_Descriptivo"]; ?></b></p>
+                                        <div style="word-wrap: break-word;">
                                             <?php echo $beca["Descripcion_Beca"]; ?>
                                         </div>
                                         <p style="margin-top: 30px; color: #545454;"><b>Resumen de Requisitos</b></p>
