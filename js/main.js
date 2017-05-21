@@ -78,8 +78,108 @@ $(function () {
             filtrar();
         });
     });
+
+    getRequirements();
+
+    $('#promedio, #acta, #examen, #toefl, #kardex').change(function() {
+        saveRequirements();
+    });
 });
 
+function getRequirements() {
+    $.ajax({
+        type : 'POST',
+        url  : 'controladores/becas/Beca.php',
+        data : {
+            get: "loadRequirements"
+        },
+        dataType: "json",
+        success :  function(response) {
+            if (response.estado == 1) {
+                $("#lbl_kardex").html("&nbsp;&nbsp;&nbsp;Kardex de preparatoria (" + response.kardex + "/" + response.total + ")");
+                $("#lbl_toefl").html("&nbsp;&nbsp;&nbsp;TOEFL: 600 (" + response.toefl + "/" + response.total + ")");
+                $("#lbl_examen").html("&nbsp;&nbsp;&nbsp;Examen de admisión (" + response.examen + "/" + response.total + ")");
+                $("#lbl_acta").html("&nbsp;&nbsp;&nbsp;Acta de Nacimiento (" + response.acta + "/" + response.total + ")");
+                $("#lbl_promedio").html("&nbsp;&nbsp;&nbsp;Promedio de: 80 (" + response.promedio + "/" + response.total + ")");
+
+                var req = response.requirements;
+                if (req.acta) {
+                    if (req.acta == 1) {
+                        $('#acta').prop('checked', true);
+                    } else {
+                        $('#acta').prop('checked', false);
+                    }
+                }
+                if (req.promedio) {
+                    if (req.promedio == 1) {
+                        $('#promedio').prop('checked', true);
+                    } else {
+                        $('#promedio').prop('checked', false);
+                    }
+                }
+                if (req.kardex) {
+                    if (req.kardex == 1) {
+                        $('#kardex').prop('checked', true);
+                    } else {
+                        $('#kardex').prop('checked', false);
+                    }
+                }
+                if (req.toefl) {
+                    if (req.toefl == 1) {
+                        $('#toefl').prop('checked', true);
+                    } else {
+                        $('#toefl').prop('checked', false);
+                    }
+                }
+                if (req.examen) {
+                    if (req.examen == 1) {
+                        $('#examen').prop('checked', true);
+                    } else {
+                        $('#examen').prop('checked', false);
+                    }
+                }
+            }
+        },
+        error : function (response) {
+            console.log(response);
+        }
+    });
+}
+
+function saveRequirements() {
+    var promedio = 0, acta = 0, examen = 0, toefl = 0, kardex = 0;
+    if ($('input#promedio').is(':checked')) { promedio = 1; }
+    if ($('input#acta').is(':checked')) { acta = 1; }
+    if ($('input#examen').is(':checked')) { examen = 1; }
+    if ($('input#toefl').is(':checked')) { toefl = 1; }
+    if ($('input#kardex').is(':checked')) { kardex = 1; }
+
+    $.ajax({
+        type : 'POST',
+        url  : 'controladores/becas/Beca.php',
+        data : {
+            get: "saveRequirements",
+            promedio: promedio,
+            acta: acta,
+            examen: examen,
+            toefl: toefl,
+            kardex: kardex
+        },
+        dataType: "json",
+        success :  function(response) {
+            if (response.estado == 1) {
+                $("#msg").html('<div class="alert alert-success">' + response.mensaje + '</div>');
+                setTimeout(
+                    function() {
+                        $("#msg").html("");
+                    }, 3000);
+            }
+        },
+        error : function (response) {
+            console.log(response);
+        }
+    });
+}
 
 // Valida los campos en formulario
 

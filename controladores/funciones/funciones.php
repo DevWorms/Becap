@@ -410,7 +410,24 @@ function ModalsFavIntereses() {
  * @param bool $oportunidades
  */
 function modalBeca($becas, $oportunidades = false) {
+    global $pdo;
     $b = new Beca();
+
+    $query = "SELECT * FROM requirements WHERE user_id=:user_id;";
+    $stm = $pdo->prepare($query);
+    $stm->bindParam(":user_id", $_SESSION["id_usuario"], PDO::PARAM_INT);
+    $stm->execute();
+    $req = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+    $acta = 0; $kardex = 0; $examen = 0; $promedio = 0; $toefl = 0;
+    if (count($req) > 0) {
+        $acta = $req[0]["acta"];
+        $kardex = $req[0]["kardex"];
+        $examen = $req[0]["examen"];
+        $promedio = $req[0]["promedio"];
+        $toefl = $req[0]["toefl"];
+    }
+
     foreach ($becas as $beca) {
         $is_fav = $b->isFavorite($_SESSION['id_usuario'], $beca["ID_Beca"]);
         $meInteresa = $b->isMeInteresa($_SESSION['id_usuario'], $beca["ID_Beca"]);
@@ -523,7 +540,7 @@ function modalBeca($becas, $oportunidades = false) {
                                         <p style="margin-top: 30px; color: #545454;"><b>Resumen de Requisitos</b></p>
                                         <div>
                                             <div class="checkbox">
-                                                <label style="color: #545454;"><input type="checkbox"><b>&nbsp;&nbsp;
+                                                <label style="color: #545454;"><input type="checkbox" <?php if ($promedio == 1) { echo " checked"; } ?>><b>&nbsp;&nbsp;
                                                         ¿Requiere
                                                         promedio? <?php echo ($beca['Requiere_Promedio'] == 1) ? " Si " . "Promedio de: " . $beca['Promedio_Acceso'] : "No"; ?></b></label>
                                             </div>
@@ -538,7 +555,7 @@ function modalBeca($becas, $oportunidades = false) {
                                                         socioeconómico? <?php echo ($beca['Estudio_Socioeco'] == 1) ? "Si" : "No"; ?></b></label>
                                             </div>
                                             <div class="checkbox">
-                                                <label style="color: #545454;"><input type="checkbox"><b>&nbsp;&nbsp;
+                                                <label style="color: #545454;"><input type="checkbox" <?php if ($examen == 1) { echo " checked"; } ?>><b>&nbsp;&nbsp;
                                                         ¿Requiere examen de
                                                         admisión? <?php echo ($beca['Requiere_Examen'] == 1) ? " Si " . $beca['Examen_Admision'] . " puntaje " . $beca['Puntaje'] : "No"; ?></b></label>
                                             </div>

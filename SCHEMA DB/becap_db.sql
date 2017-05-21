@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 08, 2017 at 10:48 AM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.28
+-- Servidor: localhost
+-- Tiempo de generación: 21-05-2017 a las 12:27:06
+-- Versión del servidor: 5.7.18-0ubuntu0.16.04.1
+-- Versión de PHP: 7.0.15-0ubuntu0.16.04.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `becap_db`
+-- Base de datos: `becap_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `becas`
+-- Estructura de tabla para la tabla `becas`
 --
 
 CREATE TABLE `becas` (
@@ -57,7 +57,7 @@ CREATE TABLE `becas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `becas`
+-- Volcado de datos para la tabla `becas`
 --
 
 INSERT INTO `becas` (`ID_Beca`, `Nombre_Beca`, `ID_Tipo`, `ID_Escuela`, `Nivel_Estudio`, `Estatus_Alumno`, `Promedio_Acceso`, `Promedio_Mantener`, `Estudio_Socioeco`, `Examen_Admision`, `Puntaje`, `Examen_Idiomas`, `Puntuaje_Idiomas`, `Descripcion_Beca`, `Requisitos_Espe`, `Contacto`, `Telefono`, `Link_Beca`, `Porcentaje_Beca`, `Porcentaje_Credito`, `Tasa_Interes`, `Nom_Descriptivo`, `Beca_Sobre`, `Requiere_Promedio`, `Ingresos_Comprobar`, `Requiere_Examen`, `Requiere_Idiomas`) VALUES
@@ -277,7 +277,7 @@ INSERT INTO `becas` (`ID_Beca`, `Nombre_Beca`, `ID_Tipo`, `ID_Escuela`, `Nivel_E
 -- --------------------------------------------------------
 
 --
--- Table structure for table `beca_favorito`
+-- Estructura de tabla para la tabla `beca_favorito`
 --
 
 CREATE TABLE `beca_favorito` (
@@ -286,18 +286,10 @@ CREATE TABLE `beca_favorito` (
   `id_beca` int(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `beca_favorito`
---
-
-INSERT INTO `beca_favorito` (`id_favorito`, `id_usuario`, `id_beca`) VALUES
-(1, 2, 7),
-(2, 2, 11);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `beca_interesa`
+-- Estructura de tabla para la tabla `beca_interesa`
 --
 
 CREATE TABLE `beca_interesa` (
@@ -306,18 +298,10 @@ CREATE TABLE `beca_interesa` (
   `id_beca` int(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `beca_interesa`
---
-
-INSERT INTO `beca_interesa` (`id_interesa`, `id_usuario`, `id_beca`) VALUES
-(1, 2, 34),
-(2, 2, 44);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `carreras_usuario`
+-- Estructura de tabla para la tabla `carreras_usuario`
 --
 
 CREATE TABLE `carreras_usuario` (
@@ -338,16 +322,17 @@ CREATE TABLE `carreras_usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `carreras_usuario`
+-- Volcado de datos para la tabla `carreras_usuario`
 --
 
 INSERT INTO `carreras_usuario` (`id_registro`, `id_usuario`, `admin`, `aboga`, `psico`, `conta`, `econo`, `finan`, `arthu`, `arqui`, `ingen`, `disin`, `ensen`, `medic`) VALUES
-(2, 2, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0);
+(2, 2, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0),
+(3, 3, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `escuelas`
+-- Estructura de tabla para la tabla `escuelas`
 --
 
 CREATE TABLE `escuelas` (
@@ -360,7 +345,7 @@ CREATE TABLE `escuelas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `escuelas`
+-- Volcado de datos para la tabla `escuelas`
 --
 
 INSERT INTO `escuelas` (`ID_Escuela`, `Nombre_Escuela`, `Nombre_Campus`, `Descripcion_Escuela`, `ID_Pais`, `Tipo_Institucion`) VALUES
@@ -408,7 +393,7 @@ INSERT INTO `escuelas` (`ID_Escuela`, `Nombre_Escuela`, `Nombre_Campus`, `Descri
 -- --------------------------------------------------------
 
 --
--- Table structure for table `paises`
+-- Estructura de tabla para la tabla `paises`
 --
 
 CREATE TABLE `paises` (
@@ -417,7 +402,7 @@ CREATE TABLE `paises` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `paises`
+-- Volcado de datos para la tabla `paises`
 --
 
 INSERT INTO `paises` (`ID_Pais`, `Nombre_Pais`) VALUES
@@ -431,7 +416,23 @@ INSERT INTO `paises` (`ID_Pais`, `Nombre_Pais`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tipo_beca`
+-- Estructura de tabla para la tabla `requirements`
+--
+
+CREATE TABLE `requirements` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `promedio` int(11) NOT NULL DEFAULT '0',
+  `acta` int(11) NOT NULL DEFAULT '0',
+  `examen` int(11) NOT NULL DEFAULT '0',
+  `toefl` int(11) NOT NULL DEFAULT '0',
+  `kardex` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_beca`
 --
 
 CREATE TABLE `tipo_beca` (
@@ -440,7 +441,7 @@ CREATE TABLE `tipo_beca` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tipo_beca`
+-- Volcado de datos para la tabla `tipo_beca`
 --
 
 INSERT INTO `tipo_beca` (`id_tipo`, `nombre_tipo`) VALUES
@@ -451,7 +452,7 @@ INSERT INTO `tipo_beca` (`id_tipo`, `nombre_tipo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -477,18 +478,19 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `usuarios`
+-- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`ID_Usuario`, `Nombre_Usuario`, `Apellidos_Usuario`, `Mail_Usuario`, `Pwd_Usuario`, `Fecha_Nacimiento`, `Pais`, `Ciudad`, `Estudia`, `Nombre_Posgrado`, `Promedio_Pos`, `Nombre_Universidad`, `Promedio_Uni`, `Nombre_Prepa`, `Promedio_Prepa`, `Nombre_Secundaria`, `Promedio_Secundaria`, `Telefono_contacto`, `tipo_beca`) VALUES
-(2, 'Richard', 'VelRo', 'rvelazquez@devworms.com', '$2y$10$iS7q8MWZ.5LtbFgEcfi1ke6oDQJwIf5nujn70oEVcgap9m1JZP6K2', '1989-02-20', 'México', 'Nezahualcóyotl', 1, '', NULL, 'UPIICSA', '82', 'CETIS 37', '71', '51', '79', '5535060738', 3);
+(2, 'Richard', 'VelRo', 'rvelazquez@devworms.com', '$2y$10$iS7q8MWZ.5LtbFgEcfi1ke6oDQJwIf5nujn70oEVcgap9m1JZP6K2', '1989-02-20', 'México', 'Nezahualcóyotl', 1, '', NULL, 'UPIICSA', '82', 'CETIS 37', '71', '51', '79', '5535060738', 3),
+(3, 'Ricardo', 'Osorio', 'root@toor.com', '$2y$10$VQ4fOVUmK0aSsaowaoMFJeIWRafxM4tsJmwgBu3Sl8UPzxqLA1JeC', '1994-01-01', 'México', 'CDMX', 1, '', '', 'UPIICSA', '84', 'CECyT No. 1', '100', '', '', '55555555', 1);
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `becas`
+-- Indices de la tabla `becas`
 --
 ALTER TABLE `becas`
   ADD PRIMARY KEY (`ID_Beca`),
@@ -496,7 +498,7 @@ ALTER TABLE `becas`
   ADD KEY `id_tipo` (`ID_Tipo`);
 
 --
--- Indexes for table `beca_favorito`
+-- Indices de la tabla `beca_favorito`
 --
 ALTER TABLE `beca_favorito`
   ADD PRIMARY KEY (`id_favorito`),
@@ -504,7 +506,7 @@ ALTER TABLE `beca_favorito`
   ADD KEY `id_beca` (`id_beca`);
 
 --
--- Indexes for table `beca_interesa`
+-- Indices de la tabla `beca_interesa`
 --
 ALTER TABLE `beca_interesa`
   ADD PRIMARY KEY (`id_interesa`),
@@ -512,117 +514,128 @@ ALTER TABLE `beca_interesa`
   ADD KEY `id_beca` (`id_beca`);
 
 --
--- Indexes for table `carreras_usuario`
+-- Indices de la tabla `carreras_usuario`
 --
 ALTER TABLE `carreras_usuario`
   ADD PRIMARY KEY (`id_registro`),
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
--- Indexes for table `escuelas`
+-- Indices de la tabla `escuelas`
 --
 ALTER TABLE `escuelas`
   ADD PRIMARY KEY (`ID_Escuela`),
   ADD KEY `ID_Pais_idx` (`ID_Pais`);
 
 --
--- Indexes for table `paises`
+-- Indices de la tabla `paises`
 --
 ALTER TABLE `paises`
   ADD PRIMARY KEY (`ID_Pais`),
   ADD UNIQUE KEY `ID_Pais_UNIQUE` (`ID_Pais`);
 
 --
--- Indexes for table `tipo_beca`
+-- Indices de la tabla `requirements`
+--
+ALTER TABLE `requirements`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `tipo_beca`
 --
 ALTER TABLE `tipo_beca`
   ADD PRIMARY KEY (`id_tipo`);
 
 --
--- Indexes for table `usuarios`
+-- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`ID_Usuario`,`Pwd_Usuario`),
   ADD KEY `tipo_beca` (`tipo_beca`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `becas`
+-- AUTO_INCREMENT de la tabla `becas`
 --
 ALTER TABLE `becas`
-  MODIFY `ID_Beca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213;
+  MODIFY `ID_Beca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=212;
 --
--- AUTO_INCREMENT for table `beca_favorito`
+-- AUTO_INCREMENT de la tabla `beca_favorito`
 --
 ALTER TABLE `beca_favorito`
-  MODIFY `id_favorito` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_favorito` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 --
--- AUTO_INCREMENT for table `beca_interesa`
+-- AUTO_INCREMENT de la tabla `beca_interesa`
 --
 ALTER TABLE `beca_interesa`
-  MODIFY `id_interesa` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_interesa` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
--- AUTO_INCREMENT for table `carreras_usuario`
+-- AUTO_INCREMENT de la tabla `carreras_usuario`
 --
 ALTER TABLE `carreras_usuario`
-  MODIFY `id_registro` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_registro` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT for table `escuelas`
+-- AUTO_INCREMENT de la tabla `escuelas`
 --
 ALTER TABLE `escuelas`
   MODIFY `ID_Escuela` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 --
--- AUTO_INCREMENT for table `tipo_beca`
+-- AUTO_INCREMENT de la tabla `requirements`
+--
+ALTER TABLE `requirements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `tipo_beca`
 --
 ALTER TABLE `tipo_beca`
   MODIFY `id_tipo` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `usuarios`
+-- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `ID_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `becas`
+-- Filtros para la tabla `becas`
 --
 ALTER TABLE `becas`
   ADD CONSTRAINT `ID_Escuela` FOREIGN KEY (`ID_Escuela`) REFERENCES `escuelas` (`ID_Escuela`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `becas_ibfk_1` FOREIGN KEY (`ID_Tipo`) REFERENCES `tipo_beca` (`id_tipo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `beca_favorito`
+-- Filtros para la tabla `beca_favorito`
 --
 ALTER TABLE `beca_favorito`
   ADD CONSTRAINT `beca_favorito_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`ID_Usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `beca_favorito_ibfk_2` FOREIGN KEY (`id_beca`) REFERENCES `becas` (`ID_Beca`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `beca_interesa`
+-- Filtros para la tabla `beca_interesa`
 --
 ALTER TABLE `beca_interesa`
   ADD CONSTRAINT `beca_interesa_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`ID_Usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `beca_interesa_ibfk_2` FOREIGN KEY (`id_beca`) REFERENCES `becas` (`ID_Beca`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `carreras_usuario`
+-- Filtros para la tabla `carreras_usuario`
 --
 ALTER TABLE `carreras_usuario`
   ADD CONSTRAINT `carreras_usuario_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`ID_Usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `escuelas`
+-- Filtros para la tabla `escuelas`
 --
 ALTER TABLE `escuelas`
   ADD CONSTRAINT `ID_Pais` FOREIGN KEY (`ID_Pais`) REFERENCES `paises` (`ID_Pais`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Constraints for table `usuarios`
+-- Filtros para la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`tipo_beca`) REFERENCES `tipo_beca` (`id_tipo`) ON DELETE CASCADE ON UPDATE CASCADE;

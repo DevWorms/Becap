@@ -17,6 +17,108 @@ class Beca {
         $this->conn = ConexionBD::obtenerInstancia()->obtenerBD();
     }
 
+    public function loadRequirements() {
+        $res = ["estado" => 0];
+        try {
+            $query = "SELECT *, '1' AS tipo FROM ( 
+                        SELECT becas.*, escuelas.Nombre_Escuela FROM becas 
+                        INNER JOIN escuelas ON escuelas.ID_Escuela = becas.id_escuela) AS tabla 
+                        INNER JOIN beca_favorito ON tabla.ID_Beca = beca_favorito.id_beca 
+                        WHERE beca_favorito.id_usuario = ? 
+                        UNION SELECT *, '2' AS tipo FROM ( 
+                        SELECT becas.*, escuelas.Nombre_Escuela FROM becas 
+                        INNER JOIN escuelas ON escuelas.ID_Escuela = becas.id_escuela) AS tabla 
+                        INNER JOIN beca_interesa ON tabla.ID_Beca = beca_interesa.id_beca 
+                        WHERE beca_interesa.id_usuario = ?";
+            $pdo = $this->conn->prepare($query);
+            $pdo->bindParam(1, $_SESSION['id_usuario']);
+            $pdo->bindParam(2, $_SESSION['id_usuario']);
+            $pdo->execute();
+            $resultado = $pdo->fetchAll(PDO::FETCH_ASSOC);
+
+            $promedio = 0; $acta = 0; $examen = 0; $toefl = 0; $kardex = 0;
+
+            if (count($resultado) > 0) {
+                foreach ($resultado as $beca) {
+                    if ($beca["Requiere_Examen"] == 1) {
+                        $examen++;
+                    }
+
+                    if (is_numeric($beca["Promedio_Acceso"]) && $beca["Promedio_Acceso"] > 0) {
+                        $promedio++;
+                    }
+
+                    if (strpos("toefl", strtolower($beca["Examen_Idiomas"]))) {
+                        $toefl++;
+                    }
+                }
+            }
+
+            $query = "SELECT * FROM requirements WHERE user_id=:user_id;";
+            $stm2 = $this->conn->prepare($query);
+            $stm2->bindParam(":user_id", $_SESSION['id_usuario']);
+            $stm2->execute();
+            $requirements = $stm2->fetchAll(PDO::FETCH_ASSOC);
+
+            if (count($requirements) < 1) {
+                $requirements = [];
+            } else {
+                $requirements = $requirements[0];
+            }
+
+            $res["estado"] = 1;
+            $res["total"] = count($resultado);
+            $res["promedio"] = $promedio;
+            $res["acta"] = $acta;
+            $res["examen"] = $examen;
+            $res["toefl"] = $toefl;
+            $res["kardex"] = $kardex;
+            $res["requirements"] = $requirements;
+        } catch (Exception $ex) {
+            $res["mensaje"] = $ex->getMessage();
+        }
+
+        return json_encode($res);
+    }
+
+    public function saveRequirements($data) {
+        $res = ["estado" => 0];
+        try {
+            $query = "SELECT id FROM requirements WHERE user_id=:user_id;";
+            $pdo = $this->conn->prepare($query);
+            $pdo->bindParam(":user_id", $_SESSION['id_usuario']);
+            $pdo->execute();
+            $resultado = $pdo->fetchAll();
+
+            /*
+             * Si ya existen sus ajustes, los  actualiza
+             */
+            if (count($resultado) > 0) {
+                $query = "UPDATE requirements SET promedio=:promedio, acta=:acta, examen=:examen, toefl=:toefl, 
+                          kardex=:kardex WHERE user_id=:user_id;";
+            } else {
+                $query = "INSERT INTO requirements (promedio, acta, examen, toefl, kardex, user_id) 
+                          VALUES (:promedio, :acta, :examen, :toefl, :kardex, :user_id);";
+            }
+
+            $pdo2 = $this->conn->prepare($query);
+            $pdo2->bindParam(":user_id", $_SESSION['id_usuario']);
+            $pdo2->bindParam(":promedio", $data['promedio']);
+            $pdo2->bindParam(":acta", $data['acta']);
+            $pdo2->bindParam(":examen", $data['examen']);
+            $pdo2->bindParam(":toefl", $data['toefl']);
+            $pdo2->bindParam(":kardex", $data['kardex']);
+            $pdo2->execute();
+
+            $res["estado"] = 1;
+            $res["mensaje"] = "Requisitos guardados correctamente";
+        } catch (Exception $ex) {
+            $res["mensaje"] = $ex->getMessage();
+        }
+
+        return json_encode($res);
+    }
+
     public function addToFavorites($user_id, $beca_id) {
         if (is_numeric($user_id) && is_numeric($beca_id)) {
             if (!$this->isFavorite($user_id, $beca_id)) {
@@ -304,7 +406,6 @@ class Beca {
         return json_encode($res);
     }
 
-
     public function isLikeOrFavorite($beca_id) {
         $res = ["estado" => 0];
 
@@ -348,6 +449,12 @@ if (isset($_POST['get'])) {
             break;
         case 'isLikeOrFavorite':
             echo $b->isLikeOrFavorite($_POST['beca_id']);
+            break;
+        case 'loadRequirements':
+            echo $b->loadRequirements();
+            break;
+        case 'saveRequirements':
+            echo $b->saveRequirements($_POST);
             break;
         default:
             header("Location: ../../");
