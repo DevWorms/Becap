@@ -43,11 +43,11 @@ function MostrarBecas($id_usuario) {
         $is_meInteresa = $b->isMeInteresa($_SESSION['id_usuario'], $fila["ID_Beca"]);
 
         if ($is_fav) {
-            $icono = '<span style="cursor: pointer;" class="glyphicon glyphicon-star yellow" onclick="miBeca(' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
+            $icono = '<span id="icono-' . $fila["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-star yellow" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
         } elseif ($is_meInteresa) {
-            $icono = '<span style="cursor: pointer;" class="glyphicon glyphicon-heart red" onclick="miBeca(' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
+            $icono = '<span id="icono-' . $fila["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-heart red" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
         } else {
-            $icono = '<span style="cursor: pointer;" class="glyphicon glyphicon-heart gray-box" onclick="miBeca(' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
+            $icono = '<span id="icono-' . $fila["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-heart gray-box" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
         }
 
         echo '
@@ -106,11 +106,11 @@ function MostrarBecasList($id_usuario)
         $is_meInteresa = $b->isMeInteresa($_SESSION['id_usuario'], $fila["ID_Beca"]);
 
         if ($is_fav) {
-            $icono = '<span style="cursor: pointer;" class="glyphicon glyphicon-star yellow" onclick="miBeca(' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
+            $icono = '<span id="icono-' . $fila["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-star yellow" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
         } elseif ($is_meInteresa) {
-            $icono = '<span style="cursor: pointer;" class="glyphicon glyphicon-heart red" onclick="miBeca(' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
+            $icono = '<span id="icono-' . $fila["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-heart red" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
         } else {
-            $icono = '<span style="cursor: pointer;" class="glyphicon glyphicon-heart gray-box" onclick="miBeca(' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
+            $icono = '<span id="icono-' . $fila["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-heart gray-box" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
         }
 
         echo
@@ -146,9 +146,7 @@ function MostrarBecasList($id_usuario)
     }
 }
 
-
-function Counter($id_usuario)
-{
+function Counter($id_usuario) {
     global $pdo;
 
     $operacion = "SELECT COUNT(ID_Beca) AS total FROM becas WHERE Promedio_Acceso <= ?";
@@ -162,8 +160,7 @@ function Counter($id_usuario)
     echo $resultado["total"];
 }
 
-function CounterAll($id_usuario)
-{
+function CounterAll($id_usuario) {
     global $pdo;
 
     $operacion = "SELECT COUNT(ID_Beca) AS total FROM becas";
@@ -177,8 +174,7 @@ function CounterAll($id_usuario)
     echo $resultado["total"];
 }
 
-function PromedioUsuario($id_usuario)
-{
+function PromedioUsuario($id_usuario) {
     global $pdo;
 
     $operacion = "SELECT Promedio_Pos, Promedio_Uni, Promedio_Prepa, Promedio_Secundaria FROM usuarios WHERE ID_USUARIO = ?";
@@ -208,8 +204,7 @@ function PromedioUsuario($id_usuario)
     return $promedio;
 }
 
-function Modals()
-{
+function Modals() {
     global $pdo;
 
     $operacion = "SELECT becas.*, escuelas.Nombre_Escuela, escuelas.Nombre_Campus, escuelas.Descripcion_Escuela, becas.Nombre_Beca, becas.Descripcion_Beca FROM becas JOIN escuelas ON becas.ID_Escuela = escuelas.ID_Escuela";
@@ -222,8 +217,7 @@ function Modals()
     modalBeca($resultado, true);
 }
 
-function MostrarFavIntereses($id_usuario)
-{
+function MostrarFavIntereses($id_usuario) {
     global $pdo;
     $b = new Beca();
 
@@ -240,20 +234,15 @@ function MostrarFavIntereses($id_usuario)
     $resultado = unique_multidim_array($resultado, "ID_Beca");
 
     foreach ($resultado as $fila) {
-
-        if ($fila["ID_Tipo"] == 1)
-            $tipo = "Beca Académica";
-        if ($fila["ID_Tipo"] == 2)
-            $tipo = "Beca Crédito";
-        if ($fila["ID_Tipo"] == 3)
-            $tipo = "Beca Especie";
-
         $is_fav = $b->isFavorite($_SESSION['id_usuario'], $fila["ID_Beca"]);
+        $is_meInteresa = $b->isMeInteresa($_SESSION['id_usuario'], $fila["ID_Beca"]);
 
         if ($is_fav) {
-            $icono = '<span style="cursor: pointer;" class="glyphicon glyphicon-star yellow" onclick="miBeca(' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
+            $icono = '<span id="icono-' . $fila["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-star yellow" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
+        } elseif ($is_meInteresa) {
+            $icono = '<span id="icono-' . $fila["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-heart red" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
         } else {
-            $icono = '<span style="cursor: pointer;" class="glyphicon glyphicon-star yellow" onclick="miBeca(' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
+            $icono = '<span id="icono-' . $fila["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-heart gray-box" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
         }
 
         echo
@@ -293,8 +282,7 @@ function MostrarFavIntereses($id_usuario)
     }
 }
 
-function unique_multidim_array($array, $key)
-{
+function unique_multidim_array($array, $key) {
     $temp_array = array();
     $i = 0;
     $key_array = array();
@@ -315,8 +303,7 @@ function unique_multidim_array($array, $key)
  * @param $user
  * @return bool
  */
-function validateSchools($user)
-{
+function validateSchools($user) {
     if ((empty($user['Nombre_Universidad']) || $user['Nombre_Universidad'] == "")
         && (empty($user['Nombre_Posgrado']) || $user['Nombre_Posgrado'] == "")
         && (empty($user['Nombre_Prepa']) || $user['Nombre_Prepa'] == "")
@@ -360,8 +347,7 @@ function validateSchools($user)
  * @param $email
  * @return bool
  */
-function validateProfile($email)
-{
+function validateProfile($email) {
     $conn = ConexionBD::obtenerInstancia()->obtenerBD();
     $query = "SELECT * FROM becap_db.usuarios WHERE Mail_Usuario = :mail";
     $stm = $conn->prepare($query);
@@ -389,8 +375,7 @@ function validateProfile($email)
  * @param $email
  * @return bool
  */
-function validateInformation($email)
-{
+function validateInformation($email) {
     $conn = ConexionBD::obtenerInstancia()->obtenerBD();
     $query = "SELECT Telefono_contacto, tipo_beca FROM becap_db.usuarios WHERE Mail_Usuario = :mail";
     $stm = $conn->prepare($query);
@@ -405,8 +390,7 @@ function validateInformation($email)
     }
 }
 
-function ModalsFavIntereses()
-{
+function ModalsFavIntereses() {
     global $pdo;
 
     $operacion = "SELECT *, '1' AS tipo FROM ( SELECT becas.*, escuelas.Nombre_Escuela, escuelas.Nombre_Campus, escuelas.Descripcion_Escuela FROM becas INNER JOIN escuelas ON escuelas.ID_Escuela = becas.id_escuela) AS tabla INNER JOIN beca_favorito ON tabla.ID_Beca = beca_favorito.id_beca UNION SELECT *, '2' AS tipo FROM ( SELECT becas.*, escuelas.Nombre_Escuela, escuelas.Nombre_Campus, escuelas.Descripcion_Escuela FROM becas INNER JOIN escuelas ON escuelas.ID_Escuela = becas.id_escuela) AS tabla INNER JOIN beca_interesa ON tabla.ID_Beca = beca_interesa.id_beca";
@@ -425,31 +409,30 @@ function ModalsFavIntereses()
  * @param $becas
  * @param bool $oportunidades
  */
-function modalBeca($becas, $oportunidades = false)
-{
+function modalBeca($becas, $oportunidades = false) {
     $b = new Beca();
     foreach ($becas as $beca) {
         $is_fav = $b->isFavorite($_SESSION['id_usuario'], $beca["ID_Beca"]);
         $meInteresa = $b->isMeInteresa($_SESSION['id_usuario'], $beca["ID_Beca"]);
         if ($is_fav && $meInteresa) {
             $icono = '
-                    <span style="cursor: pointer;" class="glyphicon glyphicon-heart red" onclick="miBeca(' . $beca["ID_Beca"] . ');" aria-hidden="true" ></span>
-                    <span style="cursor: pointer;" class="glyphicon glyphicon-star yellow" onclick="miBeca(' . $beca["ID_Beca"] . ');" aria-hidden="true" ></span>
+                    <span id="heart-' . $beca["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-heart red" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $beca["ID_Beca"] . ');" aria-hidden="true" ></span>
+                    <span id="start-' . $beca["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-star yellow" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $beca["ID_Beca"] . ');" aria-hidden="true" ></span>
                     ';
         } elseif ($meInteresa && !$is_fav) {
             $icono = '
-                    <span style="cursor: pointer;" class="glyphicon glyphicon-heart red" onclick="miBeca(' . $beca["ID_Beca"] . ');" aria-hidden="true" ></span>
-                    <span style="cursor: pointer;" class="glyphicon glyphicon-star gray-box" onclick="miBeca(' . $beca["ID_Beca"] . ');" aria-hidden="true" ></span>
+                    <span id="heart-' . $beca["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-heart red" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $beca["ID_Beca"] . ');" aria-hidden="true" ></span>
+                    <span id="start-' . $beca["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-star gray-box" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $beca["ID_Beca"] . ');" aria-hidden="true" ></span>
                 ';
         } elseif ($is_fav && !$meInteresa) {
             $icono = '
-                    <span style="cursor: pointer;" class="glyphicon glyphicon-heart gray-box" onclick="miBeca(' . $beca["ID_Beca"] . ');" aria-hidden="true" ></span>
-                    <span style="cursor: pointer;" class="glyphicon glyphicon-star yellow" onclick="miBeca(' . $beca["ID_Beca"] . ');" aria-hidden="true" ></span>
+                    <span id="heart-' . $beca["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-heart gray-box" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $beca["ID_Beca"] . ');" aria-hidden="true" ></span>
+                    <span id="start-' . $beca["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-star yellow" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $beca["ID_Beca"] . ');" aria-hidden="true" ></span>
                 ';
         } else {
             $icono = '
-                    <span style="cursor: pointer;" class="glyphicon glyphicon-heart gray-box" onclick="miBeca(' . $beca["ID_Beca"] . ');" aria-hidden="true" ></span>
-                    <span style="cursor: pointer;" class="glyphicon glyphicon-star gray-box" onclick="miBeca(' . $beca["ID_Beca"] . ');" aria-hidden="true" ></span>
+                    <span id="heart-' . $beca["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-heart gray-box" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $beca["ID_Beca"] . ');" aria-hidden="true" ></span>
+                    <span id="start-' . $beca["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-star gray-box" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $beca["ID_Beca"] . ');" aria-hidden="true" ></span>
                 ';
         }
         ?>
@@ -504,7 +487,7 @@ function modalBeca($becas, $oportunidades = false)
                                         <div class="col-xs-3">
                                             <button class="btn btn-danger btn-block" onclick="
                                                     <?php if ($meInteresa) { ?>
-                                                            miBeca(<?php echo $beca["ID_Beca"]; ?>);
+                                                            miBeca(<?php echo $_SESSION['id_usuario'] . ', ' . $beca["ID_Beca"]; ?>);
                                                     <?php } else { ?>
                                                             addToMeInteresa(<?php echo $_SESSION['id_usuario'] . ", " . $beca["ID_Beca"]; ?>);
                                                     <?php } ?>

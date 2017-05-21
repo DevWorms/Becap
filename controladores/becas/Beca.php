@@ -167,6 +167,8 @@ class Beca {
                     $stm->bindParam(":beca_id", $beca_id, PDO::PARAM_INT);
                     $stm->execute();
 
+                    $this->removeMeInteresa($user_id, $beca_id);
+
                     $res = [
                         'estado' => 1,
                         'mensaje' => "La beca se removio correctamente de tu liste de Favoritos"
@@ -303,8 +305,24 @@ class Beca {
     }
 
 
-    public function isLikeOrFavorite() {
+    public function isLikeOrFavorite($beca_id) {
+        $res = ["estado" => 0];
 
+        try {
+            if ($this->isFavorite($_SESSION["id_usuario"], $beca_id)) {
+                $res["type"] = 1;
+            } elseif ($this->isMeInteresa($_SESSION["id_usuario"], $beca_id)) {
+                $res["type"] = 2;
+            } else {
+                $res["type"] = 3;
+            }
+
+            $res["estado"] = 1;
+        } catch (Exception $ex) {
+            $res["mensaje"] = $ex->getMessage();
+        }
+
+        return json_encode($res);
     }
 }
 
@@ -327,6 +345,9 @@ if (isset($_POST['get'])) {
             break;
         case 'resetPassword':
             echo $b->resetPassword($_POST["email"]);
+            break;
+        case 'isLikeOrFavorite':
+            echo $b->isLikeOrFavorite($_POST['beca_id']);
             break;
         default:
             header("Location: ../../");
