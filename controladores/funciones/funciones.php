@@ -230,6 +230,21 @@ function MostrarFavIntereses($id_usuario) {
     $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
     $sentencia->rowCount();
 
+    $query = "SELECT * FROM requirements WHERE user_id=:user_id;";
+    $stm = $pdo->prepare($query);
+    $stm->bindParam(":user_id", $_SESSION["id_usuario"], PDO::PARAM_INT);
+    $stm->execute();
+    $req = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+    $acta = 0; $kardex = 0; $examen = 0; $promedio = 0; $toefl = 0;
+    if (count($req) > 0) {
+        $acta = $req[0]["acta"];
+        $kardex = $req[0]["kardex"];
+        $examen = $req[0]["examen"];
+        $promedio = $req[0]["promedio"];
+        $toefl = $req[0]["toefl"];
+    }
+
     // Remueve los duplicados
     $resultado = unique_multidim_array($resultado, "ID_Beca");
 
@@ -245,8 +260,35 @@ function MostrarFavIntereses($id_usuario) {
             $icono = '<span id="icono-' . $fila["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-heart gray-box" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
         }
 
-        echo
-            '        
+        //Muestra la beca con los requerimientos completos
+        if ($toefl == 1 && $promedio == 1 && $examen == 1) {
+            echo
+                '        
+                    <div class="col-md-2 col-md-offset-1 caja" style="margin-bottom: 23.5px; background-color: #25acd9;">
+                          <div class="row" style="position: absolute; margin-left: 160px; margin-top: 10px">
+                              <p style="color: white; font-size: 14px"><strong>100%</strong></p>
+                          </div>
+                          <div class="col-xs-12 space-inside" align="left">
+                            
+                            <div class="row" style="margin-left: 0px; margin-right: 0px; padding-bottom: 5px;"> 
+                              <a href="#" data-toggle="modal" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box" style="color: white;">' . substr($fila["Nombre_Escuela"], 0, 30) . '</span></a>
+                            </div>
+
+                            <div class="row space-inside-p" style="margin-left: 0px; margin-right: 0px;">
+                               
+                                <p style="color: white;"><strong>' . $fila["Nombre_Beca"] . '</strong></p>
+                                <p style="color: white;">Aplica ' . $fila["Beca_Sobre"] . '</p>
+                            </div>
+                            <br>
+                            <div class="row" style="margin-left: 0px; margin-right: 150px; margin-top: 0px;">
+                                <button class="btn btn-danger" onclick="contactar(' . $_SESSION['id_usuario'] . ',' . $fila["ID_Beca"] . ');">Notificar a la escuela</button>
+                            </div>
+                          </div>
+                    </div>
+                    ';
+        } else {
+            echo
+                '        
                     <div class="col-md-2 col-md-offset-1 caja" style="margin-bottom: 23.5px">
                       
                           <div class="col-xs-9 space-inside" align="left">
@@ -279,6 +321,7 @@ function MostrarFavIntereses($id_usuario) {
 
                     </div>
                     ';
+        }
     }
 }
 
@@ -560,7 +603,7 @@ function modalBeca($becas, $oportunidades = false) {
                                                         admisión? <?php echo ($beca['Requiere_Examen'] == 1) ? " Si " . $beca['Examen_Admision'] . " puntaje " . $beca['Puntaje'] : "No"; ?></b></label>
                                             </div>
                                             <div class="checkbox">
-                                                <label style="color: #545454;"><input type="checkbox"><b>&nbsp;&nbsp;
+                                                <label style="color: #545454;"><input type="checkbox" <?php if ($promedio == 1) { echo " checked"; } ?>><b>&nbsp;&nbsp;
                                                         ¿Requiere
                                                         idiomas? <?php echo ($beca['Requiere_Idiomas'] == 1) ? " Si " . $beca['Examen_Idiomas'] . " puntaje " . $beca['Puntuaje_Idiomas'] : "No"; ?></b></label>
                                             </div>

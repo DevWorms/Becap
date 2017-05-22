@@ -452,3 +452,33 @@ function notificacion(msg, type, id) {
         }, 3000);
 
 }
+
+function contactar(user_id, beca_id) {
+    $.ajax({
+        type : 'POST',
+        url  : 'controladores/becas/Beca.php',
+        data : {
+            get: "contactar",
+            beca_id: beca_id
+        },
+        dataType: "json",
+        success :  function(response) {
+            if (response.estado == 1) {
+                $("#msg").html('<div class="alert alert-success">Se envio un mensaje a la institución, se enviará una respuesta a tu correo.</div>');
+                setTimeout(
+                    function() {
+                        $("#msg").html("");
+                    }, 10000);
+            } else {
+                $("#msg").html('<div class="alert alert-warning">" + response.mensaje + "</div>');
+                setTimeout(
+                    function() {
+                        $("#msg").html("");
+                    }, 10000);
+            }
+        },
+        error : function (response) {
+            console.log(response);
+        }
+    });
+}

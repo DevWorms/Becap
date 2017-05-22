@@ -40,11 +40,12 @@ class Beca {
 
             if (count($resultado) > 0) {
                 foreach ($resultado as $beca) {
-                    if ($beca["Requiere_Examen"] == 1) {
+                    if ( (strpos("examen de admisión", strtolower($beca["Examen_Admision"]))) ||
+                         (strpos("examen de admision", strtolower($beca["Examen_Admision"])))) {
                         $examen++;
                     }
 
-                    if (is_numeric($beca["Promedio_Acceso"]) && $beca["Promedio_Acceso"] > 0) {
+                    if (is_numeric($beca["Promedio_Acceso"]) && $beca["Promedio_Acceso"] >= 80) {
                         $promedio++;
                     }
 
@@ -425,6 +426,46 @@ class Beca {
 
         return json_encode($res);
     }
+
+    public function contactar($beca_id) {
+        $res = ["estado" => 0];
+
+        try {
+            $query = "SELECT * FROM usuarios WHERE ID_Usuario=:user_id;";
+            $stm = $this->conn->prepare($query);
+            $stm->bindParam(":user_id", $_SESSION["id_usuario"], PDO::PARAM_INT);
+            $stm->execute();
+            $user = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+            if (count($user) > 0) {
+                $mensaje = "
+                    <div><strong>Nombre</strong>: ". $user[0]["Nombre_Usuario"] ." ". $user[0]["Apellidos_Usuario"] ."</div>
+                    <br>
+                    <div><strong>Email</strong>: ". $user[0]["Mail_Usuario"] ."</div>
+                    <div><strong>Número telefónico</strong>: ". $user[0]["Telefono_contacto"] ."</div>
+                ";
+
+                $headers = "From: " . $user[0]["Mail_Usuario"] . "\r\n";
+                $headers .= "Reply-To: ". $user[0]["Mail_Usuario"] . "\r\n";
+                $headers .= "CC: no-reply@example.com\r\n";
+                $headers .= "MIME-Version: 1.0\r\n";
+                $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+
+                mail("carlosamg@gmail.com", "Nuevo contacto desde BECAP", $mensaje, $headers);
+                mail("mauricio.moniet@gmail.com", "Nuevo contacto desde BECAP", $mensaje, $headers);
+
+                $res["estado"] = 1;
+                $res["mensaje"] = "Se envio un mensaje a la institución se enviará una respuesta a tu correo.";
+            } else {
+                $res["estado"] = 0;
+                $res["mensaje"] = "Ocurrio un error al contactar a la institución";
+            }
+        } catch (Exception $ex) {
+            $res["mensaje"] = $ex->getMessage();
+        }
+
+        return json_encode($res);
+    }
 }
 
 if (isset($_POST['get'])) {
@@ -455,6 +496,9 @@ if (isset($_POST['get'])) {
             break;
         case 'saveRequirements':
             echo $b->saveRequirements($_POST);
+            break;
+        case 'contactar':
+            echo $b->contactar($_POST['beca_id']);
             break;
         default:
             header("Location: ../../");
