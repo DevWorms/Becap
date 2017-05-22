@@ -52,15 +52,23 @@ function MostrarBecas($id_usuario) {
 
         echo '
         <div class="col-md-2 col-md-offset-1 caja beca tipo-' . $fila["ID_Tipo"] . '">
-            <div class="col-xs-9 space-inside" align="left">
-                <a href="#" data-toggle="modal" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box"><b>' . substr($fila["Nombre_Escuela"], 0, 30) . '</b></span></a>
-                <div style="margin-top: 18px;"><br>
+            <div class="row" style="margin-left: 0px; margin-right: 0px;">
+              <div class="col-xs-9 space-inside" align="left">
+                  <a href="#" data-toggle="modal" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box"><b>' . substr($fila["Nombre_Escuela"], 0, 30) . '</b></span></a>
+                  
+              </div>
+              <div class="col-xs-3" align="right">
+                    ' . $icono . '
+              </div>
+            </div>
+
+            <div class="row" style="margin-left: 0px; margin-right: 0px;">
+              <div class="col-xs-12">
+                <div style="margin-top: 28px;"><br>
                     <p><strong>' . $fila["Nombre_Beca"] . '</strong></p>
                     <p><strong>' . $porcentaje . $muestra . " " . $fila["Beca_Sobre"] . '</strong></p>
                 </div>
-            </div>
-            <div class="col-xs-3" align="right">
-                  ' . $icono . '
+              </div>
             </div>
         </div>';
     }
