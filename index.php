@@ -113,7 +113,10 @@
                       </div>
 
                       <button type="submit" class="btn btn-primary btn-sm" name="enviar" id="enviar">Inicia Sesión</button>
-                      <a href="#" onclick="event.preventDefault(); showReset();" style="color:#ffffff; position: absolute; margin-left: -241px; margin-top: 32px;">Recuperar contraseña</a>
+
+                      <div align="right" class="spce">
+                        <a href="#" onclick="event.preventDefault(); showReset();" style="color:#ffffff; font-size: 13px">Recuperar contraseña</a>
+                      </div>
                   </form>
                 </div><!--/.navbar-collapse -->
                   <br>
