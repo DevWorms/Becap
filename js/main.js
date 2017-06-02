@@ -1,4 +1,11 @@
 $(function () {
+
+    $('[data-toggle="tooltip"]').tooltip({
+        placement:"right",
+        delay: { "show": 200, "hide": 300 },
+        trigger:"focus"
+    });
+
     $('.button-checkbox').each(function () {
 
         // Settings

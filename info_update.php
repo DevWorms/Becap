@@ -259,7 +259,7 @@
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="posgraPromedio" id="posgraPromedio" class="form-control fields input-sm" placeholder="Promedio (Acumulado o Final)" data-toggle="popover" data-content="En escala del 1 al 100">
+                              <input type="text" name="posgraPromedio" id="posgraPromedio" class="form-control fields input-sm mytooltip" placeholder="Promedio (Acumulado o Final)" data-toggle="tooltip" title="En escala del 1 al 100">
                             </div>
                           </div>
                       </div>
@@ -277,7 +277,7 @@
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="uniPromedio" id="uniPromedio" class="form-control fields input-sm" placeholder="Promedio (Acumulado o Final)" data-toggle="popover" data-content="En escala del 1 al 100">
+                              <input type="text" name="uniPromedio" id="uniPromedio" class="form-control fields input-sm mytooltip" placeholder="Promedio (Acumulado o Final)" data-toggle="tooltip" title="En escala del 1 al 100">
                             </div>
                           </div>
                       </div>
@@ -295,7 +295,7 @@
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="prepaPromedio" id="prepaPromedio" class="form-control fields input-sm" placeholder="Promedio (Acumulado o Final)" data-toggle="popover" data-content="En escala del 1 al 100">
+                              <input type="text" name="prepaPromedio" id="prepaPromedio" class="form-control fields input-sm mytooltip" placeholder="Promedio (Acumulado o Final)" data-toggle="tooltip" title="En escala del 1 al 100">
                             </div>
                           </div>
                       </div>
@@ -313,7 +313,7 @@
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="secuPromedio" id="secuPromedio" class="form-control fields input-sm" placeholder="Promedio (Acumulado o Final)" data-toggle="popover" data-content="En escala del 1 al 100">
+                              <input type="text" name="secuPromedio" id="secuPromedio" class="form-control fields input-sm mytooltip" placeholder="Promedio (Acumulado o Final)" data-toggle="tooltip" title="En escala del 1 al 100">
                             </div>
                           </div>
                       </div>

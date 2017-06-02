@@ -74,8 +74,7 @@ function MostrarBecas($id_usuario) {
     }
 }
 
-function MostrarBecasList($id_usuario)
-{
+function MostrarBecasList($id_usuario){
     global $pdo;
     $b = new Beca();
 
@@ -124,7 +123,7 @@ function MostrarBecasList($id_usuario)
         echo
             '    
                     <div class="row">
-
+            
                         <div class="col-xs-12 caja-space caja-h-1 beca tipo-' . $fila["ID_Tipo"] . '" style="margin-top:10px">
                             
                             <div class="row">
@@ -207,7 +206,6 @@ function PromedioUsuario($id_usuario) {
         $promedio = $p_sec;
     else
         $promedio = 0;
-
 
     return $promedio;
 }
