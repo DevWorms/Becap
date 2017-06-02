@@ -270,7 +270,7 @@
               <?php
                 if (isset($_SESSION['first_time'])) {
               ?>
-              $.notify({
+              /*$.notify({
                 message: '¡<strong>Cuenta</strong> creada exitosamente!' 
               },{
                 type: 'success',
@@ -278,7 +278,8 @@
                   from: "bottom",
                   align: "right"
                 }
-              });
+              });*/
+              console.log("cuenta creada");
               <?php
               } else {
               ?>
