@@ -214,7 +214,7 @@
                       <br>
                       <div class="row">
                             <div class="col-xs-12 col-md-2 col-md-offset-5">
-                                <button class="btn btn-danger btn-block" type="submit" onclick="validateForm();" name="enviar">Continuar</button>
+                                <button class="btn btn-danger btn-block" type="button" onclick="validateForm();" name="enviar">Continuar</button>
                             </div>
                       </div>
 
@@ -296,7 +296,6 @@
               ?>
 
             function validateForm() {
-                event.preventDefault();
                 var valid = 1;
                 var msg = "";
 
@@ -305,26 +304,43 @@
                 var preparatoria = $('#preparatoria').val();
                 var secundaria = $('#secundaria').val();
 
-                if ( !posgrado && !universidad && !preparatoria && !secundaria ) {
-                    msg = "Ingresa al menos una escuela y promedio";
+                var proPosg = $('#posgraPromedio').val();
+                var proUni = $('#uniPromedio').val() ;
+                var proPrepa= $('#prepaPromedio').val();
+                var proSecu= $('#prepaPromedio').val();
+
+                // validacion minimo 2 escuelas
+                var arrEscuelas =[posgrado,universidad,preparatoria,secundaria];
+                var alMenosDosEscuelas = 0;
+
+                for(var cont = 0; cont < arrEscuelas.length ; cont++){
+                    if(!arrEscuelas[cont]){
+                        alMenosDosEscuelas += 1;
+                    }
+                }
+
+                if ( alMenosDosEscuelas > 2 ) {
+
+                    msg = "Ingresa al menos dos escuelas con su promedio";
                     valid = 0;
+
                 } else {
-                    if (posgrado && !$('#posgraPromedio').val()) {
+                    if (posgrado && !proPosg) {
                         msg = "Ingresa tu promedio del posgrado";
                         valid = 0;
                     }
 
-                    if (universidad && !$('#uniPromedio').val()) {
+                    if (universidad && !proUni) {
                         msg = "Ingresa tu promedio de la universidad";
                         valid = 0;
                     }
 
-                    if (preparatoria && !$('#prepaPromedio').val()) {
+                    if (preparatoria && !proPrepa) {
                         msg = "Ingresa tu promedio de la preparatoria";
                         valid = 0;
                     }
 
-                    if (secundaria && !$('#secuPromedio').val()) {
+                    if (secundaria && !proSecu) {
                         msg = "Ingresa tu promedio de la secundaria";
                         valid = 0;
                     }
@@ -361,7 +377,7 @@
                     $.notify({
                         message: msg
                     },{
-                        type: 'warning',
+                        type: 'danger',
                         placement: {
                             from: "top",
                             align: "right"
