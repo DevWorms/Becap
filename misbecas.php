@@ -70,46 +70,10 @@ if (validateProfile($_SESSION['correo'])) {
     <br>
     <div class="container">
         <div class="row">
-            <div id="msg"></div>
-            <div class="col-md-3 space-outside">
-                <p class="dark-gray gr"><b>Requisitos Agrupados</b></p>
+            <!-- <div id="msg"></div> -->
+            
 
-                <div class="list-group" style="font-size: 12px; margin-top: 15px;">
-                    <div class="form-inline">
-                        <div class="form-group">
-                            <input value="promedio" id="promedio" type="checkbox">
-                            <label for="promedio" id="lbl_promedio" class="radio">&nbsp;&nbsp;&nbsp;Promedio de: 80 (7/7)</label>
-                        </div>
-                    </div>
-                    <div class="form-inline">
-                        <div class="form-group">
-                            <input value="acta" id="acta" type="checkbox">
-                            <label for="acta" id="lbl_acta" class="radio">&nbsp;&nbsp;&nbsp;Acta de Nacimiento (3/7)</label>
-                        </div>
-                    </div>
-                    <div class="form-inline">
-                        <div class="form-group">
-                            <input value="examen" id="examen" type="checkbox">
-                            <label for="examen" id="lbl_examen" class="radio">&nbsp;&nbsp;&nbsp;Examen de admisión (3/7)</label>
-                        </div>
-                    </div>
-                    <div class="form-inline">
-                        <div class="form-group">
-                            <input value="toefl" id="toefl" type="checkbox">
-                            <label for="toefl" id="lbl_toefl" class="radio">&nbsp;&nbsp;&nbsp;TOEFL: 600 (3/7)</label>
-                        </div>
-                    </div>
-                    <div class="form-inline">
-                        <div class="form-group">
-                            <input value="kardex" id="kardex" type="checkbox">
-                            <label for="kardex" id="lbl_kardex" class="radio">&nbsp;&nbsp;&nbsp;Kardex de preparatoria (2/7)</label>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="row">
 
                     <p class="dark-gray gr margin"><b>Becas Seleccionadas</b></p>
