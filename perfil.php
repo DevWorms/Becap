@@ -84,12 +84,12 @@
                       <div class="row">
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="nombre" class="form-control fields input-sm" placeholder="Nombre">
+                              <input type="text" name="nombre" class="form-control fields input-sm" placeholder="Nombre(s)">
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
-                              <input type="text" name="apellido" id="apellido" class="form-control fields input-sm" placeholder="Apellido">
+                              <input type="text" name="apellido" id="apellido" class="form-control fields input-sm" placeholder="Apellido(s)">
                             </div>
                           </div>
                           <div class="col-xs-4 col-sm-4 col-md-4">
