@@ -227,7 +227,7 @@
 
                       <div class="row">
                             <div class="col-xs-12 col-md-2 col-md-offset-5">
-                                <button class="btn btn-success btn-block" type="submit" onclick="validateIntereses();">Actualizar</button>
+                                <button class="btn btn-success btn-block" type="button" onclick="validateIntereses();">Actualizar</button>
                             </div>
                       </div>
                   </form>
@@ -321,7 +321,7 @@
                       <br>
                       <div class="row">
                             <div class="col-xs-12 col-md-2 col-md-offset-5">
-                                <button class="btn btn-success btn-block" type="button" onclick="validateHistorial();" name="enviar">Continuar</button>
+                                <button class="btn btn-success btn-block" type="button" onclick="validateHistorial();" name="enviar">Actualizar</button>
                             </div>
                       </div>
 

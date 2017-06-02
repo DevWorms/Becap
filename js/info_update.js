@@ -202,7 +202,7 @@ function updateHistorial() {
         success: function (response) {
             var msg = response.mensaje;
             if (response.estado == 1) {
-                $.notify({
+                /*$.notify({
                     message: msg
                 },{
                     type: 'success',
@@ -210,7 +210,8 @@ function updateHistorial() {
                         from: "top",
                         align: "right"
                     }
-                });
+                });*/
+                console.log(msg);
             } else {
                 $.notify({
                     message: msg
@@ -230,7 +231,7 @@ function updateHistorial() {
 }
 
 function validateIntereses() {
-    event.preventDefault();
+    //event.preventDefault();
     var valid = 1; 
     var msg = "";
 
@@ -292,7 +293,7 @@ function updateIntereses() {
         success: function (response) {
             var msg = response.mensaje;
             if (response.estado == 1) {
-                $.notify({
+               /* $.notify({
                     message: msg
                 },{
                     type: 'success',
@@ -300,7 +301,9 @@ function updateIntereses() {
                         from: "top",
                         align: "right"
                     }
-                });
+                });*/
+
+                console.log(msg);
             } else {
                 $.notify({
                     message: msg

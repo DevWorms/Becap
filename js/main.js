@@ -210,7 +210,7 @@ function validar(){
 }
 
 function addToFavorite(user_id, beca_id) {
-    event.preventDefault();
+    //event.preventDefault();
 
     $.ajax({
         type : 'POST',
@@ -224,7 +224,8 @@ function addToFavorite(user_id, beca_id) {
             success :  function(response) {
             if (response.estado == 1) {
                 colorStart(user_id, beca_id);
-                notificacion(response.mensaje, "success", beca_id);
+                console.log("Agregado a favoritos");
+                //notificacion(response.mensaje, "success", beca_id);
             } else {
                 notificacion(response.mensaje, "danger", beca_id);
             }
@@ -250,7 +251,8 @@ function removeFavorite(user_id, beca_id) {
         success :  function(response) {
             if (response.estado == 1) {
                 colorStartGrey(user_id, beca_id);
-                notificacion(response.mensaje, "success", beca_id);
+                console.log("Removido de favorito");
+                //notificacion(response.mensaje, "success", beca_id);
             } else {
                 notificacion(response.mensaje, "danger", beca_id);
             }
@@ -276,7 +278,8 @@ function addToMeInteresa(user_id, beca_id) {
         success :  function(response) {
             if (response.estado == 1) {
                 colorHeart(user_id, beca_id);
-                notificacion(response.mensaje, "success", beca_id);
+                console.log("Agregado a favoritos");
+                //notificacion(response.mensaje, "success", beca_id);
             } else {
                 notificacion(response.mensaje, "danger", beca_id);
             }
@@ -302,7 +305,8 @@ function removeFromMeInteresa(user_id, beca_id) {
         success :  function(response) {
             if (response.estado == 1) {
                 colorHeartGrey(user_id, beca_id);
-                notificacion(response.mensaje, "success", beca_id);
+                console.log("Removido de me interesa");
+                //notificacion(response.mensaje, "success", beca_id);
             } else {
                 notificacion(response.mensaje, "danger", beca_id);
             }
