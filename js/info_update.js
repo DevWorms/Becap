@@ -50,6 +50,9 @@ function loadProfile() {
             $("#telefono").val(response.Telefono_contacto);
             $("#tipo_beca").val(response.tipo_beca);
 
+            $("#ciudad").val(response.Ciudad);
+            $("#pais").val(response.Pais);
+
             if (response.admin == 1) {
                 $("#admin").prop( "checked", true ).val(1);
                 $("#admin_btn").removeClass("btn-default").addClass("btn-info active");
@@ -234,6 +237,18 @@ function validateIntereses() {
     //event.preventDefault();
     var valid = 1; 
     var msg = "";
+    var ciudad = $("#ciudad").val();
+    var pais = $("#pais").val();
+
+    if ( !ciudad) {
+        valid = 0;
+        msg = "Ingresa tu ciudad";
+    }
+
+    if ( !pais ) {
+        valid = 0;
+        msg = "Ingresa tu pais";
+    }
 
     if ( !$('#telefono').val() ) {
         valid = 0;
@@ -287,7 +302,9 @@ function updateIntereses() {
             ensen: $("#ensen").val(),
             medic: $("#medic").val(),
             telefono: $("#telefono").val(),
-            tipo_beca: $("#tipo_beca").val()
+            tipo_beca: $("#tipo_beca").val(),
+            ciudad : $("#ciudad").val(),
+            pais:$("#pais").val()
         },
         dataType: "json",
         success: function (response) {

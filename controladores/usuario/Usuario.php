@@ -86,6 +86,8 @@ class Usuario {
         try {
             $telefono    = $data["telefono"];
             $tipoBeca = $data["tipo_beca"];
+            $ciudad = $data["ciudad"];
+            $pais = $data["pais"];
 
             $admin = (isset($data['admin']) && $data['admin'] == 1) ? 1 : 0;
             $aboga = (isset($data['aboga']) && $data['aboga'] == 1) ? 1 : 0;
@@ -132,11 +134,13 @@ class Usuario {
                 $stm->bindParam(":id_usuario", $_SESSION['id_usuario'], PDO::PARAM_INT);
                 $stm->execute();
 
-                $sql = "UPDATE becap_db.usuarios SET Telefono_contacto = :telefono, tipo_beca = :tipoBeca
+                $sql = "UPDATE becap_db.usuarios SET Telefono_contacto = :telefono, tipo_beca = :tipoBeca , Ciudad = :ciudad , Pais = :pais 
 		                WHERE ID_Usuario = :usuario";
                 $stm = $this->conn->prepare($sql);
                 $stm->bindParam(":telefono", $telefono, PDO::PARAM_STR);
                 $stm->bindParam(":tipoBeca", $tipoBeca, PDO::PARAM_INT);
+                $stm->bindParam(":ciudad", $ciudad, PDO::PARAM_STR);
+                $stm->bindParam(":pais", $pais, PDO::PARAM_STR);
                 $stm->bindParam(":usuario", $_SESSION['id_usuario'], PDO::PARAM_STR);
                 $stm->execute();
 

@@ -196,7 +196,29 @@
                       </div>
                       
                       <br><br>
-                      
+
+                      <div class="row">
+                         <div class="col-xs-12" align="center">
+                           <h4 style="color: #545454;"><b>Actualiza tu ciudad</h4>
+                         </div>
+                      </div>
+                      <div class="row">
+                         <div class="col-xs-12 col-md-4 col-md-offset-4">
+                            <input type="text" name="ciudad" id="ciudad" class="form-control fields input-sm" placeholder="Ciudad" required>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                         <div class="col-xs-12" align="center">
+                           <h4 style="color: #545454;"><b>Actualiza país</h4>
+                         </div>
+                      </div>
+                      <div class="row">
+                         <div class="col-xs-12 col-md-4 col-md-offset-4">
+                            <input type="text" name="pais" id="pais" class="form-control fields input-sm" placeholder="País" required>
+                        </div>
+                      </div>
+
                       <div class="row">
                          <div class="col-xs-12" align="center">
                            <h4 style="color: #545454;"><b>Actualiza tu número de celular</h4>
