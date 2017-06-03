@@ -397,13 +397,13 @@ function colorStartGrey(user_id, id) {
 function filtrar() {
     $(".beca").css('display', 'none');
     if (($("#filtro21").val() == 0 && $("#filtro22").val() == 0 && $("#filtro23").val() == 0) ||
-        ($("#filtro21").val() == 1 && $("#filtro22").val() == 1 && $("#filtro23").val() == 1)
-    ) {
+        ($("#filtro21").val() == 1 && $("#filtro22").val() == 1 && $("#filtro23").val() == 1 && $("#filtro24").val() == 1)) {
         $(".beca").css('display', 'none');
 
         $(".tipo-1").show();
         $(".tipo-2").show();
         $(".tipo-3").show();
+        $(".tipo-4").show();
 
     } else {
         $(".beca").css('display', 'none');
@@ -418,6 +418,10 @@ function filtrar() {
 
         if ($("#filtro23").val() == 1) {
             $(".tipo-3").show();
+        }
+
+        if ($("#filtro24").val() == 1) {
+            $(".tipo-4").show();
         }
     }
 }

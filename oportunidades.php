@@ -1,7 +1,12 @@
 <?php
+    session_start();
     error_reporting(0);
     require_once dirname(__FILE__) . "/controladores/sesion/comprueba_sesion.php";
     include_once dirname(__FILE__) . '/controladores/funciones/funciones.php';
+
+    //obtenemos el tipo de beca para establecer lso filstros iniciales
+    $tipo_beca = $_SESSION['tipo_beca'];
+    $tipo_siguiente = $tipo_beca + 1;
 ?>
 
 <!doctype html>
@@ -91,24 +96,32 @@
                   <div class="col-md-10 col-md-offset-1">
                     <form id="filtros">
                       <div class="list-group">
+
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button"  class="app-boton btn btn-block" id="filtro21_btn" data-color="info"><b>Beca Académica</b></button>
-                                  <input type="checkbox" class="hidden" value="0" id="filtro21" name="filtro21" checked/>
+                                  <button type="button"  class="app-boton btn btn-block" id="filtro24_btn" data-color="info"><b>Posgrado</b></button>
+                                  <input type="checkbox" class="hidden" value="0" id="filtro24" name="filtro24" <?php if($tipo_beca == 4 || $tipo_siguiente == 4){echo "checked";}?> />
                               </span>
                             </div>
 
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="app-boton btn btn-block" id="filtro22_btn" data-color="info"><b>Beca Crédito</b></button>
-                                  <input type="checkbox" class="hidden" value="0" id="filtro22" name="filtro22"/>
+                                  <button type="button" class="app-boton btn btn-block" id="filtro23_btn" data-color="info"><b>Profesional</b></button>
+                                  <input type="checkbox" class="hidden" value="0" id="filtro23" name="filtro23" <?php if($tipo_beca == 3 || $tipo_siguiente == 3){echo "checked";}?> />
                               </span>
                             </div>
 
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="app-boton btn btn-block" id="filtro23_btn" data-color="info"><b>Beca Especie</b></button>
-                                  <input type="checkbox" class="hidden" value="0" id="filtro23" name="filtro23"/>
+                                  <button type="button" class="app-boton btn btn-block" id="filtro22_btn" data-color="info"><b>Preparatoria</b></button>
+                                  <input type="checkbox" class="hidden" value="0" id="filtro22" name="filtro22" <?php if($tipo_beca == 2 || $tipo_siguiente == 2){echo "checked";}?> />
+                              </span>
+                            </div>
+
+                            <div class="form-group">
+                              <span class="button-checkbox">
+                                  <button type="button" class="app-boton btn btn-block" id="filtro21_btn" data-color="info"><b>Secundaria</b></button>
+                                  <input type="checkbox" class="hidden" value="0" id="filtro21" name="filtro21" <?php if($tipo_beca == 1 || $tipo_siguiente == 1){echo "checked";}?> />
                               </span>
                             </div>
                       </div>
@@ -178,7 +191,22 @@
           </div>
               <br><br>
       </footer>
+      <script>
+        $(document).ready(function(){
+          // mostramos los filtros iniciales
+          var tipoBeca = <?php echo $tipo_beca;?>;
+          var tipoBecaN = <?php echo $tipo_siguiente;?>;
+          var arrTipos = [1,2,3,4];
+          for(var i= 0 ; i<arrTipos.length ; i++){
+            if(arrTipos[i] == tipoBeca || arrTipos[i] == tipoBecaN){
+              $(".tipo-" + arrTipos[i]).show();
+            }else{
+                $(".tipo-" + arrTipos[i]).hide();
+            }
 
+          }
+        });
+      </script>
       <script>window.jQuery || document.write('<script src="vendor/jquery/jquery-1.11.2.min.js"><\/script>')</script>
       <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
         <script src="js/bootstrap-notify.js"></script>

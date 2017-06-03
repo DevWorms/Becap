@@ -34,6 +34,7 @@ if (isset($_POST["enviar"])) {
                 if (!empty($registro['Apellidos_Usuario'])) {
                     $_SESSION["nombre"] .= " " . $registro['Apellidos_Usuario'];
                 }
+                $_SESSION["tipo_beca"] = $registro["tipo_beca"];
                 $_SESSION["correo"] = $registro['Mail_Usuario'];
                 $_SESSION["id_usuario"] = $registro['ID_Usuario'];
                 header("location:../../perfil.php");
@@ -48,6 +49,7 @@ if (isset($_POST["enviar"])) {
                 if (!empty($registro['Apellidos_Usuario'])) {
                     $_SESSION["nombre"] .= " " . $registro['Apellidos_Usuario'];
                 }
+                $_SESSION["tipo_beca"] = $registro["tipo_beca"];
                 $_SESSION["correo"] = $registro['Mail_Usuario'];
                 $_SESSION["id_usuario"] = $registro['ID_Usuario'];
                 header("location:../../perfil.php");

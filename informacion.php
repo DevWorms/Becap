@@ -2,7 +2,8 @@
     error_reporting(1);
     require_once dirname(__FILE__) . "/controladores/sesion/comprueba_sesion.php";
     include_once dirname(__FILE__) . '/controladores/funciones/funciones.php';
-
+    require_once dirname(__FILE__) . '/controladores/datos/ConexionBD.php';
+    $pdo = ConexionBD::obtenerInstancia()->obtenerBD();
     if (validateProfile($_SESSION['correo'])) {
         // Si ya tiene el perfil... valida la información
         if (validateInformation($_SESSION['correo'])) {
@@ -222,9 +223,15 @@
                       <div class="row">
                          <div class="col-xs-12 col-md-4 col-md-offset-4">
                             <select class="form-control fields input-sm" name="tipo_beca" id="tipo_beca">
-                                <option value="1">Académica</option>
-                                <option value="2">Crédito</option>
-                                <option value="3">Especie</option>
+                                <?php
+                                  $query = "SELECT * FROM tipo_beca ORDER BY id_tipo DESC";
+                                  $statement = $pdo->prepare($query);
+                                  $statement->execute();
+                                  $rs = $statement->fetchAll();
+                                  foreach ($rs as  $tipo) {
+                                   echo "<option value='" . $tipo["id_tipo"] . "'>" .$tipo['nombre_tipo'] . "</option>";
+                                  }
+                                ?>
                               </select>
                         </div>
                       </div> 
