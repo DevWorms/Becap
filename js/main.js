@@ -468,7 +468,7 @@ function notificacion(msg, type, id) {
 
 }
 
-function contactar(user_id, beca_id) {
+function contactar(user_id, beca_id , boton) {
     $.ajax({
         type : 'POST',
         url  : 'controladores/becas/Beca.php',
@@ -479,11 +479,8 @@ function contactar(user_id, beca_id) {
         dataType: "json",
         success :  function(response) {
             if (response.estado == 1) {
-                $("#msg").html('<div class="alert alert-success">Se envio un mensaje a la institución, se enviará una respuesta a tu correo.</div>');
-                setTimeout(
-                    function() {
-                        $("#msg").html("");
-                    }, 10000);
+                $(boton).text("¡Gracias!");
+                $(boton).prop("disabled",true);
             } else {
                 $("#msg").html('<div class="alert alert-warning">" + response.mensaje + "</div>');
                 setTimeout(
@@ -524,5 +521,14 @@ function setPorcentaje(beca,checkbox){
         //aparecemos el boton contactar al llegar al 100
         if(porcentaje == 100){
             $(contenedor).find(".notificarEsc").show(300);
+            //cambiamos los colores de la vista general
+            $("#cuadro-" + beca).css({
+                'color': '#FFFF',
+                'background-color': '#25ACD9'
+            });
+            $("#cuadro-" + beca).find("[data-target=#tecmon120]").find("span").css({'color': 'white'});
+            $("#becaPorc-" + beca).css({color: 'white', });
+        }else{
+            $(contenedor).find(".notificarEsc").hide(300);
         }
 }

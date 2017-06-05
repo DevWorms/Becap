@@ -438,12 +438,39 @@ class Beca {
             $user = $stm->fetchAll(PDO::FETCH_ASSOC);
 
             if (count($user) > 0) {
+                //INFORMACION DEL USUARIO
                 $mensaje = "
                     <div><strong>Nombre</strong>: ". $user[0]["Nombre_Usuario"] ." ". $user[0]["Apellidos_Usuario"] ."</div>
                     <br>
                     <div><strong>Email</strong>: ". $user[0]["Mail_Usuario"] ."</div>
-                    <div><strong>Número telefónico</strong>: ". $user[0]["Telefono_contacto"] ."</div>
-                ";
+                    <div><strong>Número telefónico</strong>: ". $user[0]["Telefono_contacto"] ."</div>";
+
+                $mensaje .= "<p>Fecha de nacimiento: ".$user[0]["Fecha_Nacimiento"]." <p>De " . $user[0]["Ciudad"] . " , ". $user[0]['Pais'] . "</p>";
+                
+                if($user[0]["Estudia"] == 1){
+                    $mensaje .="<p>¿Estudia? SI </p>";
+                }else{
+                    $mensaje .="<p>¿Estudia? NO </p>";
+                }
+                
+                $mensaje.= "<p> Posgrado : " . $user[0]["Nombre_Posgrado"]  ." Promedio: " . $user[0]["Promedio_Pos"] . "</p>";
+                $mensaje.= "<p> Universidad : " . $user[0]["Nombre_Universidad"]  ." Promedio: " . $user[0]["Promedio_Uni"] . "</p>";
+                $mensaje.= "<p> Preparatoria : " . $user[0]["Nombre_Prepa"]  ." Promedio: " . $user[0]["Promedio_Prepa"] . "</p>";
+                $mensaje.= "<p> Secundaria : " . $user[0]["Nombre_Secundaria"]  ." Promedio: " . $user[0]["Promedio_Secundaria"] . "</p>";
+
+                $mensaje.= "<hr>";
+
+                //INFORMACION DE LA BECA
+                $query = "SELECT * FROM becas WHERE ID_Beca=:beca_id;";
+                $stm = $this->conn->prepare($query);
+                $stm->bindParam(":beca_id", $beca_id, PDO::PARAM_INT);
+                $stm->execute();
+                $becaApl = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+                $mensaje .= "<p><b>Aplicó a la beca " . $becaApl[0]["Nombre_Beca"] . "</b></p>";
+                $mensaje .= "<p> " . $becaApl[0]["Descripcion_Beca"] . "</p>";
+                $mensaje .= "<p><b>Contacto: " . $becaApl[0]["Contacto"] . "</b></p>";
+                $mensaje .= "<p><b>Enlace: " . $becaApl[0]["Link_Beca"] . "</b></p>";
 
                 $headers = "From: " . $user[0]["Mail_Usuario"] . "\r\n";
                 $headers .= "Reply-To: ". $user[0]["Mail_Usuario"] . "\r\n";
@@ -453,7 +480,7 @@ class Beca {
 
                 mail("carlosamg@gmail.com", "Nuevo contacto desde BECAP", $mensaje, $headers);
                 mail("mauricio.moniet@gmail.com", "Nuevo contacto desde BECAP", $mensaje, $headers);
-
+                
                 $res["estado"] = 1;
                 $res["mensaje"] = "Se envio un mensaje a la institución se enviará una respuesta a tu correo.";
             } else {

@@ -270,7 +270,7 @@ function MostrarFavIntereses($id_usuario) {
         if ($toefl == 1 && $promedio == 1 && $examen == 1) {
             echo
                 '        
-                    <div class="col-md-2 col-md-offset-1 caja" style="margin-bottom: 23.5px; background-color: #25acd9;">
+                    <div id="cuadro-"' .$fila["ID_Beca"].'" class="col-md-2 col-md-offset-1 caja" style="margin-bottom: 23.5px; background-color: #25acd9;">
                           <div class="row" style="position: absolute; margin-left: 160px; margin-top: 10px">
                               <p style="color: white; font-size: 14px"><strong>100%</strong></p>
                           </div>
@@ -295,7 +295,7 @@ function MostrarFavIntereses($id_usuario) {
         } else {
             echo
                 '        
-                    <div class="col-md-2 col-md-offset-1 caja" style="margin-bottom: 23.5px">
+                    <div id="cuadro-' .$fila["ID_Beca"].'" class="col-md-2 col-md-offset-1 caja" style="margin-bottom: 23.5px">
                       
                           <div class="col-xs-9 space-inside" align="left">
                             
@@ -625,7 +625,7 @@ function modalBeca($becas, $oportunidades = false) {
                                                 </div>
                                               </div>
                                               <div class="col-xs-12 col-md-12" align="center"> 
-                                                <button type="button" onclick="contactar(<?php echo $_SESSION['id_usuario'].",".$beca["ID_Beca"]; ?>);" class="btn btn-danger btn-lg notificarEsc" style="display: none">
+                                                <button type="button" onclick="contactar(<?php echo $_SESSION['id_usuario'].",".$beca["ID_Beca"]; ?>,this);" class="btn btn-danger btn-lg notificarEsc" style="display: none">
                                                     Notificar a la escuela
                                                 </button>
                                               </div>
