@@ -497,3 +497,32 @@ function contactar(user_id, beca_id) {
         }
     });
 }
+
+function setPorcentaje(beca,checkbox){
+    // VARIABLES
+    var porcentaje = 0;
+    var checados = 0;
+        //obtenemos el contenedor general de los checkbox para poder interar sus hermanos
+        var contenedor = $(checkbox).parent("label").parent(".checkbox").parent(".content-requisitos");
+        //intereamos
+        $(contenedor).find('[type=checkbox]').each(function(index, el) {
+            // agregamos si estan checados
+            if(el.checked){
+                checados = checados +  1;
+            }
+        });
+        //SON 6 EN TOTAL, asi que 100/6 por los que esten checados
+        porcentaje = (100/6) * checados;
+        //modificamos la progrees bar
+        $("#progreso-"+beca).css({
+            width: porcentaje + "%",
+        });
+        //seteamos el texto del porcentaje
+        $("#progreso-"+beca).text(  parseFloat(porcentaje).toFixed(0) + "%",);
+        //seteamos el procentaje en la vista general
+        $("#becaPorc-" + beca).text( parseFloat(porcentaje).toFixed(0) + "%");
+        //aparecemos el boton contactar al llegar al 100
+        if(porcentaje == 100){
+            $(contenedor).find(".notificarEsc").show(300);
+        }
+}
