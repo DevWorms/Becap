@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
 -- Host: localhost    Database: becap_db
 -- ------------------------------------------------------
--- Server version	5.6.17
+-- Server version 5.6.34-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -59,7 +59,7 @@ CREATE TABLE `beca_interesa` (
   KEY `id_beca` (`id_beca`),
   CONSTRAINT `beca_interesa_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`ID_Usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `beca_interesa_ibfk_2` FOREIGN KEY (`id_beca`) REFERENCES `becas` (`ID_Beca`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,6 +68,7 @@ CREATE TABLE `beca_interesa` (
 
 LOCK TABLES `beca_interesa` WRITE;
 /*!40000 ALTER TABLE `beca_interesa` DISABLE KEYS */;
+INSERT INTO `beca_interesa` VALUES (46,15,120);
 /*!40000 ALTER TABLE `beca_interesa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,7 +150,7 @@ CREATE TABLE `carreras_usuario` (
   PRIMARY KEY (`id_registro`),
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `carreras_usuario_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`ID_Usuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -158,7 +159,7 @@ CREATE TABLE `carreras_usuario` (
 
 LOCK TABLES `carreras_usuario` WRITE;
 /*!40000 ALTER TABLE `carreras_usuario` DISABLE KEYS */;
-INSERT INTO `carreras_usuario` VALUES (2,2,0,0,0,0,0,1,0,0,1,0,0,0),(3,3,1,1,0,0,0,0,0,0,0,0,0,0);
+INSERT INTO `carreras_usuario` VALUES (2,2,0,0,0,0,0,1,0,0,1,0,0,0),(3,3,1,1,0,0,0,0,0,0,0,0,0,0),(6,15,1,1,0,0,0,0,0,0,0,0,0,0);
 /*!40000 ALTER TABLE `carreras_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -256,7 +257,7 @@ CREATE TABLE `tipo_beca` (
   `id_tipo` int(7) NOT NULL AUTO_INCREMENT,
   `nombre_tipo` varchar(70) NOT NULL,
   PRIMARY KEY (`id_tipo`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -265,7 +266,7 @@ CREATE TABLE `tipo_beca` (
 
 LOCK TABLES `tipo_beca` WRITE;
 /*!40000 ALTER TABLE `tipo_beca` DISABLE KEYS */;
-INSERT INTO `tipo_beca` VALUES (1,'Académica'),(2,'Crédito'),(3,'Especie');
+INSERT INTO `tipo_beca` VALUES (1,'Académica'),(2,'Crédito'),(3,'Especie'),(4,' ');
 /*!40000 ALTER TABLE `tipo_beca` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -299,7 +300,7 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`ID_Usuario`,`Pwd_Usuario`),
   KEY `tipo_beca` (`tipo_beca`),
   CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`tipo_beca`) REFERENCES `tipo_beca` (`id_tipo`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -308,9 +309,13 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (2,'Richard','VelRo','rvelazquez@devworms.com','$2y$10$iS7q8MWZ.5LtbFgEcfi1ke6oDQJwIf5nujn70oEVcgap9m1JZP6K2','1989-02-20','México','Nezahualcóyotl',1,'',NULL,'UPIICSA','82','CETIS 37','71','51','79','5535060738',3),(3,'Ricardo','Osorio','root@toor.com','$2y$10$VQ4fOVUmK0aSsaowaoMFJeIWRafxM4tsJmwgBu3Sl8UPzxqLA1JeC','1994-01-01','México','CDMX',1,'','','UPIICSA','84','CECyT No. 1','100','','','55555555',1);
+INSERT INTO `usuarios` VALUES (2,'Richard','VelRo','rvelazquez@devworms.com','$2y$10$iS7q8MWZ.5LtbFgEcfi1ke6oDQJwIf5nujn70oEVcgap9m1JZP6K2','1989-02-20','México','Nezahualcóyotl',1,'',NULL,'UPIICSA','82','CETIS 37','71','51','79','5535060738',3),(3,'Ricardo','Osorio','root@toor.com','$2y$10$VQ4fOVUmK0aSsaowaoMFJeIWRafxM4tsJmwgBu3Sl8UPzxqLA1JeC','1994-01-01','México','CDMX',1,'','','UPIICSA','84','CECyT No. 1','100','','','55555555',1),(15,'Andrew','Gonzalez','andrewalangm@gmail.com','$2y$10$5KEXcrIzOzERWAQNfGaCFu.yPGL2Bnf0kutv7MMgzMc1qySU00ZcW','1993-09-14','MEXICO','MEXICO',1,'','','','','VOCA5','90','SECU13','90','1234567890',4);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'becap_db'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -321,4 +326,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-07  0:12:37
+-- Dump completed on 2017-06-07 16:45:15
