@@ -4,8 +4,8 @@
     require_once dirname(__FILE__) . "/controladores/sesion/comprueba_sesion.php";
     include_once dirname(__FILE__) . '/controladores/funciones/funciones.php';
     //obtenemos el tipo de beca para establecer lso filstros iniciales
-    $tipo_beca = $_SESSION['tipo_beca'];
-    $tipo_siguiente = $tipo_beca + 1;
+   /* $tipo_beca = $_SESSION['tipo_beca'];
+    $tipo_siguiente = $tipo_beca + 1;*/
 ?>
 <!doctype html>
 <html class="no-js" lang=""> 
@@ -97,29 +97,22 @@
 
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button"  class="app-boton btn btn-block" id="filtro24_btn" data-color="info"><b>Posgrado</b></button>
-                                  <input type="checkbox" class="hidden" value="0" id="filtro24" name="filtro24" <?php if($tipo_beca == 4 || $tipo_siguiente == 4){echo "checked";}?> />
+                                  <button type="button"  class="app-boton btn btn-block" id="filtro21_btn" data-color="info"><b>Beca Académica</b></button>
+                                  <input type="checkbox" class="hidden" value="0" id="filtro21" name="filtro21" checked />
                               </span>
                             </div>
 
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="app-boton btn btn-block" id="filtro23_btn" data-color="info"><b>Profesional</b></button>
-                                  <input type="checkbox" class="hidden" value="0" id="filtro23" name="filtro23" <?php if($tipo_beca == 3 || $tipo_siguiente == 3){echo "checked";}?> />
+                                  <button type="button" class="app-boton btn btn-block" id="filtro22_btn" data-color="info"><b>Beca crédito</b></button>
+                                  <input type="checkbox" class="hidden" value="0" id="filtro22" name="filtro22"/>
                               </span>
                             </div>
 
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="app-boton btn btn-block" id="filtro22_btn" data-color="info"><b>Preparatoria</b></button>
-                                  <input type="checkbox" class="hidden" value="0" id="filtro22" name="filtro22" <?php if($tipo_beca == 2 || $tipo_siguiente == 2){echo "checked";}?> />
-                              </span>
-                            </div>
-
-                            <div class="form-group">
-                              <span class="button-checkbox">
-                                  <button type="button" class="app-boton btn btn-block" id="filtro21_btn" data-color="info"><b>Secundaria</b></button>
-                                  <input type="checkbox" class="hidden" value="0" id="filtro21" name="filtro21" <?php if($tipo_beca == 1 || $tipo_siguiente == 1){echo "checked";}?> />
+                                  <button type="button" class="app-boton btn btn-block" id="filtro23_btn" data-color="info"><b>Beca especie</b></button>
+                                  <input type="checkbox" class="hidden" value="0" id="filtro23" name="filtro23" />
                               </span>
                             </div>
                       </div>

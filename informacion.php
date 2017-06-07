@@ -222,16 +222,11 @@
                       </div>
                       <div class="row">
                          <div class="col-xs-12 col-md-4 col-md-offset-4">
-                            <select class="form-control fields input-sm" name="tipo_beca" id="tipo_beca">
-                                <?php
-                                  $query = "SELECT * FROM tipo_beca ORDER BY id_tipo DESC";
-                                  $statement = $pdo->prepare($query);
-                                  $statement->execute();
-                                  $rs = $statement->fetchAll();
-                                  foreach ($rs as  $tipo) {
-                                   echo "<option value='" . $tipo["id_tipo"] . "'>" .$tipo['nombre_tipo'] . "</option>";
-                                  }
-                                ?>
+                             <select class="form-control fields input-sm" name="tipo_beca" id="tipo_beca">
+                                <option value="4">Posgrado</option>
+                                <option value="3">Universidad</option>
+                                <option value="2">Preparatoria</option>
+                                <option value="1" selected>Secundaria</option>
                               </select>
                         </div>
                       </div> 

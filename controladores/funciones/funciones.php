@@ -3,18 +3,56 @@ require_once dirname(__FILE__) . '/../datos/ConexionBD.php';
 require_once dirname(__FILE__) . '/../becas/Beca.php';
 $pdo = ConexionBD::obtenerInstancia()->obtenerBD();
 $pdo2 = ConexionBD::obtenerInstancia()->obtenerBD();
+
 session_start();
+
+function getShowNiveles($nivelElegido){
+    $siguienteNivel = 0;
+    $valores = array();
+    if($nivelElegido >= 4){
+        $siguienteNivel = $nivelElegido + 0;
+    }else{
+        $siguienteNivel = $nivelElegido + 1;
+    }
+
+    $strNiveles = "";
+
+    if($nivelElegido == 1){
+        $strNiveles = "Secundaria-";
+    }else if($nivelElegido == 2){
+        $strNiveles = "Preparatoria-";
+    }else if($nivelElegido == 3){
+        $strNiveles = "Profesional-";
+    }else if($nivelElegido == 4){
+        $strNiveles = "Posgrado-";
+    }
+
+    if($siguienteNivel == 1){
+        $strNiveles .= "Secundaria";
+    }else if($siguienteNivel == 2){
+        $strNiveles .= "Preparatoria";
+    }else if($siguienteNivel == 3){
+        $strNiveles .= "Profesional";
+    }else if($siguienteNivel == 4){
+        $strNiveles .= "Posgrado";
+    }
+
+    return explode("-",$strNiveles);
+}
 
 function MostrarBecas($id_usuario) {
     global $pdo;
     $b = new Beca();
 
     $promedio = PromedioUsuario($id_usuario);
+    $niveles = getShowNiveles($_SESSION['tipo_beca']);
+    $operacion = "SELECT becas.ID_Beca, becas.ID_Escuela, escuelas.Nombre_Escuela, becas.Nombre_Beca, becas.ID_Tipo , becas.Descripcion_Beca, becas.Beca_Sobre, becas.Porcentaje_Beca FROM becas JOIN escuelas ON becas.ID_Escuela = escuelas.ID_Escuela WHERE becas.Promedio_Acceso <= ? AND (Nivel_Estudio = ? OR Nivel_Estudio = ? )";
 
-    $operacion = "SELECT becas.ID_Beca, becas.ID_Escuela, escuelas.Nombre_Escuela, becas.Nombre_Beca, becas.ID_Tipo , becas.Descripcion_Beca, becas.Beca_Sobre, becas.Porcentaje_Beca FROM becas JOIN escuelas ON becas.ID_Escuela = escuelas.ID_Escuela WHERE becas.Promedio_Acceso <= ?";
 
     $sentencia = $pdo->prepare($operacion);
     $sentencia->bindParam(1, $promedio);
+    $sentencia->bindParam(2,$niveles[0]);
+    $sentencia->bindParam(3,$niveles[1]);
     $sentencia->execute();
     $resultado = $sentencia->fetchAll();
 
@@ -79,11 +117,13 @@ function MostrarBecasList($id_usuario){
     $b = new Beca();
 
     $promedio = PromedioUsuario($id_usuario);
-
-    $operacion = "SELECT becas.ID_Beca, becas.ID_Escuela, escuelas.Nombre_Escuela, becas.Nombre_Beca, becas.ID_Tipo , becas.Descripcion_Beca, becas.Beca_Sobre, becas.Porcentaje_Beca FROM becas JOIN escuelas ON becas.ID_Escuela = escuelas.ID_Escuela WHERE becas.Promedio_Acceso <= ?";
+    $niveles = getShowNiveles($_SESSION['tipo_beca']);
+    $operacion = "SELECT becas.ID_Beca, becas.ID_Escuela, escuelas.Nombre_Escuela, becas.Nombre_Beca, becas.ID_Tipo , becas.Descripcion_Beca, becas.Beca_Sobre, becas.Porcentaje_Beca FROM becas JOIN escuelas ON becas.ID_Escuela = escuelas.ID_Escuela WHERE becas.Promedio_Acceso <= ? AND (Nivel_Estudio = ? OR Nivel_Estudio = ? )";
 
     $sentencia = $pdo->prepare($operacion);
     $sentencia->bindParam(1, $promedio);
+    $sentencia->bindParam(2,$niveles[0]);
+    $sentencia->bindParam(3,$niveles[1]);
     $sentencia->execute();
     $resultado = $sentencia->fetchAll();
 
@@ -155,12 +195,14 @@ function MostrarBecasList($id_usuario){
 
 function Counter($id_usuario) {
     global $pdo;
-
-    $operacion = "SELECT COUNT(ID_Beca) AS total FROM becas WHERE Promedio_Acceso <= ?";
+    $niveles = getShowNiveles($_SESSION['tipo_beca']);
+    $operacion = "SELECT COUNT(ID_Beca) AS total FROM becas WHERE Promedio_Acceso <= ? AND (Nivel_Estudio = ? OR Nivel_Estudio = ? )";
     $promedio = PromedioUsuario($id_usuario);
 
     $sentencia = $pdo->prepare($operacion);
     $sentencia->bindParam(1, $promedio);
+    $sentencia->bindParam(2,$niveles[0]);
+    $sentencia->bindParam(3,$niveles[1]);
     $sentencia->execute();
     $resultado = $sentencia->fetch();
 
