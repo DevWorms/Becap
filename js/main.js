@@ -508,9 +508,9 @@ function setPorcentaje(beca,checkbox){
         //SON 6 EN TOTAL, asi que 100/6 por los que esten checados
         porcentaje = (100/6) * checados;
         //modificamos la progrees bar
-        $("#progreso-"+beca).css({
+        /*$("#progreso-"+beca).css({
             width: porcentaje + "%",
-        });
+        });*/
         //seteamos el texto del porcentaje
         $("#progreso-"+beca).text(  parseFloat(porcentaje).toFixed(0) + "%",);
         //seteamos el procentaje en la vista general
@@ -519,12 +519,12 @@ function setPorcentaje(beca,checkbox){
         if(porcentaje == 100){
             $(contenedor).find(".notificarEsc").show(300);
             //cambiamos los colores de la vista general
-            $("#cuadro-" + beca).css({
+            /*$("#cuadro-" + beca).css({
                 'color': '#FFFF',
                 'background-color': '#25ACD9'
             });
             $("#cuadro-" + beca).find("[data-target=#tecmon120]").find("span").css({'color': 'white'});
-            $("#becaPorc-" + beca).css({color: 'white', });
+            $("#becaPorc-" + beca).css({color: 'white', });*/
         }else{
             $(contenedor).find(".notificarEsc").hide(300);
         }
