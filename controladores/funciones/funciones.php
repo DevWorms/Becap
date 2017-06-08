@@ -593,21 +593,25 @@ function modalBeca($becas, $oportunidades = false) {
                             <div class="col-xs-12" align="center" id="msg-<?php echo $beca["ID_Beca"]; ?>"></div>
                             <div class="col-xs-12" align="center">
                                 <br>
+                                <!-- REQUISITOS -->
                                 <div class="col-xs-4">
                                     <a class="btn btn-req btn-block" data-toggle="tab"
                                        href="#req-<?php echo $beca["ID_Beca"]; ?>"><b>Requisitos</b></a>&nbsp;
                                 </div>
-                                <div class="col-xs-4">
-                                    <button class="btn btn-normal btn-block" data-toggle="tab"
-                                            href="#institucion-<?php echo $beca["ID_Beca"]; ?>"><b>La Institución</b>
-                                    </button>&nbsp;
-                                </div>
+
                                 <!-- CONTACTO -->
                                 <div class="col-xs-4">
                                     <button class="btn btn-normal btn-block" data-toggle="tab"
                                             href="#contacto-<?php echo $beca["ID_Beca"]; ?>"><b>Contacto</b>
                                     </button>
                                 </div>
+                                <!-- LA INSTITUCION -->
+                                <div class="col-xs-4">
+                                    <button class="btn btn-normal btn-block" data-toggle="tab"
+                                            href="#institucion-<?php echo $beca["ID_Beca"]; ?>"><b>La Institución</b>
+                                    </button>&nbsp;
+                                </div>
+                                
             
                                 <?php if ($oportunidades) { ?>
 
