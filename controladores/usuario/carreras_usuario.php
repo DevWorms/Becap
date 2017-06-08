@@ -52,7 +52,6 @@
                 ":usuario" => $usuario));
 
             $resultado2->closeCursor();
-
             header('location: ../../oportunidades.php');
         } else {
             notificacion("Selecciona al menos un área de interés", "../../informacion.php");

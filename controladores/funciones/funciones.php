@@ -1,14 +1,27 @@
 <?php
+error_reporting(1);
 require_once dirname(__FILE__) . '/../datos/ConexionBD.php';
 require_once dirname(__FILE__) . '/../becas/Beca.php';
+
+
 $pdo = ConexionBD::obtenerInstancia()->obtenerBD();
 $pdo2 = ConexionBD::obtenerInstancia()->obtenerBD();
 
 session_start();
 
+function getTipoBeca($id_usuario){
+    $conn = ConexionBD::obtenerInstancia()->obtenerBD(); 
+    // seteamos el valor del tipo de beca elegido (tipo de beca que buscas)
+    $query = "SELECT tipo_beca FROM becap_db.usuarios WHERE ID_Usuario = :id_usuario";
+    $stm = $conn->prepare($query);
+    $stm->bindParam(":id_usuario", $id_usuario);
+    $stm->execute();
+    $rs = $stm->fetchAll();
+    return $rs[0]["tipo_beca"];   
+}
+
 function getShowNiveles($nivelElegido){
     $siguienteNivel = 0;
-    $valores = array();
     if($nivelElegido >= 4){
         $siguienteNivel = $nivelElegido + 0;
     }else{
@@ -45,10 +58,14 @@ function MostrarBecas($id_usuario) {
     $b = new Beca();
 
     $promedio = PromedioUsuario($id_usuario);
-    $niveles = getShowNiveles($_SESSION['tipo_beca']);
+
+    $miTipobeca = 0;
+    $miTipobeca = getTipoBeca($_SESSION["id_usuario"]);
+    $niveles = getShowNiveles($miTipobeca);
+
     $operacion = "SELECT becas.ID_Beca, becas.ID_Escuela, escuelas.Nombre_Escuela, becas.Nombre_Beca, becas.ID_Tipo , becas.Descripcion_Beca, becas.Beca_Sobre, becas.Porcentaje_Beca FROM becas JOIN escuelas ON becas.ID_Escuela = escuelas.ID_Escuela WHERE becas.Promedio_Acceso <= ? AND (Nivel_Estudio = ? OR Nivel_Estudio = ? )";
 
-
+    
     $sentencia = $pdo->prepare($operacion);
     $sentencia->bindParam(1, $promedio);
     $sentencia->bindParam(2,$niveles[0]);
@@ -117,9 +134,13 @@ function MostrarBecasList($id_usuario){
     $b = new Beca();
 
     $promedio = PromedioUsuario($id_usuario);
-    $niveles = getShowNiveles($_SESSION['tipo_beca']);
-    $operacion = "SELECT becas.ID_Beca, becas.ID_Escuela, escuelas.Nombre_Escuela, becas.Nombre_Beca, becas.ID_Tipo , becas.Descripcion_Beca, becas.Beca_Sobre, becas.Porcentaje_Beca FROM becas JOIN escuelas ON becas.ID_Escuela = escuelas.ID_Escuela WHERE becas.Promedio_Acceso <= ? AND (Nivel_Estudio = ? OR Nivel_Estudio = ? )";
 
+    $miTipobeca = 0;
+    $miTipobeca = getTipoBeca($_SESSION["id_usuario"]);
+    
+    $niveles = getShowNiveles($miTipobeca);
+
+    $operacion = "SELECT becas.ID_Beca, becas.ID_Escuela, escuelas.Nombre_Escuela, becas.Nombre_Beca, becas.ID_Tipo , becas.Descripcion_Beca, becas.Beca_Sobre, becas.Porcentaje_Beca FROM becas JOIN escuelas ON becas.ID_Escuela = escuelas.ID_Escuela WHERE becas.Promedio_Acceso <= ? AND (Nivel_Estudio = ? OR Nivel_Estudio = ? )";
     $sentencia = $pdo->prepare($operacion);
     $sentencia->bindParam(1, $promedio);
     $sentencia->bindParam(2,$niveles[0]);
@@ -195,7 +216,10 @@ function MostrarBecasList($id_usuario){
 
 function Counter($id_usuario) {
     global $pdo;
-    $niveles = getShowNiveles($_SESSION['tipo_beca']);
+    $miTipobeca = 0;
+    $miTipobeca = getTipoBeca($_SESSION["id_usuario"]);
+    
+    $niveles = getShowNiveles($miTipobeca);
     $operacion = "SELECT COUNT(ID_Beca) AS total FROM becas WHERE Promedio_Acceso <= ? AND (Nivel_Estudio = ? OR Nivel_Estudio = ? )";
     $promedio = PromedioUsuario($id_usuario);
 
@@ -659,13 +683,15 @@ function modalBeca($becas, $oportunidades = false) {
                                             </div>
 
                                              <div class="row">
-                                              <div class="col-xs-12 col-md-12"> 
+
+                                              <!--<div class="col-xs-12 col-md-12"> 
                                                 <div class="progress">
-                                                  <div id="progreso-<?php echo $beca["ID_Beca"]; ?>" class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:5%">
+                                                  <div id="progreso-<?php //echo $beca["ID_Beca"]; ?>" class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:5%">
                                                     0%
                                                   </div>
                                                 </div>
-                                              </div>
+                                              </div>-->
+
                                               <div class="col-xs-12 col-md-12" align="center"> 
                                                 <button type="button" onclick="contactar(<?php echo $_SESSION['id_usuario'].",".$beca["ID_Beca"]; ?>,this);" class="btn btn-danger btn-lg notificarEsc" style="display: none">
                                                     Notificar a la escuela

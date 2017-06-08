@@ -45,6 +45,9 @@ if (isset($_POST['enviar'])) {
                 $_SESSION["correo"] = $correo;
                 $_SESSION["first_time"] = true;
                 $_SESSION["id_usuario"] = $id;
+                
+                
+
                 session_write_close();
 
                 $resultado->closeCursor();

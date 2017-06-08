@@ -512,7 +512,7 @@ function setPorcentaje(beca,checkbox){
             width: porcentaje + "%",
         });*/
         //seteamos el texto del porcentaje
-        $("#progreso-"+beca).text(  parseFloat(porcentaje).toFixed(0) + "%",);
+        /*$("#progreso-"+beca).text(  parseFloat(porcentaje).toFixed(0) + "%",);*/
         //seteamos el procentaje en la vista general
         $("#becaPorc-" + beca).text( parseFloat(porcentaje).toFixed(0) + "%");
         //aparecemos el boton contactar al llegar al 100

@@ -224,6 +224,9 @@ class Usuario {
 
         return json_encode($res);
     }
+
+    
+    
 }
 
 if (isset($_POST['get'])) {

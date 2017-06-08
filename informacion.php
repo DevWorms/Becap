@@ -1,5 +1,5 @@
 <?php
-    error_reporting(1);
+    error_reporting(E_ALL);
     require_once dirname(__FILE__) . "/controladores/sesion/comprueba_sesion.php";
     include_once dirname(__FILE__) . '/controladores/funciones/funciones.php';
     require_once dirname(__FILE__) . '/controladores/datos/ConexionBD.php';
