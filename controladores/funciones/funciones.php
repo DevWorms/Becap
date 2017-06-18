@@ -65,6 +65,7 @@ function MostrarBecas($id_usuario) {
 
     $operacion = "SELECT becas.ID_Beca, becas.ID_Escuela, escuelas.Nombre_Escuela, becas.Nombre_Beca, becas.ID_Tipo , becas.Descripcion_Beca, becas.Beca_Sobre, becas.Porcentaje_Beca FROM becas JOIN escuelas ON becas.ID_Escuela = escuelas.ID_Escuela WHERE becas.Promedio_Acceso < ? AND (Nivel_Estudio = ? OR Nivel_Estudio = ? )";
 
+
     $sentencia = $pdo->prepare($operacion);
     $sentencia->bindParam(1, $promedio,PDO::PARAM_INT);
     $sentencia->bindParam(2,$niveles[0]);
