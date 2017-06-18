@@ -255,6 +255,11 @@ function validateIntereses() {
         msg = "Ingresa un número telefónico";
     }
 
+    if($('#telefono').val() && $('#telefono').val().length < 10){
+        valid = 0;
+        msg = "El número telefónico debe contener al menos 10 dígitos";
+    }
+
     if ( !$('#tipo_beca').val() ) {
         valid = 0;
         msg = "Selecciona un tipo de beca";
