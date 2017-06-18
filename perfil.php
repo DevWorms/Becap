@@ -308,7 +308,7 @@
                 var proPosg = $('#posgraPromedio').val();
                 var proUni = $('#uniPromedio').val() ;
                 var proPrepa= $('#prepaPromedio').val();
-                var proSecu= $('#prepaPromedio').val();
+                var proSecu= $('#secuPromedio').val();
 
                 // validacion minimo 2 escuelas
                 var arrEscuelas =[posgrado,universidad,preparatoria,secundaria];
@@ -345,6 +345,26 @@
                         msg = "Ingresa tu promedio de la secundaria";
                         valid = 0;
                     }
+
+                    if(proPosg && (proPosg < 0 || proPosg >100)){
+                      msg = "El promedio de Posgrado debe ser un valor entre 0 y 100";
+                      valid = 0;
+                    }
+
+                    if(proUni && (proUni < 0 || proUni >100)){
+                        msg = "El promedio de Profesional debe ser un valor entre 0 y 100";
+                        valid = 0;
+                    }
+
+                    if(proPrepa&& (proPrepa < 0 || proPrepa >100)){
+                        msg = "El promedio de Preparatoria debe ser un valor entre 0 y 100";
+                        valid = 0;
+                    }
+
+                    if(proSecu && (proSecu < 0 || proSecu >100) ){
+                        msg = "El promedio de Secundaria debe ser un valor entre 0 y 100";
+                        valid = 0;
+                    }
                 }
 
                 if (!$('#estudias').val()) {
@@ -371,6 +391,8 @@
                     msg = "Ingresa tu(s) apellido(s)";
                     valid = 0;
                 }
+
+                
 
                 if (valid === 1) {
                     $('form#formulario_perfil').submit();

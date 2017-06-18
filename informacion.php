@@ -235,7 +235,7 @@
 
                       <div class="row">
                             <div class="col-xs-12 col-md-2 col-md-offset-5">
-                                <button class="btn btn-danger btn-block" type="submit" onclick="validateInformation();">Continuar</button>
+                                <button class="btn btn-danger btn-block" type="button" onclick="validateInformation();">Continuar</button>
                             </div>
                       </div>
 
@@ -283,13 +283,18 @@
         <script src="js/main.js"></script>
         <script>
             function validateInformation() {
-                event.preventDefault();
+                //event.preventDefault();
                 var valid = 1;
                 var msg = "";
 
                 if ( !$('#telefono').val() ) {
                     valid = 0;
                     msg = "Ingresa un número telefónico";
+                }
+
+                if($('#telefono').val() && $('#telefono').val().length < 10){
+                  valid = 0;
+                  msg = "El número telefónico debe contener al menos 10 dígitos";
                 }
 
                 if ( !$('#tipo_beca').val() ) {

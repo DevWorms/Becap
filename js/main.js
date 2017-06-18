@@ -191,12 +191,11 @@ function saveRequirements() {
 // Valida los campos en formulario
 
 function validar(){
-    var nombre, correo, password;
-    nombre =   document.getElementById("name").value;
+    var  correo, password;
     correo =   document.getElementById("correo").value;
     password = document.getElementById("password").value;
 
-    if(nombre === "" || correo === "" || password === ""){
+    if(correo === "" || password === ""){
         
         $.notify({
             title: '<strong>¡Hey!</strong>',
@@ -207,6 +206,19 @@ function validar(){
 
         return false;
     }
+
+    if(password !== "" && password.length < 6){
+        $.notify({
+            title: '<strong>¡Hey!</strong>',
+            message: ' La contraseña debe contener al menos 6 caracteres.'
+        },{
+            type: 'danger'
+        });
+
+        return false;
+    }
+
+    return true;
 }
 
 function addToFavorite(user_id, beca_id) {
