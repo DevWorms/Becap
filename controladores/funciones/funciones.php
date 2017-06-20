@@ -384,7 +384,7 @@ function MostrarFavIntereses($id_usuario) {
                             
                             <div class="row" style="margin-left: 0px; margin-right: 0px; margin-top: 105px;">
                               
-                              <span id="becaPorc-'.$fila["ID_Beca"].'" style="color: #25acd9; font-weight: bold; font-size: 12px;">%'.getPorcentajeByBeca($fila["ID_Beca"],$_SESSION['id_usuario']).'</span>
+                              <span id="becaPorc-'.$fila["ID_Beca"].'" style="color: #25acd9; font-weight: bold; font-size: 12px;">'.getPorcentajeByBeca($fila["ID_Beca"],$_SESSION['id_usuario']).'%</span>
                             </div>
                             
                           </div>
