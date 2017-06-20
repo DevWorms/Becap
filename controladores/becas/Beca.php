@@ -9,7 +9,6 @@
 
 require_once dirname(__FILE__) . '/../datos/ConexionBD.php';
 session_start();
-
 class Beca {
     private $conn;
 
@@ -138,14 +137,17 @@ class Beca {
 
         $cRows = count($resultado);
         $res["count"]=$cRows;
+
+        return json_encode($res);
     }
 
     public function guardaRequisitosPorbeca($beca_id, $usuario_id,$promedio,$mantener,$socioeconomico,$exadmision,$idioma,$ingresos){
 
         // VALIDAMOS SI SERA UPDATE O INSERTE
         $res = ['estado' => 0];
-        $existeBeca = $this->getRequitistosByBeca($beca_id,$usuario_id)['count'];
-
+        $jExisteBeca = $this->getRequitistosByBeca($beca_id,$usuario_id);
+        $arrExisteBeca = json_decode($jExisteBeca);
+        $existeBeca = $arrExisteBeca['count'];
         if($existeBeca > 0 ){
 
             $query = 'UPDATE resumen_requisitos';
@@ -160,12 +162,12 @@ class Beca {
             $pdo = $this->conn->prepare($query);
             $pdo->bindParam(":beca_id", $beca_id);
             $pdo->bindParam(":usuario", $usuario_id);
-            pdo->bindParam(":promedio", $promedio);
-            pdo->bindParam(":mantener", $mantener);
-            pdo->bindParam(":socioeconomico", $socioeconomico);
-            pdo->bindParam(":exadmision", $exadmision);
-            pdo->bindParam(":idioma", $idioma);
-            pdo->bindParam(":ingresos", $ingresos);
+            $pdo->bindParam(":promedio", $promedio);
+            $pdo->bindParam(":mantener", $mantener);
+            $pdo->bindParam(":socioeconomico", $socioeconomico);
+            $pdo->bindParam(":exadmision", $exadmision);
+            $pdo->bindParam(":idioma", $idioma);
+            $pdo->bindParam(":ingresos", $ingresos);
 
             $res["action"] = "update";
             if($pdo->execute()){
@@ -176,7 +178,7 @@ class Beca {
 
         }else {
             $query = 'INSERT INTO resumen_requisitos(ID_Beca,Promedio,Mantener_Prom,Socioeconomico,Examen_Admision,Idiomas,Ingresos,Usuario_id)';
-            $query.= 'VALUES (:beca_id,';
+            $query.= ' VALUES (:beca_id,';
             $query.= ':promedio,';
             $query.= ':mantener,';
             $query.= ':socioeconomico,';
@@ -188,12 +190,12 @@ class Beca {
             $pdo = $this->conn->prepare($query);
             $pdo->bindParam(":beca_id", $beca_id);
             $pdo->bindParam(":usuario", $usuario_id);
-            pdo->bindParam(":promedio", $promedio);
-            pdo->bindParam(":mantener", $mantener);
-            pdo->bindParam(":socioeconomico", $socioeconomico);
-            pdo->bindParam(":exadmision", $exadmision);
-            pdo->bindParam(":idioma", $idioma);
-            pdo->bindParam(":ingresos", $ingresos);
+            $pdo->bindParam(":promedio", $promedio);
+            $pdo->bindParam(":mantener", $mantener);
+            $pdo->bindParam(":socioeconomico", $socioeconomico);
+            $pdo->bindParam(":exadmision", $exadmision);
+            $pdo->bindParam(":idioma", $idioma);
+            $pdo->bindParam(":ingresos", $ingresos);
 
             $res["action"] = "insert";
             if($pdo->execute()){
@@ -203,6 +205,8 @@ class Beca {
             }
 
         }
+
+        return json_encode($res);
     }
 
     public function addToFavorites($user_id, $beca_id) {
