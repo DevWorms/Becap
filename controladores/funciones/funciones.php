@@ -384,7 +384,7 @@ function MostrarFavIntereses($id_usuario) {
                             
                             <div class="row" style="margin-left: 0px; margin-right: 0px; margin-top: 105px;">
                               
-                              <span id="becaPorc-'.$fila["ID_Beca"].'" style="color: #25acd9; font-weight: bold; font-size: 13px;">0%</span>
+                              <span id="becaPorc-'.$fila["ID_Beca"].'" style="color: #25acd9; font-weight: bold; font-size: 12px;">%'.getPorcentajeByBeca($fila["ID_Beca"],$_SESSION['id_usuario']).'</span>
                             </div>
                             
                           </div>
@@ -515,6 +515,50 @@ function ModalsFavIntereses() {
     modalBeca($resultado);
 }
 
+function getPorcentajeByBeca($beca_id,$usuario){
+    $cantReqisitos = 0;
+    $porcentaje = 0;
+    $beca = new Beca();
+    //obtenemos llos requisitos checados
+    $jRequisitos = $beca->getRequitistosByBeca($beca_id,$usuario);
+    $requisitos = json_decode($jRequisitos,true);
+    // si ya hay requisitos
+    if($requisitos["count"] > 0){
+        $req = $requisitos["rows"][0];
+        if($req["Promedio"] == 1){
+            $cantReqisitos += 1;
+        }
+        if($req["Mantener_Prom"] == 1){
+            $cantReqisitos += 1;
+        }
+        if($req["Socioeconomico"] == 1){
+             $cantReqisitos += 1;
+        }
+        if($req["Examen_Admision"] == 1){
+            $cantReqisitos += 1;
+        }
+        if($req["Idiomas"] == 1){
+            $cantReqisitos += 1;
+        }
+        if($req["Ingresos"] == 1){
+            $cantReqisitos += 1;
+        }
+        
+        $porcentaje = (100/6) * $cantReqisitos;
+    }
+
+        return number_format($porcentaje,0);
+    }
+
+
+    function getReq($beca_id,$usuario){
+        $beca = new Beca();
+        //obtenemos llos requisitos checados
+        $jRequisitos = $beca->getRequitistosByBeca($beca_id,$usuario);
+        $requisitos = json_decode($jRequisitos,true);
+        return $requisitos["rows"][0];
+    }
+
 /**
  * Muestra el modal con el detalle de una beca, si es la pantalla de oportunidadaes
  * también muestra los botones de favoritos y me interesa
@@ -565,6 +609,10 @@ function modalBeca($becas, $oportunidades = false) {
                     <span id="start-' . $beca["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-star gray-box" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $beca["ID_Beca"] . ');" aria-hidden="true" ></span>
                 ';
         }
+
+        //obtenemos los requisitos por beca y usuario
+        //Promedio, Mantener_Prom, Socioeconomico, Examen_Admision, Idiomas, Ingresos
+        
         ?>
         <div id="tecmon<?php echo $beca["ID_Beca"]; ?>" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -611,41 +659,26 @@ function modalBeca($becas, $oportunidades = false) {
                                             href="#institucion-<?php echo $beca["ID_Beca"]; ?>"><b>La Institución</b>
                                     </button>&nbsp;
                                 </div>
-                                
-            
-                                <?php if ($oportunidades) { ?>
-
-                                    
-
-                                    <!--
-                                        <div class="col-xs-3">
-                                            <button class="btn btn-danger btn-block" onclick="
-                                                    <?php if ($meInteresa) { ?>
-                                                            miBeca(<?php echo $_SESSION['id_usuario'] . ', ' . $beca["ID_Beca"]; ?>);
-                                                    <?php } else { ?>
-                                                            addToMeInteresa(<?php echo $_SESSION['id_usuario'] . ", " . $beca["ID_Beca"]; ?>);
-                                                    <?php } ?>
-                                                    " id="btn-interesa-<?php echo $beca["ID_Beca"]; ?>"><b>Me interesa!</b></button>&nbsp;
-                                        </div>
--->
-                                    <!--
-                                        <div class="col-xs-3">
-                                            <button class="btn btn-default btn-block" onclick="
-                                                    
-                                                    <?php if ($is_fav) { ?>
-                                                            removeFavorite(<?php echo $_SESSION['id_usuario'] . ", " . $beca["ID_Beca"]; ?>);
-                                                    <?php } else { ?>
-                                                            addToFavorite(<?php echo $_SESSION['id_usuario'] . ", " . $beca["ID_Beca"]; ?>);
-                                                    <?php } ?>
-                                                    " style="background-color:#e8ba00" id="btn-favorito-<?php echo $beca["ID_Beca"]; ?>">Favorito</button>&nbsp;
-                                        </div>
-                                        -->
-
-                                <?php } ?>
                                 <br>
                             </div>
                         </div>
-
+                        <?php
+                            // ponemos los requisitos guardados previamente
+                                $reqGen = getReq($beca["ID_Beca"],$_SESSION['id_usuario']);
+                                $req1 = $reqGen["Promedio"];
+                                $req2 = $reqGen["Mantener_Prom"];
+                                $req3 = $reqGen["Socioeconomico"];
+                                $req4 = $reqGen["Examen_Admision"];
+                                $req5 = $reqGen["Idiomas"];
+                                $req6 = $reqGen["Ingresos"];
+                                $fullReq= $req1 + $req2 + $req3 + $req4 + $req5 + $req6; 
+                                $doContact = $reqGen["do_contacto"];
+                                if($doContact == 1){
+                        ?>
+                            <script type="text/javascript">
+                                allReadyContact(<?php echo $beca["ID_Beca"];?>);
+                            </script>
+                        <?php } ?>
                         <div class="row" >
                             <div class="col-md-10 col-md-offset-1">
                                 <div class="tab-content">
@@ -657,47 +690,49 @@ function modalBeca($becas, $oportunidades = false) {
                                         <p style="margin-top: 30px; color: #545454;"><b>Resumen de Requisitos</b></p>
                                         <div class="content-requisitos">
                                             <div class="checkbox">
-                                                <label style="color: #545454;"><input onclick='setPorcentaje(<?php echo $beca["ID_Beca"]; ?>,this)' type="checkbox" <?php if ($promedio == 1) { echo " checked"; } ?>><b>&nbsp;&nbsp;
+                                                <label style="color: #545454;">
+                                                <input id="<?php echo $beca["ID_Beca"]."-chbx-1"; ?>" onchange='saveRequisito(<?php echo $beca["ID_Beca"].",".$_SESSION['id_usuario']; ?>)' onclick='setPorcentaje(<?php echo $beca["ID_Beca"]; ?>,this)' type="checkbox" <?php if ($req1) { echo " checked"; } ?> />
+                                                    <b>&nbsp;&nbsp;
                                                         ¿Requiere
-                                                        promedio? <?php echo ($beca['Requiere_Promedio'] == 1) ? " Si " . "Promedio de: " . $beca['Promedio_Acceso'] : "No"; ?></b></label>
+                                                        promedio? <?php echo ($beca['Requiere_Promedio'] == 1) ? " Si " . "Promedio de: " . $beca['Promedio_Acceso'] : "No"; ?>
+                                                            
+                                                        </b></label>
                                             </div>
                                             <div class="checkbox">
-                                                <label style="color: #545454;"><input onclick='setPorcentaje(<?php echo $beca["ID_Beca"]; ?>,this)' type="checkbox"><b>&nbsp;&nbsp;
+                                                <label style="color: #545454;">
+                                                <input id="<?php echo $beca["ID_Beca"]."-chbx-2"; ?>" onchange='saveRequisito(<?php echo $beca["ID_Beca"].",".$_SESSION['id_usuario']; ?>)' onclick='setPorcentaje(<?php echo $beca["ID_Beca"]; ?>,this)' type="checkbox" <?php if ($req2) { echo " checked"; } ?> />
+                                                        <b>&nbsp;&nbsp;
                                                         Mantener promedio
-                                                        de: <?php echo $beca['Promedio_Mantener']; ?></b></label>
+                                                        de: <?php echo $beca['Promedio_Mantener']; ?>
+                                                        </b>
+                                                </label>
                                             </div>
                                             <div class="checkbox">
-                                                <label style="color: #545454;"><input onclick='setPorcentaje(<?php echo $beca["ID_Beca"]; ?>,this)' type="checkbox"><b>&nbsp;&nbsp;
+                                                <label style="color: #545454;">
+                                                <input id="<?php echo $beca["ID_Beca"]."-chbx-3"; ?>" onchange='saveRequisito(<?php echo $beca["ID_Beca"].",".$_SESSION['id_usuario']; ?>)' onclick='setPorcentaje(<?php echo $beca["ID_Beca"]; ?>,this)' type="checkbox" <?php if ($req3) { echo " checked"; } ?> /><b>&nbsp;&nbsp;
                                                         ¿Requiere Estudio
                                                         socioeconómico? <?php echo ($beca['Estudio_Socioeco'] == 1) ? "Si" : "No"; ?></b></label>
                                             </div>
                                             <div class="checkbox">
-                                                <label style="color: #545454;"><input onclick='setPorcentaje(<?php echo $beca["ID_Beca"]; ?>,this)' type="checkbox" <?php if ($examen == 1) { echo " checked"; } ?>><b>&nbsp;&nbsp;
+                                                <label style="color: #545454;"><input id="<?php echo $beca["ID_Beca"]."-chbx-4"; ?>" onchange='saveRequisito(<?php echo $beca["ID_Beca"].",".$_SESSION['id_usuario']; ?>)' onclick='setPorcentaje(<?php echo $beca["ID_Beca"]; ?>,this)' type="checkbox" <?php if ($req4) { echo " checked"; } ?> /><b>&nbsp;&nbsp;
                                                         ¿Requiere examen de
                                                         admisión? <?php echo ($beca['Requiere_Examen'] == 1) ? " Si " . $beca['Examen_Admision'] . " puntaje " . $beca['Puntaje'] : "No"; ?></b></label>
                                             </div>
                                             <div class="checkbox">
-                                                <label style="color: #545454;"><input onclick='setPorcentaje(<?php echo $beca["ID_Beca"]; ?>,this)' type="checkbox" <?php if ($promedio == 1) { echo " checked"; } ?>><b>&nbsp;&nbsp;
+                                                <label style="color: #545454;"><input id="<?php echo $beca["ID_Beca"]."-chbx-5"; ?>" onchange='saveRequisito(<?php echo $beca["ID_Beca"].",".$_SESSION['id_usuario']; ?>)' onclick='setPorcentaje(<?php echo $beca["ID_Beca"]; ?>,this)' type="checkbox" <?php if ($req5) { echo " checked"; } ?>><b>&nbsp;&nbsp;
                                                         ¿Requiere
                                                         idiomas? <?php echo ($beca['Requiere_Idiomas'] == 1) ? " Si " . $beca['Examen_Idiomas'] . " puntaje " . $beca['Puntuaje_Idiomas'] : "No"; ?></b></label>
                                             </div>
                                             <div class="checkbox">
-                                                <label><input type="checkbox" onclick='setPorcentaje(<?php echo $beca["ID_Beca"]; ?>,this)'><b>&nbsp;&nbsp; Comprobar
+                                                <label>
+                                                <input type="checkbox" id="<?php echo $beca["ID_Beca"]."-chbx-6"; ?>" onchange='saveRequisito(<?php echo $beca["ID_Beca"].",".$_SESSION['id_usuario']; ?>)' onclick='setPorcentaje(<?php echo $beca["ID_Beca"]; ?>,this)' <?php if ($req6) { echo " checked"; } ?>>
+                                                <b>&nbsp;&nbsp; Comprobar
                                                         ingresos <?php echo $beca['Ingresos_Comprobar']; ?></b></label>
                                             </div>
 
                                              <div class="row">
-
-                                              <!--<div class="col-xs-12 col-md-12"> 
-                                                <div class="progress">
-                                                  <div id="progreso-<?php //echo $beca["ID_Beca"]; ?>" class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:5%">
-                                                    0%
-                                                  </div>
-                                                </div>
-                                              </div>-->
-
                                               <div class="col-xs-12 col-md-12" align="center"> 
-                                                <button type="button" onclick="contactar(<?php echo $_SESSION['id_usuario'].",".$beca["ID_Beca"]; ?>,this);" class="btn btn-danger btn-lg notificarEsc" style="display: none">
+                                                <button type="button" onclick="contactar(<?php echo $_SESSION['id_usuario'].",".$beca["ID_Beca"]; ?>,this);" class="btn btn-danger btn-lg notificarEsc"  id="<?php echo $beca["ID_Beca"]."-btncontac"; ?>" <?php if($fullReq < 6 ){echo "style='display:none'";}?>>
                                                     Notificar a la escuela
                                                 </button>
                                               </div>

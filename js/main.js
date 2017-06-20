@@ -478,6 +478,8 @@ function notificacion(msg, type, id) {
 }
 
 function contactar(user_id, beca_id , boton) {
+    $(boton).text("Enviando ...");
+    $(boton).prop("disabled",true);
     $.ajax({
         type : 'POST',
         url  : 'controladores/becas/Beca.php',
@@ -500,6 +502,8 @@ function contactar(user_id, beca_id , boton) {
         },
         error : function (response) {
             console.log(response);
+            $(boton).text("Notificar a la escuela");
+             $(boton).prop("disabled",false);
         }
     });
 }
@@ -540,4 +544,79 @@ function setPorcentaje(beca,checkbox){
         }else{
             $(contenedor).find(".notificarEsc").hide(300);
         }
+}
+
+function saveRequisito(beca,usuario_id){
+
+    var promedio = $("#" + beca + "-chbx-1");
+    var mantener = $("#" + beca + "-chbx-2");
+    var socioeconomico = $("#" + beca + "-chbx-3");
+    var exadmision = $("#" + beca + "-chbx-4");
+    var idioma = $("#" + beca + "-chbx-5");
+    var ingresos = $("#" + beca + "-chbx-6");
+
+    if(promedio.is(':checked')){
+        promedio=1;
+    }else{
+        promedio = 0;
+    }
+    if(mantener.is(':checked')){
+        mantener=1;
+    }else{
+        mantener = 0;
+    }if(socioeconomico.is(':checked')){
+        socioeconomico=1;
+    }else{
+        socioeconomico = 0;
+    }if(exadmision.is(':checked')){
+        exadmision=1;
+    }else{
+        exadmision = 0;
+    }if(idioma.is(':checked')){
+        idioma=1;
+    }else{
+        idioma = 0;
+    }if(ingresos.is(':checked')){
+        ingresos=1;
+    }else{
+        ingresos = 0;
+    }
+
+    var parametros = {'beca':beca,
+                    'usuario_id':usuario_id,
+                    'promedio':promedio,
+                    'mantener':mantener,
+                    'socioeconomico':socioeconomico,
+                    'exadmision':exadmision,
+                    'idioma':idioma,
+                    'ingresos':ingresos,
+                    'get':'guardarRequisito'};
+    $.ajax({
+        url: 'controladores/becas/Beca.php',
+        type: 'POST',
+        dataType: 'json',
+        data: parametros,
+        success: function(response){
+            if(response.estado == 0){
+              notificacion("No se pudo guardar el requisito", "danger" , beca);  
+            }
+        },error: function(error){
+            notificacion("No se pudo guardar el requisito", "danger" , beca);
+        }
+    })    
+}
+
+function allReadyContact(beca){
+
+    $("#"+beca + "-chbx-1").prop('disabled', true);
+    $("#"+beca + "-chbx-2").prop('disabled', true);
+    $("#"+beca + "-chbx-3").prop('disabled', true);
+    $("#"+beca + "-chbx-4").prop('disabled', true);
+    $("#"+beca + "-chbx-5").prop('disabled', true);
+    $("#"+beca + "-chbx-6").prop('disabled', true);
+
+    $("#" + beca + "-btncontac").prop('disabled', true);
+
+    $("#" + beca + "-btncontac").html("!Gracias¡");
+
 }

@@ -134,7 +134,6 @@ class Beca {
         $resultado = $pdo->fetchAll();
         $res["estado"]=1;
         $res["rows"]=$resultado;
-
         $cRows = count($resultado);
         $res["count"]=$cRows;
 
@@ -146,19 +145,18 @@ class Beca {
         // VALIDAMOS SI SERA UPDATE O INSERTE
         $res = ['estado' => 0];
         $jExisteBeca = $this->getRequitistosByBeca($beca_id,$usuario_id);
-        $arrExisteBeca = json_decode($jExisteBeca);
+        $arrExisteBeca = json_decode($jExisteBeca,true);
         $existeBeca = $arrExisteBeca['count'];
         if($existeBeca > 0 ){
 
             $query = 'UPDATE resumen_requisitos';
-            $query .= 'SET Promedio = :promedio,';
+            $query .= ' SET Promedio = :promedio,';
             $query .= 'Mantener_Prom = :mantener,';
             $query .= 'Socioeconomico = :socioeconomico,';
             $query .= 'Examen_Admision = :exadmision,';
             $query .= 'Idiomas = :idioma,';
-            $query .= 'Ingresos = :ingresos,';
-            $query .= 'WHERE ID_Beca = :beca_id AND Usuario_id = : usuario';
-
+            $query .= 'Ingresos = :ingresos';
+            $query .= ' WHERE ID_Beca = :beca_id AND Usuario_id = :usuario';
             $pdo = $this->conn->prepare($query);
             $pdo->bindParam(":beca_id", $beca_id);
             $pdo->bindParam(":usuario", $usuario_id);
@@ -187,9 +185,10 @@ class Beca {
             $query.= ':ingresos,';
             $query.= ':usuario_id);';
 
+
             $pdo = $this->conn->prepare($query);
             $pdo->bindParam(":beca_id", $beca_id);
-            $pdo->bindParam(":usuario", $usuario_id);
+            $pdo->bindParam(":usuario_id", $usuario_id);
             $pdo->bindParam(":promedio", $promedio);
             $pdo->bindParam(":mantener", $mantener);
             $pdo->bindParam(":socioeconomico", $socioeconomico);
@@ -579,6 +578,13 @@ class Beca {
             $res["mensaje"] = $ex->getMessage();
         }
 
+        if($res["estado"] == 1){
+            $query = "UPDATE resumen_requisitos SET do_contacto = 1 WHERE ID_Beca = :beca AND Usuario_id = :usuario";
+            $pdo = $this->conn->prepare($query);
+            $pdo->bindParam(":beca" , $beca_id);
+            $pdo->bindParam(":usuario" , $_SESSION["id_usuario"]);
+            $pdo->execute();
+        }
         return json_encode($res);
     }
 }
@@ -614,6 +620,9 @@ if (isset($_POST['get'])) {
             break;
         case 'contactar':
             echo $b->contactar($_POST['beca_id']);
+            break;
+        case 'guardarRequisito':
+            echo $b->guardaRequisitosPorbeca($_POST['beca'], $_POST['usuario_id'], $_POST['promedio'], $_POST['mantener'], $_POST['socioeconomico'], $_POST['exadmision'], $_POST['idioma'], $_POST['ingresos']);
             break;
         default:
             header("Location: ../../");
