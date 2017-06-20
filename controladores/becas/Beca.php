@@ -120,6 +120,91 @@ class Beca {
         return json_encode($res);
     }
 
+
+    // Obtiene los reqisitos de beca pro usuario y un count si existe o no
+    public function getRequitistosByBeca($beca_id,$usuario_id){
+        $res = ["estado" => 0];
+        
+        $query = "SELECT * FROM resumen_requisitos WHERE ID_Beca = :beca_id AND Usuario_id = :usuario";
+        
+        $pdo = $this->conn->prepare($query);
+        $pdo->bindParam(":beca_id", $beca_id);
+        $pdo->bindParam(":usuario", $usuario_id);
+        $pdo->execute();
+
+        $resultado = $pdo->fetchAll();
+        $res["estado"]=1;
+        $res["rows"]=$resultado;
+
+        $cRows = count($resultado);
+        $res["count"]=$cRows;
+    }
+
+    public function guardaRequisitosPorbeca($beca_id, $usuario_id,$promedio,$mantener,$socioeconomico,$exadmision,$idioma,$ingresos){
+
+        // VALIDAMOS SI SERA UPDATE O INSERTE
+        $res = ['estado' => 0];
+        $existeBeca = $this->getRequitistosByBeca($beca_id,$usuario_id)['count'];
+
+        if($existeBeca > 0 ){
+
+            $query = 'UPDATE resumen_requisitos';
+            $query .= 'SET Promedio = :promedio,';
+            $query .= 'Mantener_Prom = :mantener,';
+            $query .= 'Socioeconomico = :socioeconomico,';
+            $query .= 'Examen_Admision = :exadmision,';
+            $query .= 'Idiomas = :idioma,';
+            $query .= 'Ingresos = :ingresos,';
+            $query .= 'WHERE ID_Beca = :beca_id AND Usuario_id = : usuario';
+
+            $pdo = $this->conn->prepare($query);
+            $pdo->bindParam(":beca_id", $beca_id);
+            $pdo->bindParam(":usuario", $usuario_id);
+            pdo->bindParam(":promedio", $promedio);
+            pdo->bindParam(":mantener", $mantener);
+            pdo->bindParam(":socioeconomico", $socioeconomico);
+            pdo->bindParam(":exadmision", $exadmision);
+            pdo->bindParam(":idioma", $idioma);
+            pdo->bindParam(":ingresos", $ingresos);
+
+            $res["action"] = "update";
+            if($pdo->execute()){
+                $res['estado'] = 1;
+            }else{
+                $res['estado'] = 0;
+            }
+
+        }else {
+            $query = 'INSERT INTO resumen_requisitos(ID_Beca,Promedio,Mantener_Prom,Socioeconomico,Examen_Admision,Idiomas,Ingresos,Usuario_id)';
+            $query.= 'VALUES (:beca_id,';
+            $query.= ':promedio,';
+            $query.= ':mantener,';
+            $query.= ':socioeconomico,';
+            $query.= ':exadmision,';
+            $query.= ':idioma,';
+            $query.= ':ingresos,';
+            $query.= ':usuario_id);';
+
+            $pdo = $this->conn->prepare($query);
+            $pdo->bindParam(":beca_id", $beca_id);
+            $pdo->bindParam(":usuario", $usuario_id);
+            pdo->bindParam(":promedio", $promedio);
+            pdo->bindParam(":mantener", $mantener);
+            pdo->bindParam(":socioeconomico", $socioeconomico);
+            pdo->bindParam(":exadmision", $exadmision);
+            pdo->bindParam(":idioma", $idioma);
+            pdo->bindParam(":ingresos", $ingresos);
+
+            $res["action"] = "insert";
+            if($pdo->execute()){
+                $res['estado'] = 1;
+            }else{
+                $res['estado'] = 0;
+            }
+
+        }
+    }
+
     public function addToFavorites($user_id, $beca_id) {
         if (is_numeric($user_id) && is_numeric($beca_id)) {
             if (!$this->isFavorite($user_id, $beca_id)) {
@@ -259,7 +344,6 @@ class Beca {
 
         return json_encode($res);
     }
-
     public function removeToFavoritos($user_id, $beca_id) {
         if (is_numeric($user_id) && is_numeric($beca_id)) {
             if ($this->isFavorite($user_id, $beca_id)) {
