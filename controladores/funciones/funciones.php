@@ -222,7 +222,16 @@ function MostrarBecasList($id_usuario){
 
                     </div>
                     ';
+
+                    // ponemos los requisitos guardados previamente
+        $reqGen = getReq($fila["ID_Beca"],$_SESSION['id_usuario']);
+        $doContact = $reqGen["do_contacto"];
+        if($doContact == 1){
+            $funcionesJS .= " allReadyContact(" . $fila["ID_Beca"]. "); ";
+        }
     }
+    echo "<script type='text/javascript'>$(document).ready(function(){".$funcionesJS."});</script>";
+
 }
 
 function Counter($id_usuario) {
