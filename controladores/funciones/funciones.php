@@ -20,37 +20,19 @@ function getTipoBeca($id_usuario){
     return $rs[0]["tipo_beca"];   
 }
 
-function getShowNiveles($nivelElegido){
-    $siguienteNivel = 0;
-    if($nivelElegido >= 4){
-        $siguienteNivel = $nivelElegido + 0;
-    }else{
-        $siguienteNivel = $nivelElegido + 1;
-    }
-
-    $strNiveles = "";
-
+function getNivelLetra($nivelElegido){
     if($nivelElegido == 1){
-        $strNiveles = "Secundaria-";
+        $strNivel = "Secundaria";
     }else if($nivelElegido == 2){
-        $strNiveles = "Preparatoria-";
+        $strNivel = "Preparatoria";
     }else if($nivelElegido == 3){
-        $strNiveles = "Profesional-";
+        $strNivel = "Profesional";
     }else if($nivelElegido == 4){
-        $strNiveles = "Posgrado-";
+        $strNivel = "Posgrado";
     }
 
-    if($siguienteNivel == 1){
-        $strNiveles .= "Secundaria";
-    }else if($siguienteNivel == 2){
-        $strNiveles .= "Preparatoria";
-    }else if($siguienteNivel == 3){
-        $strNiveles .= "Profesional";
-    }else if($siguienteNivel == 4){
-        $strNiveles .= "Posgrado";
-    }
 
-    return explode("-",$strNiveles);
+    return $strNivel;
 }
 
 function MostrarBecas($id_usuario) {
@@ -61,15 +43,14 @@ function MostrarBecas($id_usuario) {
     $promedio = $promedio + 1;
     $miTipobeca = 0;
     $miTipobeca = getTipoBeca($_SESSION["id_usuario"]);
-    $niveles = getShowNiveles($miTipobeca);
+    $nivel = getNivelLetra($miTipobeca);
 
-    $operacion = "SELECT becas.ID_Beca, becas.ID_Escuela, escuelas.Nombre_Escuela, becas.Nombre_Beca, becas.ID_Tipo , becas.Descripcion_Beca, becas.Beca_Sobre, becas.Porcentaje_Beca FROM becas JOIN escuelas ON becas.ID_Escuela = escuelas.ID_Escuela WHERE becas.Promedio_Acceso < ? AND (Nivel_Estudio = ? OR Nivel_Estudio = ? )";
+    $operacion = "SELECT becas.ID_Beca, becas.ID_Escuela, escuelas.Nombre_Escuela, becas.Nombre_Beca, becas.ID_Tipo , becas.Descripcion_Beca, becas.Beca_Sobre, becas.Porcentaje_Beca FROM becas JOIN escuelas ON becas.ID_Escuela = escuelas.ID_Escuela WHERE becas.Promedio_Acceso < ? AND Nivel_Estudio = ? ";
 
 
     $sentencia = $pdo->prepare($operacion);
     $sentencia->bindParam(1, $promedio,PDO::PARAM_INT);
-    $sentencia->bindParam(2,$niveles[0]);
-    $sentencia->bindParam(3,$niveles[1]);
+    $sentencia->bindParam(2,$nivel);
     $sentencia->execute();
     $resultado = $sentencia->fetchAll();
     $funcionesJS = "";
@@ -149,13 +130,12 @@ function MostrarBecasList($id_usuario){
     $miTipobeca = 0;
     $miTipobeca = getTipoBeca($_SESSION["id_usuario"]);
     
-    $niveles = getShowNiveles($miTipobeca);
+    $nivel = getNivelLetra($miTipobeca);
 
-    $operacion = "SELECT becas.ID_Beca, becas.ID_Escuela, escuelas.Nombre_Escuela, becas.Nombre_Beca, becas.ID_Tipo , becas.Descripcion_Beca, becas.Beca_Sobre, becas.Porcentaje_Beca FROM becas JOIN escuelas ON becas.ID_Escuela = escuelas.ID_Escuela WHERE becas.Promedio_Acceso < ? AND (Nivel_Estudio = ? OR Nivel_Estudio = ? )";
+    $operacion = "SELECT becas.ID_Beca, becas.ID_Escuela, escuelas.Nombre_Escuela, becas.Nombre_Beca, becas.ID_Tipo , becas.Descripcion_Beca, becas.Beca_Sobre, becas.Porcentaje_Beca FROM becas JOIN escuelas ON becas.ID_Escuela = escuelas.ID_Escuela WHERE becas.Promedio_Acceso < ? AND Nivel_Estudio = ? ";
     $sentencia = $pdo->prepare($operacion);
     $sentencia->bindParam(1, $promedio,PDO::PARAM_INT);
-    $sentencia->bindParam(2,$niveles[0]);
-    $sentencia->bindParam(3,$niveles[1]);
+    $sentencia->bindParam(2,$nivel);
     $sentencia->execute();
     $resultado = $sentencia->fetchAll();
 
@@ -238,15 +218,13 @@ function Counter($id_usuario) {
     global $pdo;
     $miTipobeca = 0;
     $miTipobeca = getTipoBeca($_SESSION["id_usuario"]);
-    
-    $niveles = getShowNiveles($miTipobeca);
-    $operacion = "SELECT COUNT(ID_Beca) AS total FROM becas WHERE Promedio_Acceso < ? AND (Nivel_Estudio = ? OR Nivel_Estudio = ? )";
+    $nivel = getNivelLetra($miTipobeca);
+    $operacion = "SELECT COUNT(ID_Beca) AS total FROM becas WHERE Promedio_Acceso < ? AND Nivel_Estudio = ? ";
     $promedio = PromedioUsuario($id_usuario);
     $promedio = $promedio + 1;
     $sentencia = $pdo->prepare($operacion);
     $sentencia->bindParam(1, $promedio,PDO::PARAM_INT);
-    $sentencia->bindParam(2,$niveles[0]);
-    $sentencia->bindParam(3,$niveles[1]);
+    $sentencia->bindParam(2,$nivel);
     $sentencia->execute();
     $resultado = $sentencia->fetch();
 
