@@ -607,7 +607,6 @@ function saveRequisito(beca,usuario_id){
 }
 
 function allReadyContact(beca){
-
     $("#"+beca + "-chbx-1").prop('disabled', true);
     $("#"+beca + "-chbx-2").prop('disabled', true);
     $("#"+beca + "-chbx-3").prop('disabled', true);

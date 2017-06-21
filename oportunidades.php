@@ -21,6 +21,10 @@
         <link rel="stylesheet" href="css/s3.css">
         <link rel="stylesheet" href="css/s4.css">
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script>window.jQuery || document.write('<script src="vendor/jquery/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="js/bootstrap-notify.js"></script>
+        <script src="js/main.js"></script>
         <style>
           .app-boton {
             color: #706F6F;
@@ -180,26 +184,6 @@
           </div>
               <br><br>
       </footer>
-      <script>
-        $(document).ready(function(){
-          // mostramos los filtros iniciales
-          var tipoBeca = <?php echo $tipo_beca;?>;
-          var tipoBecaN = <?php echo $tipo_siguiente;?>;
-          var arrTipos = [1,2,3,4];
-          for(var i= 0 ; i<arrTipos.length ; i++){
-            if(arrTipos[i] == tipoBeca || arrTipos[i] == tipoBecaN){
-              $(".tipo-" + arrTipos[i]).show();
-            }else{
-                $(".tipo-" + arrTipos[i]).hide();
-            }
-
-          }
-        });
-      </script>
-      <script>window.jQuery || document.write('<script src="vendor/jquery/jquery-1.11.2.min.js"><\/script>')</script>
-      <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-        <script src="js/bootstrap-notify.js"></script>
-      <script src="js/main.js"></script>
     </body>
 </html>
 

@@ -72,7 +72,7 @@ function MostrarBecas($id_usuario) {
     $sentencia->bindParam(3,$niveles[1]);
     $sentencia->execute();
     $resultado = $sentencia->fetchAll();
-
+    $funcionesJS = "";
     foreach ($resultado as $fila) {
         if ($fila["ID_Tipo"] == 1) {
             if ($fila["Porcentaje_Beca"] == "NA") {
@@ -126,7 +126,18 @@ function MostrarBecas($id_usuario) {
               </div>
             </div>
         </div>';
+
+       
+        // ponemos los requisitos guardados previamente
+        $reqGen = getReq($fila["ID_Beca"],$_SESSION['id_usuario']);
+        $doContact = $reqGen["do_contacto"];
+        if($doContact == 1){
+            $funcionesJS .= " allReadyContact(" . $fila["ID_Beca"]. "); ";
+        }
+  
     }
+
+    echo "<script type='text/javascript'>$(document).ready(function(){".$funcionesJS."});</script>";
 }
 
 function MostrarBecasList($id_usuario){
@@ -556,7 +567,12 @@ function getPorcentajeByBeca($beca_id,$usuario){
         //obtenemos llos requisitos checados
         $jRequisitos = $beca->getRequitistosByBeca($beca_id,$usuario);
         $requisitos = json_decode($jRequisitos,true);
-        return $requisitos["rows"][0];
+        if(count($requisitos["rows"])){
+          return $requisitos["rows"][0];  
+        }
+
+        return null;
+        
     }
 
 /**
