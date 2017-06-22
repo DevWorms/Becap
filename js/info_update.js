@@ -170,23 +170,23 @@ function validateHistorial() {
             valid = 0;
         }
 
-        if(proPosg && (proPosg < 0 || proPosg >100)){
-            msg = "El promedio de Posgrado debe ser un valor entre 0 y 100";
+        if( proPosg && (isNaN(proPosg) || (proPosg < 0 || proPosg >100)) ){
+          msg = "El promedio de Posgrado debe ser un valor numérico entre 0 y 100";
+          valid = 0;
+        }
+
+        if( proUni && (isNaN(proUni) || (proUni < 0 || proUni >100)) ){
+            msg = "El promedio de Profesional debe ser un valor numérico entre 0 y 100";
             valid = 0;
         }
 
-        if(proUni && (proUni < 0 || proUni >100)){
-            msg = "El promedio de Profesional debe ser un valor entre 0 y 100";
+        if( proPrepa && (isNaN(proPrepa) || (proPrepa < 0 || proPrepa >100)) ){
+            msg = "El promedio de Preparatoria debe ser un valor numérico entre 0 y 100";
             valid = 0;
         }
 
-        if(proPrepa&& (proPrepa < 0 || proPrepa >100)){
-            msg = "El promedio de Preparatoria debe ser un valor entre 0 y 100";
-            valid = 0;
-        }
-
-        if(proSecu && (proSecu < 0 || proSecu >100) ){
-            msg = "El promedio de Secundaria debe ser un valor entre 0 y 100";
+        if( proSecu && (isNaN(proSecu) || (proSecu < 0 || proSecu >100)) ){
+            msg = "El promedio de Secundaria debe ser un valor numérico entre 0 y 100";
             valid = 0;
         }
     }
@@ -274,9 +274,9 @@ function validateIntereses() {
         msg = "Ingresa un número telefónico";
     }
 
-    if($('#telefono').val() && $('#telefono').val().length < 10){
-        valid = 0;
-        msg = "El número telefónico debe contener al menos 10 dígitos";
+    if($('#telefono').val() && (isNaN($('#telefono').val()) || $('#telefono').val().length != 10)){
+      valid = 0;
+      msg = "El número telefónico debe contener al menos 10 dígitos";
     }
 
     if ( !$('#tipo_beca').val() ) {

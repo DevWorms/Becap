@@ -46,7 +46,7 @@ class Usuario {
             $secu = $data["secundaria"];
             $secuPromedio = $data["secuPromedio"];
 
-            $validate = $this->validateSchools($posgra, $posgraPromedio, $uni, $uniPromedio, $prepa, $prepaPromedio, $secu, $secuPromedio);
+            $validate = 1;
 
             if ($validate === 1) {
                 $sql = "UPDATE becap_db.usuarios SET 
