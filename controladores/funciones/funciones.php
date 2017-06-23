@@ -35,6 +35,25 @@ function getNivelLetra($nivelElegido){
     return $strNivel;
 }
 
+function getClassTipoBeca($tipo){
+    $clase = "beca-";
+    switch ($tipo) {
+            case 1:
+                $clase .= "academica";
+                break;
+            case 2:
+                $clase .= "credito";
+                break;
+            case 3:
+                $clase .= "especie";
+                break;
+            default:
+                $clase = "";
+                break;
+    }
+    return $clase;    
+}
+
 function MostrarBecas($id_usuario) {
     global $pdo;
     $b = new Beca();
@@ -86,8 +105,9 @@ function MostrarBecas($id_usuario) {
             $icono = '<span id="icono-' . $fila["ID_Beca"] . '" style="cursor: pointer;" class="glyphicon glyphicon-heart gray-box" onclick="miBeca(' . $_SESSION['id_usuario'] . ',' . $fila["ID_Beca"] . ');" aria-hidden="true" align="right"></span>';
         }
 
+
         echo '
-        <div class="col-md-2 col-md-offset-1 caja beca tipo-' . $fila["ID_Tipo"] . '">
+        <div class="col-md-2 col-md-offset-1 caja beca '.getClassTipoBeca($fila["ID_Tipo"]).'">
             <div class="row" style="margin-left: 0px; margin-right: 0px;">
               <div class="col-xs-9 space-inside" align="left">
                   <a href="#" data-toggle="modal" data-target="#tecmon' . $fila["ID_Beca"] . '"><span class="blue-box"><b>' . substr($fila["Nombre_Escuela"], 0, 30) . '</b></span></a>
@@ -176,7 +196,7 @@ function MostrarBecasList($id_usuario){
             '    
                     <div class="row">
             
-                        <div class="col-xs-12 caja-space caja-h-1 beca tipo-' . $fila["ID_Tipo"] . '" style="margin-top:10px">
+                        <div class="col-xs-12 caja-space caja-h-1 beca ' . getClassTipoBeca($fila["ID_Tipo"]) . '" style="margin-top:10px">
                             
                             <div class="row">
                              

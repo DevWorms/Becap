@@ -276,7 +276,7 @@ function validateIntereses() {
 
     if($('#telefono').val() && (isNaN($('#telefono').val()) || $('#telefono').val().length != 10)){
       valid = 0;
-      msg = "El número telefónico debe contener al menos 10 dígitos";
+      msg = "El teléfono solo puede contener números y deben ser 10 dígitos";
     }
 
     if ( !$('#tipo_beca').val() ) {

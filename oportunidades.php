@@ -99,22 +99,28 @@
                       <div class="list-group">
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button"  class="app-boton btn btn-block" id="filtro21_btn" data-color="info"><b>Beca Académica</b></button>
-                                  <input type="checkbox" class="hidden" value="0" id="filtro21" name="filtro21" checked />
+                                  <button id="filtroAcademica" type="button"  class="app-boton btn btn-block" data-color="info">
+                                  <input type="checkbox" style="display: none;">
+                                    <b>Beca Académica</b>
+                                  </button>
                               </span>
                             </div>
 
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="app-boton btn btn-block" id="filtro22_btn" data-color="info"><b>Beca crédito</b></button>
-                                  <input type="checkbox" class="hidden" value="0" id="filtro22" name="filtro22"/>
+                                  <button id="filtroCredito" type="button" class="app-boton btn btn-block" data-color="info">
+                                  <input type="checkbox" style="display: none;">
+                                    <b>Beca crédito</b>
+                                  </button>
                               </span>
                             </div>
 
                             <div class="form-group">
                               <span class="button-checkbox">
-                                  <button type="button" class="app-boton btn btn-block" id="filtro23_btn" data-color="info"><b>Beca especie</b></button>
-                                  <input type="checkbox" class="hidden" value="0" id="filtro23" name="filtro23" />
+                                  <button id="filtroEspecie" type="button" class="app-boton btn btn-block"  data-color="info">
+                                  <input type="checkbox" style="display: none;">
+                                    <b>Beca especie</b>
+                                  </button>
                               </span>
                             </div>
                       </div>

@@ -55,6 +55,8 @@ $(function () {
                     .removeClass('btn-' + color + ' active')
                     .addClass('btn-default');
             }
+
+            filtrarBecas();
         }
 
         // Initialization
@@ -70,27 +72,14 @@ $(function () {
         init();
     });
 
-    $("form#filtros :button").each(function(){
-        var input = $(this);
-        input.click(function () {
-            var btn = input.attr('id');
-            btn = btn.substring(0, btn.length -4);
-            var input_val = $("#" + btn);
-            if (input_val.val() == 1) {
-                input_val.val(0);
-            } else {
-                input_val.val(1);
-            }
 
-            filtrar();
-        });
-    });
 
     getRequirements();
 
     $('#promedio, #acta, #examen, #toefl, #kardex').change(function() {
         saveRequirements();
     });
+
 });
 
 function getRequirements() {
@@ -406,33 +395,43 @@ function colorStartGrey(user_id, id) {
 }
 
 
-function filtrar() {
-    $(".beca").css('display', 'none');
-    if (($("#filtro21").val() == 0 && $("#filtro22").val() == 0 && $("#filtro23").val() == 0) ||
-        ($("#filtro21").val() == 1 && $("#filtro22").val() == 1 && $("#filtro23").val() == 1)) {
-        $(".beca").css('display', 'none');
+function filtrarBecas() {
 
-        $(".tipo-1").show();
-        $(".tipo-2").show();
-        $(".tipo-3").show();
+     
 
+     if(!(! $("#filtroAcademica").hasClass("active") && ! $("#filtroCredito").hasClass("active") 
+        && ! $("#filtroEspecie").hasClass("active"))){
+        console.log('**********');
+       if($("#filtroAcademica").hasClass("active")){
+            console.log("show academica");
+            $(".beca-academica").show(300);
+         }else{
+            console.log("hide academica");
+            $(".beca-academica").hide(300);
+         }
 
-    } else {
-        $(".beca").css('display', 'none');
+         if($("#filtroCredito").hasClass("active")){
+            console.log("show credito");
+            $(".beca-credito").show(300);
+         }else{
+            console.log("hide credito");
+            $(".beca-credito").hide(300);
+         }
 
-        if ($("#filtro21").val() == 1) {
-            $(".tipo-1").show();
-        }
+         if($("#filtroEspecie").hasClass("active")){
+            console.log("show especie");
+            $(".beca-especie").show(300);
+         }else{
+            console.log("hide especie");
+            $(".beca-especie").hide(300);
+         }
+     }else{
+        console.log("muestra todo");
+        $(".beca-academica").show(300);
+        $(".beca-credito").show(300);
+        $(".beca-especie").show(300);
+     }
 
-        if ($("#filtro22").val() == 1) {
-            $(".tipo-2").show();
-        }
-
-        if ($("#filtro23").val() == 1) {
-            $(".tipo-3").show();
-        }
-
-    }
 }
 
 function miBeca(user_id, beca_id) {
