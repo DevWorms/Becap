@@ -135,10 +135,8 @@
               <div class="col-md-3 well well-custom">
                   <h3 align="center"><b>Crea tu cuenta gratis</b></h3>
 
-                  <form action="controladores/sesion/registrar_usuario.php" 
-                        method="post" class="form" role="form" 
-                        name="formulario1"
-                        onsubmit="return validar();">
+                  <div  class="form" role="form" 
+                        name="formulario1"">
                     
                         <br>
                         <label for="">Correo</label>                    
@@ -149,11 +147,11 @@
                         <br>
                         <div class="row">
                              <div class="col-xs-12 col-md-8 col-md-offset-2">
-                                   <button class="btn btn-danger btn-block" type="submit" name="enviar"><b>Únete ahora</b></button> 
+                                   <button class="btn btn-danger btn-block" type="button" name="enviar" onclick="registrarUsuario()"><b>Únete ahora</b></button> 
                              </div>
                         </div>
 
-                  </form>                
+                  </div>                
               </div> 
 
             <!-- Row -->    

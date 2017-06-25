@@ -6,6 +6,18 @@ $(function () {
         trigger:"focus"
     });
 
+    $("#correo").keypress(function(e){
+        if(e.keyCode == 13){
+            registrarUsuario();
+        }
+    });
+
+    $("#password").keypress(function(e){
+        if(e.keyCode == 13){
+            registrarUsuario();
+        }
+    });
+
     $('.button-checkbox').each(function () {
 
         // Settings
@@ -179,7 +191,7 @@ function saveRequirements() {
 
 // Valida los campos en formulario
 
-function validar(){
+function validarRegistro(){
     var  correo, password;
     correo =   document.getElementById("correo").value;
     password = document.getElementById("password").value;
@@ -615,6 +627,40 @@ function allReadyContact(beca){
 
     $("#" + beca + "-btncontac").prop('disabled', true);
 
-    $("#" + beca + "-btncontac").html("!Gracias¡");
+    $("#" + beca + "-btregistrarUsuarioncontac").html("¡Gracias!");
 
+}
+
+function registrarUsuario(){
+    if(validarRegistro()){
+        var correo =   document.getElementById("correo").value;
+        var password = document.getElementById("password").value;
+        var parametros = {"get" : "registrarUsuario", "correo" : correo , "password" : password};
+        console.log(parametros);
+        $.ajax({
+            url: 'controladores/sesion/registrar_usuario.php',
+            type: 'POST',
+            dataType: 'json',
+            data: parametros,
+            success: function(response){
+                if(response.estado == 1){
+                    window.location.replace("perfil.php");
+                }else{
+                    $.notify({
+                        title: '<strong>¡Hey!</strong>',
+                        message: response.mensaje
+                    },{
+                        type: 'danger'
+                    });
+                }
+            },error: function(error){
+                $.notify({
+                    title: '<strong>¡Hey!</strong>',
+                    message: error
+                },{
+                    type: 'danger'
+                });
+            }
+        });
+    }
 }

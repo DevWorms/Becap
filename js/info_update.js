@@ -224,16 +224,7 @@ function updateHistorial() {
         success: function (response) {
             var msg = response.mensaje;
             if (response.estado == 1) {
-                /*$.notify({
-                    message: msg
-                },{
-                    type: 'success',
-                    placement: {
-                        from: "top",
-                        align: "right"
-                    }
-                });*/
-                console.log(msg);
+                window.location.replace("configuracion.php");
             } else {
                 $.notify({
                     message: msg
@@ -334,15 +325,7 @@ function updateIntereses() {
         success: function (response) {
             var msg = response.mensaje;
             if (response.estado == 1) {
-               /* $.notify({
-                    message: msg
-                },{
-                    type: 'success',
-                    placement: {
-                        from: "top",
-                        align: "right"
-                    }
-                });*/
+               window.location.replace("configuracion.php");
 
                 console.log(msg);
             } else {

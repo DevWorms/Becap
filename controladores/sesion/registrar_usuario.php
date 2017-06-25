@@ -1,12 +1,12 @@
 <?php
 require dirname(__FILE__) . "/../datos/conexion.php";
 
-function notificacion($msj) {
+/*function notificacion($msj) {
     echo
         "<script>
             alert('" . $msj . "');
         </script>";
-}
+}*/
 
 function validateEmail($email) {
     $conn = Conectar::get_Conexion();
@@ -23,42 +23,57 @@ function validateEmail($email) {
     }
 }
 
-if (isset($_POST['enviar'])) {
-    $correo = $_POST["correo"];
-    $pwd = password_hash($_POST["password"], PASSWORD_DEFAULT);
-
-    if ($correo == null || $pwd == null) {
-        notificacion($msj = "Por favor complete todos los campos");
-    } else {
-
-        if (validateEmail($correo)) {
+function registrarUsuario($correo,$password){
+    $response = ["estado" => 0];
+    $pwd = password_hash($password, PASSWORD_DEFAULT);
+    
+    if (validateEmail($correo)) {
             try {
                 $conexion = Conectar::get_Conexion();
 
                 $sql = "INSERT INTO becap_db.usuarios (Mail_Usuario, Pwd_Usuario) VALUES (:correo, :pwd)";
 
                 $resultado = $conexion->prepare($sql);
-                $resultado->execute(array(":correo" => $correo, ":pwd" => $pwd));
+                $bolInserto= $resultado->execute(array(":correo" => $correo, ":pwd" => $pwd));
                 $id = $conexion->lastInsertId();
 
                 session_start();
                 $_SESSION["correo"] = $correo;
                 $_SESSION["first_time"] = true;
                 $_SESSION["id_usuario"] = $id;
-                
-                
-
                 session_write_close();
 
                 $resultado->closeCursor();
-
-                header('location: ../../perfil.php');
+                if($bolInserto){
+                    $response["estado"] = 1;
+                    $response["mensaje"] = "Registro exitoso";
+                }else{
+                    $response["estado"] = 0;
+                    $response["mensaje"] = "No se pudo concretar el registro";
+                }
             } catch (Exception $ex) {
-                notificacion($ex->getMessage());
+                $response["estado"] = 0;
+                $response["mensaje"] = $ex->getMessage();
             }
-        } else {
-            notificacion("El email ya se encuentra registrado");
+        }else{
+            $response["estado"] = 0;
+            $response["mensaje"] = "Este correo ya se encuentra registrado";
         }
+
+        return json_encode($response);
+}
+
+if (isset($_POST['get'])) {
+    $get = $_POST['get'];
+    switch ($get) {
+        case 'registrarUsuario':
+            echo registrarUsuario($_POST["correo"],$_POST["password"]);
+            break;        
+        default:
+        $response = ["estado"=>0];
+        $response["mensaje"] = "Peticion no reconocida";
+        echo json_encode($response);
+            break;
     }
 }
 
