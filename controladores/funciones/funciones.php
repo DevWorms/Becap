@@ -1,5 +1,5 @@
 <?php
-error_reporting(1);
+error_reporting(0);
 require_once dirname(__FILE__) . '/../datos/ConexionBD.php';
 require_once dirname(__FILE__) . '/../becas/Beca.php';
 
@@ -755,8 +755,14 @@ function modalBeca($becas, $oportunidades = false) {
 
                                              <div class="row">
                                               <div class="col-xs-12 col-md-12" align="center"> 
-                                                <button type="button" onclick="contactar(<?php echo $_SESSION['id_usuario'].",".$beca["ID_Beca"]; ?>,this);" class="btn btn-danger btn-lg notificarEsc"  id="<?php echo $beca["ID_Beca"]."-btncontac"; ?>" <?php if($fullReq < 6 ){echo "style='display:none'";}?>>
-                                                    Notificar a la escuela
+                                                <button type="button" onclick="contactar(<?php echo $_SESSION['id_usuario'].",".$beca["ID_Beca"]; ?>,this);" class="btn btn-danger btn-lg notificarEsc"  id="<?php echo $beca["ID_Beca"]."-btncontac"; ?>" <?php if($fullReq < 6 ){echo "style='display:none'";}else{ if($doContact == 1){echo "disabled";} } ?>>
+                                                    <?php 
+                                                    if($doContact == 1){
+                                                        echo "¡Gracias!";
+                                                    }else{
+                                                        echo "Notificar a la escuela";
+                                                    }?>
+                                                    
                                                 </button>
                                               </div>
                                           </div>
